@@ -148,18 +148,18 @@ const KEYFRAMES = `
   .jum-close-btn:hover { transform: rotate(90deg) }
 
   .jum-modal-scroll::-webkit-scrollbar       { width: 5px }
-  .jum-modal-scroll::-webkit-scrollbar-track { background: #f0f4f8 }
-  .jum-modal-scroll::-webkit-scrollbar-thumb { background: #c8d8ef; border-radius: 99px }
+  .jum-modal-scroll::-webkit-scrollbar-track { background: rgb(var(--color-surface-muted)) }
+  .jum-modal-scroll::-webkit-scrollbar-thumb { background: rgb(var(--color-accent)); border-radius: 99px }
 `;
 
 const baseInput =
-  "w-full font-sans text-sm text-[#1a2d4a] bg-[#f5f8fc] border-[1.5px] border-[#dce8f5] rounded-xl px-3.5 py-2.5 outline-none " +
-  "transition-all duration-200 ease-in-out placeholder:text-[#a4b5cc] " +
-  "focus:border-[#002B56] focus:bg-white focus:ring-2 focus:ring-[#002B56]/10 " +
-  "hover:border-[#afc8e8]";
+  "w-full font-sans text-sm text-primary bg-surface-muted border-[1.5px] border-line rounded-xl px-3.5 py-2.5 outline-none " +
+  "transition-all duration-200 ease-in-out placeholder:text-ink-muted " +
+  "focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 " +
+  "hover:border-accent";
 
 const errorInput =
-  "border-[#e05252] bg-[#fff8f8] focus:border-[#e05252] focus:ring-red-100";
+  "border-red-600 bg-red-50 focus:border-red-600 focus:ring-red-100";
 
 const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
   const [form, setForm] =
@@ -310,7 +310,7 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
         aria-labelledby="jum-title"
         className="jum-anim-fadeIn fixed inset-0 z-[9999] flex items-center justify-center p-4"
         style={{
-          background: "rgba(0,18,38,0.72)",
+          background: "rgb(var(--color-primary) / 0.8)",
           backdropFilter: "blur(6px)",
         }}
       >
@@ -318,14 +318,15 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
           className="jum-modal-scroll jum-anim-slideUp relative w-full max-w-[680px] max-h-[92vh] overflow-y-auto bg-white rounded-[20px]"
           style={{
             boxShadow:
-              "0 32px 80px rgba(0,30,70,.22), 0 8px 24px rgba(0,30,70,.12)",
+              "0 32px 80px rgb(var(--color-primary) / 0.22), 0 8px 24px rgb(var(--color-primary) / 0.12)",
           }}
         >
           {/* Header */}
           <div
             className="relative overflow-hidden px-9 pt-8 pb-7 rounded-t-[20px]"
             style={{
-              background: "linear-gradient(135deg,#002B56 0%,#003366 100%)",
+              background:
+                "linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(var(--color-secondary)) 100%)",
             }}
           >
             <span className="pointer-events-none absolute -top-10 -right-10 w-44 h-44 rounded-full bg-white/[.06]" />
@@ -340,7 +341,7 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
               ✕
             </button>
 
-            <p className="text-[#7ec8f5] text-[0.72rem] font-medium tracking-[.16em] uppercase mb-1.5">
+            <p className="text-accent text-[0.72rem] font-medium tracking-[.16em] uppercase mb-1.5">
               NPC Innovation Hub
             </p>
             <h2
@@ -361,8 +362,9 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
               <div
                 className="jum-anim-success flex items-center justify-center w-[72px] h-[72px] rounded-full"
                 style={{
-                  background: "linear-gradient(135deg,#002B56,#003366)",
-                  boxShadow: "0 8px 24px rgba(0,43,86,.3)",
+                  background:
+                    "linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary)))",
+                  boxShadow: "0 8px 24px rgb(var(--color-primary) / 0.3)",
                 }}
               >
                 <svg
@@ -379,19 +381,19 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
                 </svg>
               </div>
               <h3
-                className="text-[#002B56] text-[1.5rem] font-extrabold m-0"
+                className="text-primary text-[1.5rem] font-extrabold m-0"
                 style={{ fontFamily: "'Syne', sans-serif" }}
               >
                 Application Submitted!
               </h3>
-              <p className="text-[#5a7091] text-sm leading-[1.6] max-w-[380px] m-0">
+              <p className="text-ink-muted text-sm leading-[1.6] max-w-[380px] m-0">
                 {successMsg ||
                   "Application submitted successfully. We will review it and get back to you."}
               </p>
               <button
                 onClick={onClose}
                 type="button"
-                className="mt-2 px-7 py-2.5 rounded-full border-2 border-[#002B56] bg-transparent text-[#002B56] text-sm font-bold cursor-pointer transition-all duration-200 hover:bg-[#002B56] hover:text-white active:scale-95"
+                className="mt-2 px-7 py-2.5 rounded-full border-2 border-primary bg-transparent text-primary text-sm font-bold cursor-pointer transition-all duration-200 hover:bg-primary hover:text-white active:scale-95"
                 style={{ fontFamily: "'Syne', sans-serif" }}
               >
                 Close
@@ -530,7 +532,7 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
                     <button
                       type="button"
                       onClick={addSkill}
-                      className="px-5 rounded-xl bg-[#002B56] text-white text-sm font-bold hover:bg-[#003366] transition-colors"
+                      className="px-5 rounded-xl bg-primary text-white text-sm font-bold hover:bg-secondary transition-colors"
                     >
                       Add
                     </button>
@@ -544,14 +546,14 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
                     {form.skills.map((skill) => (
                       <li
                         key={skill}
-                        className="flex items-center gap-1.5 bg-[#e6f0ff] text-[#002B56] text-xs font-semibold px-3 py-1.5 rounded-full"
+                        className="flex items-center gap-1.5 bg-line text-primary text-xs font-semibold px-3 py-1.5 rounded-full"
                       >
                         {skill}
                         <button
                           type="button"
                           aria-label={`Remove ${skill}`}
                           onClick={() => removeSkill(skill)}
-                          className="text-[#002B56]/60 hover:text-[#e05252]"
+                          className="text-primary/60 hover:text-red-600"
                         >
                           ✕
                         </button>
@@ -655,7 +657,7 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
               </div>
 
               {status === "error" && errorMsg && errorKind === "duplicate" && (
-                <div className="flex items-start gap-2.5 mt-5 px-4 py-3.5 bg-[#fff8ea] border border-[#f0d9a6] rounded-xl text-[0.83rem] text-[#8a6d1f]">
+                <div className="flex items-start gap-2.5 mt-5 px-4 py-3.5 bg-amber-50 border border-amber-200 rounded-xl text-[0.83rem] text-amber-800">
                   <svg
                     width="17"
                     height="17"
@@ -676,7 +678,7 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
               )}
 
               {status === "error" && errorMsg && errorKind === "generic" && (
-                <div className="flex items-center gap-2 mt-5 px-4 py-3 bg-[#fff2f2] border border-[#f5c6c6] rounded-xl text-[0.83rem] text-[#c0392b]">
+                <div className="flex items-center gap-2 mt-5 px-4 py-3 bg-red-50 border border-red-200 rounded-xl text-[0.83rem] text-red-600">
                   <svg
                     width="16"
                     height="16"
@@ -703,12 +705,13 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
                     "transition-all duration-200 cursor-pointer select-none",
                     status === "loading"
                       ? "opacity-55 cursor-not-allowed"
-                      : "hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,43,86,.35)] active:translate-y-0",
+                      : "hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgb(var(--color-primary)/0.35)] active:translate-y-0",
                   ].join(" ")}
                   style={{
                     fontFamily: "'Syne', sans-serif",
-                    background: "linear-gradient(135deg,#002B56,#003366)",
-                    boxShadow: "0 4px 16px rgba(0,43,86,.3)",
+                    background:
+                      "linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary)))",
+                    boxShadow: "0 4px 16px rgb(var(--color-primary) / 0.3)",
                   }}
                 >
                   {status === "loading" ? (
@@ -733,7 +736,7 @@ const SectionLabel: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => (
   <p
-    className="text-[0.7rem] font-bold tracking-[.14em] uppercase text-[#002B56]/45 mb-4 m-0"
+    className="text-[0.7rem] font-bold tracking-[.14em] uppercase text-primary/45 mb-4 m-0"
     style={{ fontFamily: "'Syne', sans-serif" }}
   >
     {children}
@@ -743,7 +746,9 @@ const SectionLabel: React.FC<{ children: React.ReactNode }> = ({
 const Divider = () => (
   <div
     className="my-6 h-px"
-    style={{ background: "linear-gradient(90deg,#e2eaf4,transparent)" }}
+    style={{
+      background: "linear-gradient(90deg, rgb(var(--color-line)), transparent)",
+    }}
   />
 );
 
@@ -757,14 +762,14 @@ const Field: React.FC<{
   <div className="flex flex-col gap-1.5">
     <label
       htmlFor={id}
-      className="text-[0.8rem] font-medium text-[#2d3f5c] tracking-[.01em]"
+      className="text-[0.8rem] font-medium text-primary tracking-[.01em]"
     >
       {label}
-      {required && <span className="text-[#e05252] ml-0.5">*</span>}
+      {required && <span className="text-red-600 ml-0.5">*</span>}
     </label>
     {children}
     {error && (
-      <span className="text-[0.75rem] text-[#e05252] -mt-0.5 flex items-center gap-1">
+      <span className="text-[0.75rem] text-red-600 -mt-0.5 flex items-center gap-1">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
         </svg>
