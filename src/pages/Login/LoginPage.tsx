@@ -228,13 +228,13 @@ const LoginPage = () => {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-gray-700 text-sm font-medium mb-1.5">
+                <label className="block text-ink-muted text-sm font-medium mb-1.5">
                   Email Address
                 </label>
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-2.5 border border-line rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -243,12 +243,12 @@ const LoginPage = () => {
               </div>
 
               <div>
-                <label className="block text-gray-700 text-sm font-medium mb-1.5">
+                <label className="block text-ink-muted text-sm font-medium mb-1.5">
                   Password
                 </label>
                 <PasswordInput
                   placeholder="Enter your password"
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-2.5 border border-line rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -291,7 +291,7 @@ const LoginPage = () => {
             </button>
 
             <div className="flex justify-between items-center">
-              <label className="flex items-center text-gray-700">
+              <label className="flex items-center text-ink-muted">
                 <input
                   type="checkbox"
                   checked={rememberMe}
@@ -312,10 +312,10 @@ const LoginPage = () => {
 
             <div className="relative py-2">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
+                <div className="w-full border-t border-line"></div>
               </div>
               <div className="relative flex justify-center">
-                <span className="px-3 bg-white text-gray-500 text-xs tracking-wide">
+                <span className="px-3 bg-white text-ink-muted text-xs tracking-wide">
                   OR
                 </span>
               </div>
