@@ -120,7 +120,7 @@ const OtpInput: React.FC<OtpInputProps> = ({
           className={`flex-1 min-w-0 max-w-[52px] aspect-[4/5] text-center text-lg sm:text-2xl font-semibold rounded-xl border-2 outline-none transition-colors ${
             hasError
               ? "border-red-300 text-red-600 focus:border-red-500 focus:ring-2 focus:ring-red-200"
-              : "border-gray-300 text-[#002B56] focus:border-[#002B56] focus:ring-2 focus:ring-[#002B56]/25"
+              : "border-gray-300 text-primary focus:border-primary focus:ring-2 focus:ring-primary/25"
           } disabled:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60`}
         />
       ))}
