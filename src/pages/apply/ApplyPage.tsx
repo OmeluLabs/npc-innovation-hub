@@ -46,18 +46,18 @@ const formatFileSize = (bytes: number): string =>
     : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 
 const baseInput =
-  "w-full font-sans text-sm text-[#1a2d4a] bg-[#f5f8fc] border-[1.5px] border-[#dce8f5] rounded-xl px-3.5 py-2.5 outline-none " +
-  "transition-all duration-200 ease-in-out placeholder:text-[#a4b5cc] " +
-  "focus:border-[#002B56] focus:bg-white focus:ring-2 focus:ring-[#002B56]/10 " +
-  "hover:border-[#afc8e8]";
+  "w-full font-sans text-sm text-primary bg-surface-muted border-[1.5px] border-line rounded-xl px-3.5 py-2.5 outline-none " +
+  "transition-all duration-200 ease-in-out placeholder:text-ink-muted " +
+  "focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 " +
+  "hover:border-accent";
 
 const errorInput =
-  "border-[#e05252] bg-[#fff8f8] focus:border-[#e05252] focus:ring-red-100";
+  "border-red-600 bg-red-50 focus:border-red-600 focus:ring-red-100";
 
 const SectionLabel: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => (
-  <p className="text-xs font-bold tracking-[.14em] uppercase text-[#002B56]/45 mb-4">
+  <p className="text-xs font-bold tracking-[.14em] uppercase text-primary/45 mb-4">
     {children}
   </p>
 );
@@ -65,7 +65,9 @@ const SectionLabel: React.FC<{ children: React.ReactNode }> = ({
 const Divider = () => (
   <div
     className="my-6 h-px"
-    style={{ background: "linear-gradient(90deg,#e2eaf4,transparent)" }}
+    style={{
+      background: "linear-gradient(90deg, rgb(var(--color-line)), transparent)",
+    }}
   />
 );
 
@@ -79,14 +81,14 @@ const Field: React.FC<{
   <div className="flex flex-col gap-1.5">
     <label
       htmlFor={id}
-      className="text-sm font-medium text-[#2d3f5c] tracking-[.01em]"
+      className="text-sm font-medium text-primary tracking-[.01em]"
     >
       {label}
-      {required && <span className="text-[#e05252] ml-0.5">*</span>}
+      {required && <span className="text-red-600 ml-0.5">*</span>}
     </label>
     {children}
     {error && (
-      <span className="text-xs text-[#e05252] -mt-0.5 flex items-center gap-1">
+      <span className="text-xs text-red-600 -mt-0.5 flex items-center gap-1">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
         </svg>
@@ -206,12 +208,13 @@ export const ApplyPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f7fc]">
+    <div className="min-h-screen bg-surface-muted">
       {/* Hero */}
       <div
         className="px-4 py-16 text-center text-white"
         style={{
-          background: "linear-gradient(135deg,#002B56 0%,#003366 100%)",
+          background:
+            "linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(var(--color-secondary)) 100%)",
         }}
       >
         <button
@@ -234,7 +237,7 @@ export const ApplyPage: React.FC = () => {
           </svg>
           Go Back
         </button>
-        <p className="text-[#7ec8f5] text-xs font-medium tracking-[.16em] uppercase mb-2">
+        <p className="text-accent text-xs font-medium tracking-[.16em] uppercase mb-2">
           NPC Innovation Hub
         </p>
         <h1 className="text-4xl sm:text-5xl font-extrabold mb-3">
@@ -254,8 +257,9 @@ export const ApplyPage: React.FC = () => {
               <div
                 className="flex items-center justify-center w-[72px] h-[72px] rounded-full"
                 style={{
-                  background: "linear-gradient(135deg,#002B56,#003366)",
-                  boxShadow: "0 8px 24px rgba(0,43,86,.3)",
+                  background:
+                    "linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary)))",
+                  boxShadow: "0 8px 24px rgb(var(--color-primary) / 0.3)",
                 }}
               >
                 <svg
@@ -271,17 +275,17 @@ export const ApplyPage: React.FC = () => {
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
-              <h2 className="text-[#002B56] text-2xl font-extrabold">
+              <h2 className="text-primary text-2xl font-extrabold">
                 Application Submitted!
               </h2>
-              <p className="text-[#5a7091] text-sm leading-relaxed max-w-md">
+              <p className="text-ink-muted text-sm leading-relaxed max-w-md">
                 {successMsg ||
                   "Application submitted successfully. We will review it and get back to you by email."}
               </p>
               <button
                 onClick={() => navigate("/")}
                 type="button"
-                className="mt-2 px-7 py-2.5 rounded-full border-2 border-[#002B56] bg-transparent text-[#002B56] text-sm font-bold cursor-pointer transition-all duration-200 hover:bg-[#002B56] hover:text-white active:scale-95"
+                className="mt-2 px-7 py-2.5 rounded-full border-2 border-primary bg-transparent text-primary text-sm font-bold cursor-pointer transition-all duration-200 hover:bg-primary hover:text-white active:scale-95"
               >
                 Back to Home
               </button>
@@ -419,7 +423,7 @@ export const ApplyPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={addSkill}
-                      className="px-5 rounded-xl bg-[#002B56] text-white text-sm font-bold hover:bg-[#003366] transition-colors"
+                      className="px-5 rounded-xl bg-primary text-white text-sm font-bold hover:bg-secondary transition-colors"
                     >
                       Add
                     </button>
@@ -433,14 +437,14 @@ export const ApplyPage: React.FC = () => {
                     {form.skills.map((skill) => (
                       <li
                         key={skill}
-                        className="flex items-center gap-1.5 bg-[#e6f0ff] text-[#002B56] text-xs font-semibold px-3 py-1.5 rounded-full"
+                        className="flex items-center gap-1.5 bg-line text-primary text-xs font-semibold px-3 py-1.5 rounded-full"
                       >
                         {skill}
                         <button
                           type="button"
                           aria-label={`Remove ${skill}`}
                           onClick={() => removeSkill(skill)}
-                          className="text-[#002B56]/60 hover:text-[#e05252]"
+                          className="text-primary/60 hover:text-red-600"
                         >
                           ✕
                         </button>
@@ -544,7 +548,7 @@ export const ApplyPage: React.FC = () => {
               </div>
 
               {status === "error" && errorMsg && errorKind === "duplicate" && (
-                <div className="flex items-start gap-2.5 mt-5 px-4 py-3.5 bg-[#fff8ea] border border-[#f0d9a6] rounded-xl text-sm text-[#8a6d1f]">
+                <div className="flex items-start gap-2.5 mt-5 px-4 py-3.5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-800">
                   <svg
                     width="17"
                     height="17"
@@ -565,7 +569,7 @@ export const ApplyPage: React.FC = () => {
               )}
 
               {status === "error" && errorMsg && errorKind === "generic" && (
-                <div className="flex items-center gap-2 mt-5 px-4 py-3 bg-[#fff2f2] border border-[#f5c6c6] rounded-xl text-sm text-[#c0392b]">
+                <div className="flex items-center gap-2 mt-5 px-4 py-3 bg-red-50 border border-red-200 rounded-xl text-sm text-red-600">
                   <svg
                     width="16"
                     height="16"
@@ -592,11 +596,12 @@ export const ApplyPage: React.FC = () => {
                     "transition-all duration-200 cursor-pointer select-none",
                     status === "loading"
                       ? "opacity-55 cursor-not-allowed"
-                      : "hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,43,86,.35)] active:translate-y-0",
+                      : "hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgb(var(--color-primary)/0.35)] active:translate-y-0",
                   ].join(" ")}
                   style={{
-                    background: "linear-gradient(135deg,#002B56,#003366)",
-                    boxShadow: "0 4px 16px rgba(0,43,86,.3)",
+                    background:
+                      "linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary)))",
+                    boxShadow: "0 4px 16px rgb(var(--color-primary) / 0.3)",
                   }}
                 >
                   {status === "loading" ? (
