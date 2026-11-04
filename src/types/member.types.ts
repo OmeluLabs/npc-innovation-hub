@@ -1,6 +1,6 @@
 // src/types/member.types.ts
 
-// The backend validates a member/alumni "role" against this fixed set of
+// The backend validates a member "role" against this fixed set of
 // specializations — anything else is rejected with a 400.
 export const MEMBER_ROLES = [
   "Frontend Developer",
