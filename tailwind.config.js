@@ -16,21 +16,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Custom NpcInnovationHub brand colors
+        // Brand palette - values live in src/index.css as CSS variables.
+        primary: "rgb(var(--color-primary) / <alpha-value>)",
+        secondary: "rgb(var(--color-secondary) / <alpha-value>)",
+        accent: "rgb(var(--color-accent) / <alpha-value>)",
+        surface: {
+          DEFAULT: "rgb(var(--color-surface) / <alpha-value>)",
+          muted: "rgb(var(--color-surface-muted) / <alpha-value>)",
+        },
+        line: "rgb(var(--color-line) / <alpha-value>)",
+        "ink-muted": "rgb(var(--color-ink-muted) / <alpha-value>)",
+        // Legacy "npc" names kept so existing components pick up the new
+        // palette without a rename: navy -> primary, navy-light -> secondary.
         npc: {
           navy: {
-            DEFAULT: "#002B56",
-            light: "#003366",
-            dark: "#001f3f",
+            DEFAULT: "rgb(var(--color-primary) / <alpha-value>)",
+            light: "rgb(var(--color-secondary) / <alpha-value>)",
+            dark: "rgb(var(--color-primary) / <alpha-value>)",
           },
-          // npc.blue (#00A0E3) removed - the light-blue accent it defined
-          // was never actually consumed via this named class anywhere in
-          // the app (every real usage was the raw hex value directly),
-          // and keeping an unused "brand blue" token around would be a
-          // landmine for future work now that navy is the single accent.
           text: {
-            primary: "#29476E",
-            secondary: "#283D4B",
+            primary: "rgb(var(--color-primary) / <alpha-value>)",
+            secondary: "rgb(var(--color-ink-muted) / <alpha-value>)",
           },
         },
         // Member-dashboard two-tone palette — dark blue
@@ -68,21 +74,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: [
-          "Inter",
-          "system-ui",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Segoe UI",
-          "Segoe UI Emoji",
-          "Segoe UI Symbol",
-          "Apple Color Emoji",
-          "Noto Color Emoji",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial",
-          "sans-serif",
-        ],
+        sans: ["var(--font-body)"],
+        heading: ["var(--font-heading)"],
       },
       fontSize: {
         // Custom font sizes matching design
