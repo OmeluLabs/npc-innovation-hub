@@ -52,7 +52,7 @@ const CoreValues = () => {
           {VALUES.map(({ title, icon: Icon, description }) => (
             <div
               key={title}
-              className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
+              className="bg-white rounded-lg shadow-sm border border-line p-6"
             >
               <Icon className="w-8 h-8 text-primary mb-3" aria-hidden="true" />
               <h3 className="text-xl font-semibold text-primary mb-2">
