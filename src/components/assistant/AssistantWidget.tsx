@@ -208,7 +208,7 @@ export default function AssistantWidget() {
         aria-label={isOpen ? "Minimize chat" : "Chat with NPC Innovation Hub"}
         aria-expanded={isOpen}
         aria-controls="assistant-chat-panel"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#002B56] hover:bg-[#003366] text-white shadow-xl hover:shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#002B56] focus:ring-offset-2"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary hover:bg-secondary text-white shadow-xl hover:shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       >
         {isOpen ? (
           <X className="w-6 h-6" aria-hidden="true" />
@@ -222,9 +222,9 @@ export default function AssistantWidget() {
               d="M8 24.5V27l3.5-2.5H22a6 6 0 0 0 6-6v-6a6 6 0 0 0-6-6H10a6 6 0 0 0-6 6v6a6 6 0 0 0 4 5.65Z"
               fill="white"
             />
-            <circle cx="11" cy="15.5" r="1.5" fill="#002B56" />
-            <circle cx="16" cy="15.5" r="1.5" fill="#002B56" />
-            <circle cx="21" cy="15.5" r="1.5" fill="#002B56" />
+            <circle cx="11" cy="15.5" r="1.5" className="fill-primary" />
+            <circle cx="16" cy="15.5" r="1.5" className="fill-primary" />
+            <circle cx="21" cy="15.5" r="1.5" className="fill-primary" />
           </svg>
         )}
       </button>
@@ -241,7 +241,7 @@ export default function AssistantWidget() {
           {/* Header - the same NPC Innovation Hub emblem/brand used in
               Navbar.tsx, so the widget reads as the same brand rather
               than a bolted-on third-party tool. */}
-          <div className="bg-[#002B56] text-white px-4 py-3 flex items-center gap-3 flex-shrink-0">
+          <div className="bg-primary text-white px-4 py-3 flex items-center gap-3 flex-shrink-0">
             <img
               src="/assets/images/npc-emblem.png"
               alt=""
@@ -273,7 +273,7 @@ export default function AssistantWidget() {
           >
             {messages.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-gray-500 gap-3 px-2 text-center">
-                <Bot className="w-9 h-9 text-[#002B56]/40" aria-hidden="true" />
+                <Bot className="w-9 h-9 text-primary/40" aria-hidden="true" />
                 <p className="text-sm">Send a message to start chatting!</p>
                 <div className="flex flex-wrap justify-center gap-1.5">
                   {SUGGESTED_QUESTIONS.map((question) => (
@@ -281,7 +281,7 @@ export default function AssistantWidget() {
                       key={question}
                       type="button"
                       onClick={() => void sendMessage(question)}
-                      className="text-xs bg-[#F3F9FB] border border-gray-200 text-[#002B56] rounded-full px-3 py-1.5 hover:bg-[#002B56] hover:text-white hover:border-[#002B56] transition-colors"
+                      className="text-xs bg-surface-muted border border-gray-200 text-primary rounded-full px-3 py-1.5 hover:bg-primary hover:text-white hover:border-primary transition-colors"
                     >
                       {question}
                     </button>
@@ -294,7 +294,7 @@ export default function AssistantWidget() {
                   key={message.id}
                   className={`flex items-end gap-2 w-full ${message.sender === "user" ? "flex-row-reverse" : ""}`}
                 >
-                  <div className="w-6 h-6 rounded-full bg-[#002B56] flex items-center justify-center flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                     {message.sender === "user" ? (
                       <User
                         className="w-3.5 h-3.5 text-white"
@@ -308,12 +308,12 @@ export default function AssistantWidget() {
                     )}
                   </div>
                   {message.sender === "user" ? (
-                    <div className="bg-[#002B56] text-white rounded-2xl px-3.5 py-2 max-w-[78%] text-sm">
+                    <div className="bg-primary text-white rounded-2xl px-3.5 py-2 max-w-[78%] text-sm">
                       {message.text}
                     </div>
                   ) : (
                     <div
-                      className={`${message.isError ? "bg-red-50 border-red-300" : "bg-[#F3F9FB] border-gray-200"} text-gray-700 rounded-2xl px-3.5 py-2 max-w-[78%] text-sm border`}
+                      className={`${message.isError ? "bg-red-50 border-red-300" : "bg-surface-muted border-gray-200"} text-gray-700 rounded-2xl px-3.5 py-2 max-w-[78%] text-sm border`}
                     >
                       {message.text}
                       {message.language && message.language !== "en" && (
@@ -340,10 +340,10 @@ export default function AssistantWidget() {
             )}
             {isLoading && (
               <div className="flex items-end gap-2 w-full">
-                <div className="w-6 h-6 rounded-full bg-[#002B56] flex items-center justify-center flex-shrink-0">
+                <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                   <Bot className="w-3.5 h-3.5 text-white" aria-hidden="true" />
                 </div>
-                <div className="bg-[#F3F9FB] text-gray-700 rounded-2xl px-3.5 py-2.5 border border-gray-200">
+                <div className="bg-surface-muted text-gray-700 rounded-2xl px-3.5 py-2.5 border border-gray-200">
                   <div className="flex gap-1.5">
                     <div
                       className="h-1.5 w-1.5 bg-gray-400 rounded-full animate-bounce"
@@ -376,7 +376,7 @@ export default function AssistantWidget() {
               placeholder={
                 isLoading ? "Waiting for response..." : "Type your question..."
               }
-              className="px-4 py-2.5 w-full border border-gray-300 rounded-full bg-white text-sm outline-none focus:border-[#002B56] text-gray-600"
+              className="px-4 py-2.5 w-full border border-gray-300 rounded-full bg-white text-sm outline-none focus:border-primary text-gray-600"
               disabled={isLoading}
             />
             <button
@@ -384,7 +384,7 @@ export default function AssistantWidget() {
               onClick={() => void sendMessage()}
               disabled={isLoading || inputValue.trim() === ""}
               aria-label="Send message"
-              className={`w-10 h-10 flex-shrink-0 ${isLoading ? "bg-gray-400" : "bg-[#002B56] hover:bg-[#003366]"} rounded-full flex items-center justify-center transition-colors`}
+              className={`w-10 h-10 flex-shrink-0 ${isLoading ? "bg-gray-400" : "bg-primary hover:bg-secondary"} rounded-full flex items-center justify-center transition-colors`}
             >
               {isLoading ? (
                 <Loader2
