@@ -186,7 +186,7 @@ const RouteLoadingFallback: React.FC = () => (
     className="min-h-screen w-full flex items-center justify-center bg-white"
   >
     <div
-      className="w-10 h-10 rounded-full border-4 border-[#E2E8F0] border-t-[#002B56] animate-spin"
+      className="w-10 h-10 rounded-full border-4 border-line border-t-primary animate-spin"
       aria-hidden="true"
     />
   </div>
