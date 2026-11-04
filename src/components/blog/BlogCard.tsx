@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Eye, Calendar } from "lucide-react";
+import { Eye, Calendar, FileText } from "lucide-react";
 import type { Blog } from "../../types/blog.types";
 
 interface BlogCardProps {
@@ -47,8 +47,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-gray-300 text-4xl">
-            📝
+          <div className="w-full h-full flex items-center justify-center text-mist-400">
+            <FileText className="h-10 w-10" aria-hidden="true" />
           </div>
         )}
       </div>
