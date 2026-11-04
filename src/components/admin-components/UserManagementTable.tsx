@@ -10,6 +10,7 @@
  */
 
 import React, { useState } from "react";
+import { Users } from "lucide-react";
 import type { User, UserRole } from "../../types/user.types";
 import {
   getUserFullName,
@@ -112,7 +113,10 @@ const UserManagementTable: React.FC<UserManagementTableProps> = ({
   if (users.length === 0) {
     return (
       <div className="text-center py-12 bg-white rounded-lg shadow">
-        <div className="text-mist-400 text-5xl mb-4">👥</div>
+        <Users
+          className="mx-auto mb-4 h-12 w-12 text-mist-400"
+          aria-hidden="true"
+        />
         <h3 className="text-lg font-semibold text-navy-800 mb-2">
           No users found
         </h3>
