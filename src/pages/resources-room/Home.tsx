@@ -29,19 +29,19 @@ const Home: React.FC = () => {
 
       <div className="max-w-6xl mx-auto mt-12 text-center px-4">
         <h2 className="text-2xl font-semibold mb-2">Access resources</h2>
-        <p className="mb-6 text-gray-700">
+        <p className="mb-6 text-ink-muted">
           Browse guides, templates, and reference material shared by NPC
           Innovation Hub members, organized by category so you can find what you
           need for your project.
         </p>
         <div className="flex justify-center gap-6 mb-12">
           <Link to="/resources-room/all-resources">
-            <button className="px-10 py-4 bg-gray-200 rounded-lg font-semibold text-xl hover:bg-gray-300 transition">
+            <button className="px-10 py-4 bg-line rounded-lg font-semibold text-xl hover:bg-line transition">
               ALL RESOURCES
             </button>
           </Link>
           <Link to="/resources-room/categories">
-            <button className="px-10 py-4 bg-gray-200 rounded-lg font-semibold text-xl hover:bg-gray-300 transition">
+            <button className="px-10 py-4 bg-line rounded-lg font-semibold text-xl hover:bg-line transition">
               CATEGORIES
             </button>
           </Link>
