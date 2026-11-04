@@ -49,7 +49,7 @@ import {
  */
 
 // Four angles on what the Hub actually offers - mentorship, real shipped
-// projects, and the Hire Us/alumni career pipeline - rather than one
+// projects, and the Hire Us career pipeline - rather than one
 // static line repeating the same pitch forever.
 const HERO_SLIDES = [
   {
@@ -66,7 +66,7 @@ const HERO_SLIDES = [
   },
   {
     headline: "Innovation With a Career Path.",
-    text: "Learn alongside a growing alumni network, get discovered through Hire Us, and turn your Hub experience into your next opportunity.",
+    text: "Learn alongside a growing network of builders, get discovered through Hire Us, and turn your Hub experience into your next opportunity.",
   },
 ];
 
