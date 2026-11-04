@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { TriangleAlert } from "lucide-react";
 import { useAuth } from "../../../hooks/useAuth";
 import { profileService } from "../../../api/profileService";
 import {
@@ -67,7 +68,10 @@ export default function ViewProfile() {
     content = (
       <div className="flex items-center justify-center py-24">
         <div className="bg-white p-8 rounded-xl shadow-lg max-w-md text-center">
-          <div className="text-red-500 text-5xl mb-4">⚠️</div>
+          <TriangleAlert
+            className="mx-auto mb-4 h-12 w-12 text-red-500"
+            aria-hidden="true"
+          />
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Error</h2>
           <p className="text-gray-600 mb-4">{error}</p>
           <button
