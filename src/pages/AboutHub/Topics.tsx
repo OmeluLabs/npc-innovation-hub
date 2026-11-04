@@ -1,21 +1,23 @@
 // src/pages/AboutHub/Topics.tsx  (BlogDesign)
+//
+// The blog list page: search, category filter, a "Most read" row and the
+// full article grid. Rendered under the public navbar at /blog, and embedded
+// (no page header) inside the member dashboard at /dashboard/blog.
 
 import React, { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import { useBlogs } from "../../hooks/useBlogs";
 import BlogList from "../../components/blog/BlogList";
 import FeaturedBlogs from "../../components/blog/FeaturedBlogs";
+import PageHeader from "../../components/layout/PageHeader";
 import { BLOG_CATEGORIES } from "../../types/blog.types";
 
 const CATEGORY_ALL = "View All";
 
 interface BlogDesignProps {
   // When rendered inside DashboardLayout (see /dashboard/blog), the
-  // Topbar/sidebar shell already frames the page - this page's own
-  // min-h-screen background and navy accent bar exist only to give the
-  // public marketing site (where this same component renders under the
-  // public Navbar) something to sit under, and would otherwise double up
-  // with the dashboard's own chrome.
+  // Topbar/sidebar shell already frames the page, so the public page header
+  // is skipped.
   embedded?: boolean;
 }
 
@@ -45,50 +47,47 @@ const BlogDesign: React.FC<BlogDesignProps> = ({ embedded = false }) => {
     }
   };
 
-  const isActive = (cat: string) => {
-    if (cat === CATEGORY_ALL) return activeCategory === "";
-    return activeCategory === cat;
-  };
+  const isActive = (cat: string) =>
+    cat === CATEGORY_ALL ? activeCategory === "" : activeCategory === cat;
 
   const content = (
     <>
-      {/* Header row */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
-        <div className="flex items-center gap-4">
-          <h1 className="text-2xl font-bold text-gray-900">Blog</h1>
-          <span className="text-sm text-gray-400">
-            {blogs.length} article{blogs.length !== 1 ? "s" : ""}
-          </span>
-        </div>
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-sm text-ink-muted">
+          {blogs.length} article{blogs.length !== 1 ? "s" : ""}
+        </p>
 
-        {/* Search */}
         <div className="relative w-full sm:w-80">
           <Search
             size={16}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            aria-hidden="true"
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
           />
           <input
-            type="text"
-            placeholder="Search for articles..."
+            type="search"
+            aria-label="Search articles"
+            placeholder="Search for articles"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm
-                       focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent
-                       bg-white transition"
+            className="w-full rounded-xl border border-line bg-white py-2.5 pl-9 pr-4 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-secondary"
           />
         </div>
       </div>
 
-      {/* Category filter buttons */}
-      <div className="flex flex-wrap gap-3 mb-8">
-        {[...BLOG_CATEGORIES, CATEGORY_ALL].map((cat) => (
+      <div
+        role="group"
+        aria-label="Filter by category"
+        className="mb-8 flex flex-wrap gap-2"
+      >
+        {[CATEGORY_ALL, ...BLOG_CATEGORIES].map((cat) => (
           <button
             key={cat}
             onClick={() => handleCategoryClick(cat)}
-            className={`px-5 py-2 rounded-lg text-sm font-semibold transition-colors duration-200 ${
+            aria-pressed={isActive(cat)}
+            className={`rounded-full px-4 py-1.5 text-sm font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 ${
               isActive(cat)
-                ? "bg-blue-800 text-white shadow-md"
-                : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300"
+                ? "bg-primary text-white"
+                : "border border-line bg-white text-secondary hover:border-secondary"
             }`}
           >
             {cat}
@@ -96,26 +95,23 @@ const BlogDesign: React.FC<BlogDesignProps> = ({ embedded = false }) => {
         ))}
       </div>
 
-      {/* Error banner */}
       {error && !loading && (
-        <div className="bg-red-50 border border-red-100 text-red-600 rounded-xl px-5 py-4 mb-6 text-sm">
+        <div
+          role="alert"
+          className="mb-6 rounded-xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-800"
+        >
           {error}
         </div>
       )}
 
-      {/* Featured section (only when no filters active) */}
       {!activeCategory && !search && featuredBlogs.length > 0 && (
         <FeaturedBlogs blogs={featuredBlogs} />
       )}
 
-      {/* Section heading */}
-      <div className="mb-6">
-        <h2 className="text-xl font-bold text-gray-800">
-          {activeCategory ? activeCategory : "All Articles"}
-        </h2>
-      </div>
+      <h2 className="mb-6">
+        {activeCategory ? activeCategory : "All articles"}
+      </h2>
 
-      {/* Blog grid */}
       <BlogList
         blogs={blogs}
         loading={loading}
@@ -126,17 +122,22 @@ const BlogDesign: React.FC<BlogDesignProps> = ({ embedded = false }) => {
   );
 
   if (embedded) {
-    return <div className="max-w-6xl mx-auto">{content}</div>;
+    return <div className="mx-auto max-w-6xl">{content}</div>;
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header bar - navy, matching the site's brand color everywhere else
-          (this used to be an off-brand yellow bar). */}
-      <div className="bg-[#002B56] h-20 w-full" />
-
-      <div className="max-w-6xl mx-auto px-6 py-8">{content}</div>
-    </div>
+    <>
+      <PageHeader
+        eyebrow="Blogs"
+        title="Ideas and lessons from the Hub"
+        description="Articles written by our members on software, security and building things that work."
+      />
+      <div className="bg-surface-muted">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-12 lg:py-16">
+          {content}
+        </div>
+      </div>
+    </>
   );
 };
 
