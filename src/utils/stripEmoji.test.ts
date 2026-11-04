@@ -1,5 +1,7 @@
 import { stripEmoji } from "./stripEmoji";
 
+// Emojis are written as code point escapes so this file itself stays
+// emoji-free.
 describe("stripEmoji", () => {
   test("removes emojis and tidies the leftover spacing", () => {
     expect(stripEmoji("Hub Portal \u{1F680} launch")).toBe("Hub Portal launch");
