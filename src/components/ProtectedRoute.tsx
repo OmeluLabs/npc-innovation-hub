@@ -32,6 +32,7 @@
 
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import { TriangleAlert } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
 
 interface ProtectedRouteProps {
@@ -71,7 +72,10 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-50">
         <div className="bg-white p-8 rounded-lg shadow-lg max-w-md text-center">
-          <div className="text-red-500 text-5xl mb-4">⚠️</div>
+          <TriangleAlert
+            className="mx-auto mb-4 h-12 w-12 text-red-500"
+            aria-hidden="true"
+          />
           <h1 className="text-2xl font-bold text-gray-800 mb-2">
             Access Denied
           </h1>
