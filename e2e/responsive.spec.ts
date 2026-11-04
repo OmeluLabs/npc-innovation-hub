@@ -16,7 +16,6 @@ const PUBLIC_ROUTES: { path: string; label: string }[] = [
   { path: "/forgot-password", label: "Forgot Password" },
   { path: "/projects", label: "Projects" },
   { path: "/members", label: "Members" },
-  { path: "/alumni", label: "Alumni" },
   { path: "/contact-us", label: "Contact Us" },
   { path: "/apply", label: "Join the Hub (apply)" },
   { path: "/blog", label: "Blog" },
