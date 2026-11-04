@@ -110,12 +110,12 @@ function HireUsHero() {
     <section className="flex flex-col md:flex-row items-center justify-between min-h-[80vh] bg-white p-8 md:p-12 w-full">
       {/* Left Text Content (unchanged) */}
       <div className="md:w-1/2 mb-10 md:mb-0">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 leading-tight">
           Our Hire Us Process:
           <br />
           <span className="text-indigo-600">From Planning to Deployment.</span>
         </h1>
-        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+        <p className="text-lg text-ink-muted mb-8 leading-relaxed">
           We handle your project from planning to deployment with professional,
           end-to-end solutions.
         </p>
