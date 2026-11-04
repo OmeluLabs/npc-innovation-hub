@@ -17,40 +17,19 @@ import { UserRole } from "../types/user.types";
 import { useActiveSection } from "../hooks/useActiveSection";
 import SkipToContent from "./SkipToContent";
 import AssistantWidget from "./assistant/AssistantWidget";
+import NavDropdown from "./navigation/NavDropdown";
+import {
+  NAV_ITEMS,
+  SECTION_IDS,
+  isGroup,
+  isLeafActive,
+} from "./navigation/navLinks";
+import type { NavLeaf } from "./navigation/navLinks";
 
-// Primary nav points at the single-page Home story's sections, not straight
-// at the deep pages - deepPath is still real and still reachable (each
-// section has its own "View all" / "Learn more" link to it), just not what
-// the top nav jumps to anymore. On any other route, a link is "active" when
-// its deepPath matches the current page instead.
-const NAV_LINKS = [
-  { label: "Home", to: "/#home", sectionId: "home", deepPath: "/" },
-  {
-    label: "About Us",
-    to: "/#about",
-    sectionId: "about",
-    deepPath: "/Hub-information",
-  },
-  {
-    label: "Members",
-    to: "/#members",
-    sectionId: "members",
-    deepPath: "/members",
-  },
-  {
-    label: "Projects",
-    to: "/#projects",
-    sectionId: "projects",
-    deepPath: "/projects",
-  },
-  {
-    label: "Contact Us",
-    to: "/#contact",
-    sectionId: "contact",
-    deepPath: "/contact-us",
-  },
-];
-const SECTION_IDS = NAV_LINKS.map((link) => link.sectionId);
+// The link structure (including dropdown groups) lives in
+// navigation/navLinks.ts. Section links point at the single-page Home
+// story's sections; on any other route a link is "active" when its
+// deepPath matches the current page instead.
 
 export default function Navbar() {
   const location = useLocation();
@@ -263,16 +242,16 @@ export default function Navbar() {
   const dashboardPath =
     user?.role === UserRole.ADMIN ? "/Admindashboard" : "/dashboard";
 
-  // "Home" never gets the active-highlight border on the nav link itself
-  // - that treatment now belongs to the logo (see isHomeActive below),
-  // since the logo already links to "/" and highlighting both at once
-  // would just be saying the same thing twice.
-  const isActive = (link: (typeof NAV_LINKS)[number]) =>
-    link.sectionId === "home"
-      ? false
-      : onHome
-        ? activeSectionId === link.sectionId
-        : location.pathname === link.deepPath;
+  // "Home" never gets the active-highlight on the nav link itself - that
+  // treatment belongs to the logo (see isHomeActive below), since the logo
+  // already links to "/".
+  const isActive = (leaf: NavLeaf) =>
+    isLeafActive(leaf, {
+      onHome,
+      activeSectionId,
+      pathname: location.pathname,
+      search: location.search,
+    });
 
   const isHomeActive = onHome && activeSectionId === "home";
 
@@ -282,6 +261,25 @@ export default function Navbar() {
     await logout();
     navigate("/");
   };
+
+  // A hash-only navigation (e.g. "/#members" while already on "/") doesn't
+  // change location.pathname, so the route-change effect above never fires
+  // to close the mobile menu - close it directly on tap instead.
+  const renderMobileLink = (leaf: NavLeaf) => (
+    <Link
+      key={leaf.to}
+      to={leaf.to}
+      onClick={() => setIsMenuOpen(false)}
+      aria-current={isActive(leaf) ? "page" : undefined}
+      className={`block px-4 py-3 font-semibold rounded-lg border-l-4 transition-colors duration-200 ${
+        isActive(leaf)
+          ? "text-npc-navy border-npc-navy bg-gray-50"
+          : "text-npc-navy border-transparent hover:bg-gray-50"
+      }`}
+    >
+      {leaf.label}
+    </Link>
+  );
 
   return (
     <>
@@ -300,7 +298,7 @@ export default function Navbar() {
             unmounted) while transparentAtTop, so the header's height never
             changes and the spacer div below stays accurate. */}
         <div
-          className={`h-[3px] w-full bg-gradient-to-r from-[#002B56] via-[#003366] to-[#002B56] transition-opacity duration-300 ${
+          className={`h-[3px] w-full bg-gradient-to-r from-npc-navy via-npc-navy-light to-npc-navy transition-opacity duration-300 ${
             transparentAtTop ? "opacity-0" : ""
           }`}
         />
@@ -333,7 +331,7 @@ export default function Navbar() {
                   ? "border-white"
                   : "border-transparent"
                 : isHomeActive
-                  ? "border-[#002B56]"
+                  ? "border-npc-navy"
                   : "border-transparent"
             }`}
           >
@@ -347,14 +345,14 @@ export default function Navbar() {
                 className={`block font-bold tracking-tight text-sm lg:text-lg whitespace-nowrap transition-colors duration-200 ${
                   transparentAtTop
                     ? "text-white drop-shadow-md group-hover:text-white/80"
-                    : "text-[#002B56] group-hover:text-[#003366]"
+                    : "text-npc-navy group-hover:text-npc-navy-light"
                 }`}
               >
                 NPC INNOVATION HUB
               </span>
               <span
                 className={`block font-medium tracking-wide uppercase text-[10px] lg:text-xs whitespace-nowrap transition-colors duration-200 ${
-                  transparentAtTop ? "text-white/70" : "text-[#002B56]/60"
+                  transparentAtTop ? "text-white/70" : "text-npc-navy/60"
                 }`}
               >
                 Innovate &middot; Create &middot; Build
@@ -370,33 +368,42 @@ export default function Navbar() {
               group), so justify-between pins the logo flush left and
               the whole group flush right, with the links sitting close
               to Sign In instead of floating in open space. */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <div className="hidden xl:flex items-center gap-4 2xl:gap-6">
             <nav
               className="flex items-center gap-4 xl:gap-6"
               aria-label="Main navigation"
             >
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  aria-current={isActive(link) ? "page" : undefined}
-                  // An outlined rectangle for the active page - same
-                  // border-2 box on every link (only the border color
-                  // differs, transparent vs navy) so every item keeps
-                  // identical size/alignment whether or not it's active.
-                  className={`font-bold uppercase text-[1.05rem] px-4 py-1.5 border-2 transition-all duration-200 ${
-                    transparentAtTop
-                      ? isActive(link)
-                        ? "border-white text-white hover:bg-white hover:text-[#002B56] drop-shadow-sm"
-                        : "border-transparent text-white/90 hover:text-white drop-shadow-sm"
-                      : isActive(link)
-                        ? "border-[#002B56] text-[#002B56] hover:bg-[#002B56] hover:text-white"
-                        : "border-transparent text-[#002B56] hover:text-[#003366]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_ITEMS.map((item) =>
+                isGroup(item) ? (
+                  <NavDropdown
+                    key={item.label}
+                    group={item}
+                    isLeafActive={isActive}
+                    onDark={transparentAtTop}
+                  />
+                ) : (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    aria-current={isActive(item) ? "page" : undefined}
+                    className={`font-semibold text-sm xl:text-base px-3 py-2 rounded-md border-b-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+                      transparentAtTop
+                        ? `focus-visible:ring-white drop-shadow-sm ${
+                            isActive(item)
+                              ? "border-white text-white"
+                              : "border-transparent text-white/90 hover:text-white"
+                          }`
+                        : `focus-visible:ring-npc-navy ${
+                            isActive(item)
+                              ? "border-npc-navy text-npc-navy"
+                              : "border-transparent text-npc-navy hover:text-npc-navy-light"
+                          }`
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ),
+              )}
             </nav>
 
             {/* Sign In, or an account menu once logged in. Sign In is
@@ -412,8 +419,8 @@ export default function Navbar() {
                   aria-haspopup="true"
                   className={`flex items-center gap-2 font-bold text-white px-5 py-2.5 shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                     transparentAtTop
-                      ? "bg-white/10 backdrop-blur-sm border-2 border-white hover:bg-white hover:text-[#002B56] focus:ring-white"
-                      : "bg-[#002B56] hover:bg-[#003366] hover:shadow-md focus:ring-[#002B56]"
+                      ? "bg-white/10 backdrop-blur-sm border-2 border-white hover:bg-white hover:text-npc-navy focus:ring-white"
+                      : "bg-npc-navy hover:bg-npc-navy-light hover:shadow-md focus:ring-npc-navy"
                   }`}
                 >
                   {user.firstName || "Account"}
@@ -437,7 +444,7 @@ export default function Navbar() {
                     <Link
                       to={dashboardPath}
                       onClick={() => setShowUserMenu(false)}
-                      className="block px-4 py-3 text-sm font-bold text-[#002B56] hover:bg-gray-50 transition-colors duration-200"
+                      className="block px-4 py-3 text-sm font-bold text-npc-navy hover:bg-gray-50 transition-colors duration-200"
                     >
                       Dashboard
                     </Link>
@@ -456,7 +463,7 @@ export default function Navbar() {
                 className={`font-bold uppercase text-[1.05rem] px-4 py-1.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                   transparentAtTop
                     ? "text-white/90 hover:text-white drop-shadow-sm focus:ring-white"
-                    : "text-[#002B56] hover:text-[#003366] focus:ring-[#002B56]"
+                    : "text-npc-navy hover:text-npc-navy-light focus:ring-npc-navy"
                 }`}
               >
                 Sign In
@@ -471,10 +478,10 @@ export default function Navbar() {
               icon switches to its solid-state color the moment it opens
               rather than staying white against a white panel. */}
           <button
-            className={`lg:hidden relative p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
+            className={`xl:hidden relative p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
               transparentAtTop && !isMenuOpen
                 ? "text-white hover:bg-white/10 focus:ring-white/40"
-                : "text-[#002B56] hover:bg-gray-50 focus:ring-[#002B56]/20"
+                : "text-npc-navy hover:bg-gray-50 focus:ring-npc-navy/20"
             }`}
             onClick={() => setIsMenuOpen((o) => !o)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -483,17 +490,17 @@ export default function Navbar() {
             <div className="w-6 h-6 relative">
               <span
                 className={`absolute block w-6 h-0.5 transform transition-all duration-300 ${
-                  transparentAtTop && !isMenuOpen ? "bg-white" : "bg-[#002B56]"
+                  transparentAtTop && !isMenuOpen ? "bg-white" : "bg-npc-navy"
                 } ${isMenuOpen ? "rotate-45 top-2.5" : "top-0"}`}
               />
               <span
                 className={`absolute block w-6 h-0.5 top-2.5 transition-all duration-300 ${
-                  transparentAtTop && !isMenuOpen ? "bg-white" : "bg-[#002B56]"
+                  transparentAtTop && !isMenuOpen ? "bg-white" : "bg-npc-navy"
                 } ${isMenuOpen ? "opacity-0" : "opacity-100"}`}
               />
               <span
                 className={`absolute block w-6 h-0.5 transform transition-all duration-300 ${
-                  transparentAtTop && !isMenuOpen ? "bg-white" : "bg-[#002B56]"
+                  transparentAtTop && !isMenuOpen ? "bg-white" : "bg-npc-navy"
                 } ${isMenuOpen ? "-rotate-45 top-2.5" : "top-5"}`}
               />
             </div>
@@ -503,38 +510,28 @@ export default function Navbar() {
         {/* Mobile menu */}
         {isMenuOpen && (
           <nav
-            className="lg:hidden px-6 pb-4 bg-white border-t border-gray-100 max-h-[calc(100vh-4rem)] overflow-y-auto"
+            className="xl:hidden px-6 pb-4 bg-white border-t border-gray-100 max-h-[calc(100vh-4rem)] overflow-y-auto"
             aria-label="Mobile navigation"
           >
             <div className="space-y-1 pt-2">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  // A hash-only navigation (e.g. "/#members" while already
-                  // on "/") doesn't change location.pathname, so the
-                  // route-change effect above never fires to close this
-                  // menu - close it directly on tap instead.
-                  onClick={() => setIsMenuOpen(false)}
-                  aria-current={isActive(link) ? "page" : undefined}
-                  // Same outlined-pill idea as the desktop nav: an
-                  // identical border-2 box on every row, only the active
-                  // one's border color is visible.
-                  className={`block px-4 py-3 font-bold uppercase rounded-lg border-2 transition-colors duration-200 ${
-                    isActive(link)
-                      ? "text-[#002B56] border-[#002B56] bg-white"
-                      : "text-[#002B56] border-transparent hover:bg-gray-50"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_ITEMS.map((item) =>
+                isGroup(item) ? (
+                  <div key={item.label} role="group" aria-label={item.label}>
+                    <p className="px-4 pt-3 pb-1 text-xs font-bold uppercase tracking-wider text-npc-text-secondary">
+                      {item.label}
+                    </p>
+                    {item.children.map(renderMobileLink)}
+                  </div>
+                ) : (
+                  renderMobileLink(item)
+                ),
+              )}
 
               {isAuthenticated && user ? (
                 <>
                   <Link
                     to={dashboardPath}
-                    className="block px-4 py-3 font-bold text-[#002B56] rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                    className="block px-4 py-3 font-bold text-npc-navy rounded-lg hover:bg-gray-50 transition-colors duration-200"
                   >
                     Dashboard
                   </Link>
@@ -548,7 +545,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   to="/login"
-                  className="block mt-2 text-center bg-[#002B56] text-white font-bold uppercase px-6 py-3 shadow-sm hover:bg-[#003366] hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#002B56] focus:ring-offset-2"
+                  className="block mt-2 text-center bg-npc-navy text-white font-bold uppercase px-6 py-3 shadow-sm hover:bg-npc-navy-light hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-npc-navy focus:ring-offset-2"
                 >
                   Sign In
                 </Link>
