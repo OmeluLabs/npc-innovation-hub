@@ -113,7 +113,7 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
         </div>
 
         <div className="text-center mt-2 w-full">
-          <h2 className="text-3xl font-bold text-[#002b56] mb-2">
+          <h2 className="text-3xl font-bold text-primary mb-2">
             {member.name}
           </h2>
 
@@ -121,7 +121,7 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
             {member.icon ? (
               <img src={member.icon} alt="Role icon" className="w-5 h-5 mr-2" />
             ) : (
-              <div className="w-5 h-5 mr-2 text-[#002b56] flex items-center justify-center">
+              <div className="w-5 h-5 mr-2 text-primary flex items-center justify-center">
                 <svg
                   width="20"
                   height="20"
@@ -146,7 +146,7 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
                 </svg>
               </div>
             )}
-            <p className="text-xl text-[#002b56] font-medium">{member.role}</p>
+            <p className="text-xl text-primary font-medium">{member.role}</p>
           </div>
 
           {(member.location || member.email) && (
@@ -218,14 +218,14 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
 
           {member.skills && member.skills.length > 0 && (
             <div className="mt-4">
-              <h3 className="text-md font-semibold text-[#002b56] mb-2">
+              <h3 className="text-md font-semibold text-primary mb-2">
                 Key Skills
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 {member.skills.map((skill, index) => (
                   <span
                     key={index}
-                    className="bg-[#e6f0ff] text-[#002b56] text-xs px-3 py-1 rounded-full"
+                    className="bg-line text-primary text-xs px-3 py-1 rounded-full"
                   >
                     {skill}
                   </span>
@@ -240,7 +240,7 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
               {member.projects !== undefined && (
                 <div className="text-center">
                   <p className="text-sm text-gray-500">Projects</p>
-                  <p className="text-lg font-bold text-[#002b56]">
+                  <p className="text-lg font-bold text-primary">
                     {member.projects}
                   </p>
                 </div>
@@ -249,7 +249,7 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
               {member.joinedYear !== undefined && (
                 <div className="text-center">
                   <p className="text-sm text-gray-500">Member Since</p>
-                  <p className="text-lg font-bold text-[#002b56]">
+                  <p className="text-lg font-bold text-primary">
                     {member.joinedYear}
                   </p>
                 </div>
@@ -260,7 +260,7 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
           {member.id && (
             <button
               onClick={() => onViewProfile(member.id)}
-              className="mt-6 bg-[#002b56] text-white py-2 px-6 rounded-full hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+              className="mt-6 bg-primary text-white py-2 px-6 rounded-full hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
             >
               View Full Profile
             </button>
@@ -293,7 +293,7 @@ const MemberGrid: React.FC<MemberGridProps> = ({ members, onViewProfile }) => {
  */
 const LeaderBadge: React.FC = () => (
   <div className="flex justify-center mb-4">
-    <span className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/60 px-5 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#002b56] shadow-sm backdrop-blur-md">
+    <span className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/60 px-5 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary shadow-sm backdrop-blur-md">
       <svg
         width="16"
         height="16"
@@ -337,7 +337,7 @@ const RootSlot: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 const TreeConnector: React.FC<{ childCount: number }> = ({ childCount }) => {
   if (childCount < 1) return null;
 
-  const line = "absolute bg-[#002b56]/25";
+  const line = "absolute bg-primary/25";
   // With a single child there is no rail to speak of, so run it from that
   // child's column across to the trunk instead of to itself.
   const railRight =
@@ -348,7 +348,7 @@ const TreeConnector: React.FC<{ childCount: number }> = ({ childCount }) => {
       {/* trunk dropping out of the leader card */}
       <div className={`${line} top-0 left-1/2 h-8 w-0.5 -translate-x-1/2`} />
       {/* junction dot where the trunk meets the rail */}
-      <div className="absolute top-8 left-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#002b56]/40" />
+      <div className="absolute top-8 left-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/40" />
       {/* rail spanning the first row of children */}
       <div
         className={`${line} top-8 h-0.5`}
@@ -401,10 +401,10 @@ const Header: React.FC<HeaderProps> = ({ title, subtitle }) => {
   return (
     <div className="text-center mb-12">
       {/* h2, not h1 - HeroSection.tsx already owns this page's one <h1>. */}
-      <h2 className="text-4xl md:text-5xl font-bold text-[#002b56] mb-4">
+      <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
         {title}
       </h2>
-      <p className="text-xl font-medium text-[#002b56] max-w-4xl mx-auto">
+      <p className="text-xl font-medium text-primary max-w-4xl mx-auto">
         {subtitle}
       </p>
     </div>
@@ -568,7 +568,7 @@ const HubMembersSection: React.FC = () => {
   return (
     <div
       id="members"
-      className="min-h-screen bg-gradient-to-b from-white via-[#f3fdfe] to-[#a7e1e7] scroll-mt-16 lg:scroll-mt-20"
+      className="min-h-screen bg-gradient-to-b from-white via-surface-muted to-accent scroll-mt-16 lg:scroll-mt-20"
     >
       <header className="pt-12 pb-6 px-4 md:px-8">
         <div className="container mx-auto pt-28 max-w-7xl">
@@ -589,7 +589,7 @@ const HubMembersSection: React.FC = () => {
           {loading ? (
             <SkeletonTree />
           ) : error ? (
-            <p className="text-center text-lg text-[#002b56]/70">{error}</p>
+            <p className="text-center text-lg text-primary/70">{error}</p>
           ) : leader ? (
             <div>
               <RootSlot>
@@ -616,20 +616,20 @@ const HubMembersSection: React.FC = () => {
               )}
             </div>
           ) : (
-            <p className="text-center text-lg text-[#002b56]/70">
+            <p className="text-center text-lg text-primary/70">
               We're featuring new hub members soon — check back shortly.
             </p>
           )}
 
           <div className="flex flex-col items-center gap-4 mt-16">
             {!loading && !error && totalMembers > 0 && (
-              <p className="text-base text-[#002b56]/70">
+              <p className="text-base text-primary/70">
                 Showing {visibleOthers.length + 1} of {totalMembers} members
                 {hiddenCount > 0 && ` — ${hiddenCount} more in the directory`}
               </p>
             )}
             <button
-              className="text-2xl py-3 px-12 border-2 border-[#002b56] text-[#002b56] rounded-[33px] shadow-md hover:bg-[#e6f0ff] transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+              className="text-2xl py-3 px-12 border-2 border-primary text-primary rounded-[33px] shadow-md hover:bg-line transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
               onClick={handleViewAllMembers}
             >
               View All Members
