@@ -10,7 +10,7 @@
  */
 
 import React, { useState } from "react";
-import { Users } from "lucide-react";
+import { Check, Users } from "lucide-react";
 import type { User, UserRole } from "../../types/user.types";
 import {
   getUserFullName,
@@ -238,7 +238,8 @@ const UserManagementTable: React.FC<UserManagementTableProps> = ({
                     <td className="px-6 py-4 whitespace-nowrap">
                       {user.verified ? (
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-navy-50 text-navy-700">
-                          ✓ Verified
+                          <Check className="mr-1 h-3 w-3" aria-hidden="true" />
+                          Verified
                         </span>
                       ) : (
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-mist-200 text-mist-600">
