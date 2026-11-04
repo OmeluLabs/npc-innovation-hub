@@ -1,12 +1,23 @@
 import { stripEmoji } from "./stripEmoji";
 
-// Emojis are written as code point escapes so this file itself stays
-// emoji-free.
+// Emojis are built from code points so this file itself stays emoji-free.
+const emoji = (...codePoints: number[]): string =>
+  String.fromCodePoint(...codePoints);
+
 describe("stripEmoji", () => {
   test("removes emojis and tidies the leftover spacing", () => {
-    expect(stripEmoji("Hub Portal \u{1F680} launch")).toBe("Hub Portal launch");
-    expect(stripEmoji("\u{1F4DA} Learning Platform")).toBe("Learning Platform");
-    expect(stripEmoji("Team \u{1F468}‍\u{1F4BB} build ✨")).toBe("Team build");
+    expect(stripEmoji(`Hub Portal ${emoji(0x1f680)} launch`)).toBe(
+      "Hub Portal launch",
+    );
+    expect(stripEmoji(`${emoji(0x1f4da)} Learning Platform`)).toBe(
+      "Learning Platform",
+    );
+    // A joined sequence (person + joiner + laptop) and a BMP emoji.
+    expect(
+      stripEmoji(
+        `Team ${emoji(0x1f468, 0x200d, 0x1f4bb)} build ${emoji(0x2728)}`,
+      ),
+    ).toBe("Team build");
   });
 
   test("leaves ordinary text, digits and punctuation untouched", () => {
