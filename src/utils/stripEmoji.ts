@@ -8,7 +8,7 @@
 // Alternation rather than one character class: the joiner/variation/keycap
 // code points are combining characters, which lint rejects inside a class.
 const EMOJI_PATTERN =
-  /\p{Extended_Pictographic}|\p{Regional_Indicator}|‍|️|⃣/gu;
+  /\p{Extended_Pictographic}|\p{Regional_Indicator}|\u200D|\uFE0F|\u20E3/gu;
 
 export function stripEmoji(text: string | null | undefined): string {
   if (!text) return "";
