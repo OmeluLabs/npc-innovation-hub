@@ -36,13 +36,13 @@ const VALUES = [
 
 const CoreValues = () => {
   return (
-    <div className="bg-[#F5F9FC] py-16 px-6">
+    <div className="bg-surface-muted py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#002b56] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
             Our Core Values
           </h2>
-          <p className="text-lg text-[#283D4B]/80 max-w-2xl mx-auto">
+          <p className="text-lg text-ink-muted/80 max-w-2xl mx-auto">
             These principles guide everything we do and define who we are as a
             Hub.
           </p>
@@ -54,14 +54,11 @@ const CoreValues = () => {
               key={title}
               className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
             >
-              <Icon
-                className="w-8 h-8 text-[#002B56] mb-3"
-                aria-hidden="true"
-              />
-              <h3 className="text-xl font-semibold text-[#002b56] mb-2">
+              <Icon className="w-8 h-8 text-primary mb-3" aria-hidden="true" />
+              <h3 className="text-xl font-semibold text-primary mb-2">
                 {title}
               </h3>
-              <p className="text-[#283D4B]/80">{description}</p>
+              <p className="text-ink-muted/80">{description}</p>
             </div>
           ))}
         </div>
