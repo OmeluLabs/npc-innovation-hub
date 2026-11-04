@@ -36,6 +36,8 @@ export const ProjectFormModal: React.FC<ProjectFormModalProps> = ({
     image: "",
     link: "",
     demo: "",
+    techStack: "",
+    status: "In Progress",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -48,6 +50,8 @@ export const ProjectFormModal: React.FC<ProjectFormModalProps> = ({
         image: initialData.image,
         link: initialData.link,
         demo: initialData.demo,
+        techStack: (initialData.techStack ?? []).join(", "),
+        status: initialData.status ?? "In Progress",
       });
     } else {
       setFormData({
@@ -56,6 +60,8 @@ export const ProjectFormModal: React.FC<ProjectFormModalProps> = ({
         image: "",
         link: "",
         demo: "",
+        techStack: "",
+        status: "In Progress",
       });
     }
     setErrors({});
@@ -205,6 +211,42 @@ export const ProjectFormModal: React.FC<ProjectFormModalProps> = ({
                   {errors.description}
                 </p>
               )}
+            </div>
+
+            {/* Tech stack + status (shown as tags and a badge on the public Projects page) */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div className="sm:col-span-2">
+                <label className="block text-sm font-medium text-navy-800 mb-2">
+                  Tech stack (comma separated)
+                </label>
+                <input
+                  type="text"
+                  value={formData.techStack}
+                  onChange={(e) =>
+                    setFormData({ ...formData, techStack: e.target.value })
+                  }
+                  className="w-full px-4 py-2.5 border border-mist-300 rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-transparent transition-all"
+                  placeholder="React, Node.js, PostgreSQL"
+                  disabled={isLoading}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-navy-800 mb-2">
+                  Status
+                </label>
+                <select
+                  value={formData.status}
+                  onChange={(e) =>
+                    setFormData({ ...formData, status: e.target.value })
+                  }
+                  className="w-full px-4 py-2.5 border border-mist-300 rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-transparent transition-all bg-white"
+                  disabled={isLoading}
+                >
+                  <option value="Planned">Planned</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
             </div>
 
             {/* Image URL */}
