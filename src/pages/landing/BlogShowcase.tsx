@@ -45,7 +45,7 @@ const BlogShowcase: React.FC = () => {
 
   // No published posts yet (or the fetch failed) is a normal state for an
   // optional homepage section, not something to show an error/empty card
-  // for - render nothing, matching AlumniSection.tsx / HubIntroVideo.tsx.
+  // for - render nothing, matching HubIntroVideo.tsx.
   if (!loading && (error || blogs.length === 0)) return null;
 
   const preview = blogs.slice(0, PREVIEW_COUNT);
