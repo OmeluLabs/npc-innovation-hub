@@ -32,20 +32,20 @@ const HubIntroVideo: React.FC = () => {
   const thumbnail = getCloudinaryVideoThumbnail(video.videoUrl);
 
   return (
-    <section className="py-16 px-4 md:px-8 bg-gradient-to-b from-white via-[#f3fdfe] to-white">
+    <section className="py-16 px-4 md:px-8 bg-gradient-to-b from-white via-surface-muted to-white">
       <div className="container mx-auto max-w-5xl text-center">
         {video.title && (
-          <h2 className="text-3xl md:text-4xl font-bold text-[#002b56] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
             {video.title}
           </h2>
         )}
         {video.description && (
-          <p className="text-lg text-[#002b56]/80 max-w-3xl mx-auto mb-10">
+          <p className="text-lg text-primary/80 max-w-3xl mx-auto mb-10">
             {video.description}
           </p>
         )}
 
-        <div className="relative rounded-[24px] overflow-hidden shadow-xl aspect-video bg-[#002b56]">
+        <div className="relative rounded-[24px] overflow-hidden shadow-xl aspect-video bg-primary">
           {isPlaying ? (
             <video
               src={video.videoUrl}
@@ -68,12 +68,12 @@ const HubIntroVideo: React.FC = () => {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-[#002b56] to-[#003366]" />
+                <div className="w-full h-full bg-gradient-to-br from-primary to-secondary" />
               )}
               <span className="absolute inset-0 flex items-center justify-center bg-black/30 transition-colors group-hover:bg-black/40">
                 <span className="flex items-center justify-center w-20 h-20 rounded-full bg-white/90 transition-transform group-hover:scale-105">
                   <svg
-                    className="w-8 h-8 text-[#002b56] ml-1"
+                    className="w-8 h-8 text-primary ml-1"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
