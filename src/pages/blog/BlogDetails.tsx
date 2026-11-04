@@ -1,9 +1,16 @@
 // src/pages/blog/BlogDetails.tsx
+//
+// Article page: a narrow, readable column with a clear header (category,
+// title, author, date, reading time), the cover image, then the body.
 
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Eye, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, Clock, Eye } from "lucide-react";
 import { useBlogs } from "../../hooks/useBlogs";
+import EmptyState from "../../components/layout/EmptyState";
+import { authorName } from "../../components/blog/BlogCard";
+import { readingTimeMinutes } from "../../utils/readingTime";
+import { stripEmoji } from "../../utils/stripEmoji";
 
 // Escapes raw text before any markdown substitution runs, so a blog post
 // whose body literally contains "<script>...</script>" (or any other HTML)
@@ -22,66 +29,32 @@ const escapeHtml = (text: string): string =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 
-// ── Simple markdown → HTML renderer (no external deps) ──
+// Simple markdown to HTML renderer (no external deps). Classes come from the
+// shared theme tokens.
 const renderMarkdown = (md: string): string => {
-  return (
-    escapeHtml(md)
-      // Headings
-      .replace(
-        /^### (.+)$/gm,
-        '<h3 class="text-lg font-bold text-gray-800 mt-5 mb-2">$1</h3>',
-      )
-      .replace(
-        /^## (.+)$/gm,
-        '<h2 class="text-xl font-bold text-gray-900 mt-7 mb-3">$1</h2>',
-      )
-      .replace(
-        /^# (.+)$/gm,
-        '<h1 class="text-2xl font-extrabold text-gray-900 mt-8 mb-4">$1</h1>',
-      )
-      // Horizontal rule
-      .replace(/^---$/gm, '<hr class="my-6 border-gray-200" />')
-      // Bold
-      .replace(
-        /\*\*(.+?)\*\*/g,
-        '<strong class="font-semibold text-gray-900">$1</strong>',
-      )
-      // Italic
-      .replace(/\*(.+?)\*/g, '<em class="italic">$1</em>')
-      // Unordered list items
-      .replace(/^- (.+)$/gm, '<li class="ml-5 list-disc text-gray-700">$1</li>')
-      // Wrap consecutive <li> in <ul>
-      .replace(
-        /(<li[\s\S]*?<\/li>\n?)+/g,
-        (match) => `<ul class="my-3 space-y-1">${match}</ul>`,
-      )
-      // Paragraphs — lines not already converted
-      .replace(/^(?!<[a-z]).+$/gm, (line) =>
-        line.trim()
-          ? `<p class="text-gray-700 leading-relaxed">${line}</p>`
-          : "",
-      )
-      // Double newlines → spacing
-      .replace(/\n{2,}/g, '<div class="my-3"></div>')
-  );
-};
-
-const getCategoryColor = (category: string): string => {
-  switch (category) {
-    case "Front-end":
-      return "bg-pink-100 text-pink-700";
-    case "Back-end":
-      return "bg-blue-100 text-blue-700";
-    case "Cyber security":
-      return "bg-purple-100 text-purple-700";
-    default:
-      return "bg-gray-100 text-gray-600";
-  }
+  return escapeHtml(md)
+    .replace(/^### (.+)$/gm, '<h3 class="mt-8 mb-2">$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2 class="mt-10 mb-3">$1</h2>')
+    .replace(/^# (.+)$/gm, '<h2 class="mt-10 mb-3">$1</h2>')
+    .replace(/^---$/gm, '<hr class="my-8 border-line" />')
+    .replace(
+      /\*\*(.+?)\*\*/g,
+      '<strong class="font-semibold text-primary">$1</strong>',
+    )
+    .replace(/\*(.+?)\*/g, '<em class="italic">$1</em>')
+    .replace(/^- (.+)$/gm, '<li class="ml-5 list-disc">$1</li>')
+    .replace(
+      /(<li[\s\S]*?<\/li>\n?)+/g,
+      (match) => `<ul class="my-4 space-y-1.5">${match}</ul>`,
+    )
+    .replace(/^(?!<[a-z]).+$/gm, (line) =>
+      line.trim() ? `<p class="my-4 leading-relaxed">${line}</p>` : "",
+    )
+    .replace(/\n{2,}/g, "");
 };
 
 const formatDate = (iso: string): string =>
   new Date(iso).toLocaleDateString("en-US", {
-    weekday: "long",
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -103,36 +76,38 @@ const BlogDetails: React.FC = () => {
     return () => clearSelectedBlog();
   }, [id, fetchPublicBlogById, clearSelectedBlog]);
 
-  // ── Loading ──
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="h-64 bg-gray-200 animate-pulse w-full" />
-        <div className="max-w-3xl mx-auto px-6 py-10 flex flex-col gap-5">
-          <div className="h-5 bg-gray-200 rounded w-24 animate-pulse" />
-          <div className="h-8 bg-gray-200 rounded w-2/3 animate-pulse" />
-          <div className="h-4 bg-gray-100 rounded w-full animate-pulse" />
-          <div className="h-4 bg-gray-100 rounded w-5/6 animate-pulse" />
-          <div className="h-4 bg-gray-100 rounded w-4/5 animate-pulse" />
+      <div className="bg-surface-muted min-h-screen">
+        <div className="mx-auto flex max-w-3xl animate-pulse flex-col gap-5 px-6 py-12">
+          <div className="h-5 w-24 rounded bg-line" />
+          <div className="h-10 w-3/4 rounded bg-line" />
+          <div className="h-64 w-full rounded-2xl bg-line" />
+          <div className="h-4 w-full rounded bg-line" />
+          <div className="h-4 w-5/6 rounded bg-line" />
+          <div className="h-4 w-4/5 rounded bg-line" />
         </div>
       </div>
     );
   }
 
-  // ── Error ──
   if (error || !selectedBlog) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center gap-4 text-gray-500">
-        <p className="text-lg font-semibold">
-          {error || "Blog post not found."}
-        </p>
-        <button
-          onClick={() => navigate("/blog")}
-          className="flex items-center gap-2 text-[#1876C6] hover:underline text-sm"
-        >
-          <ArrowLeft size={16} />
-          Back to Blog
-        </button>
+      <div className="bg-surface-muted min-h-screen px-6 py-16">
+        <div className="mx-auto max-w-xl">
+          <EmptyState
+            title="Article not found"
+            message={error || "This article may have been removed."}
+            action={
+              <button
+                onClick={() => navigate("/blog")}
+                className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
+                Back to blogs
+              </button>
+            }
+          />
+        </div>
       </div>
     );
   }
@@ -140,83 +115,66 @@ const BlogDetails: React.FC = () => {
   const htmlContent = renderMarkdown(selectedBlog.content);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero image */}
-      <div className="relative w-full h-72 md:h-96 overflow-hidden bg-gray-200">
+    <div className="bg-surface-muted min-h-screen">
+      <article className="mx-auto max-w-3xl px-6 py-10 lg:py-14">
+        <button
+          onClick={() => navigate("/blog")}
+          className="inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary focus:outline-none focus-visible:underline"
+        >
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          Back to blogs
+        </button>
+
+        <header className="mt-6">
+          <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-secondary">
+            {selectedBlog.category}
+          </span>
+          <h1 className="mt-4">{stripEmoji(selectedBlog.title)}</h1>
+          <p className="mt-4 text-lg text-ink-muted">
+            {stripEmoji(selectedBlog.summary)}
+          </p>
+
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-y border-line py-4 text-sm text-ink-muted">
+            <span className="font-semibold text-primary">
+              {authorName(selectedBlog)}
+            </span>
+            <time dateTime={selectedBlog.createdAt}>
+              {formatDate(selectedBlog.createdAt)}
+            </time>
+            <span className="flex items-center gap-1.5">
+              <Clock className="h-4 w-4" aria-hidden="true" />
+              {readingTimeMinutes(selectedBlog.content)} min read
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Eye className="h-4 w-4" aria-hidden="true" />
+              {selectedBlog.viewCount} views
+            </span>
+          </div>
+        </header>
+
         {selectedBlog.image && (
           <img
             src={selectedBlog.image}
-            alt={selectedBlog.title}
-            className="w-full h-full object-cover"
+            alt=""
+            className="mt-8 aspect-[16/9] w-full rounded-2xl object-cover"
           />
         )}
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-        {/* Back button */}
-        <button
-          onClick={() => navigate("/blog")}
-          className="absolute top-5 left-5 flex items-center gap-2 text-white bg-black/30
-                     backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium
-                     hover:bg-black/50 transition"
-        >
-          <ArrowLeft size={15} />
-          Back to Blog
-        </button>
-
-        {/* Title overlay */}
-        <div className="absolute bottom-0 left-0 right-0 px-6 pb-8 max-w-3xl mx-auto">
-          <span
-            className={`inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full mb-3 ${getCategoryColor(selectedBlog.category)}`}
-          >
-            {selectedBlog.category}
-          </span>
-          <h1 className="text-white text-2xl md:text-3xl font-extrabold leading-tight">
-            {selectedBlog.title}
-          </h1>
-        </div>
-      </div>
-
-      {/* Body */}
-      <div className="max-w-3xl mx-auto px-6 py-10">
-        {/* Meta row */}
-        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-8 pb-6 border-b border-gray-200">
-          <span className="flex items-center gap-1.5">
-            <Calendar size={14} className="text-gray-400" />
-            {formatDate(selectedBlog.createdAt)}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Eye size={14} className="text-gray-400" />
-            {selectedBlog.viewCount} views
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Tag size={14} className="text-gray-400" />
-            {selectedBlog.category}
-          </span>
-        </div>
-
-        {/* Summary */}
-        <p className="text-gray-600 text-base leading-relaxed mb-8 p-4 bg-blue-50 border-l-4 border-[#1876C6] rounded-r-lg italic">
-          {selectedBlog.summary}
-        </p>
-
-        {/* Markdown content */}
         <div
-          className="prose prose-gray max-w-none text-gray-700 leading-relaxed"
+          className="mt-8 text-base text-ink-muted"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
 
-        {/* Bottom nav */}
-        <div className="mt-12 pt-6 border-t border-gray-200">
+        <div className="mt-12 border-t border-line pt-6">
           <button
             onClick={() => navigate("/blog")}
-            className="flex items-center gap-2 text-[#1876C6] hover:text-blue-800 font-medium transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary focus:outline-none focus-visible:underline"
           >
-            <ArrowLeft size={16} />
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             Back to all articles
           </button>
         </div>
-      </div>
+      </article>
     </div>
   );
 };
