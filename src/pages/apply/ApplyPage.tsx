@@ -1,6 +1,7 @@
 // src/pages/apply/ApplyPage.tsx
 import React, { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { X } from "lucide-react";
 import { submitMembershipApplication } from "../../api/applicationService";
 import { getApplicationFormErrors } from "../../components/JoinUsModal";
 import { APPLICATION_GENDERS } from "../../types/application.types";
@@ -446,7 +447,8 @@ export const ApplyPage: React.FC = () => {
                           onClick={() => removeSkill(skill)}
                           className="text-primary/60 hover:text-red-600"
                         >
-                          ✕
+                          <X className="h-4 w-4" aria-hidden="true" />
+                          <span className="sr-only">Remove skill</span>
                         </button>
                       </li>
                     ))}
