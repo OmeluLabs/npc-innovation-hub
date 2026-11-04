@@ -73,10 +73,10 @@ const ForgotPassword: React.FC = () => {
               <h1 className="mt-4 text-2xl font-bold text-primary">
                 Check Your Email
               </h1>
-              <p className="mt-2 text-sm text-gray-600">
+              <p className="mt-2 text-sm text-ink-muted">
                 We've sent a password reset link to <strong>{email}</strong>
               </p>
-              <p className="mt-3 text-sm text-gray-600">
+              <p className="mt-3 text-sm text-ink-muted">
                 Click the link in the email to reset your password. If you don't
                 see it, check your spam folder.
               </p>
@@ -93,7 +93,7 @@ const ForgotPassword: React.FC = () => {
                     setIsSubmitted(false);
                     setEmail("");
                   }}
-                  className="w-full py-3 bg-gray-100 text-gray-800 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
+                  className="w-full py-3 bg-surface-muted text-primary rounded-xl font-semibold hover:bg-line transition-colors"
                 >
                   Try Another Email
                 </button>
@@ -105,7 +105,7 @@ const ForgotPassword: React.FC = () => {
                 <h1 className="text-2xl font-bold text-primary">
                   Reset Your Password
                 </h1>
-                <p className="text-gray-600 text-sm mt-2">
+                <p className="text-ink-muted text-sm mt-2">
                   We'll send you a link to reset your password.
                 </p>
               </div>
@@ -121,7 +121,7 @@ const ForgotPassword: React.FC = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-gray-700 text-sm font-medium mb-1.5"
+                  className="block text-ink-muted text-sm font-medium mb-1.5"
                 >
                   Email Address
                 </label>
@@ -134,7 +134,7 @@ const ForgotPassword: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isLoading}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-2.5 border border-line rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:bg-surface-muted disabled:cursor-not-allowed"
                   placeholder="Enter your email"
                 />
               </div>
@@ -176,7 +176,7 @@ const ForgotPassword: React.FC = () => {
                 type="button"
                 onClick={() => navigate("/login")}
                 disabled={isLoading}
-                className="w-full py-3 bg-gray-100 text-gray-800 rounded-xl font-semibold hover:bg-gray-200 transition-colors disabled:opacity-50"
+                className="w-full py-3 bg-surface-muted text-primary rounded-xl font-semibold hover:bg-line transition-colors disabled:opacity-50"
               >
                 Back to Sign In
               </button>
