@@ -22,6 +22,9 @@ const HubMembersSection = lazy(
 const HeroSection = lazy(() => import("../pages/landing/HeroSection"));
 const Offerings = lazy(() => import("../pages/landing/Offerings"));
 const HubIntroVideo = lazy(() => import("../pages/landing/HubIntroVideo"));
+const PublicEventsPage = lazy(
+  () => import("../pages/events-page/PublicEventsPage"),
+);
 const ContactUs = lazy(() => import("../pages/landing/ContactUs"));
 const ContactSection = lazy(() => import("../pages/landing/ContactSection"));
 const ProjectsPage = lazy(() => import("../pages/project-page/ProjectsPage"));
@@ -324,6 +327,18 @@ const AllRoutes: React.FC = () => {
               <Navbar />
               <main id="main-content">
                 <InnovationHubMembersPage />
+              </main>
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/events"
+          element={
+            <>
+              <Navbar />
+              <main id="main-content">
+                <PublicEventsPage />
               </main>
               <Footer />
             </>
