@@ -120,7 +120,14 @@
 //   DELETE_MESSAGE: (id: string) => `${API_BASE}/messages/${id}`,
 // } as const;
 
-// // ==================== HELPER FUNCTIONS ====================
+// // ==================== ADMIN MEMBER LEADERSHIP ROUTES ====================
+
+export const MEMBER_LEADERSHIP_ROUTES = {
+  UPDATE_LEADERSHIP: (memberId: string) =>
+    `${API_BASE}/admin/members/${memberId}/leadership`,
+} as const;
+
+// ==================== HELPER FUNCTIONS ====================
 
 // /**
 //  * Build a route with query parameters
