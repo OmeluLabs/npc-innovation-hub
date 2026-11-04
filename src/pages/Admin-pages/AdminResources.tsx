@@ -189,12 +189,12 @@ const ResourceDetailsModal = ({
           <div className="flex gap-2">
             {resource.isFeatured && (
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
-                ⭐ Featured
+                Featured
               </span>
             )}
             {resource.isHosted && (
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
-                🏠 Self-Hosted
+                Self-Hosted
               </span>
             )}
           </div>
