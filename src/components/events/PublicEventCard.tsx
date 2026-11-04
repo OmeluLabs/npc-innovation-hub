@@ -9,6 +9,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import type { Event } from "../../types/event.types";
+import { stripEmoji } from "../../utils/stripEmoji";
 
 const ONLINE_PATTERN = /\b(online|virtual|zoom|google meet|teams|webinar)\b/i;
 
@@ -56,7 +57,7 @@ const PublicEventCard: React.FC<PublicEventCardProps> = ({ event, isPast }) => {
 
       <div className="flex flex-col flex-1 p-5">
         <h3 className="text-lg font-bold text-npc-navy line-clamp-2">
-          {event.title}
+          {stripEmoji(event.title)}
         </h3>
 
         <ul className="mt-3 space-y-1.5 text-sm text-npc-text-secondary">
@@ -77,7 +78,7 @@ const PublicEventCard: React.FC<PublicEventCardProps> = ({ event, isPast }) => {
         </ul>
 
         <p className="mt-3 text-sm text-npc-text-secondary line-clamp-3 flex-1">
-          {event.description}
+          {stripEmoji(event.description)}
         </p>
 
         {!isPast && (
