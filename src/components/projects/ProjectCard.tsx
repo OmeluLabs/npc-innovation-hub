@@ -17,7 +17,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   if (variant === "featured") {
     return (
       <div
-        className={`flex flex-col md:flex-row bg-[#05305C] rounded-md overflow-hidden shadow-md min-h-[350px] ${className}`}
+        className={`flex flex-col md:flex-row bg-primary rounded-md overflow-hidden shadow-md min-h-[350px] ${className}`}
       >
         <div className="md:w-1/2 w-full h-60 md:h-auto">
           <img src={image} alt={title} className="w-full h-full object-cover" />
