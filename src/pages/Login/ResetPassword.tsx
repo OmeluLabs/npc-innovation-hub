@@ -106,7 +106,7 @@ const ResetPassword: React.FC = () => {
           <div className="mt-8">
             <button
               onClick={() => navigate("/login")}
-              className="w-full py-3 px-4 bg-[#002B56] text-white rounded-lg font-semibold hover:bg-blue-800 transition-colors"
+              className="w-full py-3 px-4 bg-primary text-white rounded-lg font-semibold hover:bg-blue-800 transition-colors"
             >
               Go to Sign In
             </button>
@@ -194,7 +194,7 @@ const ResetPassword: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading || !token}
-              className="w-full py-3 px-4 bg-[#002B56] text-white rounded-lg font-semibold hover:bg-blue-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 px-4 bg-primary text-white rounded-lg font-semibold hover:bg-blue-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center">
