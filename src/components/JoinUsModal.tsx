@@ -1,5 +1,6 @@
 // src/components/JoinUsModal.tsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { X } from "lucide-react";
 import { submitMembershipApplication } from "../api/applicationService";
 import { APPLICATION_GENDERS } from "../types/application.types";
 import type {
@@ -338,7 +339,8 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
               type="button"
               className="jum-close-btn absolute top-5 right-5 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-white/[.14] text-white text-sm border-0 cursor-pointer transition-all duration-200 hover:bg-white/25"
             >
-              ✕
+              <X className="h-4 w-4" aria-hidden="true" />
+              <span className="sr-only">Close</span>
             </button>
 
             <p className="text-accent text-[0.72rem] font-medium tracking-[.16em] uppercase mb-1.5">
@@ -555,7 +557,8 @@ const JoinUsModal: React.FC<JoinUsModalProps> = ({ isOpen, onClose }) => {
                           onClick={() => removeSkill(skill)}
                           className="text-primary/60 hover:text-red-600"
                         >
-                          ✕
+                          <X className="h-4 w-4" aria-hidden="true" />
+                          <span className="sr-only">Remove skill</span>
                         </button>
                       </li>
                     ))}
