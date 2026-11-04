@@ -121,13 +121,13 @@ const OTPVerification: React.FC = () => {
         <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 w-full max-w-md">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="text-center mb-2">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E8F4FC]">
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-surface-muted">
                 <MailCheck
-                  className="h-7 w-7 text-[#002B56]"
+                  className="h-7 w-7 text-primary"
                   aria-hidden="true"
                 />
               </div>
-              <h1 className="text-2xl font-bold text-[#002B56]">
+              <h1 className="text-2xl font-bold text-primary">
                 OTP Verification
               </h1>
               <p className="text-gray-600 text-sm mt-2">
@@ -176,7 +176,7 @@ const OTPVerification: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full py-3 bg-[#002B56] text-white rounded-xl font-semibold hover:bg-[#003366] transition-colors duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-primary text-white rounded-xl font-semibold hover:bg-secondary transition-colors duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -217,7 +217,7 @@ const OTPVerification: React.FC = () => {
                 ) : (
                   <button
                     type="button"
-                    className="text-[#002B56] hover:text-[#003366] hover:underline font-semibold disabled:opacity-50 disabled:cursor-not-allowed disabled:no-underline"
+                    className="text-primary hover:text-secondary hover:underline font-semibold disabled:opacity-50 disabled:cursor-not-allowed disabled:no-underline"
                     disabled={isLoading || isResending}
                     onClick={() => void handleResend()}
                   >
@@ -227,7 +227,7 @@ const OTPVerification: React.FC = () => {
               </p>
               <button
                 type="button"
-                className="text-[#002B56] font-medium hover:underline text-sm mt-2"
+                className="text-primary font-medium hover:underline text-sm mt-2"
                 onClick={() => setShowSecurityTips(true)}
               >
                 View Security Tips
@@ -235,7 +235,7 @@ const OTPVerification: React.FC = () => {
               <p className="text-sm mt-3">
                 <Link
                   to="/login"
-                  className="text-gray-500 hover:text-[#002B56] hover:underline"
+                  className="text-gray-500 hover:text-primary hover:underline"
                 >
                   ← Back to Login
                 </Link>
@@ -256,8 +256,7 @@ const OTPVerification: React.FC = () => {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
-                  fill="#e74c3c"
-                  className="mr-2"
+                  className="fill-red-600 mr-2"
                 >
                   <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
                 </svg>
@@ -292,7 +291,7 @@ const OTPVerification: React.FC = () => {
             </div>
             <div className="border-t border-gray-200 py-3 px-6 flex justify-center">
               <button
-                className="py-2 px-10 bg-[#002B56] text-white font-bold rounded hover:bg-[#003366] transition-colors"
+                className="py-2 px-10 bg-primary text-white font-bold rounded hover:bg-secondary transition-colors"
                 onClick={() => setShowSecurityTips(false)}
               >
                 Close
