@@ -153,7 +153,7 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
             <div className="flex flex-col space-y-2 mb-4">
               {member.location && (
                 <div className="flex items-center justify-center">
-                  <div className="w-4 h-4 mr-2 text-gray-600 flex items-center justify-center">
+                  <div className="w-4 h-4 mr-2 text-ink-muted flex items-center justify-center">
                     <svg
                       width="16"
                       height="16"
@@ -174,13 +174,13 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
                       />
                     </svg>
                   </div>
-                  <p className="text-sm text-gray-600">{member.location}</p>
+                  <p className="text-sm text-ink-muted">{member.location}</p>
                 </div>
               )}
 
               {member.email && (
                 <div className="flex items-center justify-center">
-                  <div className="w-4 h-4 mr-2 text-gray-600 flex items-center justify-center">
+                  <div className="w-4 h-4 mr-2 text-ink-muted flex items-center justify-center">
                     <svg
                       width="16"
                       height="16"
@@ -204,14 +204,14 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
                       />
                     </svg>
                   </div>
-                  <p className="text-sm text-gray-600">{member.email}</p>
+                  <p className="text-sm text-ink-muted">{member.email}</p>
                 </div>
               )}
             </div>
           )}
 
           {(member.bio || member.description) && (
-            <p className="text-base text-center text-gray-700 px-2 mb-4">
+            <p className="text-base text-center text-ink-muted px-2 mb-4">
               {member.bio || member.description}
             </p>
           )}
@@ -236,10 +236,10 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
 
           {(member.projects !== undefined ||
             member.joinedYear !== undefined) && (
-            <div className="flex justify-between mt-6 border-t border-gray-100 pt-4">
+            <div className="flex justify-between mt-6 border-t border-line pt-4">
               {member.projects !== undefined && (
                 <div className="text-center">
-                  <p className="text-sm text-gray-500">Projects</p>
+                  <p className="text-sm text-ink-muted">Projects</p>
                   <p className="text-lg font-bold text-primary">
                     {member.projects}
                   </p>
@@ -248,7 +248,7 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onViewProfile }) => {
 
               {member.joinedYear !== undefined && (
                 <div className="text-center">
-                  <p className="text-sm text-gray-500">Member Since</p>
+                  <p className="text-sm text-ink-muted">Member Since</p>
                   <p className="text-lg font-bold text-primary">
                     {member.joinedYear}
                   </p>
