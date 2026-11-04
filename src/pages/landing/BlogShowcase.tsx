@@ -21,14 +21,14 @@ const SkeletonGrid: React.FC = () => (
     {[...Array(PREVIEW_COUNT)].map((_, i) => (
       <div
         key={i}
-        className="rounded-xl overflow-hidden shadow-sm animate-pulse bg-[#f0f4f8]"
+        className="rounded-xl overflow-hidden shadow-sm animate-pulse bg-surface-muted"
       >
-        <div className="w-full h-48 bg-[#dbe4ee]" />
+        <div className="w-full h-48 bg-line" />
         <div className="p-5 space-y-3">
-          <div className="h-4 w-20 rounded-full bg-[#dbe4ee]" />
-          <div className="h-5 w-2/3 rounded bg-[#dbe4ee]" />
-          <div className="h-4 w-full rounded bg-[#dbe4ee]" />
-          <div className="h-4 w-4/5 rounded bg-[#dbe4ee]" />
+          <div className="h-4 w-20 rounded-full bg-line" />
+          <div className="h-5 w-2/3 rounded bg-line" />
+          <div className="h-4 w-full rounded bg-line" />
+          <div className="h-4 w-4/5 rounded bg-line" />
         </div>
       </div>
     ))}
@@ -58,10 +58,10 @@ const BlogShowcase: React.FC = () => {
     >
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#002b56] mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             From the Blog
           </h2>
-          <p className="text-xl font-medium text-[#002b56]/80 max-w-3xl mx-auto">
+          <p className="text-xl font-medium text-primary/80 max-w-3xl mx-auto">
             Tutorials, project write-ups, and lessons from the Hub&apos;s own
             developers.
           </p>
@@ -80,7 +80,7 @@ const BlogShowcase: React.FC = () => {
         {!loading && blogs.length > PREVIEW_COUNT && (
           <div className="flex justify-center mt-16">
             <button
-              className="text-lg py-3 px-12 border-2 border-[#002b56] text-[#002b56] rounded-[33px] shadow-md hover:bg-[#e6f0ff] transition-colors focus:outline-none focus:ring-2 focus:ring-[#002b56] focus:ring-opacity-50"
+              className="text-lg py-3 px-12 border-2 border-primary text-primary rounded-[33px] shadow-md hover:bg-line transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
               onClick={() => navigate("/blog")}
             >
               View All Posts
