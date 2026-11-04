@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
           edge (removed in fix/footer-cleanup-and-trusted-by). With that
           card gone, the diagonal cut had no purpose left and read as a
           rendering glitch; a plain flat edge also matches every other navy
-          section on the site (AboutIntro, AlumniPage, ContactUs, ...),
+          section on the site (AboutIntro, ContactUs, ...),
           none of which use a diagonal. */}
       <div
         className="w-full pt-16 pb-12 relative"
