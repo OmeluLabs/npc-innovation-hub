@@ -1,124 +1,106 @@
 jest.mock("../../api/member/member.api", () => ({
   __esModule: true,
-  getPublicMembers: jest.fn(),
+  getAllPublicMembers: jest.fn(),
 }));
 
-import { render, screen, waitFor, act } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 import { InnovationHubMembersPage } from "./InnovationHubMembersPage";
-import { getPublicMembers } from "../../api/member/member.api";
-import type { PublicMembersPage } from "../../api/member/member.api";
+import { getAllPublicMembers } from "../../api/member/member.api";
+import type { PublicMemberSummary } from "../../api/member/member.api";
 
-const mockedGetPublicMembers = getPublicMembers as jest.Mock;
+const mockedGetAll = getAllPublicMembers as jest.Mock;
 
-const samplePage: PublicMembersPage = {
-  members: [
-    {
-      id: "member-1",
-      userId: "user-1",
-      name: "Jane Doe",
-      role: "Backend Engineer",
-      imageUrl: "https://example.com/jane.jpg",
-      techStack: ["Node.js"],
-      tagline: "Builds APIs",
-      available: true,
-    },
-    {
-      id: "member-2",
-      userId: "user-2",
-      name: "John Smith",
-      role: "Frontend Engineer",
-      techStack: ["React"],
-      tagline: "Builds UIs",
-      available: false,
-    },
-  ],
-  totalPages: 3,
-  currentPage: 1,
-  totalMembers: 13,
-};
+const person = (
+  overrides: Partial<PublicMemberSummary> & { id: string; name: string },
+): PublicMemberSummary => ({
+  userId: `user-${overrides.id}`,
+  role: "Backend Developer",
+  ...overrides,
+});
 
 function renderPage() {
   return render(
-    <MemoryRouter>
-      <InnovationHubMembersPage />
+    <MemoryRouter initialEntries={["/members"]}>
+      <Routes>
+        <Route path="/members" element={<InnovationHubMembersPage />} />
+        <Route path="/members/:id" element={<div>detail page</div>} />
+      </Routes>
     </MemoryRouter>,
   );
 }
 
 describe("InnovationHubMembersPage", () => {
-  beforeEach(() => {
-    mockedGetPublicMembers.mockReset();
+  beforeEach(() => mockedGetAll.mockReset());
+
+  test("shows a loading state before data resolves", () => {
+    mockedGetAll.mockReturnValue(new Promise(() => {}));
+    renderPage();
+    expect(screen.getByLabelText("Loading members")).toBeInTheDocument();
   });
 
-  test("shows a loading skeleton before data resolves", () => {
-    mockedGetPublicMembers.mockReturnValue(new Promise(() => {}));
-    const { container } = renderPage();
-    expect(container.querySelector(".ihp-skeleton")).toBeInTheDocument();
-  });
-
-  test("renders real members and pagination once loaded", async () => {
-    mockedGetPublicMembers.mockResolvedValue(samplePage);
+  test("groups people into Co-Founders, Leaders and Members", async () => {
+    mockedGetAll.mockResolvedValue([
+      person({ id: "1", name: "Ada Founder", leadershipTier: "Co-Founder" }),
+      person({
+        id: "2",
+        name: "Lee Leader",
+        leadershipTier: "Leader",
+        leadershipTitle: "Head of Engineering",
+      }),
+      person({ id: "3", name: "Mia Member" }),
+    ]);
     renderPage();
 
-    await waitFor(() => {
-      expect(screen.getByText("Jane Doe")).toBeInTheDocument();
-    });
-
-    expect(screen.getByText("John Smith")).toBeInTheDocument();
-    expect(mockedGetPublicMembers).toHaveBeenCalledWith(1, 6);
-    expect(screen.getByLabelText("Page 3")).toBeInTheDocument();
-  });
-
-  test("shows an error message when the request fails", async () => {
-    mockedGetPublicMembers.mockRejectedValue(new Error("Network error"));
-    renderPage();
-
-    await waitFor(() => {
-      expect(screen.getByText("Network error")).toBeInTheDocument();
-    });
-  });
-
-  test("surfaces the real API error message instead of a generic fallback", async () => {
-    // Matches the shape apiClient's response interceptor actually rejects
-    // with: a plain object, not an Error instance.
-    mockedGetPublicMembers.mockRejectedValue({
-      statusCode: 404,
-      message: "Route not found",
-    });
-    renderPage();
-
-    await waitFor(() => {
-      expect(screen.getByText("Route not found")).toBeInTheDocument();
-    });
-    expect(screen.queryByText("Unknown error")).not.toBeInTheDocument();
-  });
-
-  test("navigates to the member's userId, not their Member.id, when viewing a profile", async () => {
-    mockedGetPublicMembers.mockResolvedValue(samplePage);
-    render(
-      <MemoryRouter>
-        <Routes>
-          <Route path="/" element={<InnovationHubMembersPage />} />
-          <Route
-            path="/members/:id"
-            element={<div>Viewing member user-1</div>}
-          />
-        </Routes>
-      </MemoryRouter>,
+    const founders = within(
+      await screen.findByRole("region", { name: "Co-Founders" }),
     );
+    expect(founders.getByText("Ada Founder")).toBeInTheDocument();
 
-    await waitFor(() => {
-      expect(screen.getByText("Jane Doe")).toBeInTheDocument();
-    });
+    const leaders = within(screen.getByRole("region", { name: "Leaders" }));
+    expect(leaders.getByText("Lee Leader")).toBeInTheDocument();
+    expect(leaders.getByText("Head of Engineering")).toBeInTheDocument();
 
-    await act(async () => {
-      await userEvent.click(
-        screen.getByRole("button", { name: "View Jane Doe's profile" }),
-      );
-    });
+    const members = within(screen.getByRole("region", { name: "Members" }));
+    expect(members.getByText("Mia Member")).toBeInTheDocument();
+  });
 
-    expect(screen.getByText("Viewing member user-1")).toBeInTheDocument();
+  test("does not render a tier that has nobody in it", async () => {
+    mockedGetAll.mockResolvedValue([person({ id: "3", name: "Mia Member" })]);
+    renderPage();
+
+    await screen.findByText("Mia Member");
+    expect(
+      screen.queryByRole("region", { name: "Co-Founders" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("region", { name: "Leaders" }),
+    ).not.toBeInTheDocument();
+  });
+
+  test("shows an empty state when there are no members", async () => {
+    mockedGetAll.mockResolvedValue([]);
+    renderPage();
+    expect(
+      await screen.findByText("No members to show yet"),
+    ).toBeInTheDocument();
+  });
+
+  test("shows the error message when loading fails", async () => {
+    mockedGetAll.mockRejectedValue(new Error("boom"));
+    jest.spyOn(console, "error").mockImplementation(() => {});
+    renderPage();
+    expect(await screen.findByText("boom")).toBeInTheDocument();
+  });
+
+  test("opens a member's profile when their name is clicked", async () => {
+    mockedGetAll.mockResolvedValue([person({ id: "3", name: "Mia Member" })]);
+    renderPage();
+
+    await userEvent.click(
+      await screen.findByRole("button", { name: "Mia Member" }),
+    );
+    expect(await screen.findByText("detail page")).toBeInTheDocument();
   });
 });
