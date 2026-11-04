@@ -43,7 +43,7 @@ const HubInfo = () => {
               key={title}
               className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200"
             >
-              <div className="bg-[#002B56] px-6 py-6 flex items-center justify-center gap-2">
+              <div className="bg-primary px-6 py-6 flex items-center justify-center gap-2">
                 <Icon
                   className="w-6 h-6 text-white flex-shrink-0"
                   aria-hidden="true"
