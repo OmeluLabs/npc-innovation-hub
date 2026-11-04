@@ -74,7 +74,7 @@ const ContactSection = () => {
     <div className="container mx-auto max-w-5xl px-4 md:px-8">
       <div className="flex flex-col md:flex-row rounded-xl shadow-lg overflow-hidden">
         {/* Left - Info card */}
-        <div className="bg-[#002B56] text-white p-8 md:w-2/5 flex flex-col">
+        <div className="bg-primary text-white p-8 md:w-2/5 flex flex-col">
           <h3 className="text-2xl font-bold mb-3">Get in Touch</h3>
           <p className="text-white/70 mb-8">
             Have a question about NPC Innovation Hub, a project, or joining us?
@@ -85,7 +85,7 @@ const ContactSection = () => {
           <div className="space-y-6 mt-auto">
             <div className="flex items-start gap-3">
               <MapPin
-                className="w-5 h-5 text-[#002B56] mt-1 flex-shrink-0"
+                className="w-5 h-5 text-primary mt-1 flex-shrink-0"
                 aria-hidden="true"
               />
               <div>
@@ -95,7 +95,7 @@ const ContactSection = () => {
             </div>
             <div className="flex items-start gap-3">
               <Phone
-                className="w-5 h-5 text-[#002B56] mt-1 flex-shrink-0"
+                className="w-5 h-5 text-primary mt-1 flex-shrink-0"
                 aria-hidden="true"
               />
               <div>
@@ -110,7 +110,7 @@ const ContactSection = () => {
             </div>
             <div className="flex items-start gap-3">
               <Mail
-                className="w-5 h-5 text-[#002B56] mt-1 flex-shrink-0"
+                className="w-5 h-5 text-primary mt-1 flex-shrink-0"
                 aria-hidden="true"
               />
               <div>
@@ -136,8 +136,9 @@ const ContactSection = () => {
               <div
                 className="flex items-center justify-center w-16 h-16 rounded-full"
                 style={{
-                  background: "linear-gradient(135deg,#002B56,#003366)",
-                  boxShadow: "0 8px 24px rgba(0,43,86,.3)",
+                  background:
+                    "linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary)))",
+                  boxShadow: "0 8px 24px rgb(var(--color-primary) / 0.3)",
                 }}
               >
                 <svg
@@ -154,26 +155,24 @@ const ContactSection = () => {
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
-              <h3 className="text-[#002B56] text-2xl font-bold">
-                Message Sent!
-              </h3>
+              <h3 className="text-primary text-2xl font-bold">Message Sent!</h3>
               <p className="text-gray-600 text-sm leading-relaxed max-w-sm">
                 Thank you for reaching out. We&apos;ve sent a confirmation to{" "}
-                <strong className="text-[#002B56]">{email}</strong> - our team
+                <strong className="text-primary">{email}</strong> - our team
                 will review your message and get back to you as soon as
                 possible.
               </p>
               <button
                 type="button"
                 onClick={resetForm}
-                className="mt-1 px-6 py-2.5 rounded-full border-2 border-[#002B56] bg-transparent text-[#002B56] text-sm font-bold transition-all hover:bg-[#002B56] hover:text-white"
+                className="mt-1 px-6 py-2.5 rounded-full border-2 border-primary bg-transparent text-primary text-sm font-bold transition-all hover:bg-primary hover:text-white"
               >
                 Send another message
               </button>
             </div>
           ) : (
             <div>
-              <h3 className="text-2xl font-bold text-[#002B56] mb-4">
+              <h3 className="text-2xl font-bold text-primary mb-4">
                 Send a Message
               </h3>
               <form onSubmit={handleSubmit} className="space-y-4" noValidate>
@@ -193,7 +192,7 @@ const ContactSection = () => {
                       onChange={(e) => setName(e.target.value)}
                       required
                       disabled={status === "loading"}
-                      className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm outline-none focus:border-[#002B56] focus:ring-2 focus:ring-[#002B56]/10 disabled:opacity-60"
+                      className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 disabled:opacity-60"
                     />
                   </div>
                   <div>
@@ -211,7 +210,7 @@ const ContactSection = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       disabled={status === "loading"}
-                      className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm outline-none focus:border-[#002B56] focus:ring-2 focus:ring-[#002B56]/10 disabled:opacity-60"
+                      className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 disabled:opacity-60"
                     />
                   </div>
                 </div>
@@ -230,7 +229,7 @@ const ContactSection = () => {
                     required
                     rows={4}
                     disabled={status === "loading"}
-                    className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm outline-none resize-y focus:border-[#002B56] focus:ring-2 focus:ring-[#002B56]/10 disabled:opacity-60"
+                    className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm outline-none resize-y focus:border-primary focus:ring-2 focus:ring-primary/10 disabled:opacity-60"
                   />
                 </div>
 
@@ -258,7 +257,7 @@ const ContactSection = () => {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="flex items-center justify-center gap-2 w-full bg-[#002B56] text-white font-semibold py-3 rounded-lg hover:bg-[#003366] transition-colors focus:outline-none focus:ring-2 focus:ring-[#002B56] focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="flex items-center justify-center gap-2 w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {status === "loading" ? (
                     <>
@@ -297,11 +296,11 @@ const ContactSection = () => {
 
           <div className="border-t border-gray-100 pt-6 flex items-start gap-3">
             <MessageCircle
-              className="w-5 h-5 text-[#002B56] mt-0.5 flex-shrink-0"
+              className="w-5 h-5 text-primary mt-0.5 flex-shrink-0"
               aria-hidden="true"
             />
             <div>
-              <p className="font-semibold text-[#002B56] text-sm">
+              <p className="font-semibold text-primary text-sm">
                 Prefer to chat?
               </p>
               <p className="text-gray-600 text-sm mb-1">
@@ -315,7 +314,7 @@ const ContactSection = () => {
                 onClick={() =>
                   window.dispatchEvent(new Event(OPEN_ASSISTANT_CHAT_EVENT))
                 }
-                className="text-[#002B56] font-semibold text-sm hover:underline"
+                className="text-primary font-semibold text-sm hover:underline"
               >
                 Start a chat →
               </button>
