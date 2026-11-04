@@ -36,22 +36,22 @@ const getTypeIcon = (type: string) => {
     case "Video":
       return <Video size={14} className="text-red-400" />;
     case "Book":
-      return <BookOpen size={14} className="text-blue-400" />;
+      return <BookOpen size={14} className="text-accent" />;
     default:
-      return <FileText size={14} className="text-purple-400" />;
+      return <FileText size={14} className="text-secondary" />;
   }
 };
 
 const getCategoryColor = (category: string): string => {
   switch (category) {
     case "Frontend":
-      return "bg-pink-100 text-pink-700";
+      return "bg-surface-muted text-secondary";
     case "Backend":
-      return "bg-blue-100 text-blue-700";
+      return "bg-surface-muted text-secondary";
     case "Cybersecurity":
-      return "bg-purple-100 text-purple-700";
+      return "bg-surface-muted text-secondary";
     default:
-      return "bg-gray-100 text-gray-600";
+      return "bg-surface-muted text-ink-muted";
   }
 };
 
@@ -86,7 +86,7 @@ const SubcategoryResults: React.FC = () => {
 
       <div className="max-w-6xl mx-auto mt-10 px-4 pb-16">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+        <div className="flex items-center gap-2 text-sm text-ink-muted mb-6">
           <Link
             to="/resources-room/categories"
             className="flex items-center gap-1 hover:text-secondary transition"
@@ -95,7 +95,7 @@ const SubcategoryResults: React.FC = () => {
             Categories
           </Link>
           <span>/</span>
-          <span className="text-gray-800 font-medium">{decodedSub}</span>
+          <span className="text-primary font-medium">{decodedSub}</span>
           {apiCategory && (
             <>
               <span>/</span>
@@ -125,14 +125,14 @@ const SubcategoryResults: React.FC = () => {
                 key={n}
                 className="bg-white rounded-xl shadow p-4 flex flex-col gap-3 animate-pulse"
               >
-                <div className="w-full h-32 bg-gray-200 rounded-lg" />
-                <div className="h-4 bg-gray-200 rounded w-3/4" />
-                <div className="h-3 bg-gray-100 rounded w-1/2" />
+                <div className="w-full h-32 bg-line rounded-lg" />
+                <div className="h-4 bg-line rounded w-3/4" />
+                <div className="h-3 bg-surface-muted rounded w-1/2" />
               </div>
             ))}
           </div>
         ) : resources.length === 0 ? (
-          <div className="flex flex-col items-center py-20 text-gray-400 gap-3">
+          <div className="flex flex-col items-center py-20 text-ink-muted gap-3">
             <FileText size={40} className="opacity-40" />
             <p className="font-medium">No resources in this subcategory yet.</p>
             <Link
@@ -153,7 +153,7 @@ const SubcategoryResults: React.FC = () => {
                 }}
                 className="bg-white rounded-xl shadow hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden flex flex-col"
               >
-                <div className="w-full h-32 bg-gray-100 overflow-hidden">
+                <div className="w-full h-32 bg-surface-muted overflow-hidden">
                   {res.imageUrl ? (
                     <img
                       src={res.imageUrl}
@@ -168,7 +168,7 @@ const SubcategoryResults: React.FC = () => {
                 </div>
 
                 <div className="p-4 flex flex-col gap-2 flex-1">
-                  <div className="font-semibold text-sm text-gray-900 line-clamp-2">
+                  <div className="font-semibold text-sm text-primary line-clamp-2">
                     {res.title}
                   </div>
 
@@ -178,12 +178,12 @@ const SubcategoryResults: React.FC = () => {
                     >
                       {res.category}
                     </span>
-                    <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-100 text-gray-600">
+                    <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-surface-muted text-ink-muted">
                       {res.type}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2 text-gray-400 text-xs mt-auto pt-1">
+                  <div className="flex items-center gap-2 text-ink-muted text-xs mt-auto pt-1">
                     <ThumbsUp size={11} />
                     <span>{res.upvotes}</span>
                     <span className="ml-auto text-secondary font-medium truncate">
