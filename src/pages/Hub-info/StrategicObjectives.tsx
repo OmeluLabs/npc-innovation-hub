@@ -21,13 +21,13 @@ const StrategicObjectives = () => {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <Compass
-            className="w-10 h-10 text-[#002B56] mx-auto mb-4"
+            className="w-10 h-10 text-primary mx-auto mb-4"
             aria-hidden="true"
           />
-          <h2 className="text-3xl md:text-4xl font-bold text-[#002b56] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
             Strategic Objectives
           </h2>
-          <p className="text-lg text-[#283D4B]/80 max-w-2xl mx-auto">
+          <p className="text-lg text-ink-muted/80 max-w-2xl mx-auto">
             Our roadmap to building a sustainable, impactful innovation culture
             at NPC.
           </p>
@@ -36,10 +36,10 @@ const StrategicObjectives = () => {
         <ol className="space-y-6">
           {OBJECTIVES.map((objective, index) => (
             <li key={index} className="flex items-start gap-5">
-              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-[#002B56] text-white font-bold flex items-center justify-center">
+              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white font-bold flex items-center justify-center">
                 {index + 1}
               </span>
-              <p className="text-[#283D4B] text-lg pt-1.5">{objective}</p>
+              <p className="text-ink-muted text-lg pt-1.5">{objective}</p>
             </li>
           ))}
         </ol>
