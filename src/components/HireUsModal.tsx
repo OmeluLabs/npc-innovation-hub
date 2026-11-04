@@ -1,5 +1,6 @@
 // src/components/HireUsModal.tsx
 import React, { useState, useEffect, useRef } from "react";
+import { X } from "lucide-react";
 import { submitHireInquiry } from "../api/hireService";
 import type { HireInquiryPayload } from "../types/hire.types";
 
@@ -203,7 +204,8 @@ const HireUsModal: React.FC<HireUsModalProps> = ({ isOpen, onClose }) => {
               type="button"
               className="close-btn absolute top-5 right-5 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-white/[.14] text-white text-sm border-0 cursor-pointer transition-all duration-200 hover:bg-white/25"
             >
-              ✕
+              <X className="h-4 w-4" aria-hidden="true" />
+              <span className="sr-only">Close</span>
             </button>
 
             <p className="text-accent text-[0.72rem] font-medium tracking-[.16em] uppercase mb-1.5">
