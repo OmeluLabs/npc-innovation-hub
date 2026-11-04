@@ -70,7 +70,7 @@ const ForgotPassword: React.FC = () => {
                   />
                 </svg>
               </div>
-              <h1 className="mt-4 text-2xl font-bold text-[#002B56]">
+              <h1 className="mt-4 text-2xl font-bold text-primary">
                 Check Your Email
               </h1>
               <p className="mt-2 text-sm text-gray-600">
@@ -84,7 +84,7 @@ const ForgotPassword: React.FC = () => {
               <div className="mt-6 space-y-3">
                 <button
                   onClick={() => navigate("/login")}
-                  className="w-full py-3 bg-[#002B56] text-white rounded-xl font-semibold hover:bg-[#003366] transition-colors"
+                  className="w-full py-3 bg-primary text-white rounded-xl font-semibold hover:bg-secondary transition-colors"
                 >
                   Back to Sign In
                 </button>
@@ -102,7 +102,7 @@ const ForgotPassword: React.FC = () => {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="text-center mb-2">
-                <h1 className="text-2xl font-bold text-[#002B56]">
+                <h1 className="text-2xl font-bold text-primary">
                   Reset Your Password
                 </h1>
                 <p className="text-gray-600 text-sm mt-2">
@@ -134,7 +134,7 @@ const ForgotPassword: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isLoading}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#002B56] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                   placeholder="Enter your email"
                 />
               </div>
@@ -142,7 +142,7 @@ const ForgotPassword: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 bg-[#002B56] text-white rounded-xl font-semibold hover:bg-[#003366] transition-colors duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3 bg-primary text-white rounded-xl font-semibold hover:bg-secondary transition-colors duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <span className="flex items-center justify-center">
