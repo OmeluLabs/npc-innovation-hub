@@ -19,6 +19,7 @@ import {
   Star,
   Video,
   Images,
+  Crown,
 } from "lucide-react";
 import { sidebarLinks } from "../../data/admin-data/sidebarLinks";
 import { getPendingHireInquiriesCount } from "../../api/admin/hire.api";
@@ -42,6 +43,7 @@ const iconComponents = {
   heroMembers: Star,
   hubVideo: Video,
   heroMedia: Images,
+  leadership: Crown,
 };
 
 export default function Sidebar() {
