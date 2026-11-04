@@ -22,8 +22,6 @@ const HubMembersSection = lazy(
 const HeroSection = lazy(() => import("../pages/landing/HeroSection"));
 const Offerings = lazy(() => import("../pages/landing/Offerings"));
 const HubIntroVideo = lazy(() => import("../pages/landing/HubIntroVideo"));
-const AlumniSection = lazy(() => import("../pages/landing/AlumniSection"));
-const AlumniPage = lazy(() => import("../pages/landing/AlumniPage"));
 const ContactUs = lazy(() => import("../pages/landing/ContactUs"));
 const ContactSection = lazy(() => import("../pages/landing/ContactSection"));
 const ProjectsPage = lazy(() => import("../pages/project-page/ProjectsPage"));
@@ -136,9 +134,6 @@ const HeroMembersPage = lazy(
 );
 const HubVideoPage = lazy(() => import("../pages/Admin-pages/HubVideoPage"));
 const HeroMediaPage = lazy(() => import("../pages/Admin-pages/HeroMediaPage"));
-const AlumniManagementPage = lazy(
-  () => import("../pages/Admin-pages/AlumniManagementPage"),
-);
 const BlogTables = lazy(() => import("../pages/Admin-pages/BlogTables"));
 const ProjectTables = lazy(() => import("../pages/Admin-pages/ProjectTables"));
 const OTPVerification = lazy(() => import("../pages/Login/OTPVerification"));
@@ -232,7 +227,6 @@ const AllRoutes: React.FC = () => {
                 <HubMembersSection />
                 <ProjectsShowcase />
                 <HubIntroVideo />
-                <AlumniSection />
                 <BlogShowcase />
                 <EventsShowcase />
                 <section
@@ -330,18 +324,6 @@ const AllRoutes: React.FC = () => {
               <Navbar />
               <main id="main-content">
                 <InnovationHubMembersPage />
-              </main>
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/alumni"
-          element={
-            <>
-              <Navbar />
-              <main id="main-content">
-                <AlumniPage />
               </main>
               <Footer />
             </>
@@ -755,14 +737,6 @@ const AllRoutes: React.FC = () => {
           element={
             <ProtectedRoute requiredRole="Admin">
               <HeroMediaPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/Admin-alumni"
-          element={
-            <ProtectedRoute requiredRole="Admin">
-              <AlumniManagementPage />
             </ProtectedRoute>
           }
         />
