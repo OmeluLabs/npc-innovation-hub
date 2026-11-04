@@ -9,7 +9,7 @@
 // form further down the page instead.
 const InnovationHub = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 font-sans">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-surface-muted font-sans">
       {/* A <div>, not <main> - this only covers this section, not the rest
           of /hire-us's content (Services, LatestPro, LetTalk), which render
           as later siblings in AllRoutes.tsx. The single
@@ -19,15 +19,15 @@ const InnovationHub = () => {
           <div className="flex flex-col md:flex-row items-center py-16 md:py-24">
             {/* Left Column - Text Content */}
             <div className="md:w-1/2 mb-12 md:mb-0 md:pr-32">
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-2">
+              <h1 className="text-4xl md:text-6xl font-bold text-primary leading-tight mb-2">
                 Our Hire Us Process:
               </h1>
               <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-                <span className="text-purple-600">From Planning to</span>
+                <span className="text-secondary">From Planning to</span>
                 <br />
-                <span className="text-gray-900">Deployment.</span>
+                <span className="text-primary">Deployment.</span>
               </h2>
-              <p className="text-gray-600 text-xl mb-8 leading-relaxed max-w-md">
+              <p className="text-ink-muted text-xl mb-8 leading-relaxed max-w-md">
                 We handle your project from planning to deployment with
                 professional, end-to-end solutions.
               </p>
@@ -42,7 +42,7 @@ const InnovationHub = () => {
                 </a>
                 <a
                   href="/members"
-                  className="text-gray-600 font-medium hover:underline"
+                  className="text-ink-muted font-medium hover:underline"
                 >
                   Meet the team
                 </a>
