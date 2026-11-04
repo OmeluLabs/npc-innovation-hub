@@ -45,6 +45,12 @@ export const sidebarLinks = [
     notification: 0,
   },
   {
+    icon: "leadership",
+    label: "Leadership",
+    path: "/Admin-leadership",
+    notification: 0,
+  },
+  {
     icon: "heroMembers",
     label: "Hero Members",
     path: "/Admin-hero-members",
