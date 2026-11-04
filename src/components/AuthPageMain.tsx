@@ -46,7 +46,7 @@ export default function AuthPageMain({ children }: { children: ReactNode }) {
         style={{ backgroundImage: "url('/assets/images/hubimage.jpg')" }}
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-[#002B56]/55" aria-hidden="true" />
+      <div className="absolute inset-0 bg-primary/55" aria-hidden="true" />
 
       {/* Feature highlights - only at md+, where there's room to read them;
           below that it's just the shared backdrop behind the form.
@@ -67,7 +67,7 @@ export default function AuthPageMain({ children }: { children: ReactNode }) {
           <div className="max-w-md space-y-6">
             {FEATURES.map(({ icon: Icon, title, text }) => (
               <div key={title} className="flex items-center gap-4">
-                <div className="w-12 h-12 flex-shrink-0 bg-[#002B56] rounded-full flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 flex-shrink-0 bg-primary rounded-full flex items-center justify-center shadow-lg">
                   <Icon className="w-6 h-6 text-white" aria-hidden="true" />
                 </div>
                 <div>
