@@ -1,6 +1,12 @@
 const mockNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({
   useNavigate: () => mockNavigate,
+  // The blog card is a real link now; a plain anchor stands in for it here.
+  Link: ({ to, children, ...rest }: { to: string; children: ReactNode }) => (
+    <a href={to} {...rest}>
+      {children}
+    </a>
+  ),
 }));
 
 jest.mock("../../hooks/useBlogs", () => ({
@@ -8,6 +14,7 @@ jest.mock("../../hooks/useBlogs", () => ({
   useBlogs: jest.fn(),
 }));
 
+import type { ReactNode } from "react";
 import { render, screen } from "@testing-library/react";
 import { useBlogs } from "../../hooks/useBlogs";
 import BlogShowcase from "./BlogShowcase";
