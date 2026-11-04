@@ -213,7 +213,7 @@ const LoginPage = () => {
         <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 w-full max-w-md">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="text-center mb-2">
-              <h1 className="text-2xl font-bold text-[#002B56] whitespace-nowrap">
+              <h1 className="text-2xl font-bold text-primary whitespace-nowrap">
                 Sign In to Your Portal
               </h1>
             </div>
@@ -234,7 +234,7 @@ const LoginPage = () => {
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#002B56] focus:border-transparent"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -248,7 +248,7 @@ const LoginPage = () => {
                 </label>
                 <PasswordInput
                   placeholder="Enter your password"
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#002B56] focus:border-transparent"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -259,7 +259,7 @@ const LoginPage = () => {
 
             <button
               type="submit"
-              className="w-full py-3 bg-[#002B56] text-white rounded-xl font-semibold hover:bg-[#003366] transition-colors duration-200 shadow-lg"
+              className="w-full py-3 bg-primary text-white rounded-xl font-semibold hover:bg-secondary transition-colors duration-200 shadow-lg"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -296,7 +296,7 @@ const LoginPage = () => {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={() => setRememberMe(!rememberMe)}
-                  className="h-4 w-4 text-[#002B56] rounded focus:ring-[#002B56]"
+                  className="h-4 w-4 text-primary rounded focus:ring-primary"
                   disabled={isLoading}
                 />
                 <span className="ml-2 text-sm">Remember me</span>
@@ -304,7 +304,7 @@ const LoginPage = () => {
               <button
                 type="button"
                 onClick={() => navigate("/forgot-password")}
-                className="text-[#002B56] hover:text-[#003366] hover:underline text-sm font-medium"
+                className="text-primary hover:text-secondary hover:underline text-sm font-medium"
               >
                 Forgot password?
               </button>
