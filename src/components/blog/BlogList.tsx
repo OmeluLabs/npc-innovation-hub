@@ -4,7 +4,7 @@ import React, { useMemo } from "react";
 import type { Blog } from "../../types/blog.types";
 import BlogCard from "./BlogCard";
 import { BlogSkeletonGrid } from "./BlogSkeleton";
-import { BookOpen } from "lucide-react";
+import EmptyState from "../layout/EmptyState";
 
 interface BlogListProps {
   blogs: Blog[];
@@ -34,17 +34,21 @@ const BlogList: React.FC<BlogListProps> = ({
   if (loading) return <BlogSkeletonGrid count={6} />;
 
   if (filtered.length === 0) {
+    const filtering = Boolean(search || activeCategory);
     return (
-      <div className="flex flex-col items-center py-20 text-gray-400 gap-3">
-        <BookOpen size={40} className="opacity-40" />
-        <p className="font-semibold text-gray-500">No articles found</p>
-        <p className="text-sm">Try a different category or search term.</p>
-      </div>
+      <EmptyState
+        title={filtering ? "No articles found" : "No articles yet"}
+        message={
+          filtering
+            ? "Try a different category or search term."
+            : "New articles will appear here once they are published."
+        }
+      />
     );
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {filtered.map((blog) => (
         <BlogCard key={blog.id} blog={blog} />
       ))}
