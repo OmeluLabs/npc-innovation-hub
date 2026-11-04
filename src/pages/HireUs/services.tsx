@@ -105,14 +105,14 @@ export default function Services() {
               className="bg-white rounded-2xl shadow-xl p-6 md:p-10 border-2 border-blue-100 hover:shadow-2xl transition-all duration-300 text-left"
             >
               {/* Icon positioned above content */}
-              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-surface-muted text-secondary rounded-full flex items-center justify-center mb-6">
                 {service.icon}
               </div>
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-blue-800">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-secondary">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                <p className="text-ink-muted text-lg md:text-xl leading-relaxed">
                   {service.description}
                 </p>
               </div>
