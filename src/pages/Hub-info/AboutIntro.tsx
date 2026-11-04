@@ -24,19 +24,16 @@ const StatBadge = ({ icon: Icon, value, loading, label }: StatBadgeProps) => {
 
   return (
     <div className="flex items-center gap-3 px-6 py-4">
-      <Icon
-        className="w-8 h-8 text-[#002B56] flex-shrink-0"
-        aria-hidden="true"
-      />
+      <Icon className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
       <div>
-        <div className="text-2xl md:text-3xl font-bold text-[#002b56] leading-none">
+        <div className="text-2xl md:text-3xl font-bold text-primary leading-none">
           {loading ? (
-            <span className="inline-block w-12 h-7 bg-[#002b56]/10 rounded animate-pulse" />
+            <span className="inline-block w-12 h-7 bg-primary/10 rounded animate-pulse" />
           ) : (
             `${value}+`
           )}
         </div>
-        <div className="text-sm text-[#002b56]/70 mt-1">{label}</div>
+        <div className="text-sm text-primary/70 mt-1">{label}</div>
       </div>
     </div>
   );
@@ -48,14 +45,14 @@ const AboutIntro = () => {
 
   return (
     <div className="max-w-5xl mx-auto">
-      <p className="text-sm font-bold uppercase tracking-wider text-[#002B56] mb-3 text-center md:text-left">
+      <p className="text-sm font-bold uppercase tracking-wider text-primary mb-3 text-center md:text-left">
         Who We Are
       </p>
-      <h2 className="text-3xl md:text-4xl font-bold text-[#002b56] mb-2 text-center md:text-left">
+      <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 text-center md:text-left">
         National Police College Innovation Hub
       </h2>
 
-      <div className="text-[#283D4B] space-y-4 mt-6 max-w-3xl mx-auto md:mx-0 text-center md:text-left">
+      <div className="text-ink-muted space-y-4 mt-6 max-w-3xl mx-auto md:mx-0 text-center md:text-left">
         <p>
           Since our establishment in 2024, NPC Innovation Hub has been at the
           forefront of technology-driven learning at the National Police
@@ -78,7 +75,7 @@ const AboutIntro = () => {
           where the row is centered anyway and the alignment doesn't
           matter. Scoped to md: where both the intent and the room for it
           actually apply. */}
-      <div className="flex flex-wrap justify-center md:justify-start divide-x divide-[#002b56]/10 mt-10 md:-mx-6">
+      <div className="flex flex-wrap justify-center md:justify-start divide-x divide-primary/10 mt-10 md:-mx-6">
         <StatBadge
           icon={CalendarClock}
           value={yearsStrong}
