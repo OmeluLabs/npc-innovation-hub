@@ -10,6 +10,14 @@ export const getMemberById = async (userId: string): Promise<Member> => {
   return response.data.data.member;
 };
 
+export type LeadershipTier = "Co-Founder" | "Leader" | "Member";
+
+export interface PublicMemberContacts {
+  linkedin?: string;
+  github?: string;
+  twitter?: string;
+}
+
 export interface PublicMemberSummary {
   id: string;
   userId: string;
@@ -19,6 +27,12 @@ export interface PublicMemberSummary {
   techStack?: string[];
   tagline?: string;
   available?: boolean;
+  /** Set by an admin; drives which tier the member appears in. */
+  leadershipTier?: LeadershipTier;
+  /** Optional title shown instead of the specialization, e.g. "Chief Technology Officer". */
+  leadershipTitle?: string | null;
+  displayOrder?: number;
+  contacts?: PublicMemberContacts;
 }
 
 export interface PublicMembersPage {
@@ -63,4 +77,10 @@ export const getPublicMembers = async (
     totalMembers:
       payload.totalMembers ?? payload.pagination?.total ?? members.length,
   };
+};
+
+/** Every public member in one request, already ordered by tier then displayOrder. */
+export const getAllPublicMembers = async (): Promise<PublicMemberSummary[]> => {
+  const result = await getPublicMembers(1, 500);
+  return result.members;
 };
