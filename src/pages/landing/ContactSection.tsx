@@ -156,7 +156,7 @@ const ContactSection = () => {
                 </svg>
               </div>
               <h3 className="text-primary text-2xl font-bold">Message Sent!</h3>
-              <p className="text-gray-600 text-sm leading-relaxed max-w-sm">
+              <p className="text-ink-muted text-sm leading-relaxed max-w-sm">
                 Thank you for reaching out. We&apos;ve sent a confirmation to{" "}
                 <strong className="text-primary">{email}</strong> - our team
                 will review your message and get back to you as soon as
@@ -180,7 +180,7 @@ const ContactSection = () => {
                   <div>
                     <label
                       htmlFor="contact-name"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-ink-muted mb-1"
                     >
                       Name
                     </label>
@@ -192,13 +192,13 @@ const ContactSection = () => {
                       onChange={(e) => setName(e.target.value)}
                       required
                       disabled={status === "loading"}
-                      className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 disabled:opacity-60"
+                      className="w-full px-3.5 py-2.5 border border-line rounded-lg text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 disabled:opacity-60"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="contact-email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-ink-muted mb-1"
                     >
                       Email
                     </label>
@@ -210,14 +210,14 @@ const ContactSection = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       disabled={status === "loading"}
-                      className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 disabled:opacity-60"
+                      className="w-full px-3.5 py-2.5 border border-line rounded-lg text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 disabled:opacity-60"
                     />
                   </div>
                 </div>
                 <div>
                   <label
                     htmlFor="contact-message"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-ink-muted mb-1"
                   >
                     Message
                   </label>
@@ -229,7 +229,7 @@ const ContactSection = () => {
                     required
                     rows={4}
                     disabled={status === "loading"}
-                    className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm outline-none resize-y focus:border-primary focus:ring-2 focus:ring-primary/10 disabled:opacity-60"
+                    className="w-full px-3.5 py-2.5 border border-line rounded-lg text-sm outline-none resize-y focus:border-primary focus:ring-2 focus:ring-primary/10 disabled:opacity-60"
                   />
                 </div>
 
@@ -294,7 +294,7 @@ const ContactSection = () => {
             </div>
           )}
 
-          <div className="border-t border-gray-100 pt-6 flex items-start gap-3">
+          <div className="border-t border-line pt-6 flex items-start gap-3">
             <MessageCircle
               className="w-5 h-5 text-primary mt-0.5 flex-shrink-0"
               aria-hidden="true"
@@ -303,7 +303,7 @@ const ContactSection = () => {
               <p className="font-semibold text-primary text-sm">
                 Prefer to chat?
               </p>
-              <p className="text-gray-600 text-sm mb-1">
+              <p className="text-ink-muted text-sm mb-1">
                 Get an instant answer from our assistant.
               </p>
               {/* The assistant is a floating widget now (see
