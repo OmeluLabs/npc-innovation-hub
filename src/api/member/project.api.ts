@@ -11,6 +11,8 @@ export interface MemberProject {
   image: string;
   link: string;
   demo: string;
+  techStack?: string[];
+  status?: "Planned" | "In Progress" | "Completed";
   createdAt: string;
   updatedAt: string;
 }
