@@ -14,7 +14,7 @@ import ContactSection from "./ContactSection";
 
 const ContactUs = () => {
   return (
-    <div className="min-h-screen bg-[#f4f7fc] py-16">
+    <div className="min-h-screen bg-surface-muted py-16">
       <ContactSection />
     </div>
   );
