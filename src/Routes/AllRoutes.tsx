@@ -25,6 +25,7 @@ const HubIntroVideo = lazy(() => import("../pages/landing/HubIntroVideo"));
 const PublicEventsPage = lazy(
   () => import("../pages/events-page/PublicEventsPage"),
 );
+const ClosingCta = lazy(() => import("../pages/landing/ClosingCta"));
 const ContactUs = lazy(() => import("../pages/landing/ContactUs"));
 const ContactSection = lazy(() => import("../pages/landing/ContactSection"));
 const ProjectsPage = lazy(() => import("../pages/project-page/ProjectsPage"));
@@ -235,6 +236,7 @@ const AllRoutes: React.FC = () => {
                 <HubIntroVideo />
                 <BlogShowcase />
                 <EventsShowcase />
+                <ClosingCta />
                 <section
                   id="contact"
                   aria-label="Contact Us"
