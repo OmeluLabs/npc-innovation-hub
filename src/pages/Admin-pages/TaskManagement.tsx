@@ -35,7 +35,7 @@ export default function TaskManagement() {
       // Your User type has: { id, firstName, lastName, email, role, isActive, ... }
       // Task User type needs: { id, firstName, lastName, email, role: "Admin" | "Member" }
       const transformedMembers: User[] = usersData
-        .filter((user) => user.isActive && user.role === "Member") // ✅ Only show active Members (exclude Admins)
+        .filter((user) => user.isActive && user.role === "Member") // Only show active Members (exclude Admins)
         .map((user) => ({
           id: user.id,
           firstName: user.firstName,
