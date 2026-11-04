@@ -2,21 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   DESIGN TOKENS
+   The brand palette is defined here once, as space-separated RGB
+   channels so Tailwind can apply opacity (bg-primary/60). Every
+   colour in the public site comes from these through the Tailwind
+   theme (tailwind.config.js) - do not hardcode hex values in
+   components.
+
+   Contrast (WCAG AA):
+     primary   on white   15.9:1  - body text, headings, buttons
+     secondary on white    8.9:1  - links, secondary buttons
+     accent    on primary  7.4:1  - highlights on dark sections
+     accent    on white    2.2:1  - decorative only, never text
+   ============================================================ */
+:root {
+  --color-primary: 9 33 71; /* #092147 - dominant: text, dark sections */
+  --color-secondary: 26 72 142; /* #1A488E - interactive, supporting */
+  --color-accent: 151 178 222; /* #97B2DE - sparing highlights */
+
+  --color-surface: 255 255 255;
+  --color-surface-muted: 244 247 252; /* tinted section background */
+  --color-line: 217 225 240; /* hairlines and card borders */
+  --color-ink-muted: 71 85 105; /* secondary text, 7.6:1 on white */
+
+  --font-heading: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ============================================================
+   TYPE SCALE
+   One scale for every page. Tailwind utilities on an element
+   still win over these defaults where a page needs an exception.
+   ============================================================ */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: rgb(var(--color-primary));
+  }
+  h1 {
+    font-size: clamp(2rem, 4vw + 1rem, 3.25rem);
+    line-height: 1.1;
+  }
+  h2 {
+    font-size: clamp(1.625rem, 2.5vw + 1rem, 2.25rem);
+    line-height: 1.2;
+  }
+  h3 {
+    font-size: 1.375rem;
+    line-height: 1.3;
+  }
+  h4 {
+    font-size: 1.125rem;
+    line-height: 1.4;
+  }
+  h5 {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  h6 {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  small {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
 /* Custom styles */
 body {
   margin: 0;
   padding: 0;
-  font-family:
-    "Inter",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Apple Color Emoji",
-    "Noto Color Emoji",
-    "Roboto",
-    sans-serif;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgb(var(--color-primary));
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
