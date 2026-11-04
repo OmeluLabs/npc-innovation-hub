@@ -9,6 +9,7 @@ import { Clock, FileText } from "lucide-react";
 import type { Blog } from "../../types/blog.types";
 import { readingTimeMinutes } from "../../utils/readingTime";
 import { stripEmoji } from "../../utils/stripEmoji";
+import { authorName } from "../../utils/blogAuthor";
 
 interface BlogCardProps {
   blog: Blog;
@@ -20,11 +21,6 @@ const formatDate = (iso: string): string =>
     day: "numeric",
     year: "numeric",
   });
-
-export const authorName = (blog: Blog): string =>
-  blog.author
-    ? `${blog.author.firstName} ${blog.author.lastName}`.trim()
-    : "NPC Innovation Hub";
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   const title = stripEmoji(blog.title);
