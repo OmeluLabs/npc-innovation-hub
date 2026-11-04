@@ -137,6 +137,9 @@ const HeroMembersPage = lazy(
 );
 const HubVideoPage = lazy(() => import("../pages/Admin-pages/HubVideoPage"));
 const HeroMediaPage = lazy(() => import("../pages/Admin-pages/HeroMediaPage"));
+const LeadershipPage = lazy(
+  () => import("../pages/Admin-pages/LeadershipPage"),
+);
 const BlogTables = lazy(() => import("../pages/Admin-pages/BlogTables"));
 const ProjectTables = lazy(() => import("../pages/Admin-pages/ProjectTables"));
 const OTPVerification = lazy(() => import("../pages/Login/OTPVerification"));
@@ -752,6 +755,14 @@ const AllRoutes: React.FC = () => {
           element={
             <ProtectedRoute requiredRole="Admin">
               <HeroMediaPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Admin-leadership"
+          element={
+            <ProtectedRoute requiredRole="Admin">
+              <LeadershipPage />
             </ProtectedRoute>
           }
         />
