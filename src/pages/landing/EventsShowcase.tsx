@@ -33,11 +33,11 @@ const SkeletonGrid: React.FC = () => (
         key={i}
         className="rounded-2xl overflow-hidden shadow-sm animate-pulse bg-white"
       >
-        <div className="w-full h-48 bg-[#dbe4ee]" />
+        <div className="w-full h-48 bg-line" />
         <div className="p-5 space-y-3">
-          <div className="h-5 w-2/3 rounded bg-[#dbe4ee]" />
-          <div className="h-4 w-full rounded bg-[#dbe4ee]" />
-          <div className="h-4 w-4/5 rounded bg-[#dbe4ee]" />
+          <div className="h-5 w-2/3 rounded bg-line" />
+          <div className="h-4 w-full rounded bg-line" />
+          <div className="h-4 w-4/5 rounded bg-line" />
         </div>
       </div>
     ))}
@@ -88,14 +88,14 @@ const EventsShowcase: React.FC = () => {
     <section
       id="events"
       aria-label={hasUpcoming ? "Upcoming Events" : "Recent Events"}
-      className="scroll-mt-16 lg:scroll-mt-20 py-20 px-4 md:px-8 bg-[#f4f7fc]"
+      className="scroll-mt-16 lg:scroll-mt-20 py-20 px-4 md:px-8 bg-surface-muted"
     >
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#002b56] mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             {hasUpcoming || loading ? "Upcoming Events" : "Recent Events"}
           </h2>
-          <p className="text-xl font-medium text-[#002b56]/80 max-w-3xl mx-auto">
+          <p className="text-xl font-medium text-primary/80 max-w-3xl mx-auto">
             {hasUpcoming || loading
               ? "Workshops, talks, and meetups happening around the Hub."
               : "A look back at recent workshops, talks, and meetups at the Hub."}
@@ -119,7 +119,7 @@ const EventsShowcase: React.FC = () => {
         {!loading && displaySource.length > PREVIEW_COUNT && (
           <div className="flex justify-center mt-16">
             <button
-              className="text-lg py-3 px-12 border-2 border-[#002b56] text-[#002b56] rounded-[33px] shadow-md hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#002b56] focus:ring-opacity-50"
+              className="text-lg py-3 px-12 border-2 border-primary text-primary rounded-[33px] shadow-md hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
               onClick={() => navigate(EVENTS_DESTINATION)}
             >
               View All Events
