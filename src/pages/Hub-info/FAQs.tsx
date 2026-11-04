@@ -57,7 +57,7 @@ const FAQs = () => {
             className="w-10 h-10 text-primary mx-auto mb-4"
             aria-hidden="true"
           />
-          <h1 className="text-3xl font-bold text-gray-800">
+          <h1 className="text-3xl font-bold text-primary">
             Frequently Asked Questions
           </h1>
         </div>
@@ -73,11 +73,11 @@ const FAQs = () => {
                 aria-expanded={activeIndex === index}
                 className="w-full text-left flex justify-between items-center gap-4 focus:outline-none p-6"
               >
-                <h2 className="text-xl font-semibold text-gray-800">
+                <h2 className="text-xl font-semibold text-primary">
                   {faq.question}
                 </h2>
                 <svg
-                  className={`w-5 h-5 text-gray-500 flex-shrink-0 transform transition-transform ${activeIndex === index ? "rotate-180" : ""}`}
+                  className={`w-5 h-5 text-ink-muted flex-shrink-0 transform transition-transform ${activeIndex === index ? "rotate-180" : ""}`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -92,7 +92,7 @@ const FAQs = () => {
               </button>
 
               {activeIndex === index && (
-                <div className="px-6 pb-6 text-gray-600">{faq.answer}</div>
+                <div className="px-6 pb-6 text-ink-muted">{faq.answer}</div>
               )}
             </div>
           ))}
