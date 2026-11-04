@@ -178,7 +178,6 @@ const API_BASE = "/api";
 
 export const AUTH_ROUTES = {
   LOGIN: `${API_BASE}/auth/login`,
-  REGISTER: `${API_BASE}/auth/register`,
   GOOGLE_AUTH: `${API_BASE}/auth/google`,
   VERIFY_OTP: `${API_BASE}/auth/verify-otp`,
   LOGOUT: `${API_BASE}/auth/logout`,
