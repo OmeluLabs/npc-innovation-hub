@@ -125,13 +125,13 @@ function LetTalk() {
   return (
     <div
       id="hire-us-form"
-      className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gray-50 p-4 md:p-8 scroll-mt-20"
+      className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-surface-muted p-4 md:p-8 scroll-mt-20"
     >
       {/* Contact Info Section */}
       <div className="bg-blue-900 text-white rounded-xl shadow-lg p-8 w-full max-w-md mb-8 md:mb-0 md:mr-8">
         <div className="flex items-center mb-8">
           <svg
-            className="w-12 h-12 mr-4 text-blue-300"
+            className="w-12 h-12 mr-4 text-accent"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -149,7 +149,7 @@ function LetTalk() {
         <div className="space-y-6">
           <div className="flex items-start">
             <svg
-              className="w-10 h-10 mr-4 text-blue-300 mt-1"
+              className="w-10 h-10 mr-4 text-accent mt-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -163,13 +163,13 @@ function LetTalk() {
             </svg>
             <div>
               <h3 className="text-xl font-semibold mb-1">Our location</h3>
-              <p className="text-blue-200">Musanze, North, Rwanda</p>
+              <p className="text-accent">Musanze, North, Rwanda</p>
             </div>
           </div>
 
           <div className="flex items-start">
             <svg
-              className="w-10 h-10 mr-4 text-blue-300 mt-1"
+              className="w-10 h-10 mr-4 text-accent mt-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -185,7 +185,7 @@ function LetTalk() {
               <h3 className="text-xl font-semibold mb-1">Email address</h3>
               <a
                 href="mailto:kingcoders@programmers.com"
-                className="text-blue-200 hover:underline"
+                className="text-accent hover:underline"
               >
                 kingcoders@programmers.com
               </a>
@@ -194,7 +194,7 @@ function LetTalk() {
 
           <div className="flex items-start">
             <svg
-              className="w-10 h-10 mr-4 text-blue-300 mt-1"
+              className="w-10 h-10 mr-4 text-accent mt-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -210,7 +210,7 @@ function LetTalk() {
               <h3 className="text-xl font-semibold mb-1">Telephone</h3>
               <a
                 href="tel:+250783330443"
-                className="text-blue-200 hover:underline"
+                className="text-accent hover:underline"
               >
                 +250 783 330 443
               </a>
@@ -238,7 +238,7 @@ function LetTalk() {
             <div>
               <label
                 htmlFor="first_name"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-ink-muted mb-1"
               >
                 First Name*
               </label>
@@ -248,7 +248,7 @@ function LetTalk() {
                 name="first_name"
                 value={formData.first_name}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 border border-line rounded-lg focus:ring-secondary focus:border-secondary"
                 required
               />
             </div>
@@ -256,7 +256,7 @@ function LetTalk() {
             <div>
               <label
                 htmlFor="last_name"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-ink-muted mb-1"
               >
                 Last Name*
               </label>
@@ -266,7 +266,7 @@ function LetTalk() {
                 name="last_name"
                 value={formData.last_name}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 border border-line rounded-lg focus:ring-secondary focus:border-secondary"
                 required
               />
             </div>
@@ -275,7 +275,7 @@ function LetTalk() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-ink-muted mb-1"
             >
               Work Email*
             </label>
@@ -285,7 +285,7 @@ function LetTalk() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-4 py-2 border border-line rounded-lg focus:ring-secondary focus:border-secondary"
               placeholder="you@company.com"
               required
             />
@@ -295,7 +295,7 @@ function LetTalk() {
             <div>
               <label
                 htmlFor="company_name"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-ink-muted mb-1"
               >
                 Company Name*
               </label>
@@ -305,7 +305,7 @@ function LetTalk() {
                 name="company_name"
                 value={formData.company_name}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 border border-line rounded-lg focus:ring-secondary focus:border-secondary"
                 required
               />
             </div>
@@ -313,7 +313,7 @@ function LetTalk() {
             <div>
               <label
                 htmlFor="job_title"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-ink-muted mb-1"
               >
                 Job Title*
               </label>
@@ -323,7 +323,7 @@ function LetTalk() {
                 name="job_title"
                 value={formData.job_title}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 border border-line rounded-lg focus:ring-secondary focus:border-secondary"
                 required
               />
             </div>
@@ -332,7 +332,7 @@ function LetTalk() {
           <div>
             <label
               htmlFor="country"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-ink-muted mb-1"
             >
               Country*
             </label>
@@ -341,7 +341,7 @@ function LetTalk() {
               name="country"
               value={formData.country}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-4 py-2 border border-line rounded-lg focus:ring-secondary focus:border-secondary"
               required
             >
               <option value="">Select your country</option>
@@ -359,7 +359,7 @@ function LetTalk() {
           <div>
             <label
               htmlFor="message"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-ink-muted mb-1"
             >
               Your Message*
             </label>
@@ -369,7 +369,7 @@ function LetTalk() {
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-4 py-2 border border-line rounded-lg focus:ring-secondary focus:border-secondary"
               required
             />
           </div>
@@ -381,10 +381,10 @@ function LetTalk() {
               name="consent"
               checked={formData.consent}
               onChange={handleChange}
-              className="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mr-3 mt-1"
+              className="h-5 w-5 text-secondary rounded border-line focus:ring-secondary mr-3 mt-1"
               required
             />
-            <label htmlFor="consent" className="text-sm text-gray-700">
+            <label htmlFor="consent" className="text-sm text-ink-muted">
               I agree to the processing of my personal data in accordance with
               your privacy policy.
             </label>
