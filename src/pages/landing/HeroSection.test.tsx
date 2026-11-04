@@ -3,13 +3,7 @@ jest.mock("../../hooks/useHeroMedia", () => ({
   useHeroMedia: jest.fn(),
 }));
 
-jest.mock("../../api/applicationService", () => ({
-  __esModule: true,
-  submitMembershipApplication: jest.fn(),
-}));
-
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import HeroSection from "./HeroSection";
 import { useHeroMedia } from "../../hooks/useHeroMedia";
@@ -39,78 +33,30 @@ describe("<HeroSection />", () => {
 
   afterEach(() => jest.clearAllMocks());
 
-  test("shows the tagline and no member roster - members live on their own homepage section/page, not in the hero", () => {
+  test("shows the headline, value proposition and tagline", () => {
     renderHero();
 
-    expect(screen.getByText("Innovate.")).toBeInTheDocument();
-    expect(screen.getByText("Create.")).toBeInTheDocument();
-    expect(screen.getByText("Build.")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 1, name: /driving innovation/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/turn classroom ideas/i)).toBeInTheDocument();
+    expect(screen.getByText("Innovate. Create. Build.")).toBeInTheDocument();
+  });
+
+  test("offers a primary call to apply and a secondary call to see projects", () => {
+    renderHero();
+
+    expect(
+      screen.getByRole("link", { name: /apply to join/i }),
+    ).toHaveAttribute("href", "/apply");
+    expect(
+      screen.getByRole("link", { name: /see our projects/i }),
+    ).toHaveAttribute("href", "/projects");
+  });
+
+  test("does not render a member roster in the hero", () => {
+    renderHero();
+
     expect(screen.queryByText("Full Stack Developer")).not.toBeInTheDocument();
-  });
-});
-
-describe("<HeroSection /> rotating headline", () => {
-  beforeEach(() => {
-    mockedUseHeroMedia.mockReturnValue({
-      media: [],
-      loading: false,
-      error: null,
-      fetchMedia: jest.fn(),
-    });
-  });
-
-  afterEach(() => jest.clearAllMocks());
-
-  test("shows the first slide's headline on initial render", () => {
-    renderHero();
-
-    expect(
-      screen.getByText("Empowering Developers, Driving Innovation."),
-    ).toBeInTheDocument();
-  });
-
-  test("clicking a dot advances to that slide", async () => {
-    const user = userEvent.setup();
-    renderHero();
-
-    await user.click(screen.getByLabelText("Show message 2 of 4"));
-
-    await waitFor(() => {
-      expect(
-        screen.getByText("Where Students Become Builders."),
-      ).toBeInTheDocument();
-    });
-    expect(
-      screen.queryByText("Empowering Developers, Driving Innovation."),
-    ).not.toBeInTheDocument();
-  });
-
-  test("clicking a dot jumps directly to that slide", async () => {
-    const user = userEvent.setup();
-    renderHero();
-
-    await user.click(screen.getByLabelText("Show message 4 of 4"));
-
-    await waitFor(() => {
-      expect(
-        screen.getByText("Innovation With a Career Path."),
-      ).toBeInTheDocument();
-    });
-  });
-
-  test("the 'Join Us' button stays the same across every slide", async () => {
-    const user = userEvent.setup();
-    renderHero();
-
-    await user.click(screen.getByLabelText("Show message 2 of 4"));
-
-    await waitFor(() => {
-      expect(
-        screen.getByText("Where Students Become Builders."),
-      ).toBeInTheDocument();
-    });
-    expect(
-      screen.getByRole("button", { name: "Join NpcInnovationHub" }),
-    ).toBeInTheDocument();
   });
 });
