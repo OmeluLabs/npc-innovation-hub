@@ -1,26 +1,18 @@
 // src/components/blog/BlogCard.tsx
+//
+// Blog list card: cover image, category, title, excerpt, author, date and
+// reading time. The whole card is one link to the article.
 
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Eye, Calendar, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Clock, FileText } from "lucide-react";
 import type { Blog } from "../../types/blog.types";
+import { readingTimeMinutes } from "../../utils/readingTime";
+import { stripEmoji } from "../../utils/stripEmoji";
 
 interface BlogCardProps {
   blog: Blog;
 }
-
-const getCategoryColor = (category: string): string => {
-  switch (category) {
-    case "Front-end":
-      return "bg-pink-100 text-pink-700";
-    case "Back-end":
-      return "bg-blue-100 text-blue-700";
-    case "Cyber security":
-      return "bg-purple-100 text-purple-700";
-    default:
-      return "bg-gray-100 text-gray-600";
-  }
-};
 
 const formatDate = (iso: string): string =>
   new Date(iso).toLocaleDateString("en-US", {
@@ -29,71 +21,61 @@ const formatDate = (iso: string): string =>
     year: "numeric",
   });
 
+export const authorName = (blog: Blog): string =>
+  blog.author
+    ? `${blog.author.firstName} ${blog.author.lastName}`.trim()
+    : "NPC Innovation Hub";
+
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
-  const navigate = useNavigate();
+  const title = stripEmoji(blog.title);
 
   return (
-    <div
-      className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden
-                 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 flex flex-col"
-    >
-      {/* Image */}
-      <div className="h-48 w-full overflow-hidden bg-gray-100">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-soft transition-shadow duration-200 hover:shadow-medium">
+      <div className="aspect-[16/9] w-full overflow-hidden bg-surface-muted">
         {blog.image ? (
           <img
             src={blog.image}
-            alt={blog.title}
+            alt=""
             loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-mist-400">
+          <div className="flex h-full w-full items-center justify-center text-secondary/40">
             <FileText className="h-10 w-10" aria-hidden="true" />
           </div>
         )}
       </div>
 
-      {/* Content */}
-      <div className="p-5 flex flex-col flex-1 gap-3">
-        {/* Category badge */}
-        <span
-          className={`self-start text-xs font-semibold px-2.5 py-0.5 rounded-full ${getCategoryColor(blog.category)}`}
-        >
+      <div className="flex flex-1 flex-col gap-3 p-5">
+        <span className="self-start rounded-full bg-surface-muted px-3 py-1 text-xs font-semibold text-secondary">
           {blog.category}
         </span>
 
-        {/* Title */}
-        <h3 className="font-bold text-gray-900 text-base leading-snug line-clamp-2">
-          {blog.title}
+        <h3 className="line-clamp-2">
+          <Link
+            to={`/blogs/${blog.id}`}
+            className="focus:outline-none focus-visible:underline after:absolute after:inset-0"
+          >
+            {title}
+          </Link>
         </h3>
 
-        {/* Summary */}
-        <p className="text-sm text-gray-500 line-clamp-3 flex-1">
-          {blog.summary}
+        <p className="line-clamp-3 flex-1 text-sm text-ink-muted">
+          {stripEmoji(blog.summary)}
         </p>
 
-        {/* Meta */}
-        <div className="flex items-center justify-between text-xs text-gray-400 mt-auto pt-2 border-t border-gray-50">
-          <span className="flex items-center gap-1">
-            <Calendar size={12} />
-            {formatDate(blog.createdAt)}
-          </span>
-          <span className="flex items-center gap-1">
-            <Eye size={12} />
-            {blog.viewCount} views
+        <div className="mt-auto flex items-center justify-between border-t border-line pt-3 text-xs text-ink-muted">
+          <span className="font-semibold text-primary">{authorName(blog)}</span>
+          <span className="flex items-center gap-3">
+            <time dateTime={blog.createdAt}>{formatDate(blog.createdAt)}</time>
+            <span className="flex items-center gap-1">
+              <Clock className="h-3 w-3" aria-hidden="true" />
+              {readingTimeMinutes(blog.content)} min read
+            </span>
           </span>
         </div>
-
-        {/* CTA - was a one-off purple (#5745B2) matching no other accent
-            color on the site; navy matches every other CTA button. */}
-        <button
-          onClick={() => navigate(`/blogs/${blog.id}`)}
-          className="mt-1 w-full py-2 rounded-lg text-sm font-semibold text-white bg-[#002b56] hover:bg-[#003366] transition-colors duration-200"
-        >
-          Read More
-        </button>
       </div>
-    </div>
+    </article>
   );
 };
 
