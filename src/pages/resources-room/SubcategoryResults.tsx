@@ -78,7 +78,7 @@ const SubcategoryResults: React.FC = () => {
   return (
     <div>
       {/* Nav */}
-      <div className="bg-[#05274C] w-full">
+      <div className="bg-primary w-full">
         <div className="max-w-6xl mx-auto flex space-x-8 py-2">
           <NavMenu active="CATEGORIES" />
         </div>
@@ -89,7 +89,7 @@ const SubcategoryResults: React.FC = () => {
         <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
           <Link
             to="/resources-room/categories"
-            className="flex items-center gap-1 hover:text-[#1876C6] transition"
+            className="flex items-center gap-1 hover:text-secondary transition"
           >
             <ArrowLeft size={14} />
             Categories
@@ -137,7 +137,7 @@ const SubcategoryResults: React.FC = () => {
             <p className="font-medium">No resources in this subcategory yet.</p>
             <Link
               to="/resources-room/all-resources"
-              className="text-sm text-[#1876C6] hover:underline"
+              className="text-sm text-secondary hover:underline"
             >
               Browse all resources →
             </Link>
@@ -186,7 +186,7 @@ const SubcategoryResults: React.FC = () => {
                   <div className="flex items-center gap-2 text-gray-400 text-xs mt-auto pt-1">
                     <ThumbsUp size={11} />
                     <span>{res.upvotes}</span>
-                    <span className="ml-auto text-[#1876C6] font-medium truncate">
+                    <span className="ml-auto text-secondary font-medium truncate">
                       {res.author}
                     </span>
                   </div>
