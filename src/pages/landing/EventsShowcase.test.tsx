@@ -1,6 +1,12 @@
 const mockNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({
   useNavigate: () => mockNavigate,
+  // The event card's Register button is a real link; a plain anchor stands in.
+  Link: ({ to, children, ...rest }: { to: string; children: ReactNode }) => (
+    <a href={to} {...rest}>
+      {children}
+    </a>
+  ),
 }));
 
 jest.mock("../../hooks/useEvents", () => ({
@@ -8,6 +14,7 @@ jest.mock("../../hooks/useEvents", () => ({
   useEvents: jest.fn(),
 }));
 
+import type { ReactNode } from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useEvents } from "../../hooks/useEvents";
@@ -109,15 +116,40 @@ describe("<EventsShowcase />", () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  test("clicking an event card sends a signed-out visitor toward /dashboard/events (login-gated)", async () => {
+  test("offers a Register link for an upcoming event", () => {
+    mockedUseEvents.mockReturnValue(
+      baseHookReturn({ events: [futureEvent()] }),
+    );
+
+    render(<EventsShowcase />);
+
+    expect(screen.getByRole("link", { name: "Register" })).toHaveAttribute(
+      "href",
+      "/dashboard/events",
+    );
+  });
+
+  test("does not offer registration for past events", () => {
+    mockedUseEvents.mockReturnValue(
+      baseHookReturn({ events: [pastEvent({ title: "Already Happened" })] }),
+    );
+
+    render(<EventsShowcase />);
+
+    expect(
+      screen.queryByRole("link", { name: "Register" }),
+    ).not.toBeInTheDocument();
+  });
+
+  test("View All Events opens the public events page", async () => {
     const user = userEvent.setup();
     mockedUseEvents.mockReturnValue(
       baseHookReturn({ events: [futureEvent()] }),
     );
 
     render(<EventsShowcase />);
-    await user.click(screen.getByText("Intro to AI/ML for Developers"));
+    await user.click(screen.getByRole("button", { name: "View All Events" }));
 
-    expect(mockNavigate).toHaveBeenCalledWith("/dashboard/events");
+    expect(mockNavigate).toHaveBeenCalledWith("/events");
   });
 });
