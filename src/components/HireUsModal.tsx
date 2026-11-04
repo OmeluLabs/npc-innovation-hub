@@ -133,7 +133,6 @@ const HireUsModal: React.FC<HireUsModalProps> = ({ isOpen, onClose }) => {
     try {
       await submitHireInquiry(form);
       setStatus("success");
-      // ✅ Fixed
     } catch (err: unknown) {
       setStatus("error");
       const error = err as {
