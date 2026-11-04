@@ -11,7 +11,7 @@ function LatestPro() {
           Our Latest Projects
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="relative w-full h-[400px] rounded-xl shadow-lg overflow-hidden border border-blue-400">
+          <div className="relative w-full h-[400px] rounded-xl shadow-lg overflow-hidden border border-secondary">
             {/* Background Image */}
             <img
               src="/assets/images/hero.png"
@@ -50,13 +50,13 @@ function LatestPro() {
                 </div>
 
                 {/* View More Button */}
-                <button className="bg-white text-blue-600 font-semibold px-5 py-2 rounded-full hover:bg-blue-50 transition-all shadow-md">
+                <button className="bg-white text-secondary font-semibold px-5 py-2 rounded-full hover:bg-surface-muted transition-all shadow-md">
                   View More
                 </button>
               </div>
             </div>
           </div>
-          <div className="relative w-full h-[400px] rounded-xl shadow-lg overflow-hidden border border-blue-400">
+          <div className="relative w-full h-[400px] rounded-xl shadow-lg overflow-hidden border border-secondary">
             {/* Background Image */}
             <img
               src="/assets/images/hero.png"
@@ -95,13 +95,13 @@ function LatestPro() {
                 </div>
 
                 {/* View More Button */}
-                <button className="bg-white text-blue-600 font-semibold px-5 py-2 rounded-full hover:bg-blue-50 transition-all shadow-md">
+                <button className="bg-white text-secondary font-semibold px-5 py-2 rounded-full hover:bg-surface-muted transition-all shadow-md">
                   View More
                 </button>
               </div>
             </div>
           </div>
-          <div className="relative w-full h-[400px] rounded-xl shadow-lg overflow-hidden border border-blue-400">
+          <div className="relative w-full h-[400px] rounded-xl shadow-lg overflow-hidden border border-secondary">
             {/* Background Image */}
             <img
               src="/assets/images/hero.png"
@@ -140,13 +140,13 @@ function LatestPro() {
                 </div>
 
                 {/* View More Button */}
-                <button className="bg-white text-blue-600 font-semibold px-5 py-2 rounded-full hover:bg-blue-50 transition-all shadow-md">
+                <button className="bg-white text-secondary font-semibold px-5 py-2 rounded-full hover:bg-surface-muted transition-all shadow-md">
                   View More
                 </button>
               </div>
             </div>
           </div>
-          <div className="relative w-full h-[400px] rounded-xl shadow-lg overflow-hidden border border-blue-400">
+          <div className="relative w-full h-[400px] rounded-xl shadow-lg overflow-hidden border border-secondary">
             {/* Background Image */}
             <img
               src="/assets/images/hero.png"
@@ -185,7 +185,7 @@ function LatestPro() {
                 </div>
 
                 {/* View More Button */}
-                <button className="bg-white text-blue-600 font-semibold px-5 py-2 rounded-full hover:bg-blue-50 transition-all shadow-md">
+                <button className="bg-white text-secondary font-semibold px-5 py-2 rounded-full hover:bg-surface-muted transition-all shadow-md">
                   View More
                 </button>
               </div>
