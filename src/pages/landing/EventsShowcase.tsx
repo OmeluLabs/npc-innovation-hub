@@ -78,7 +78,7 @@ const EventsShowcase: React.FC = () => {
   const displaySource = hasUpcoming ? upcoming : recentPast;
 
   // Only truly zero events at all (or the fetch failing) hides the
-  // section - matching AlumniSection.tsx / BlogShowcase.tsx's "if
+  // section - matching BlogShowcase.tsx's "if
   // available" convention.
   if (!loading && (error || displaySource.length === 0)) return null;
 
