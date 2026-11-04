@@ -50,11 +50,11 @@ const FAQs = () => {
   return (
     // p-14 (56px) was unconditional - scaled down for mobile, restored
     // at md:
-    <div className="bg-[#F3F9FB] px-4 py-14 md:p-14 min-h-screen">
+    <div className="bg-surface-muted px-4 py-14 md:p-14 min-h-screen">
       <div className="max-w-4xl mx-auto">
         <div className="text-center py-16">
           <HelpCircle
-            className="w-10 h-10 text-[#002B56] mx-auto mb-4"
+            className="w-10 h-10 text-primary mx-auto mb-4"
             aria-hidden="true"
           />
           <h1 className="text-3xl font-bold text-gray-800">
