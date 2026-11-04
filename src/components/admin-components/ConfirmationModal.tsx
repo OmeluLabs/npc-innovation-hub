@@ -6,6 +6,7 @@
  */
 
 import React, { useEffect } from "react";
+import { Info, Trash2, TriangleAlert } from "lucide-react";
 
 // ==================== TYPES ====================
 
@@ -25,19 +26,19 @@ interface ConfirmationModalProps {
 
 const variantStyles = {
   danger: {
-    icon: "🗑️",
+    Icon: Trash2,
     iconBg: "bg-red-100",
     iconColor: "text-red-600",
     confirmButton: "bg-red-600 hover:bg-red-700 focus:ring-red-500",
   },
   warning: {
-    icon: "⚠️",
+    Icon: TriangleAlert,
     iconBg: "bg-yellow-100",
     iconColor: "text-yellow-600",
     confirmButton: "bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500",
   },
   info: {
-    icon: "ℹ️",
+    Icon: Info,
     iconBg: "bg-blue-100",
     iconColor: "text-blue-600",
     confirmButton: "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500",
@@ -101,7 +102,10 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
           <div
             className={`mx-auto flex items-center justify-center h-12 w-12 rounded-full ${styles.iconBg} mb-4`}
           >
-            <span className="text-2xl">{styles.icon}</span>
+            <styles.Icon
+              className={`h-6 w-6 ${styles.iconColor}`}
+              aria-hidden="true"
+            />
           </div>
 
           {/* Title */}
