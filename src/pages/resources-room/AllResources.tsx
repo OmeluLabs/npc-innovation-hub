@@ -13,22 +13,22 @@ const getTypeIcon = (type: string) => {
     case "Video":
       return <Video size={14} className="text-red-400" />;
     case "Book":
-      return <BookOpen size={14} className="text-blue-400" />;
+      return <BookOpen size={14} className="text-accent" />;
     default:
-      return <FileText size={14} className="text-purple-400" />;
+      return <FileText size={14} className="text-secondary" />;
   }
 };
 
 const getCategoryColor = (category: string): string => {
   switch (category) {
     case "Frontend":
-      return "bg-pink-100 text-pink-700";
+      return "bg-surface-muted text-secondary";
     case "Backend":
-      return "bg-blue-100 text-blue-700";
+      return "bg-surface-muted text-secondary";
     case "Cybersecurity":
-      return "bg-purple-100 text-purple-700";
+      return "bg-surface-muted text-secondary";
     default:
-      return "bg-gray-100 text-gray-600";
+      return "bg-surface-muted text-ink-muted";
   }
 };
 
@@ -37,11 +37,11 @@ const getTypeColor = (type: string): string => {
     case "Video":
       return "bg-red-100 text-red-600";
     case "Book":
-      return "bg-blue-100 text-blue-600";
+      return "bg-surface-muted text-secondary";
     case "Documentation":
-      return "bg-purple-100 text-purple-600";
+      return "bg-surface-muted text-secondary";
     default:
-      return "bg-gray-100 text-gray-500";
+      return "bg-surface-muted text-ink-muted";
   }
 };
 
@@ -150,14 +150,14 @@ const AllResources: React.FC = () => {
                 key={n}
                 className="bg-white rounded-xl shadow p-4 flex flex-col items-center gap-3 animate-pulse"
               >
-                <div className="w-24 h-24 rounded-xl bg-gray-200" />
-                <div className="h-4 bg-gray-200 rounded w-3/4" />
-                <div className="h-3 bg-gray-100 rounded w-1/2" />
+                <div className="w-24 h-24 rounded-xl bg-line" />
+                <div className="h-4 bg-line rounded w-3/4" />
+                <div className="h-3 bg-surface-muted rounded w-1/2" />
               </div>
             ))}
           </div>
         ) : displayedResources.length === 0 ? (
-          <div className="flex flex-col items-center py-20 text-gray-400 gap-3">
+          <div className="flex flex-col items-center py-20 text-ink-muted gap-3">
             <FileText size={40} className="opacity-40" />
             <p className="font-medium">No resources found</p>
             <p className="text-sm">Try changing your filters.</p>
@@ -171,7 +171,7 @@ const AllResources: React.FC = () => {
                 className="bg-white rounded-xl shadow hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden flex flex-col"
               >
                 {/* Thumbnail */}
-                <div className="w-full h-32 bg-gray-100 overflow-hidden">
+                <div className="w-full h-32 bg-surface-muted overflow-hidden">
                   {res.imageUrl ? (
                     <img
                       src={res.imageUrl}
@@ -186,7 +186,7 @@ const AllResources: React.FC = () => {
                 </div>
 
                 <div className="p-4 flex flex-col gap-2 flex-1">
-                  <div className="font-semibold text-sm text-gray-900 line-clamp-2">
+                  <div className="font-semibold text-sm text-primary line-clamp-2">
                     {res.title}
                   </div>
 
@@ -210,13 +210,13 @@ const AllResources: React.FC = () => {
                       {res.tags.slice(0, 2).map((tag) => (
                         <span
                           key={tag}
-                          className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full"
+                          className="text-xs bg-surface-muted text-ink-muted px-2 py-0.5 rounded-full"
                         >
                           {tag}
                         </span>
                       ))}
                       {res.tags.length > 2 && (
-                        <span className="text-xs text-gray-400">
+                        <span className="text-xs text-ink-muted">
                           +{res.tags.length - 2}
                         </span>
                       )}
@@ -224,7 +224,7 @@ const AllResources: React.FC = () => {
                   )}
 
                   {/* Stats */}
-                  <div className="flex items-center gap-3 text-gray-400 text-xs mt-auto pt-1">
+                  <div className="flex items-center gap-3 text-ink-muted text-xs mt-auto pt-1">
                     <span className="flex items-center gap-1">
                       <ThumbsUp size={11} /> {res.upvotes}
                     </span>
