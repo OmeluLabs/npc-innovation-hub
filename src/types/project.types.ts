@@ -3,6 +3,8 @@
  * TypeScript interfaces for project-related data structures
  */
 
+export type ProjectStatus = "Planned" | "In Progress" | "Completed";
+
 export interface Project {
   id: string;
   userId?: string;
@@ -14,6 +16,8 @@ export interface Project {
   image: string;
   link: string;
   demo: string;
+  techStack?: string[];
+  status?: ProjectStatus;
   createdAt: string;
   updatedAt: string;
 }
@@ -24,6 +28,9 @@ export interface CreateProjectPayload {
   image: string;
   link: string;
   demo: string;
+  /** Comma-separated list, e.g. "React, Node.js". */
+  techStack?: string;
+  status?: ProjectStatus;
 }
 
 export interface UpdateProjectPayload {
@@ -32,6 +39,8 @@ export interface UpdateProjectPayload {
   image?: string;
   link?: string;
   demo?: string;
+  techStack?: string;
+  status?: ProjectStatus;
 }
 
 export interface ProjectsResponse {
