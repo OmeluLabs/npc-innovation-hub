@@ -63,12 +63,6 @@ export const sidebarLinks = [
     notification: 0,
   },
   {
-    icon: "alumni",
-    label: "Alumni",
-    path: "/Admin-alumni",
-    notification: 0,
-  },
-  {
     icon: "calendar",
     label: "Events",
     path: "/Admin-events",
