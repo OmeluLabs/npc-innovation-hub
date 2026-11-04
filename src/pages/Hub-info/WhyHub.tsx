@@ -37,7 +37,7 @@ const WhyHub = () => {
     // horizontal padding alone on a 320px phone. Keeps the same vertical
     // rhythm (py-14 doesn't cost width) and restores the full padding at
     // md: where it doesn't compete with content for room.
-    <div className="bg-[#E8FDF5] px-4 py-14 md:p-14">
+    <div className="bg-green-50 px-4 py-14 md:p-14">
       <div className="max-w-6xl mx-auto py-12">
         <h2 className="text-3xl font-bold mb-8 text-gray-900 text-center py-6">
           Why NPC Innovation Hub?
@@ -49,10 +49,7 @@ const WhyHub = () => {
               key={title}
               className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 min-h-[280px] flex flex-col"
             >
-              <Icon
-                className="w-9 h-9 text-[#002B56] mb-3"
-                aria-hidden="true"
-              />
+              <Icon className="w-9 h-9 text-primary mb-3" aria-hidden="true" />
               <h3 className="text-xl font-semibold mb-2 text-gray-800">
                 {title}
               </h3>
