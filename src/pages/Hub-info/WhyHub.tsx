@@ -39,7 +39,7 @@ const WhyHub = () => {
     // md: where it doesn't compete with content for room.
     <div className="bg-green-50 px-4 py-14 md:p-14">
       <div className="max-w-6xl mx-auto py-12">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900 text-center py-6">
+        <h2 className="text-3xl font-bold mb-8 text-primary text-center py-6">
           Why NPC Innovation Hub?
         </h2>
 
@@ -47,14 +47,14 @@ const WhyHub = () => {
           {PRACTICE_AREAS.map(({ title, icon: Icon, tagline, description }) => (
             <div
               key={title}
-              className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 min-h-[280px] flex flex-col"
+              className="bg-white rounded-lg shadow-sm border border-line p-6 min-h-[280px] flex flex-col"
             >
               <Icon className="w-9 h-9 text-primary mb-3" aria-hidden="true" />
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">
+              <h3 className="text-xl font-semibold mb-2 text-primary">
                 {title}
               </h3>
-              <p className="italic mb-3 text-gray-600">{tagline}</p>
-              <p className="text-gray-700 flex-grow">{description}</p>
+              <p className="italic mb-3 text-ink-muted">{tagline}</p>
+              <p className="text-ink-muted flex-grow">{description}</p>
             </div>
           ))}
         </div>
