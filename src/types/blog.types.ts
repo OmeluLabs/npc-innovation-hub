@@ -15,6 +15,8 @@ export interface Blog {
   viewCount: number;
   createdAt: string;
   updatedAt: string;
+  /** Present on public responses so pages can show a byline. */
+  author?: { firstName: string; lastName: string } | null;
 }
 
 export interface BlogFormData {
