@@ -130,7 +130,7 @@ const OTPVerification: React.FC = () => {
               <h1 className="text-2xl font-bold text-primary">
                 OTP Verification
               </h1>
-              <p className="text-gray-600 text-sm mt-2">
+              <p className="text-ink-muted text-sm mt-2">
                 Enter the 6-digit code sent to{" "}
                 {email ? (
                   <span className="font-semibold">{email}</span>
@@ -159,7 +159,7 @@ const OTPVerification: React.FC = () => {
             <div>
               <label
                 htmlFor="otp-digit-0"
-                className="block text-gray-700 text-sm font-medium mb-2 text-center"
+                className="block text-ink-muted text-sm font-medium mb-2 text-center"
               >
                 Enter OTP Code
               </label>
@@ -207,11 +207,11 @@ const OTPVerification: React.FC = () => {
               )}
             </button>
 
-            <div className="text-center pt-2 border-t border-gray-200">
-              <p className="text-gray-600 text-sm pt-2">
+            <div className="text-center pt-2 border-t border-line">
+              <p className="text-ink-muted text-sm pt-2">
                 Didn't receive the code?{" "}
                 {resendCooldown > 0 ? (
-                  <span className="text-gray-400 font-semibold">
+                  <span className="text-ink-muted font-semibold">
                     Resend in {resendCooldown}s
                   </span>
                 ) : (
@@ -235,7 +235,7 @@ const OTPVerification: React.FC = () => {
               <p className="text-sm mt-3">
                 <Link
                   to="/login"
-                  className="text-gray-500 hover:text-primary hover:underline"
+                  className="text-ink-muted hover:text-primary hover:underline"
                 >
                   ← Back to Login
                 </Link>
@@ -249,7 +249,7 @@ const OTPVerification: React.FC = () => {
       {showSecurityTips && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 p-4">
           <div className="bg-white rounded-lg shadow-lg max-w-md w-full">
-            <div className="border-b border-gray-200 py-4 px-6">
+            <div className="border-b border-line py-4 px-6">
               <h1 className="text-xl font-bold text-red-500 flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -289,7 +289,7 @@ const OTPVerification: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="border-t border-gray-200 py-3 px-6 flex justify-center">
+            <div className="border-t border-line py-3 px-6 flex justify-center">
               <button
                 className="py-2 px-10 bg-primary text-white font-bold rounded hover:bg-secondary transition-colors"
                 onClick={() => setShowSecurityTips(false)}
