@@ -34,7 +34,6 @@ export interface User {
   role: UserRole;
   isActive: boolean;
   memberId: string | null;
-  isAlumni?: boolean;
   createdAt: string;
   updatedAt: string;
 }
