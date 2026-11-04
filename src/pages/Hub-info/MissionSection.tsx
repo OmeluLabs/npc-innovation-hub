@@ -41,7 +41,7 @@ const HubInfo = () => {
           {CARDS.map(({ title, icon: Icon, points }) => (
             <div
               key={title}
-              className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200"
+              className="bg-white rounded-lg shadow-md overflow-hidden border border-line"
             >
               <div className="bg-primary px-6 py-6 flex items-center justify-center gap-2">
                 <Icon
@@ -57,7 +57,7 @@ const HubInfo = () => {
                   {points.map((point) => (
                     <li key={point} className="flex items-start">
                       <span className="flex-shrink-0 w-2 h-2 mt-2.5 bg-green-600 rounded-full mr-3"></span>
-                      <p className="text-gray-700">{point}</p>
+                      <p className="text-ink-muted">{point}</p>
                     </li>
                   ))}
                 </ul>
