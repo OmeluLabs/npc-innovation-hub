@@ -8,7 +8,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Clock, Eye } from "lucide-react";
 import { useBlogs } from "../../hooks/useBlogs";
 import EmptyState from "../../components/layout/EmptyState";
-import { authorName } from "../../components/blog/BlogCard";
+import { authorName } from "../../utils/blogAuthor";
 import { readingTimeMinutes } from "../../utils/readingTime";
 import { stripEmoji } from "../../utils/stripEmoji";
 
