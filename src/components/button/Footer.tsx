@@ -1,198 +1,106 @@
 // src/components/button/Footer.tsx
-import React, { useState } from "react";
+//
+// Single shared public footer. Link columns are data-driven so the footer and
+// the navbar stay in step as pages are added.
+
+import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Info,
-  Home as HomeIcon,
-  UserPlus,
-  Target,
-  Users,
-  FolderGit2,
-  HelpCircle,
-  MessageCircle,
-  Briefcase,
-} from "lucide-react";
-import HireUsModal from "../HireUsModal";
-import JoinUsModal from "../JoinUsModal";
 import { OPEN_ASSISTANT_CHAT_EVENT } from "../assistant/AssistantWidget";
 
+interface FooterLink {
+  label: string;
+  to?: string;
+  onClick?: () => void;
+}
+
+const COLUMNS: { title: string; links: FooterLink[] }[] = [
+  {
+    title: "The Hub",
+    links: [
+      { label: "About the Hub", to: "/Hub-information" },
+      { label: "Members", to: "/members" },
+      { label: "Projects", to: "/projects" },
+      { label: "Contact Us", to: "/contact-us" },
+    ],
+  },
+  {
+    title: "Explore",
+    links: [
+      { label: "Events", to: "/events" },
+      { label: "Blogs", to: "/blog" },
+      { label: "Resources", to: "/resources-room" },
+    ],
+  },
+  {
+    title: "Get Involved",
+    links: [
+      { label: "Apply to join", to: "/apply" },
+      { label: "Hire Us", to: "/hire-us" },
+      { label: "FAQs", to: "/faqs" },
+      {
+        label: "Chat with Us",
+        onClick: () =>
+          window.dispatchEvent(new Event(OPEN_ASSISTANT_CHAT_EVENT)),
+      },
+    ],
+  },
+];
+
+const linkClasses =
+  "inline-block py-1.5 text-white/80 transition-colors duration-200 hover:text-accent focus:outline-none focus-visible:text-accent focus-visible:underline";
+
 const Footer: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
   const currentYear = new Date().getFullYear();
 
   return (
-    <div id="footer" className="w-full font-sans scroll-mt-16 lg:scroll-mt-20">
-      <HireUsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <JoinUsModal
-        isOpen={isJoinModalOpen}
-        onClose={() => setIsJoinModalOpen(false)}
-      />
-
-      {/* Flat navy background - a diagonal white wedge used to sit at the
-          top here, left over from when a stock-photo card overlapped this
-          edge (removed in fix/footer-cleanup-and-trusted-by). With that
-          card gone, the diagonal cut had no purpose left and read as a
-          rendering glitch; a plain flat edge also matches every other navy
-          section on the site (AboutIntro, ContactUs, ...),
-          none of which use a diagonal. */}
-      <div
-        className="w-full pt-16 pb-12 relative"
-        style={{ backgroundColor: "#002B56" }}
-      >
-        <div className="max-w-5xl mx-auto px-4">
-          {/* Footer main content */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white mb-16">
-            {/* Left column */}
-            <div>
-              <h4 className="text-xl font-bold mb-4">NPC INNOVATION HUB</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    to="/Hub-information"
-                    className="flex items-center gap-2 py-1.5 hover:text-gray-300 transition-colors"
-                  >
-                    <Info
-                      className="w-4 h-4 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    What we do
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/#home"
-                    className="flex items-center gap-2 py-1.5 hover:text-gray-300 transition-colors"
-                  >
-                    <HomeIcon
-                      className="w-4 h-4 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => setIsJoinModalOpen(true)}
-                    className="flex items-center gap-2 py-1.5 hover:text-gray-300 transition-colors"
-                  >
-                    <UserPlus
-                      className="w-4 h-4 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    Join Us
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            {/* Middle column */}
-            <div>
-              <h4 className="text-xl font-bold mb-4">Learn About Us</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    to="/Hub-information"
-                    className="flex items-center gap-2 py-1.5 hover:text-gray-300 transition-colors"
-                  >
-                    <Target
-                      className="w-4 h-4 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    Our Mission &amp; Vision
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/#members"
-                    className="flex items-center gap-2 py-1.5 hover:text-gray-300 transition-colors"
-                  >
-                    <Users
-                      className="w-4 h-4 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    Our Members
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/projects"
-                    className="flex items-center gap-2 py-1.5 hover:text-gray-300 transition-colors"
-                  >
-                    <FolderGit2
-                      className="w-4 h-4 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    Our Projects
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Right column */}
-            <div>
-              <h4 className="text-xl font-bold mb-4">Support</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    to="/faqs"
-                    className="flex items-center gap-2 py-1.5 hover:text-gray-300 transition-colors"
-                  >
-                    <HelpCircle
-                      className="w-4 h-4 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    FAQs
-                  </Link>
-                </li>
-                <li>
-                  {/* The assistant is a floating widget now (see
-                      Navbar.tsx -> AssistantWidget), not its own page -
-                      this opens it from wherever the visitor already is
-                      instead of navigating them away. */}
-                  <button
-                    type="button"
-                    onClick={() =>
-                      window.dispatchEvent(new Event(OPEN_ASSISTANT_CHAT_EVENT))
-                    }
-                    className="flex items-center gap-2 py-1.5 hover:text-gray-300 transition-colors"
-                  >
-                    <MessageCircle
-                      className="w-4 h-4 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    Chat with Us
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => setIsModalOpen(true)}
-                    className="flex items-center gap-2 py-1.5 hover:text-gray-300 transition-colors"
-                  >
-                    <Briefcase
-                      className="w-4 h-4 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    Hire Us
-                  </button>
-                </li>
-              </ul>
-            </div>
+    <footer
+      id="footer"
+      className="w-full bg-primary text-white scroll-mt-16 lg:scroll-mt-20"
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-14 pb-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+          <div>
+            <p className="font-heading text-xl font-bold">NPC INNOVATION HUB</p>
+            <p className="mt-3 text-sm text-white/70 max-w-xs">
+              A student-led space for building real-world technology, with
+              mentorship at every step.
+            </p>
           </div>
 
-          {/* Bottom footer */}
-          <div className="pt-4 border-t border-blue-800 text-white flex flex-col md:flex-row justify-center md:justify-between items-center text-sm">
-            {/* "Privacy" link removed: no privacy policy page exists yet -
-                a dead link was worse than no link. Add back once there's a
-                real page to point to. */}
-            <div className="mb-2 md:mb-0">© Copyright {currentYear}</div>
-            <div className="font-bold">NPC INNOVATION HUB</div>
-          </div>
+          {COLUMNS.map((column) => (
+            <nav key={column.title} aria-label={column.title}>
+              <h2 className="text-sm font-bold uppercase tracking-wider text-accent">
+                {column.title}
+              </h2>
+              <ul className="mt-3">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    {link.to ? (
+                      <Link to={link.to} className={linkClasses}>
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={link.onClick}
+                        className={linkClasses}
+                      >
+                        {link.label}
+                      </button>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
+
+        <div className="mt-12 pt-6 border-t border-white/15 flex flex-col md:flex-row md:justify-between items-center gap-2 text-sm text-white/70">
+          <p>&copy; {currentYear} NPC Innovation Hub. All rights reserved.</p>
+          <p className="font-semibold text-white">NPC INNOVATION HUB</p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
