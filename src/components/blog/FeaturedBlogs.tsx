@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Eye, Star } from "lucide-react";
+import { Eye, Star, FileText } from "lucide-react";
 import type { Blog } from "../../types/blog.types";
 
 interface FeaturedBlogsProps {
@@ -53,8 +53,8 @@ const FeaturedBlogs: React.FC<FeaturedBlogsProps> = ({ blogs }) => {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-300 text-3xl">
-                  📝
+                <div className="w-full h-full flex items-center justify-center text-mist-400">
+                  <FileText className="h-8 w-8" aria-hidden="true" />
                 </div>
               )}
             </div>
