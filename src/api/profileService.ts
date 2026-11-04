@@ -69,7 +69,7 @@ export const profileService = {
   async updateProfile(payload: UpdateProfilePayload): Promise<User> {
     // multipart/form-data, not JSON - the route expects the avatar under
     // multer's field name "images" (upload.single('images')), same
-    // pattern as alumni.api.ts's create/update.
+    // pattern as the other multipart upload endpoints.
     const formData = new FormData();
     if (payload.firstName !== undefined)
       formData.append("firstName", payload.firstName);
