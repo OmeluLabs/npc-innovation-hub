@@ -35,7 +35,7 @@ const InnovationHub = () => {
               <div className="flex items-center space-x-4 mb-8">
                 <a
                   href="#hire-us-form"
-                  style={{ backgroundColor: "#002B56" }}
+                  style={{ backgroundColor: "rgb(var(--color-primary))" }}
                   className="text-white font-medium py-3 px-6 rounded-full text-sm transition duration-200 hover:brightness-110"
                 >
                   Get Started
