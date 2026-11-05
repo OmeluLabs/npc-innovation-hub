@@ -39,9 +39,9 @@ const variantStyles = {
   },
   info: {
     Icon: Info,
-    iconBg: "bg-blue-100",
-    iconColor: "text-blue-600",
-    confirmButton: "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500",
+    iconBg: "bg-surface-muted",
+    iconColor: "text-secondary",
+    confirmButton: "bg-secondary hover:bg-primary focus:ring-secondary",
   },
 };
 
