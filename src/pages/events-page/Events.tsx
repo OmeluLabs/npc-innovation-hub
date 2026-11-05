@@ -46,13 +46,13 @@ export const Events: React.FC = () => {
             className={`pb-3 text-lg font-semibold border-b-2 transition ${
               tab === "upcoming"
                 ? "border-black text-black"
-                : "border-transparent text-gray-400 hover:text-gray-600"
+                : "border-transparent text-ink-muted hover:text-ink-muted"
             }`}
             onClick={() => setTab("upcoming")}
           >
             Upcoming events
             {upcomingEvents.length > 0 && (
-              <span className="ml-2 text-xs bg-gray-100 text-gray-600 rounded-full px-2 py-0.5">
+              <span className="ml-2 text-xs bg-surface-muted text-ink-muted rounded-full px-2 py-0.5">
                 {upcomingEvents.length}
               </span>
             )}
@@ -61,13 +61,13 @@ export const Events: React.FC = () => {
             className={`pb-3 text-lg font-semibold border-b-2 transition ${
               tab === "past"
                 ? "border-black text-black"
-                : "border-transparent text-gray-400 hover:text-gray-600"
+                : "border-transparent text-ink-muted hover:text-ink-muted"
             }`}
             onClick={() => setTab("past")}
           >
             Past events
             {pastEvents.length > 0 && (
-              <span className="ml-2 text-xs bg-gray-100 text-gray-600 rounded-full px-2 py-0.5">
+              <span className="ml-2 text-xs bg-surface-muted text-ink-muted rounded-full px-2 py-0.5">
                 {pastEvents.length}
               </span>
             )}
@@ -107,9 +107,9 @@ export const Events: React.FC = () => {
           {/* Empty state */}
           {!loading && !error && displayedEvents.length === 0 && (
             <div className="flex flex-col items-center justify-center text-center px-4 py-12 sm:py-20 text-center">
-              <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-surface-muted flex items-center justify-center mb-4">
                 <svg
-                  className="w-8 h-8 text-gray-400"
+                  className="w-8 h-8 text-ink-muted"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={1.5}
@@ -122,10 +122,10 @@ export const Events: React.FC = () => {
                   />
                 </svg>
               </div>
-              <p className="text-gray-500 font-medium">
+              <p className="text-ink-muted font-medium">
                 No {tab} events at the moment
               </p>
-              <p className="text-gray-400 text-sm mt-1">
+              <p className="text-ink-muted text-sm mt-1">
                 Check back later for new events.
               </p>
             </div>
