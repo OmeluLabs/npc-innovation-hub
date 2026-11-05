@@ -36,10 +36,10 @@
 
 // const Skeleton: React.FC = () => (
 //   <div className="flex items-center gap-3 px-3 py-3 animate-pulse">
-//     <div className="w-11 h-11 rounded-full bg-gray-200 flex-shrink-0" />
+//     <div className="w-11 h-11 rounded-full bg-line flex-shrink-0" />
 //     <div className="flex-1 space-y-2">
-//       <div className="h-3 bg-gray-200 rounded w-3/4" />
-//       <div className="h-3 bg-gray-200 rounded w-1/2" />
+//       <div className="h-3 bg-line rounded w-3/4" />
+//       <div className="h-3 bg-line rounded w-1/2" />
 //     </div>
 //   </div>
 // );
@@ -84,63 +84,63 @@
 //         />
 //       )}
 
-//       <div className="bg-white rounded-2xl shadow-lg border border-gray-100 w-80 h-full flex flex-col">
+//       <div className="bg-white rounded-2xl shadow-lg border border-line w-80 h-full flex flex-col">
 //         {/* Header */}
-//         <div className="p-5 border-b border-gray-100">
+//         <div className="p-5 border-b border-line">
 //           <div className="flex items-center justify-between mb-4">
-//             <h2 className="font-bold text-xl text-gray-800">Messages</h2>
+//             <h2 className="font-bold text-xl text-primary">Messages</h2>
 //             <button
 //               type="button"
 //               onClick={() => setShowNewConvo(true)}
-//               className="p-2 hover:bg-blue-50 rounded-lg transition-colors group"
+//               className="p-2 hover:bg-surface-muted rounded-lg transition-colors group"
 //               title="New conversation"
 //             >
 //               <Plus
 //                 size={18}
-//                 className="text-gray-500 group-hover:text-blue-500 transition-colors"
+//                 className="text-ink-muted group-hover:text-secondary transition-colors"
 //               />
 //             </button>
 //           </div>
 //           <div className="relative">
 //             <Search
 //               size={15}
-//               className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+//               className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
 //             />
 //             <input
 //               type="text"
 //               placeholder="Search conversations..."
 //               value={search}
 //               onChange={(e) => setSearch(e.target.value)}
-//               className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+//               className="w-full pl-9 pr-4 py-2 bg-surface-muted border border-line rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm"
 //             />
 //           </div>
 //         </div>
 
 //         {/* Hub Collaboration */}
-//         <div className="px-5 py-4 border-b border-gray-100">
+//         <div className="px-5 py-4 border-b border-line">
 //           <div className="flex items-center justify-between mb-3">
-//             <h3 className="font-semibold text-gray-500 text-xs uppercase tracking-widest">
+//             <h3 className="font-semibold text-ink-muted text-xs uppercase tracking-widest">
 //               Hub Collaboration
 //             </h3>
-//             <MoreVertical size={14} className="text-gray-400" />
+//             <MoreVertical size={14} className="text-ink-muted" />
 //           </div>
 //           <button
 //             type="button"
 //             onClick={() => navigate("/hub-channel")}
 //             className={`w-full flex items-center gap-3 py-2.5 px-3 rounded-xl text-left transition-all ${
-//               isHub ? "bg-blue-50 border border-blue-200" : "hover:bg-gray-50"
+//               isHub ? "bg-surface-muted border border-accent" : "hover:bg-surface-muted"
 //             }`}
 //           >
-//             <div className="flex items-center justify-center w-10 h-10 bg-blue-500 rounded-xl flex-shrink-0">
+//             <div className="flex items-center justify-center w-10 h-10 bg-secondary rounded-xl flex-shrink-0">
 //               <Hash size={18} className="text-white" />
 //             </div>
 //             <div className="flex-1 min-w-0">
 //               <div
-//                 className={`font-semibold text-sm ${isHub ? "text-blue-700" : "text-gray-800"}`}
+//                 className={`font-semibold text-sm ${isHub ? "text-primary" : "text-primary"}`}
 //               >
 //                 Hub Channel
 //               </div>
-//               <div className="text-xs text-gray-400">General discussions</div>
+//               <div className="text-xs text-ink-muted">General discussions</div>
 //             </div>
 //             <span className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0" />
 //           </button>
@@ -149,10 +149,10 @@
 //         {/* Direct Messages */}
 //         <div className="flex-1 flex flex-col overflow-hidden">
 //           <div className="px-5 pt-4 pb-2 flex items-center justify-between">
-//             <h3 className="font-semibold text-gray-500 text-xs uppercase tracking-widest">
+//             <h3 className="font-semibold text-ink-muted text-xs uppercase tracking-widest">
 //               Direct Messages
 //             </h3>
-//             <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+//             <span className="text-xs text-ink-muted bg-surface-muted px-2 py-0.5 rounded-full">
 //               {conversations.length}
 //             </span>
 //           </div>
@@ -166,7 +166,7 @@
 //               </>
 //             ) : filtered.length === 0 ? (
 //               <div className="text-center py-8 px-4">
-//                 <p className="text-sm text-gray-400">
+//                 <p className="text-sm text-ink-muted">
 //                   {search
 //                     ? "No conversations match your search."
 //                     : "No conversations yet. Click + to start one."}
@@ -188,8 +188,8 @@
 //                       onClick={() => go(conv.userId, fullName)}
 //                       className={`flex items-center gap-3 py-2.5 px-3 rounded-xl cursor-pointer transition-all ${
 //                         isSelected
-//                           ? "bg-blue-50 border border-blue-100"
-//                           : "hover:bg-gray-50"
+//                           ? "bg-surface-muted border border-accent"
+//                           : "hover:bg-surface-muted"
 //                       }`}
 //                     >
 //                       <ChatAvatar
@@ -201,20 +201,20 @@
 //                       <div className="flex-1 min-w-0">
 //                         <div className="flex items-center justify-between mb-0.5">
 //                           <span
-//                             className={`font-semibold text-sm truncate ${isSelected ? "text-blue-700" : "text-gray-800"}`}
+//                             className={`font-semibold text-sm truncate ${isSelected ? "text-primary" : "text-primary"}`}
 //                           >
 //                             {fullName}
 //                           </span>
-//                           <span className="text-xs text-gray-400 ml-2 flex-shrink-0">
+//                           <span className="text-xs text-ink-muted ml-2 flex-shrink-0">
 //                             {formatTime(conv.lastMessageTime)}
 //                           </span>
 //                         </div>
-//                         <p className="text-xs text-gray-500 truncate">
+//                         <p className="text-xs text-ink-muted truncate">
 //                           {lastMsg || "No messages yet"}
 //                         </p>
 //                       </div>
 //                       {conv.unreadCount > 0 && (
-//                         <span className="flex-shrink-0 bg-blue-500 text-white text-xs rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 font-medium">
+//                         <span className="flex-shrink-0 bg-secondary text-white text-xs rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 font-medium">
 //                           {conv.unreadCount > 99 ? "99+" : conv.unreadCount}
 //                         </span>
 //                       )}
@@ -227,8 +227,8 @@
 //         </div>
 
 //         {/* Footer */}
-//         <div className="p-4 border-t border-gray-100">
-//           <div className="flex items-center gap-2 text-xs text-gray-400">
+//         <div className="p-4 border-t border-line">
+//           <div className="flex items-center gap-2 text-xs text-ink-muted">
 //             <span className="w-2 h-2 bg-green-500 rounded-full" />
 //             <span>Online now</span>
 //           </div>
@@ -278,10 +278,10 @@ const formatTime = (iso: string): string => {
 
 const Skeleton: React.FC = () => (
   <div className="flex items-center gap-3 px-3 py-3 animate-pulse">
-    <div className="w-10 h-10 rounded-full bg-gray-200 flex-shrink-0" />
+    <div className="w-10 h-10 rounded-full bg-line flex-shrink-0" />
     <div className="flex-1 space-y-2">
-      <div className="h-3 bg-gray-200 rounded w-3/4" />
-      <div className="h-3 bg-gray-200 rounded w-1/2" />
+      <div className="h-3 bg-line rounded w-3/4" />
+      <div className="h-3 bg-line rounded w-1/2" />
     </div>
   </div>
 );
@@ -328,63 +328,65 @@ const LeftPanel: React.FC<LeftPanelProps> = ({ selectedUserId, onSelect }) => {
           an 844px-wide landscape phone already has plenty of room for
           the list beside the chat pane, it's only portrait phones that
           need the single-pane treatment. */}
-      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 w-full md:w-80 h-full flex flex-col flex-shrink-0 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-lg border border-line w-full md:w-80 h-full flex flex-col flex-shrink-0 overflow-hidden">
         {/* ── Header — always visible, never scrolls ──────────────────────── */}
-        <div className="flex-shrink-0 p-5 border-b border-gray-100">
+        <div className="flex-shrink-0 p-5 border-b border-line">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="font-bold text-xl text-gray-800">Messages</h2>
+            <h2 className="font-bold text-xl text-primary">Messages</h2>
             <button
               type="button"
               onClick={() => setShowNewConvo(true)}
-              className="p-2 hover:bg-blue-50 rounded-lg transition-colors group"
+              className="p-2 hover:bg-surface-muted rounded-lg transition-colors group"
               title="New conversation"
             >
               <Plus
                 size={18}
-                className="text-gray-500 group-hover:text-blue-500 transition-colors"
+                className="text-ink-muted group-hover:text-secondary transition-colors"
               />
             </button>
           </div>
           <div className="relative">
             <Search
               size={14}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
             />
             <input
               type="text"
               placeholder="Search conversations..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+              className="w-full pl-9 pr-4 py-2 bg-surface-muted border border-line rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm"
             />
           </div>
         </div>
 
         {/* ── Hub Channel — always visible ─────────────────────────────────── */}
-        <div className="flex-shrink-0 px-5 py-4 border-b border-gray-100">
+        <div className="flex-shrink-0 px-5 py-4 border-b border-line">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-semibold text-gray-500 text-xs uppercase tracking-widest">
+            <h3 className="font-semibold text-ink-muted text-xs uppercase tracking-widest">
               Hub Collaboration
             </h3>
-            <MoreVertical size={14} className="text-gray-400" />
+            <MoreVertical size={14} className="text-ink-muted" />
           </div>
           <button
             type="button"
             onClick={() => navigate("/hub-channel")}
             className={`w-full flex items-center gap-3 py-2.5 px-3 rounded-xl text-left transition-all ${
-              isHub ? "bg-blue-50 border border-blue-200" : "hover:bg-gray-50"
+              isHub
+                ? "bg-surface-muted border border-accent"
+                : "hover:bg-surface-muted"
             }`}
           >
-            <div className="flex items-center justify-center w-10 h-10 bg-blue-500 rounded-xl flex-shrink-0">
+            <div className="flex items-center justify-center w-10 h-10 bg-secondary rounded-xl flex-shrink-0">
               <Hash size={18} className="text-white" />
             </div>
             <div className="flex-1 min-w-0">
               <p
-                className={`font-semibold text-sm ${isHub ? "text-blue-700" : "text-gray-800"}`}
+                className={`font-semibold text-sm ${isHub ? "text-primary" : "text-primary"}`}
               >
                 Hub Channel
               </p>
-              <p className="text-xs text-gray-400">General discussions</p>
+              <p className="text-xs text-ink-muted">General discussions</p>
             </div>
             <span className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0" />
           </button>
@@ -392,10 +394,10 @@ const LeftPanel: React.FC<LeftPanelProps> = ({ selectedUserId, onSelect }) => {
 
         {/* ── DM label — always visible ────────────────────────────────────── */}
         <div className="flex-shrink-0 px-5 pt-4 pb-2 flex items-center justify-between">
-          <h3 className="font-semibold text-gray-500 text-xs uppercase tracking-widest">
+          <h3 className="font-semibold text-ink-muted text-xs uppercase tracking-widest">
             Direct Messages
           </h3>
-          <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+          <span className="text-xs text-ink-muted bg-surface-muted px-2 py-0.5 rounded-full">
             {conversations.length}
           </span>
         </div>
@@ -409,7 +411,7 @@ const LeftPanel: React.FC<LeftPanelProps> = ({ selectedUserId, onSelect }) => {
               <Skeleton />
             </>
           ) : filtered.length === 0 ? (
-            <p className="text-center text-sm text-gray-400 py-8 px-4">
+            <p className="text-center text-sm text-ink-muted py-8 px-4">
               {search
                 ? "No conversations match."
                 : "No conversations yet. Click + to start one."}
@@ -428,8 +430,8 @@ const LeftPanel: React.FC<LeftPanelProps> = ({ selectedUserId, onSelect }) => {
                     onClick={() => go(conv.userId, fullName)}
                     className={`flex items-center gap-3 py-2.5 px-3 rounded-xl cursor-pointer transition-all ${
                       isSelected
-                        ? "bg-blue-50 border border-blue-100"
-                        : "hover:bg-gray-50"
+                        ? "bg-surface-muted border border-accent"
+                        : "hover:bg-surface-muted"
                     }`}
                   >
                     <ChatAvatar
@@ -441,20 +443,20 @@ const LeftPanel: React.FC<LeftPanelProps> = ({ selectedUserId, onSelect }) => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-0.5">
                         <span
-                          className={`font-semibold text-sm truncate ${isSelected ? "text-blue-700" : "text-gray-800"}`}
+                          className={`font-semibold text-sm truncate ${isSelected ? "text-primary" : "text-primary"}`}
                         >
                           {fullName}
                         </span>
-                        <span className="text-xs text-gray-400 ml-2 flex-shrink-0">
+                        <span className="text-xs text-ink-muted ml-2 flex-shrink-0">
                           {formatTime(conv.lastMessageTime)}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-500 truncate">
+                      <p className="text-xs text-ink-muted truncate">
                         {lastMsg || "No messages yet"}
                       </p>
                     </div>
                     {conv.unreadCount > 0 && (
-                      <span className="flex-shrink-0 bg-blue-500 text-white text-xs rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 font-medium">
+                      <span className="flex-shrink-0 bg-secondary text-white text-xs rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 font-medium">
                         {conv.unreadCount > 99 ? "99+" : conv.unreadCount}
                       </span>
                     )}
@@ -466,8 +468,8 @@ const LeftPanel: React.FC<LeftPanelProps> = ({ selectedUserId, onSelect }) => {
         </div>
 
         {/* ── Footer ──────────────────────────────────────────────────────── */}
-        <div className="flex-shrink-0 p-4 border-t border-gray-100">
-          <div className="flex items-center gap-2 text-xs text-gray-400">
+        <div className="flex-shrink-0 p-4 border-t border-line">
+          <div className="flex items-center gap-2 text-xs text-ink-muted">
             <span className="w-2 h-2 bg-green-500 rounded-full" />
             <span>Online now</span>
           </div>
