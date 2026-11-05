@@ -16,22 +16,22 @@ const getTypeIcon = (type: string) => {
     case "Video":
       return <Video size={14} className="text-red-400" />;
     case "Book":
-      return <BookOpen size={14} className="text-blue-400" />;
+      return <BookOpen size={14} className="text-secondary" />;
     default:
-      return <FileText size={14} className="text-purple-400" />;
+      return <FileText size={14} className="text-secondary" />;
   }
 };
 
 const getCategoryColor = (category: string): string => {
   switch (category) {
     case "Frontend":
-      return "text-pink-600";
+      return "text-secondary";
     case "Backend":
-      return "text-blue-600";
+      return "text-secondary";
     case "Cybersecurity":
-      return "text-purple-600";
+      return "text-secondary";
     default:
-      return "text-gray-500";
+      return "text-ink-muted";
   }
 };
 
@@ -73,16 +73,16 @@ const ResourceList: React.FC<Props> = ({ title, onSelect }) => {
                   key={n}
                   className="flex items-center gap-3 border-b pb-2 animate-pulse"
                 >
-                  <div className="w-8 h-8 bg-gray-200 rounded-lg shrink-0" />
-                  <div className="flex-1 h-4 bg-gray-200 rounded" />
-                  <div className="w-10 h-4 bg-gray-100 rounded" />
+                  <div className="w-8 h-8 bg-line rounded-lg shrink-0" />
+                  <div className="flex-1 h-4 bg-line rounded" />
+                  <div className="w-10 h-4 bg-surface-muted rounded" />
                 </li>
               ))}
             </ul>
           ))}
         </div>
       ) : resources.length === 0 ? (
-        <p className="text-center text-gray-400 text-sm py-8">
+        <p className="text-center text-ink-muted text-sm py-8">
           No resources available yet.
         </p>
       ) : (
@@ -95,7 +95,7 @@ const ResourceList: React.FC<Props> = ({ title, onSelect }) => {
                   onClick={() => onSelect?.(res)}
                   className={`flex items-center gap-3 border-b last:border-b-0 pb-3 group ${
                     onSelect
-                      ? "cursor-pointer hover:bg-gray-50 rounded-lg px-2 -mx-2 transition"
+                      ? "cursor-pointer hover:bg-surface-muted rounded-lg px-2 -mx-2 transition"
                       : ""
                   }`}
                 >
@@ -104,17 +104,17 @@ const ResourceList: React.FC<Props> = ({ title, onSelect }) => {
                     <img
                       src={res.imageUrl}
                       alt={res.title}
-                      className="w-8 h-8 rounded-lg object-cover shrink-0 border border-gray-100"
+                      className="w-8 h-8 rounded-lg object-cover shrink-0 border border-line"
                     />
                   ) : (
-                    <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-lg bg-surface-muted flex items-center justify-center shrink-0">
                       {getTypeIcon(res.type)}
                     </div>
                   )}
 
                   {/* Title & category */}
                   <div className="flex-1 min-w-0">
-                    <div className="text-sm font-medium text-gray-800 truncate group-hover:text-[#1876C6] transition">
+                    <div className="text-sm font-medium text-primary truncate group-hover:text-secondary transition">
                       {res.title}
                     </div>
                     <div
@@ -125,7 +125,7 @@ const ResourceList: React.FC<Props> = ({ title, onSelect }) => {
                   </div>
 
                   {/* Upvotes */}
-                  <div className="flex items-center gap-1 text-gray-400 text-xs shrink-0">
+                  <div className="flex items-center gap-1 text-ink-muted text-xs shrink-0">
                     <ThumbsUp size={12} />
                     <span>{res.upvotes}</span>
                   </div>
