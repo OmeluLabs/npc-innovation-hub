@@ -55,18 +55,18 @@ const TaskDetails: React.FC = () => {
     return (
       <div className="max-w-3xl mx-auto">
         <div className="flex items-center gap-3 mb-6 animate-pulse">
-          <div className="w-8 h-8 bg-gray-200 rounded-full" />
-          <div className="h-5 bg-gray-200 rounded w-32" />
+          <div className="w-8 h-8 bg-line rounded-full" />
+          <div className="h-5 bg-line rounded w-32" />
         </div>
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-7 flex flex-col gap-5 animate-pulse">
+        <div className="bg-white rounded-2xl shadow-sm border border-line p-7 flex flex-col gap-5 animate-pulse">
           <div className="flex gap-2">
-            <div className="h-6 w-24 bg-gray-200 rounded-full" />
-            <div className="h-6 w-16 bg-gray-100 rounded-full" />
+            <div className="h-6 w-24 bg-line rounded-full" />
+            <div className="h-6 w-16 bg-surface-muted rounded-full" />
           </div>
-          <div className="h-7 bg-gray-200 rounded w-2/3" />
-          <div className="h-4 bg-gray-100 rounded w-full" />
-          <div className="h-4 bg-gray-100 rounded w-5/6" />
-          <div className="h-4 bg-gray-100 rounded w-4/5" />
+          <div className="h-7 bg-line rounded w-2/3" />
+          <div className="h-4 bg-surface-muted rounded w-full" />
+          <div className="h-4 bg-surface-muted rounded w-5/6" />
+          <div className="h-4 bg-surface-muted rounded w-4/5" />
         </div>
       </div>
     );
@@ -75,11 +75,11 @@ const TaskDetails: React.FC = () => {
   // ── Error / Not found ──
   if (error || !selectedTask) {
     return (
-      <div className="flex flex-col items-center justify-center text-center px-4 py-12 sm:py-20 text-gray-500 gap-4">
+      <div className="flex flex-col items-center justify-center text-center px-4 py-12 sm:py-20 text-ink-muted gap-4">
         <p className="text-lg font-semibold">{error || "Task not found."}</p>
         <button
           onClick={() => navigate("/dashboard/tasks")}
-          className="flex items-center gap-2 text-blue-600 hover:underline text-sm"
+          className="flex items-center gap-2 text-secondary hover:underline text-sm"
         >
           <ArrowLeft size={15} />
           Back to My Tasks
@@ -97,7 +97,7 @@ const TaskDetails: React.FC = () => {
       {/* Back navigation */}
       <button
         onClick={() => navigate("/dashboard/tasks")}
-        className="flex items-center gap-2 text-gray-500 hover:text-gray-800
+        className="flex items-center gap-2 text-ink-muted hover:text-primary
                    text-sm font-medium mb-6 transition-colors"
       >
         <ArrowLeft size={16} />
@@ -105,7 +105,7 @@ const TaskDetails: React.FC = () => {
       </button>
 
       {/* Main card */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-sm border border-line overflow-hidden">
         {/* Overdue banner */}
         {overdue && (
           <div
@@ -136,16 +136,16 @@ const TaskDetails: React.FC = () => {
           </div>
 
           {/* Title */}
-          <h1 className="text-xl font-bold text-gray-900 leading-snug">
+          <h1 className="text-xl font-bold text-primary leading-snug">
             {task.title}
           </h1>
 
           {/* Description */}
           <div>
-            <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
+            <h3 className="text-xs font-semibold text-ink-muted uppercase tracking-wide mb-2">
               Description
             </h3>
-            <p className="text-gray-700 text-sm leading-relaxed bg-gray-50 rounded-xl p-4 border border-gray-100">
+            <p className="text-primary text-sm leading-relaxed bg-surface-muted rounded-xl p-4 border border-line">
               {task.description}
             </p>
           </div>
@@ -153,30 +153,30 @@ const TaskDetails: React.FC = () => {
           {/* Meta grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Due date */}
-            <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-              <div className="flex items-center gap-2 text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">
+            <div className="bg-surface-muted rounded-xl p-4 border border-line">
+              <div className="flex items-center gap-2 text-xs font-semibold text-ink-muted uppercase tracking-wide mb-1.5">
                 <Calendar size={13} />
                 Due Date
               </div>
               <div
-                className={`text-sm font-semibold ${overdue ? "text-red-600" : "text-gray-800"}`}
+                className={`text-sm font-semibold ${overdue ? "text-red-600" : "text-primary"}`}
               >
                 {formatDate(task.dueDate)}
               </div>
               <div
-                className={`text-xs mt-0.5 ${overdue ? "text-red-400" : "text-gray-400"}`}
+                className={`text-xs mt-0.5 ${overdue ? "text-red-400" : "text-ink-muted"}`}
               >
                 {dueLabel}
               </div>
             </div>
 
             {/* Created at */}
-            <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-              <div className="flex items-center gap-2 text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">
+            <div className="bg-surface-muted rounded-xl p-4 border border-line">
+              <div className="flex items-center gap-2 text-xs font-semibold text-ink-muted uppercase tracking-wide mb-1.5">
                 <Clock size={13} />
                 Created
               </div>
-              <div className="text-sm font-semibold text-gray-800">
+              <div className="text-sm font-semibold text-primary">
                 {formatDateShort(task.createdAt)}
               </div>
             </div>
@@ -185,15 +185,15 @@ const TaskDetails: React.FC = () => {
           {/* GitHub link */}
           {task.githubIssueLink && (
             <div>
-              <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
+              <h3 className="text-xs font-semibold text-ink-muted uppercase tracking-wide mb-2">
                 GitHub Issue
               </h3>
               <a
                 href={task.githubIssueLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-blue-600
-                           hover:text-blue-800 font-medium transition-colors"
+                className="inline-flex items-center gap-2 text-sm text-secondary
+                           hover:text-primary font-medium transition-colors"
               >
                 <ExternalLink size={14} />
                 {task.githubIssueLink}
@@ -202,28 +202,28 @@ const TaskDetails: React.FC = () => {
           )}
 
           {/* People */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-gray-100">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-line">
             {/* Creator */}
             {task.creator && (
               <div>
-                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
+                <div className="text-xs font-semibold text-ink-muted uppercase tracking-wide mb-2">
                   Assigned By
                 </div>
                 <div className="flex items-center gap-3">
                   <div
-                    className="w-9 h-9 rounded-full bg-blue-100 text-blue-700
+                    className="w-9 h-9 rounded-full bg-surface-muted text-primary
                                   flex items-center justify-center text-sm font-bold shrink-0"
                   >
                     {getUserInitials(task.creator)}
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-gray-800">
+                    <div className="text-sm font-semibold text-primary">
                       {getUserFullName(task.creator)}
                     </div>
-                    <div className="text-xs text-gray-400">
+                    <div className="text-xs text-ink-muted">
                       {task.creator.email}
                     </div>
-                    <div className="text-xs text-blue-600 font-medium">
+                    <div className="text-xs text-secondary font-medium">
                       {task.creator.role}
                     </div>
                   </div>
@@ -234,7 +234,7 @@ const TaskDetails: React.FC = () => {
             {/* Assignee */}
             {task.assignee && (
               <div>
-                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
+                <div className="text-xs font-semibold text-ink-muted uppercase tracking-wide mb-2">
                   Assigned To
                 </div>
                 <div className="flex items-center gap-3">
@@ -245,10 +245,10 @@ const TaskDetails: React.FC = () => {
                     {getUserInitials(task.assignee)}
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-gray-800">
+                    <div className="text-sm font-semibold text-primary">
                       {getUserFullName(task.assignee)}
                     </div>
-                    <div className="text-xs text-gray-400">
+                    <div className="text-xs text-ink-muted">
                       {task.assignee.email}
                     </div>
                     <div className="text-xs text-green-600 font-medium">
