@@ -152,8 +152,8 @@ export default function ProfileSettings() {
       <AdminLayout>
         <div className="flex items-center justify-center py-24">
           <div className="text-center">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#002B56] mb-4"></div>
-            <p className="text-gray-600">Loading...</p>
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4"></div>
+            <p className="text-ink-muted">Loading...</p>
           </div>
         </div>
       </AdminLayout>
@@ -167,10 +167,10 @@ export default function ProfileSettings() {
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-page-title font-bold text-gray-900">
+          <h1 className="text-page-title font-bold text-primary">
             Profile Settings
           </h1>
-          <p className="text-gray-600 mt-1">
+          <p className="text-ink-muted mt-1">
             Manage your account information and security
           </p>
         </div>
@@ -178,11 +178,11 @@ export default function ProfileSettings() {
         {/* Profile Information Form */}
         <div className="bg-white rounded-xl shadow-lg p-8">
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-              <UserIcon className="text-[#002B56]" size={28} />
+            <h2 className="text-2xl font-bold text-primary flex items-center gap-2">
+              <UserIcon className="text-primary" size={28} />
               Personal Information
             </h2>
-            <p className="text-gray-600 mt-1">
+            <p className="text-ink-muted mt-1">
               Update your personal details and profile picture
             </p>
           </div>
@@ -191,19 +191,19 @@ export default function ProfileSettings() {
             {/* Avatar Preview + upload - a real file now, not a URL to
                   paste. Same camera-badge pattern as MemberForm.tsx's own
                   avatar picker, for consistency across the app. */}
-            <div className="flex items-center gap-6 pb-6 border-b border-gray-200">
+            <div className="flex items-center gap-6 pb-6 border-b border-line">
               <div className="relative">
                 {imagePreview ? (
                   <img
                     src={imagePreview}
                     alt="Profile"
-                    className="w-24 h-24 rounded-full object-cover ring-4 ring-gray-100"
+                    className="w-24 h-24 rounded-full object-cover ring-4 ring-line"
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                     }}
                   />
                 ) : (
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#002B56] to-[#003366] flex items-center justify-center ring-4 ring-gray-100">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center ring-4 ring-line">
                     <span className="text-3xl font-bold text-white">
                       {initials}
                     </span>
@@ -213,7 +213,7 @@ export default function ProfileSettings() {
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
                   aria-label="Change profile photo"
-                  className="absolute -bottom-1 -right-1 w-9 h-9 bg-[#002B56] rounded-full flex items-center justify-center text-white hover:bg-[#003366] transition-colors shadow ring-2 ring-white"
+                  className="absolute -bottom-1 -right-1 w-9 h-9 bg-primary rounded-full flex items-center justify-center text-white hover:bg-secondary transition-colors shadow ring-2 ring-white"
                 >
                   <Camera size={16} />
                 </button>
@@ -226,13 +226,13 @@ export default function ProfileSettings() {
                 />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-gray-900 mb-1">
+                <h3 className="font-semibold text-primary mb-1">
                   Profile Picture
                 </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-ink-muted">
                   Click the camera icon to upload a photo from your device
                 </p>
-                <p className="text-xs text-gray-500 mt-0.5">
+                <p className="text-xs text-ink-muted mt-0.5">
                   JPG, PNG, GIF or WEBP
                 </p>
               </div>
@@ -244,7 +244,7 @@ export default function ProfileSettings() {
               <div>
                 <label
                   htmlFor="firstName"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-primary mb-2"
                 >
                   First Name <span className="text-red-500">*</span>
                 </label>
@@ -257,7 +257,7 @@ export default function ProfileSettings() {
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
                     errors.firstName
                       ? "border-red-300 focus:ring-red-500"
-                      : "border-gray-300 focus:ring-[#002B56]"
+                      : "border-line focus:ring-primary"
                   }`}
                   placeholder="Enter first name"
                 />
@@ -272,7 +272,7 @@ export default function ProfileSettings() {
               <div>
                 <label
                   htmlFor="lastName"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-primary mb-2"
                 >
                   Last Name <span className="text-red-500">*</span>
                 </label>
@@ -285,7 +285,7 @@ export default function ProfileSettings() {
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
                     errors.lastName
                       ? "border-red-300 focus:ring-red-500"
-                      : "border-gray-300 focus:ring-[#002B56]"
+                      : "border-line focus:ring-primary"
                   }`}
                   placeholder="Enter last name"
                 />
@@ -296,7 +296,7 @@ export default function ProfileSettings() {
 
               {/* Email (Read-only) */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-primary mb-2">
                   Email Address
                 </label>
                 <div className="relative">
@@ -304,14 +304,14 @@ export default function ProfileSettings() {
                     type="email"
                     value={contextUser.email}
                     disabled
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-500 cursor-not-allowed"
+                    className="w-full px-4 py-3 border border-line rounded-lg bg-surface-muted text-ink-muted cursor-not-allowed"
                   />
                   <Mail
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-muted"
                     size={20}
                   />
                 </div>
-                <p className="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-ink-muted">
                   Email cannot be changed
                 </p>
               </div>
@@ -320,7 +320,7 @@ export default function ProfileSettings() {
               <div>
                 <label
                   htmlFor="phone"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-primary mb-2"
                 >
                   Phone Number
                 </label>
@@ -333,7 +333,7 @@ export default function ProfileSettings() {
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
                     errors.phone
                       ? "border-red-300 focus:ring-red-500"
-                      : "border-gray-300 focus:ring-[#002B56]"
+                      : "border-line focus:ring-primary"
                   }`}
                   placeholder="+1234567890"
                 />
@@ -346,7 +346,7 @@ export default function ProfileSettings() {
               <div>
                 <label
                   htmlFor="gender"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-primary mb-2"
                 >
                   Gender
                 </label>
@@ -355,7 +355,7 @@ export default function ProfileSettings() {
                   name="gender"
                   value={formData.gender}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002B56] transition-colors"
+                  className="w-full px-4 py-3 border border-line rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
                 >
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -365,14 +365,14 @@ export default function ProfileSettings() {
             </div>
 
             {/* Action Buttons */}
-            <div className="dialog-actions flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 pt-4 border-t border-gray-200">
+            <div className="dialog-actions flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 pt-4 border-t border-line">
               <button
                 type="submit"
                 disabled={isSaving}
                 className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white transition-colors ${
                   isSaving
-                    ? "bg-[#002B56]/50 cursor-not-allowed"
-                    : "bg-[#002B56] hover:bg-[#003366]"
+                    ? "bg-primary/50 cursor-not-allowed"
+                    : "bg-primary hover:bg-secondary"
                 }`}
               >
                 <Save size={20} />
@@ -382,7 +382,7 @@ export default function ProfileSettings() {
                 type="button"
                 onClick={handleCancel}
                 disabled={isSaving}
-                className="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-6 py-3 border border-line rounded-lg font-semibold text-primary hover:bg-surface-muted transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <X size={20} />
                 Cancel
