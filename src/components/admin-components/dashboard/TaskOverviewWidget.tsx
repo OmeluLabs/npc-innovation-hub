@@ -13,11 +13,6 @@
 // }
 
 // const STATUS_CONFIG = {
-//   completed: { label: "Completed", color: "#10b981" },
-//   in_progress: { label: "In Progress", color: "#6366f1" },
-//   pending: { label: "Pending", color: "#f59e0b" },
-//   overdue: { label: "Overdue", color: "#ef4444" },
-//   cancelled: { label: "Cancelled", color: "#9ca3af" },
 // };
 
 // interface TooltipPayload {
@@ -36,25 +31,25 @@
 //   if (!active || !payload?.length) return null;
 //   const item = payload[0];
 //   return (
-//     <div className="bg-white px-3 py-2 rounded-xl shadow-lg border border-gray-100 text-sm">
-//       <span className="font-semibold text-gray-800">{item.name}</span>
-//       <span className="ml-2 text-gray-500">{item.value} tasks</span>
+//     <div className="bg-white px-3 py-2 rounded-xl shadow-lg border border-line text-sm">
+//       <span className="font-semibold text-primary">{item.name}</span>
+//       <span className="ml-2 text-ink-muted">{item.value} tasks</span>
 //     </div>
 //   );
 // };
 
 // const SkeletonWidget: React.FC = () => (
-//   <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm animate-pulse">
+//   <div className="bg-white rounded-2xl p-6 border border-line shadow-sm animate-pulse">
 //     <div className="flex justify-between items-center mb-4">
-//       <div className="w-32 h-5 bg-gray-200 rounded" />
-//       <div className="w-20 h-5 bg-gray-200 rounded-full" />
+//       <div className="w-32 h-5 bg-line rounded" />
+//       <div className="w-20 h-5 bg-line rounded-full" />
 //     </div>
-//     <div className="w-40 h-40 bg-gray-200 rounded-full mx-auto my-6" />
+//     <div className="w-40 h-40 bg-line rounded-full mx-auto my-6" />
 //     <div className="space-y-2">
 //       {[1, 2, 3].map((i) => (
 //         <div key={i} className="flex justify-between">
-//           <div className="w-24 h-3 bg-gray-200 rounded" />
-//           <div className="w-8 h-3 bg-gray-200 rounded" />
+//           <div className="w-24 h-3 bg-line rounded" />
+//           <div className="w-8 h-3 bg-line rounded" />
 //         </div>
 //       ))}
 //     </div>
@@ -69,8 +64,8 @@
 
 //   if (!analytics) {
 //     return (
-//       <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex items-center justify-center h-72">
-//         <p className="text-gray-400 text-sm">No task data available</p>
+//       <div className="bg-white rounded-2xl p-6 border border-line shadow-sm flex items-center justify-center h-72">
+//         <p className="text-ink-muted text-sm">No task data available</p>
 //       </div>
 //     );
 //   }
@@ -87,12 +82,12 @@
 //   const hasData = chartData.length > 0;
 
 //   return (
-//     <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200">
+//     <div className="bg-white rounded-2xl p-6 border border-line shadow-sm hover:shadow-md transition-shadow duration-200">
 //       {/* Header */}
 //       <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
 //         <div>
-//           <h3 className="font-semibold text-gray-900 text-sm">Task Overview</h3>
-//           <p className="text-xs text-gray-400 mt-0.5">
+//           <h3 className="font-semibold text-primary text-sm">Task Overview</h3>
+//           <p className="text-xs text-ink-muted mt-0.5">
 //             {analytics.total} total tasks
 //           </p>
 //         </div>
@@ -107,12 +102,12 @@
 //       {/* Completion Rate */}
 //       <div className="mb-4">
 //         <div className="flex justify-between items-center mb-1.5">
-//           <span className="text-xs text-gray-500">Completion Rate</span>
+//           <span className="text-xs text-ink-muted">Completion Rate</span>
 //           <span className="text-xs font-bold text-emerald-600">
 //             {analytics.completionRate}%
 //           </span>
 //         </div>
-//         <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+//         <div className="w-full h-2 bg-surface-muted rounded-full overflow-hidden">
 //           <div
 //             className="h-full bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full transition-all duration-700"
 //             style={{ width: `${analytics.completionRate}%` }}
@@ -142,7 +137,7 @@
 //         </ResponsiveContainer>
 //       ) : (
 //         <div className="h-[180px] flex items-center justify-center">
-//           <p className="text-gray-400 text-xs">No task data to display</p>
+//           <p className="text-ink-muted text-xs">No task data to display</p>
 //         </div>
 //       )}
 
@@ -159,9 +154,9 @@
 //                   className="w-2 h-2 rounded-full"
 //                   style={{ backgroundColor: config.color }}
 //                 />
-//                 <span className="text-xs text-gray-500">{config.label}</span>
+//                 <span className="text-xs text-ink-muted">{config.label}</span>
 //               </div>
-//               <span className="text-xs font-semibold text-gray-700">
+//               <span className="text-xs font-semibold text-primary">
 //                 {count}
 //               </span>
 //             </div>
@@ -193,9 +188,9 @@ const STATUS_CONFIG: Record<
   "pending" | "in-progress" | "completed",
   { label: string; color: string }
 > = {
-  completed: { label: "Completed", color: "#10b981" },
-  "in-progress": { label: "In Progress", color: "#14375F" },
-  pending: { label: "Pending", color: "#f59e0b" },
+  completed: { label: "Completed", color: "rgb(var(--color-success))" },
+  "in-progress": { label: "In Progress", color: "rgb(var(--navy-700))" },
+  pending: { label: "Pending", color: "rgb(var(--color-warning))" },
 };
 
 interface TooltipPayload {
