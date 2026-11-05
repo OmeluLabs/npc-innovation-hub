@@ -49,17 +49,17 @@ const CategorySection: React.FC = () => (
       <div key={cat.title} className="mb-8">
         {/* Category header with "View All" link */}
         <div className="flex items-center my-6">
-          <div className="flex-1 border-t border-gray-200" />
+          <div className="flex-1 border-t border-line" />
           <div className="flex items-center gap-3 px-4">
-            <h3 className="text-lg font-semibold text-gray-800">{cat.title}</h3>
+            <h3 className="text-lg font-semibold text-primary">{cat.title}</h3>
             <Link
               to={`/resources-room/all-resources?category=${encodeURIComponent(cat.apiCategory)}`}
-              className="text-xs text-[#1876C6] hover:underline font-medium"
+              className="text-xs text-secondary hover:underline font-medium"
             >
               View all →
             </Link>
           </div>
-          <div className="flex-1 border-t border-gray-200" />
+          <div className="flex-1 border-t border-line" />
         </div>
 
         {/* Subcategory pills — keep existing routing pattern */}
@@ -68,7 +68,7 @@ const CategorySection: React.FC = () => (
             <Link
               key={sub}
               to={`/resources-room/categories/${encodeURIComponent(sub)}`}
-              className="px-5 py-2 bg-white border border-gray-200 rounded-full text-[#1876C6] hover:bg-blue-50 hover:border-blue-300 font-medium shadow-sm transition"
+              className="px-5 py-2 bg-white border border-line rounded-full text-secondary hover:bg-surface-muted hover:border-accent font-medium shadow-sm transition"
             >
               {sub}
             </Link>
