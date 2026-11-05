@@ -2,7 +2,7 @@
 
 const LikeIcon = () => (
   <svg
-    className="w-5 h-5 text-pink-500"
+    className="w-5 h-5 text-secondary"
     fill="currentColor"
     viewBox="0 0 20 20"
   >
