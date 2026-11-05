@@ -196,8 +196,8 @@
 //         {[...Array(5)].map((_, i) => (
 //           <div key={i} className="bg-white rounded-2xl p-6 animate-pulse">
 //             <div className="space-y-3">
-//               <div className="h-4 bg-gray-200 rounded w-3/4" />
-//               <div className="h-3 bg-gray-200 rounded w-1/2" />
+//               <div className="h-4 bg-line rounded w-3/4" />
+//               <div className="h-3 bg-line rounded w-1/2" />
 //             </div>
 //           </div>
 //         ))}
@@ -231,7 +231,7 @@
 //       {!loading && filteredTasks.length === 0 && (
 //         <div className="bg-white rounded-2xl px-4 py-10 sm:p-12 text-center">
 //           <svg
-//             className="mx-auto h-16 w-16 text-gray-400 mb-4"
+//             className="mx-auto h-16 w-16 text-ink-muted mb-4"
 //             fill="none"
 //             viewBox="0 0 24 24"
 //             stroke="currentColor"
@@ -243,10 +243,10 @@
 //               d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
 //             />
 //           </svg>
-//           <h3 className="text-lg font-medium text-gray-900 mb-2">
+//           <h3 className="text-lg font-medium text-primary mb-2">
 //             No tasks found
 //           </h3>
-//           <p className="text-gray-600">
+//           <p className="text-ink-muted">
 //             {searchQuery ||
 //             statusFilter !== "all" ||
 //             priorityFilter !== "all" ||
@@ -259,11 +259,11 @@
 
 //       {/* Tasks Table */}
 //       {filteredTasks.length > 0 && (
-//         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+//         <div className="bg-white rounded-2xl shadow-sm border border-line overflow-hidden">
 //           <div className="overflow-x-auto">
 //             <table className="w-full">
 //               <thead>
-//                 <tr className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+//                 <tr className="bg-gradient-to-r from-secondary to-secondary text-white">
 //                   <th className="px-6 py-4 text-left text-sm font-semibold">
 //                     Task
 //                   </th>
@@ -287,7 +287,7 @@
 //                   </th>
 //                 </tr>
 //               </thead>
-//               <tbody className="divide-y divide-gray-100">
+//               <tbody className="divide-y divide-line">
 //                 {filteredTasks.map((task) => {
 //                   const isOverdue = isTaskOverdue(task.dueDate, task.status);
 //                   const daysInfo = getDaysUntilDue(task.dueDate);
@@ -295,16 +295,16 @@
 //                   return (
 //                     <tr
 //                       key={task.id}
-//                       className="hover:bg-gray-50 transition-colors cursor-pointer"
+//                       className="hover:bg-surface-muted transition-colors cursor-pointer"
 //                       onClick={() => handleView(task)}
 //                     >
 //                       {/* Task Title */}
 //                       <td className="px-6 py-4">
 //                         <div className="max-w-md">
-//                           <p className="font-semibold text-gray-900 truncate">
+//                           <p className="font-semibold text-primary truncate">
 //                             {task.title}
 //                           </p>
-//                           <p className="text-sm text-gray-500 truncate">
+//                           <p className="text-sm text-ink-muted truncate">
 //                             {task.description}
 //                           </p>
 //                         </div>
@@ -329,7 +329,7 @@
 //                       <td className="px-6 py-4">
 //                         <div
 //                           className={
-//                             isOverdue ? "text-red-600" : "text-gray-900"
+//                             isOverdue ? "text-red-600" : "text-primary"
 //                           }
 //                         >
 //                           <p className="text-sm font-medium">
@@ -343,7 +343,7 @@
 //                             )}
 //                           </p>
 //                           <p
-//                             className={`text-xs ${isOverdue ? "font-semibold" : "text-gray-500"}`}
+//                             className={`text-xs ${isOverdue ? "font-semibold" : "text-ink-muted"}`}
 //                           >
 //                             {daysInfo}
 //                           </p>
@@ -358,7 +358,7 @@
 //                             target="_blank"
 //                             rel="noopener noreferrer"
 //                             onClick={(e) => e.stopPropagation()}
-//                             className="inline-flex items-center text-indigo-600 hover:text-indigo-700"
+//                             className="inline-flex items-center text-secondary hover:text-primary"
 //                             title="View GitHub Issue"
 //                           >
 //                             <svg
@@ -370,7 +370,7 @@
 //                             </svg>
 //                           </a>
 //                         ) : (
-//                           <span className="text-gray-300">-</span>
+//                           <span className="text-ink-muted">-</span>
 //                         )}
 //                       </td>
 
@@ -381,10 +381,10 @@
 //                       >
 //                         <button
 //                           onClick={(e) => toggleActionMenu(task.id, e)}
-//                           className="p-2 hover:bg-gray-100 rounded-lg transition-colors mx-auto block"
+//                           className="p-2 hover:bg-surface-muted rounded-lg transition-colors mx-auto block"
 //                         >
 //                           <svg
-//                             className="w-5 h-5 text-gray-600"
+//                             className="w-5 h-5 text-ink-muted"
 //                             fill="currentColor"
 //                             viewBox="0 0 20 20"
 //                           >
@@ -396,11 +396,11 @@
 //                         {actionMenuId === task.id && (
 //                           <div
 //                             ref={menuRef}
-//                             className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-1 min-w-[160px] z-10"
+//                             className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-line py-1 min-w-[160px] z-10"
 //                           >
 //                             <button
 //                               onClick={() => handleView(task)}
-//                               className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 flex items-center gap-2 text-gray-700"
+//                               className="w-full px-4 py-2 text-left text-sm hover:bg-surface-muted flex items-center gap-2 text-primary"
 //                             >
 //                               <svg
 //                                 className="w-4 h-4"
@@ -425,7 +425,7 @@
 //                             </button>
 //                             <button
 //                               onClick={() => handleEdit(task)}
-//                               className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 flex items-center gap-2 text-gray-700"
+//                               className="w-full px-4 py-2 text-left text-sm hover:bg-surface-muted flex items-center gap-2 text-primary"
 //                             >
 //                               <svg
 //                                 className="w-4 h-4"
@@ -473,8 +473,8 @@
 //           </div>
 
 //           {/* Table Footer */}
-//           <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
-//             <p className="text-sm text-gray-600">
+//           <div className="px-6 py-4 bg-surface-muted border-t border-line">
+//             <p className="text-sm text-ink-muted">
 //               Showing{" "}
 //               <span className="font-semibold">{filteredTasks.length}</span> of{" "}
 //               <span className="font-semibold">{tasks.length}</span> tasks
