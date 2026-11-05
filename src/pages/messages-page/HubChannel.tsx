@@ -87,13 +87,13 @@ export const HubChannel: React.FC = () => {
   const bubbles: BubbleMessage[] = messages.map((m) => toBubble(m, getReplyTo));
 
   const hubIcon = (
-    <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
+    <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center flex-shrink-0">
       <Hash size={20} className="text-white" />
     </div>
   );
 
   const headerRight = (
-    <div className="flex items-center gap-1.5 text-xs text-gray-500 bg-gray-50 px-2.5 py-1.5 rounded-lg">
+    <div className="flex items-center gap-1.5 text-xs text-ink-muted bg-surface-muted px-2.5 py-1.5 rounded-lg">
       <Users size={12} />
       <span>{participantCount} active</span>
     </div>
@@ -145,7 +145,7 @@ export const HubChannel: React.FC = () => {
           messagesEndRef={messagesEndRef}
           emptyTitle="No messages yet in #hub-channel"
           emptySubtitle="Be the first to say something!"
-          emptyIcon={<Hash size={40} className="text-gray-200" />}
+          emptyIcon={<Hash size={40} className="text-ink-muted" />}
         />
       </div>
     </div>
