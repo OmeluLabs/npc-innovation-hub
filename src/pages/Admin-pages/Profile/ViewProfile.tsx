@@ -59,8 +59,8 @@ export default function ViewProfile() {
     content = (
       <div className="flex items-center justify-center py-24">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#002B56] mb-4"></div>
-          <p className="text-gray-600">Loading profile...</p>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4"></div>
+          <p className="text-ink-muted">Loading profile...</p>
         </div>
       </div>
     );
@@ -72,11 +72,11 @@ export default function ViewProfile() {
             className="mx-auto mb-4 h-12 w-12 text-red-500"
             aria-hidden="true"
           />
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Error</h2>
-          <p className="text-gray-600 mb-4">{error}</p>
+          <h2 className="text-2xl font-bold text-primary mb-2">Error</h2>
+          <p className="text-ink-muted mb-4">{error}</p>
           <button
             onClick={fetchProfile}
-            className="px-6 py-2 bg-[#002B56] text-white rounded-lg hover:bg-[#003366] transition-colors"
+            className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition-colors"
           >
             Try Again
           </button>
@@ -95,14 +95,14 @@ export default function ViewProfile() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-900">Profile</h1>
-          <p className="text-gray-600 mt-1">View your account information</p>
+          <h1 className="text-3xl font-bold text-primary">Profile</h1>
+          <p className="text-ink-muted mt-1">View your account information</p>
         </div>
 
         {/* Profile Card */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           {/* Header Section with Avatar */}
-          <div className="bg-gradient-to-r from-[#002B56] to-[#003366] px-8 py-12 relative">
+          <div className="bg-gradient-to-r from-primary to-secondary px-8 py-12 relative">
             <div className="flex items-center gap-6">
               {/* Avatar */}
               <div className="relative">
@@ -114,14 +114,14 @@ export default function ViewProfile() {
                   />
                 ) : (
                   <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center ring-4 ring-white shadow-xl">
-                    <span className="text-4xl font-bold text-[#002B56]">
+                    <span className="text-4xl font-bold text-primary">
                       {initials}
                     </span>
                   </div>
                 )}
                 <div
                   className={`absolute bottom-2 right-2 w-6 h-6 rounded-full border-4 border-white ${
-                    user.isActive ? "bg-green-500" : "bg-gray-400"
+                    user.isActive ? "bg-green-500" : "bg-ink-muted"
                   }`}
                 />
               </div>
@@ -152,66 +152,64 @@ export default function ViewProfile() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Email */}
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-500">
-                  <Mail size={18} className="text-gray-400" />
+                <label className="flex items-center gap-2 text-sm font-medium text-ink-muted">
+                  <Mail size={18} className="text-ink-muted" />
                   Email Address
                 </label>
-                <p className="text-lg text-gray-900 font-medium">
-                  {user.email}
-                </p>
+                <p className="text-lg text-primary font-medium">{user.email}</p>
               </div>
 
               {/* Phone */}
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-500">
-                  <Phone size={18} className="text-gray-400" />
+                <label className="flex items-center gap-2 text-sm font-medium text-ink-muted">
+                  <Phone size={18} className="text-ink-muted" />
                   Phone Number
                 </label>
-                <p className="text-lg text-gray-900 font-medium">
+                <p className="text-lg text-primary font-medium">
                   {user.phone || "Not provided"}
                 </p>
               </div>
 
               {/* First Name */}
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-500">
-                  <UserIcon size={18} className="text-gray-400" />
+                <label className="flex items-center gap-2 text-sm font-medium text-ink-muted">
+                  <UserIcon size={18} className="text-ink-muted" />
                   First Name
                 </label>
-                <p className="text-lg text-gray-900 font-medium">
+                <p className="text-lg text-primary font-medium">
                   {user.firstName}
                 </p>
               </div>
 
               {/* Last Name */}
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-500">
-                  <UserIcon size={18} className="text-gray-400" />
+                <label className="flex items-center gap-2 text-sm font-medium text-ink-muted">
+                  <UserIcon size={18} className="text-ink-muted" />
                   Last Name
                 </label>
-                <p className="text-lg text-gray-900 font-medium">
+                <p className="text-lg text-primary font-medium">
                   {user.lastName}
                 </p>
               </div>
 
               {/* Gender */}
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-500">
-                  <Users size={18} className="text-gray-400" />
+                <label className="flex items-center gap-2 text-sm font-medium text-ink-muted">
+                  <Users size={18} className="text-ink-muted" />
                   Gender
                 </label>
-                <p className="text-lg text-gray-900 font-medium capitalize">
+                <p className="text-lg text-primary font-medium capitalize">
                   {user.gender}
                 </p>
               </div>
 
               {/* Account Created */}
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-500">
-                  <Calendar size={18} className="text-gray-400" />
+                <label className="flex items-center gap-2 text-sm font-medium text-ink-muted">
+                  <Calendar size={18} className="text-ink-muted" />
                   Account Created
                 </label>
-                <p className="text-lg text-gray-900 font-medium">
+                <p className="text-lg text-primary font-medium">
                   {formatUserDate(user.createdAt)}
                 </p>
               </div>
@@ -221,13 +219,13 @@ export default function ViewProfile() {
           {/* Footer. flex-col below sm - "Last updated: <date>" plus the
               button had nowhere near enough room at 320-390px, especially
               stacked under this card's own unconditional px-8. */}
-          <div className="px-4 sm:px-8 py-4 bg-gray-50 border-t border-gray-200 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-            <p className="text-sm text-gray-500">
+          <div className="px-4 sm:px-8 py-4 bg-surface-muted border-t border-line flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+            <p className="text-sm text-ink-muted">
               Last updated: {formatUserDate(user.updatedAt)}
             </p>
             <Link
               to="/admin/profile/settings"
-              className="px-6 py-2 bg-[#002B56] text-white rounded-lg hover:bg-[#003366] transition-colors font-medium text-center"
+              className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition-colors font-medium text-center"
             >
               Edit Profile
             </Link>
