@@ -8,11 +8,11 @@ interface DateSeparatorProps {
 
 const DateSeparator: React.FC<DateSeparatorProps> = ({ label }) => (
   <div className="flex items-center gap-3 my-4 px-2">
-    <div className="flex-1 h-px bg-gray-200" />
-    <span className="text-xs font-medium text-gray-400 bg-white px-2 py-0.5 rounded-full border border-gray-200 whitespace-nowrap">
+    <div className="flex-1 h-px bg-line" />
+    <span className="text-xs font-medium text-ink-muted bg-white px-2 py-0.5 rounded-full border border-line whitespace-nowrap">
       {label}
     </span>
-    <div className="flex-1 h-px bg-gray-200" />
+    <div className="flex-1 h-px bg-line" />
   </div>
 );
 
