@@ -39,11 +39,11 @@ const EventCard: React.FC<EventCardProps> = ({ event, onClick }) => {
       </div>
 
       <div className="p-4 sm:p-5 flex flex-col flex-1 gap-2 min-w-0">
-        <h3 className="font-bold text-base text-gray-900 line-clamp-2">
+        <h3 className="font-bold text-base text-primary line-clamp-2">
           {event.title}
         </h3>
 
-        <div className="flex items-start gap-1.5 text-gray-500 text-sm">
+        <div className="flex items-start gap-1.5 text-ink-muted text-sm">
           <svg
             className="w-4 h-4 mt-0.5 shrink-0"
             fill="none"
@@ -65,18 +65,18 @@ const EventCard: React.FC<EventCardProps> = ({ event, onClick }) => {
           <span className="line-clamp-1">{event.location}</span>
         </div>
 
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-500 mt-1">
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-ink-muted mt-1">
           <div>
-            <div className="font-semibold text-gray-700 mb-0.5">Start</div>
+            <div className="font-semibold text-primary mb-0.5">Start</div>
             <div>{formatDateTime(event.startTime)}</div>
           </div>
           <div>
-            <div className="font-semibold text-gray-700 mb-0.5">End</div>
+            <div className="font-semibold text-primary mb-0.5">End</div>
             <div>{formatDateTime(event.endTime)}</div>
           </div>
         </div>
 
-        <p className="text-gray-500 text-sm line-clamp-2 mt-1">
+        <p className="text-ink-muted text-sm line-clamp-2 mt-1">
           {event.description}
         </p>
       </div>
