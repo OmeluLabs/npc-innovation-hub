@@ -274,7 +274,7 @@
 //       {/* Video URL Input (shown when type is Video) */}
 //       {type === "Video" && (
 //         <div>
-//           <label className="block mb-2 text-gray-700 font-medium">
+//           <label className="block mb-2 text-primary font-medium">
 //             Video URL (Optional)
 //           </label>
 //           <input
@@ -285,7 +285,7 @@
 //             onChange={(e) => setUrl(e.target.value)}
 //             disabled={isLoading}
 //           />
-//           <p className="text-xs text-gray-500 mt-1">
+//           <p className="text-xs text-ink-muted mt-1">
 //             Paste the URL to your video (YouTube, Vimeo, or direct video link)
 //           </p>
 //         </div>
@@ -294,7 +294,7 @@
 //       {/* Category, Type, Difficulty */}
 //       <div className="grid grid-cols-3 gap-6">
 //         <div className="flex flex-col">
-//           <label className="mb-2 text-gray-700 font-medium">Category</label>
+//           <label className="mb-2 text-primary font-medium">Category</label>
 //           <select
 //             className="border rounded-lg px-4 py-3"
 //             value={category}
@@ -310,7 +310,7 @@
 //         </div>
 
 //         <div className="flex flex-col">
-//           <label className="mb-2 text-gray-700 font-medium">Type</label>
+//           <label className="mb-2 text-primary font-medium">Type</label>
 //           <select
 //             className="border rounded-lg px-4 py-3"
 //             value={type}
@@ -326,7 +326,7 @@
 //         </div>
 
 //         <div className="flex flex-col">
-//           <label className="mb-2 text-gray-700 font-medium">Difficulty</label>
+//           <label className="mb-2 text-primary font-medium">Difficulty</label>
 //           <select
 //             className="border rounded-lg px-4 py-3"
 //             value={difficulty}
@@ -347,7 +347,7 @@
 //         {/* Resource URL - Only show for non-Video types */}
 //         {type !== "Video" && (
 //           <div>
-//             <label className="block mb-2 text-gray-700 font-medium">
+//             <label className="block mb-2 text-primary font-medium">
 //               Resource URL (Optional)
 //             </label>
 //             <input
@@ -358,14 +358,14 @@
 //               onChange={(e) => setUrl(e.target.value)}
 //               disabled={isLoading}
 //             />
-//             <p className="text-xs text-gray-500 mt-1">
+//             <p className="text-xs text-ink-muted mt-1">
 //               Link to the resource (documentation, article, book, etc.)
 //             </p>
 //           </div>
 //         )}
 
 //         <div className={type !== "Video" ? "" : "col-span-2"}>
-//           <label className="block mb-2 text-gray-700 font-medium">
+//           <label className="block mb-2 text-primary font-medium">
 //             Author Name
 //           </label>
 //           <input
@@ -394,7 +394,7 @@
 //             disabled={isLoading}
 //             className="w-4 h-4"
 //           />
-//           <span className="text-gray-700">Paid Resource</span>
+//           <span className="text-primary">Paid Resource</span>
 //         </label>
 
 //         {isPaid && (
@@ -451,7 +451,7 @@
 
 //       {/* Tags */}
 //       <div>
-//         <label className="block mb-2 text-gray-700 font-medium">Tags</label>
+//         <label className="block mb-2 text-primary font-medium">Tags</label>
 //         <div className="flex gap-2">
 //           <input
 //             type="text"
@@ -465,7 +465,7 @@
 //           <button
 //             type="button"
 //             onClick={handleAddTag}
-//             className="bg-[#2d3155] text-white px-6 py-3 rounded-lg hover:bg-[#1f2340] transition-colors"
+//             className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary transition-colors"
 //             disabled={isLoading}
 //           >
 //             Add
@@ -476,13 +476,13 @@
 //             {tags.map((tag) => (
 //               <span
 //                 key={tag}
-//                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-700"
+//                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm bg-line text-primary"
 //               >
 //                 {tag}
 //                 <button
 //                   type="button"
 //                   onClick={() => handleRemoveTag(tag)}
-//                   className="text-gray-500 hover:text-gray-700"
+//                   className="text-ink-muted hover:text-primary"
 //                   disabled={isLoading}
 //                 >
 //                   ×
@@ -503,7 +503,7 @@
 //             disabled={isLoading}
 //             className="w-4 h-4"
 //           />
-//           <span className="text-gray-700">Featured Resource</span>
+//           <span className="text-primary">Featured Resource</span>
 //         </label>
 
 //         <label className="flex items-center gap-2 cursor-pointer">
@@ -514,7 +514,7 @@
 //             disabled={isLoading}
 //             className="w-4 h-4"
 //           />
-//           <span className="text-gray-700">Self-Hosted</span>
+//           <span className="text-primary">Self-Hosted</span>
 //         </label>
 //       </div>
 
@@ -523,7 +523,7 @@
 //         <button
 //           type="submit"
 //           disabled={isLoading}
-//           className="bg-[#2d3155] text-white px-8 py-3 rounded-lg hover:bg-[#1f2340] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+//           className="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 //         >
 //           {isLoading ? "Saving..." : initialData ? "Update" : "Save"}
 //         </button>
@@ -533,7 +533,7 @@
 //             type="button"
 //             onClick={onCancel}
 //             disabled={isLoading}
-//             className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+//             className="border border-line text-primary px-8 py-3 rounded-lg hover:bg-surface-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 //           >
 //             Cancel
 //           </button>
