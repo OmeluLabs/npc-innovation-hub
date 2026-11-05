@@ -205,7 +205,7 @@ export default function AddResource() {
             <h1 className="font-bold text-2xl uppercase">
               {isEditMode ? "Edit Resource" : "Add New Resource"}
             </h1>
-            <p className="text-gray-600 mt-1">
+            <p className="text-ink-muted mt-1">
               {isEditMode
                 ? "Update resource details below"
                 : "Fill in the details to create a new resource"}
@@ -215,7 +215,7 @@ export default function AddResource() {
         actions={
           <button
             onClick={handleCancel}
-            className="text-gray-600 hover:text-gray-800 flex items-center gap-2"
+            className="text-ink-muted hover:text-primary flex items-center gap-2"
           >
             <svg
               className="w-5 h-5"
