@@ -50,6 +50,12 @@
   --mist-500: 100 116 139;
   --mist-600: 71 85 105;
 
+  /* Semantic status colours (success / error / warning). Not brand colours:
+     used only for state, with text-safe contrast on white (5:1 or better). */
+  --color-success: 21 128 61;
+  --color-danger: 185 28 28;
+  --color-warning: 180 83 9;
+
   --font-heading: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
