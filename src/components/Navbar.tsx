@@ -368,12 +368,14 @@ export default function Navbar() {
               group), so justify-between pins the logo flush left and
               the whole group flush right, with the links sitting close
               to Sign In instead of floating in open space. */}
-          <div className="hidden xl:flex items-center gap-4 2xl:gap-6">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-4">
             <nav
-              className="flex items-center gap-4 xl:gap-6"
+              className="flex items-center gap-0.5 xl:gap-2"
               aria-label="Main navigation"
             >
-              {NAV_ITEMS.map((item) =>
+              {NAV_ITEMS.filter(
+                (item) => isGroup(item) || item.sectionId !== "home",
+              ).map((item) =>
                 isGroup(item) ? (
                   <NavDropdown
                     key={item.label}
@@ -386,7 +388,7 @@ export default function Navbar() {
                     key={item.to}
                     to={item.to}
                     aria-current={isActive(item) ? "page" : undefined}
-                    className={`font-semibold text-sm xl:text-base px-3 py-2 rounded-md border-b-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+                    className={`font-semibold text-sm xl:text-base px-2 xl:px-3 py-2 rounded-md border-b-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
                       transparentAtTop
                         ? `focus-visible:ring-white drop-shadow-sm ${
                             isActive(item)
@@ -417,7 +419,7 @@ export default function Navbar() {
                   onClick={() => setShowUserMenu((s) => !s)}
                   aria-expanded={showUserMenu}
                   aria-haspopup="true"
-                  className={`flex items-center gap-2 font-bold text-white px-5 py-2.5 shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                  className={`flex items-center gap-2 font-bold text-white px-3 xl:px-5 py-2.5 shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                     transparentAtTop
                       ? "bg-white/10 backdrop-blur-sm border-2 border-white hover:bg-white hover:text-npc-navy focus:ring-white"
                       : "bg-npc-navy hover:bg-npc-navy-light hover:shadow-md focus:ring-npc-navy"
@@ -460,7 +462,7 @@ export default function Navbar() {
             ) : (
               <Link
                 to="/login"
-                className={`font-bold uppercase text-[1.05rem] px-4 py-1.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                className={`font-bold uppercase text-sm xl:text-[1.05rem] px-2 xl:px-4 py-1.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                   transparentAtTop
                     ? "text-white/90 hover:text-white drop-shadow-sm focus:ring-white"
                     : "text-npc-navy hover:text-npc-navy-light focus:ring-npc-navy"
@@ -478,7 +480,7 @@ export default function Navbar() {
               icon switches to its solid-state color the moment it opens
               rather than staying white against a white panel. */}
           <button
-            className={`xl:hidden relative p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
+            className={`lg:hidden relative p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
               transparentAtTop && !isMenuOpen
                 ? "text-white hover:bg-white/10 focus:ring-white/40"
                 : "text-npc-navy hover:bg-gray-50 focus:ring-npc-navy/20"
@@ -510,7 +512,7 @@ export default function Navbar() {
         {/* Mobile menu */}
         {isMenuOpen && (
           <nav
-            className="xl:hidden px-6 pb-4 bg-white border-t border-gray-100 max-h-[calc(100vh-4rem)] overflow-y-auto"
+            className="lg:hidden px-6 pb-4 bg-white border-t border-gray-100 max-h-[calc(100vh-4rem)] overflow-y-auto"
             aria-label="Mobile navigation"
           >
             <div className="space-y-1 pt-2">
