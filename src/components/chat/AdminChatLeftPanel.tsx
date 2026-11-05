@@ -38,10 +38,10 @@ const formatTime = (iso: string): string => {
 
 const Skeleton: React.FC = () => (
   <div className="flex items-center gap-3 px-3 py-2.5 animate-pulse">
-    <div className="w-10 h-10 rounded-full bg-gray-200 flex-shrink-0" />
+    <div className="w-10 h-10 rounded-full bg-line flex-shrink-0" />
     <div className="flex-1 space-y-1.5">
-      <div className="h-3 bg-gray-200 rounded w-3/4" />
-      <div className="h-3 bg-gray-200 rounded w-1/2" />
+      <div className="h-3 bg-line rounded w-3/4" />
+      <div className="h-3 bg-line rounded w-1/2" />
     </div>
   </div>
 );
@@ -115,60 +115,62 @@ const AdminChatLeftPanel: React.FC<AdminChatLeftPanelProps> = ({
           conversation is open), same as the member LeftPanel - md, not
           lg, so a landscape phone gets the list beside the chat instead
           of being forced into single-pane it has room to avoid. */}
-      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 w-full md:w-72 h-full flex flex-col flex-shrink-0 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-lg border border-line w-full md:w-72 h-full flex flex-col flex-shrink-0 overflow-hidden">
         {/* Header */}
-        <div className="px-4 pt-4 pb-3 border-b border-gray-100 flex-shrink-0">
+        <div className="px-4 pt-4 pb-3 border-b border-line flex-shrink-0">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
-              <MessageSquare size={16} className="text-[#0C2340]" />
-              <h2 className="font-bold text-base text-gray-800">Messages</h2>
+              <MessageSquare size={16} className="text-primary" />
+              <h2 className="font-bold text-base text-primary">Messages</h2>
             </div>
             <button
               type="button"
               onClick={() => setShowNewConvo(true)}
-              className="p-1.5 hover:bg-blue-50 rounded-lg transition-colors group"
+              className="p-1.5 hover:bg-surface-muted rounded-lg transition-colors group"
               title="New conversation"
             >
               <Plus
                 size={16}
-                className="text-gray-500 group-hover:text-blue-500 transition-colors"
+                className="text-ink-muted group-hover:text-secondary transition-colors"
               />
             </button>
           </div>
           <div className="relative">
             <Search
               size={13}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
             />
             <input
               type="text"
               placeholder="Search..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-8 pr-3 py-1.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-8 pr-3 py-1.5 bg-surface-muted border border-line rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
             />
           </div>
         </div>
 
         {/* Hub Channel + Contact Messages shortcuts */}
-        <div className="px-3 py-2 border-b border-gray-100 flex-shrink-0 space-y-1">
+        <div className="px-3 py-2 border-b border-line flex-shrink-0 space-y-1">
           <button
             type="button"
             onClick={() => navigate(`${basePath}/hub-channel`)}
             className={`w-full flex items-center gap-3 py-2 px-2.5 rounded-xl text-left transition-all ${
-              isHub ? "bg-blue-50 border border-blue-200" : "hover:bg-gray-50"
+              isHub
+                ? "bg-surface-muted border border-accent"
+                : "hover:bg-surface-muted"
             }`}
           >
-            <div className="w-9 h-9 bg-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
+            <div className="w-9 h-9 bg-secondary rounded-xl flex items-center justify-center flex-shrink-0">
               <Hash size={16} className="text-white" />
             </div>
             <div className="flex-1 min-w-0">
               <p
-                className={`font-semibold text-sm ${isHub ? "text-blue-700" : "text-gray-800"}`}
+                className={`font-semibold text-sm ${isHub ? "text-primary" : "text-primary"}`}
               >
                 Hub Channel
               </p>
-              <p className="text-xs text-gray-400 truncate">
+              <p className="text-xs text-ink-muted truncate">
                 General discussions
               </p>
             </div>
@@ -185,20 +187,20 @@ const AdminChatLeftPanel: React.FC<AdminChatLeftPanelProps> = ({
             onClick={() => navigate(`${basePath}/contact-messages`)}
             className={`w-full flex items-center gap-3 py-2 px-2.5 rounded-xl text-left transition-all ${
               isContactMessages
-                ? "bg-blue-50 border border-blue-200"
-                : "hover:bg-gray-50"
+                ? "bg-surface-muted border border-accent"
+                : "hover:bg-surface-muted"
             }`}
           >
-            <div className="w-9 h-9 bg-[#002B56] rounded-xl flex items-center justify-center flex-shrink-0">
+            <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
               <Mail size={16} className="text-white" />
             </div>
             <div className="flex-1 min-w-0">
               <p
-                className={`font-semibold text-sm ${isContactMessages ? "text-blue-700" : "text-gray-800"}`}
+                className={`font-semibold text-sm ${isContactMessages ? "text-primary" : "text-primary"}`}
               >
                 Contact Messages
               </p>
-              <p className="text-xs text-gray-400 truncate">
+              <p className="text-xs text-ink-muted truncate">
                 Submitted from the website
               </p>
             </div>
@@ -212,10 +214,10 @@ const AdminChatLeftPanel: React.FC<AdminChatLeftPanelProps> = ({
 
         {/* DM section label */}
         <div className="px-4 pt-3 pb-1 flex items-center justify-between flex-shrink-0">
-          <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
+          <span className="text-xs font-semibold text-ink-muted uppercase tracking-widest">
             Direct Messages
           </span>
-          <span className="text-xs text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full">
+          <span className="text-xs text-ink-muted bg-surface-muted px-1.5 py-0.5 rounded-full">
             {conversations.length}
           </span>
         </div>
@@ -229,7 +231,7 @@ const AdminChatLeftPanel: React.FC<AdminChatLeftPanelProps> = ({
               <Skeleton />
             </>
           ) : filtered.length === 0 ? (
-            <p className="text-xs text-gray-400 text-center py-6 px-4">
+            <p className="text-xs text-ink-muted text-center py-6 px-4">
               {search
                 ? "No matches."
                 : "No conversations yet. Click + to start one."}
@@ -248,28 +250,28 @@ const AdminChatLeftPanel: React.FC<AdminChatLeftPanelProps> = ({
                     onClick={() => go(conv.userId, fullName)}
                     className={`flex items-center gap-2.5 py-2 px-2.5 rounded-xl cursor-pointer transition-all ${
                       isSelected
-                        ? "bg-blue-50 border border-blue-100"
-                        : "hover:bg-gray-50"
+                        ? "bg-surface-muted border border-accent"
+                        : "hover:bg-surface-muted"
                     }`}
                   >
                     <HeaderAvatar name={fullName} size="sm" />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-0.5">
                         <span
-                          className={`font-semibold text-xs truncate ${isSelected ? "text-blue-700" : "text-gray-800"}`}
+                          className={`font-semibold text-xs truncate ${isSelected ? "text-primary" : "text-primary"}`}
                         >
                           {fullName}
                         </span>
-                        <span className="text-[10px] text-gray-400 ml-1 flex-shrink-0">
+                        <span className="text-[10px] text-ink-muted ml-1 flex-shrink-0">
                           {formatTime(conv.lastMessageTime)}
                         </span>
                       </div>
-                      <p className="text-[11px] text-gray-500 truncate">
+                      <p className="text-[11px] text-ink-muted truncate">
                         {lastMsg || "No messages yet"}
                       </p>
                     </div>
                     {conv.unreadCount > 0 && (
-                      <span className="flex-shrink-0 bg-blue-500 text-white text-[10px] rounded-full min-w-[16px] h-4 flex items-center justify-center px-1 font-medium">
+                      <span className="flex-shrink-0 bg-secondary text-white text-[10px] rounded-full min-w-[16px] h-4 flex items-center justify-center px-1 font-medium">
                         {conv.unreadCount > 99 ? "99+" : conv.unreadCount}
                       </span>
                     )}
