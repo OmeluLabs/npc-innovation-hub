@@ -52,7 +52,7 @@ const RSVPButton: React.FC<RSVPButtonProps> = ({
     <button
       onClick={handleClick}
       disabled={loading}
-      className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-black text-white font-semibold text-sm hover:bg-gray-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+      className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-black text-white font-semibold text-sm hover:bg-primary transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
     >
       {loading ? (
         <>
