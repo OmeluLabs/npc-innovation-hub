@@ -7,16 +7,16 @@ import { ClipboardList } from "lucide-react";
 
 // ── Skeleton ──
 const TaskCardSkeleton: React.FC = () => (
-  <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col gap-3 animate-pulse">
+  <div className="bg-white rounded-xl shadow-sm border border-line p-5 flex flex-col gap-3 animate-pulse">
     <div className="flex gap-2">
-      <div className="h-5 w-20 bg-gray-200 rounded-full" />
-      <div className="h-5 w-14 bg-gray-100 rounded-full" />
+      <div className="h-5 w-20 bg-line rounded-full" />
+      <div className="h-5 w-14 bg-surface-muted rounded-full" />
     </div>
-    <div className="h-4 bg-gray-200 rounded w-3/4" />
-    <div className="h-3 bg-gray-100 rounded w-full" />
-    <div className="h-3 bg-gray-100 rounded w-5/6" />
-    <div className="h-3 bg-gray-100 rounded w-1/3 mt-1" />
-    <div className="h-8 bg-gray-200 rounded-lg mt-2" />
+    <div className="h-4 bg-line rounded w-3/4" />
+    <div className="h-3 bg-surface-muted rounded w-full" />
+    <div className="h-3 bg-surface-muted rounded w-5/6" />
+    <div className="h-3 bg-surface-muted rounded w-1/3 mt-1" />
+    <div className="h-8 bg-line rounded-lg mt-2" />
   </div>
 );
 
@@ -38,9 +38,9 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, loading }) => {
 
   if (tasks.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center text-center px-4 py-12 sm:py-20 text-gray-400 gap-3">
+      <div className="flex flex-col items-center justify-center text-center px-4 py-12 sm:py-20 text-ink-muted gap-3">
         <ClipboardList size={44} className="opacity-30" />
-        <p className="font-semibold text-gray-500 text-base">
+        <p className="font-semibold text-ink-muted text-base">
           No tasks assigned yet
         </p>
         <p className="text-sm text-center max-w-xs">
