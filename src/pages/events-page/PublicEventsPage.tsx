@@ -29,7 +29,7 @@ const SkeletonGrid: React.FC = () => (
     {[...Array(3)].map((_, i) => (
       <div
         key={i}
-        className="rounded-2xl overflow-hidden bg-white border border-gray-100 animate-pulse"
+        className="rounded-2xl overflow-hidden bg-white border border-line animate-pulse"
       >
         <div className="aspect-[16/9] bg-mist-300" />
         <div className="p-5 space-y-3">
