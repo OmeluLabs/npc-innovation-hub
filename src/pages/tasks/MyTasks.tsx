@@ -53,8 +53,8 @@ const MyTasks: React.FC = () => {
       {/* Page header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">My Tasks</h2>
-          <p className="text-sm text-gray-500 mt-0.5">
+          <h2 className="text-2xl font-bold text-primary">My Tasks</h2>
+          <p className="text-sm text-ink-muted mt-0.5">
             Tasks assigned to you by your admin
           </p>
         </div>
@@ -89,7 +89,7 @@ const MyTasks: React.FC = () => {
       )}
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-gray-100 p-1 rounded-xl mb-5 max-w-full overflow-x-auto hide-scrollbar sm:w-fit">
+      <div className="flex gap-1 bg-surface-muted p-1 rounded-xl mb-5 max-w-full overflow-x-auto hide-scrollbar sm:w-fit">
         {TABS.map((tab) => (
           <button
             key={tab.value}
@@ -98,8 +98,8 @@ const MyTasks: React.FC = () => {
                         transition-all duration-200
                         ${
                           activeTab === tab.value
-                            ? "bg-white text-blue-700 shadow-sm"
-                            : "text-gray-500 hover:text-gray-700"
+                            ? "bg-white text-primary shadow-sm"
+                            : "text-ink-muted hover:text-primary"
                         }`}
           >
             {tab.label}
@@ -107,8 +107,8 @@ const MyTasks: React.FC = () => {
               className={`text-xs px-1.5 py-0.5 rounded-full font-bold
                           ${
                             activeTab === tab.value
-                              ? "bg-blue-100 text-blue-700"
-                              : "bg-gray-200 text-gray-500"
+                              ? "bg-surface-muted text-primary"
+                              : "bg-line text-ink-muted"
                           }`}
             >
               {tabCount(tab.value)}
