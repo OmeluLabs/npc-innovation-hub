@@ -50,6 +50,10 @@ const fillValidForm = async () => {
   });
 };
 
+// The form tests type into many fields and take about 5s each, which is the default
+// limit; give them headroom so a busy machine does not make them flaky.
+jest.setTimeout(20000);
+
 describe("ApplyPage", () => {
   beforeEach(() => {
     mockedSubmit.mockReset();
