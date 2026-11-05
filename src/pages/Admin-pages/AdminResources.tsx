@@ -33,14 +33,14 @@ const ResourceDetailsModal = ({
           {/* Header */}
           <div className="flex items-start justify-between mb-6">
             <div className="flex-1">
-              <h2 className="text-page-title font-bold text-gray-900 mb-2">
+              <h2 className="text-page-title font-bold text-primary mb-2">
                 {resource.title}
               </h2>
-              <p className="text-gray-600">{resource.description}</p>
+              <p className="text-ink-muted">{resource.description}</p>
             </div>
             <button
               onClick={onClose}
-              className="ml-4 text-gray-400 hover:text-gray-600"
+              className="ml-4 text-ink-muted hover:text-ink-muted"
             >
               <svg
                 className="w-6 h-6"
@@ -72,21 +72,21 @@ const ResourceDetailsModal = ({
           {/* Details Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div>
-              <p className="text-sm text-gray-500 mb-1">Category</p>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+              <p className="text-sm text-ink-muted mb-1">Category</p>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-surface-muted text-primary">
                 {resource.category}
               </span>
             </div>
 
             <div>
-              <p className="text-sm text-gray-500 mb-1">Type</p>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+              <p className="text-sm text-ink-muted mb-1">Type</p>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-surface-muted text-primary">
                 {resource.type}
               </span>
             </div>
 
             <div>
-              <p className="text-sm text-gray-500 mb-1">Difficulty</p>
+              <p className="text-sm text-ink-muted mb-1">Difficulty</p>
               <span
                 className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
                   resource.difficulty === "Beginner"
@@ -101,18 +101,18 @@ const ResourceDetailsModal = ({
             </div>
 
             <div>
-              <p className="text-sm text-gray-500 mb-1">Author</p>
-              <p className="text-gray-900">{resource.author}</p>
+              <p className="text-sm text-ink-muted mb-1">Author</p>
+              <p className="text-primary">{resource.author}</p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-500 mb-1">Price</p>
+              <p className="text-sm text-ink-muted mb-1">Price</p>
               {resource.isPaid ? (
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
                   ${resource.price}
                 </span>
               ) : (
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-surface-muted text-primary">
                   Free
                 </span>
               )}
@@ -120,34 +120,34 @@ const ResourceDetailsModal = ({
 
             {resource.platform && (
               <div>
-                <p className="text-sm text-gray-500 mb-1">Platform</p>
-                <p className="text-gray-900">{resource.platform}</p>
+                <p className="text-sm text-ink-muted mb-1">Platform</p>
+                <p className="text-primary">{resource.platform}</p>
               </div>
             )}
 
             <div>
-              <p className="text-sm text-gray-500 mb-1">Duration</p>
-              <p className="text-gray-900">
+              <p className="text-sm text-ink-muted mb-1">Duration</p>
+              <p className="text-primary">
                 {Math.floor(resource.duration / 3600)}h{" "}
                 {Math.floor((resource.duration % 3600) / 60)}m
               </p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-500 mb-1">Upvotes</p>
-              <p className="text-gray-900">{resource.upvotes}</p>
+              <p className="text-sm text-ink-muted mb-1">Upvotes</p>
+              <p className="text-primary">{resource.upvotes}</p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-500 mb-1">Created By</p>
-              <p className="text-gray-900">
+              <p className="text-sm text-ink-muted mb-1">Created By</p>
+              <p className="text-primary">
                 {resource.User.firstName} {resource.User.lastName}
               </p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-500 mb-1">Created At</p>
-              <p className="text-gray-900">
+              <p className="text-sm text-ink-muted mb-1">Created At</p>
+              <p className="text-primary">
                 {new Date(resource.createdAt).toLocaleDateString()}
               </p>
             </div>
@@ -156,12 +156,12 @@ const ResourceDetailsModal = ({
           {/* Tags */}
           {resource.tags && resource.tags.length > 0 && (
             <div className="mb-6">
-              <p className="text-sm text-gray-500 mb-2">Tags</p>
+              <p className="text-sm text-ink-muted mb-2">Tags</p>
               <div className="flex flex-wrap gap-2">
                 {resource.tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-700"
+                    className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-line text-primary"
                   >
                     {tag}
                   </span>
@@ -173,12 +173,12 @@ const ResourceDetailsModal = ({
           {/* URL */}
           {resource.url && (
             <div className="mb-6">
-              <p className="text-sm text-gray-500 mb-2">Resource URL</p>
+              <p className="text-sm text-ink-muted mb-2">Resource URL</p>
               <a
                 href={resource.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:underline break-all"
+                className="text-secondary hover:underline break-all"
               >
                 {resource.url}
               </a>
@@ -193,7 +193,7 @@ const ResourceDetailsModal = ({
               </span>
             )}
             {resource.isHosted && (
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-surface-muted text-primary">
                 Self-Hosted
               </span>
             )}
@@ -299,13 +299,13 @@ const FilterSection = ({
       <div className="flex gap-3 mt-4">
         <button
           onClick={handleApplyFilters}
-          className="bg-[#2d3155] text-white px-6 py-2 rounded-lg hover:bg-[#1f2340] transition-colors"
+          className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary transition-colors"
         >
           Apply Filters
         </button>
         <button
           onClick={handleClearFilters}
-          className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-50 transition-colors"
+          className="border border-line text-primary px-6 py-2 rounded-lg hover:bg-surface-muted transition-colors"
         >
           Clear
         </button>
@@ -408,7 +408,7 @@ export default function AdminResources() {
       actions={
         <button
           onClick={handleAddNew}
-          className="bg-[#2d3155] text-white px-6 py-3 rounded-lg hover:bg-[#1f2340] transition-colors flex items-center gap-2"
+          className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary transition-colors flex items-center gap-2"
         >
           <svg
             className="w-5 h-5"
