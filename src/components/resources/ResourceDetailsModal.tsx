@@ -33,20 +33,20 @@ const getDifficultyColor = (difficulty: string): string => {
     case "Advanced":
       return "bg-red-100 text-red-700";
     default:
-      return "bg-gray-100 text-gray-600";
+      return "bg-surface-muted text-ink-muted";
   }
 };
 
 const getCategoryColor = (category: string): string => {
   switch (category) {
     case "Frontend":
-      return "bg-pink-100 text-pink-700";
+      return "bg-surface-muted text-primary";
     case "Backend":
-      return "bg-blue-100 text-blue-700";
+      return "bg-surface-muted text-primary";
     case "Cybersecurity":
-      return "bg-purple-100 text-purple-700";
+      return "bg-surface-muted text-primary";
     default:
-      return "bg-gray-100 text-gray-600";
+      return "bg-surface-muted text-ink-muted";
   }
 };
 
@@ -73,7 +73,7 @@ const ResourceDetailsModal: React.FC<ResourceDetailsModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Image / Video */}
-        <div className="relative w-full overflow-hidden rounded-t-2xl bg-gray-100">
+        <div className="relative w-full overflow-hidden rounded-t-2xl bg-surface-muted">
           {resource.videoUrl ? (
             <video
               src={resource.videoUrl}
@@ -87,7 +87,7 @@ const ResourceDetailsModal: React.FC<ResourceDetailsModalProps> = ({
               className="w-full h-56 object-cover"
             />
           ) : (
-            <div className="w-full h-40 flex items-center justify-center bg-gray-200 text-gray-400 text-sm">
+            <div className="w-full h-40 flex items-center justify-center bg-line text-ink-muted text-sm">
               No preview available
             </div>
           )}
@@ -95,7 +95,7 @@ const ResourceDetailsModal: React.FC<ResourceDetailsModalProps> = ({
             onClick={onClose}
             className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition shadow"
           >
-            <X size={18} className="text-gray-700" />
+            <X size={18} className="text-primary" />
           </button>
         </div>
 
@@ -103,7 +103,7 @@ const ResourceDetailsModal: React.FC<ResourceDetailsModalProps> = ({
         <div className="p-5 sm:p-6 flex flex-col gap-5">
           {/* Title & badges */}
           <div>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">
+            <h2 className="text-xl font-bold text-primary mb-3">
               {resource.title}
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -112,7 +112,7 @@ const ResourceDetailsModal: React.FC<ResourceDetailsModalProps> = ({
               >
                 {resource.category}
               </span>
-              <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-600">
+              <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-surface-muted text-ink-muted">
                 {resource.type}
               </span>
               <span
@@ -129,18 +129,18 @@ const ResourceDetailsModal: React.FC<ResourceDetailsModalProps> = ({
           </div>
 
           {/* Description */}
-          <p className="text-gray-600 text-sm leading-relaxed">
+          <p className="text-ink-muted text-sm leading-relaxed">
             {resource.description}
           </p>
 
           {/* Meta info */}
           <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
-            <div className="flex items-center gap-2 text-sm text-gray-500">
-              <User size={15} className="text-gray-400 shrink-0" />
+            <div className="flex items-center gap-2 text-sm text-ink-muted">
+              <User size={15} className="text-ink-muted shrink-0" />
               <span>{resource.author}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-500">
-              <Clock size={15} className="text-gray-400 shrink-0" />
+            <div className="flex items-center gap-2 text-sm text-ink-muted">
+              <Clock size={15} className="text-ink-muted shrink-0" />
               <span>{formatDuration(resource.duration)}</span>
             </div>
           </div>
@@ -148,11 +148,11 @@ const ResourceDetailsModal: React.FC<ResourceDetailsModalProps> = ({
           {/* Tags */}
           {resource.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
-              <Tag size={14} className="text-gray-400 mt-0.5 shrink-0" />
+              <Tag size={14} className="text-ink-muted mt-0.5 shrink-0" />
               {resource.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full"
+                  className="text-xs bg-surface-muted text-ink-muted px-2 py-0.5 rounded-full"
                 >
                   {tag}
                 </span>
@@ -166,7 +166,7 @@ const ResourceDetailsModal: React.FC<ResourceDetailsModalProps> = ({
               href={resource.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
+              className="flex items-center gap-2 text-sm text-secondary hover:text-primary font-medium transition-colors"
             >
               <ExternalLink size={15} />
               Open Resource
@@ -174,7 +174,7 @@ const ResourceDetailsModal: React.FC<ResourceDetailsModalProps> = ({
           )}
 
           {/* Actions */}
-          <div className="flex items-center gap-3 pt-3 border-t border-gray-100">
+          <div className="flex items-center gap-3 pt-3 border-t border-line">
             <UpvoteButton
               resourceId={resource.id}
               upvotes={resource.upvotes}
@@ -186,7 +186,7 @@ const ResourceDetailsModal: React.FC<ResourceDetailsModalProps> = ({
               hasSaved={hasSaved}
               onSave={onSave}
             />
-            <div className="ml-auto text-xs text-gray-400">
+            <div className="ml-auto text-xs text-ink-muted">
               Added by {resource.User.firstName} {resource.User.lastName}
             </div>
           </div>
