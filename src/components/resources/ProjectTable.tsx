@@ -49,12 +49,12 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
           target="_blank"
           rel="noopener noreferrer"
           title="Source Code"
-          className="w-7 h-7 flex items-center justify-center rounded-md bg-gray-900 text-white hover:bg-gray-700 transition"
+          className="w-7 h-7 flex items-center justify-center rounded-md bg-primary text-white hover:bg-primary transition"
         >
           <Github size={13} />
         </a>
       ) : (
-        <span className="w-7 h-7 flex items-center justify-center rounded-md bg-gray-100 text-gray-300 cursor-not-allowed">
+        <span className="w-7 h-7 flex items-center justify-center rounded-md bg-surface-muted text-ink-muted cursor-not-allowed">
           <Github size={13} />
         </span>
       )}
@@ -64,12 +64,12 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
           target="_blank"
           rel="noopener noreferrer"
           title="Live Demo"
-          className="w-7 h-7 flex items-center justify-center rounded-md bg-[#28335A] text-white hover:bg-[#1e2745] transition"
+          className="w-7 h-7 flex items-center justify-center rounded-md bg-primary text-white hover:bg-primary transition"
         >
           <ExternalLink size={13} />
         </a>
       ) : (
-        <span className="w-7 h-7 flex items-center justify-center rounded-md bg-gray-100 text-gray-300 cursor-not-allowed">
+        <span className="w-7 h-7 flex items-center justify-center rounded-md bg-surface-muted text-ink-muted cursor-not-allowed">
           <ExternalLink size={13} />
         </span>
       )}
@@ -103,7 +103,7 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
           <button
             title="Edit project"
             onClick={() => setEditTarget(project)}
-            className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition group"
+            className="w-8 h-8 flex items-center justify-center rounded-full bg-surface-muted text-secondary hover:bg-surface-muted transition group"
           >
             <Pencil
               size={15}
@@ -129,60 +129,60 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
 
   return (
     <>
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-sm border border-line overflow-hidden">
         <ResponsiveTable
           table={
-            <table className="min-w-full divide-y divide-gray-100 border-separate border-spacing-0">
+            <table className="min-w-full divide-y divide-line border-separate border-spacing-0">
               <thead>
-                <tr className="bg-gray-50">
+                <tr className="bg-surface-muted">
                   {/* Sticky first column - see admin EventsTable.tsx for why. */}
-                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider sticky left-0 z-10 bg-gray-50">
+                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-ink-muted uppercase tracking-wider sticky left-0 z-10 bg-surface-muted">
                     Project
                   </th>
-                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-ink-muted uppercase tracking-wider">
                     Owner
                   </th>
-                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-ink-muted uppercase tracking-wider">
                     Role
                   </th>
-                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-ink-muted uppercase tracking-wider">
                     Links
                   </th>
-                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-ink-muted uppercase tracking-wider">
                     Created
                   </th>
-                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3.5 text-left text-xs font-semibold text-ink-muted uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody className="divide-y divide-line">
                 {projects.map((project) => (
                   <tr
                     key={project.id}
-                    className="hover:bg-gray-50/70 transition-colors"
+                    className="hover:bg-surface-muted/70 transition-colors"
                   >
                     {/* Project */}
-                    <td className="px-6 py-4 sticky left-0 z-[1] bg-white border-r border-gray-100">
+                    <td className="px-6 py-4 sticky left-0 z-[1] bg-white border-r border-line">
                       <div className="flex items-center gap-3">
                         {project.image ? (
                           <img
                             src={project.image}
                             alt={project.title}
-                            className="w-10 h-10 rounded-lg object-cover shrink-0 border border-gray-100"
+                            className="w-10 h-10 rounded-lg object-cover shrink-0 border border-line"
                           />
                         ) : (
-                          <div className="w-10 h-10 rounded-lg bg-[#28335A]/10 flex items-center justify-center shrink-0">
-                            <span className="text-[#28335A] text-sm font-bold">
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                            <span className="text-primary text-sm font-bold">
                               {project.title.charAt(0).toUpperCase()}
                             </span>
                           </div>
                         )}
                         <div>
-                          <p className="text-sm font-semibold text-gray-900 leading-tight">
+                          <p className="text-sm font-semibold text-primary leading-tight">
                             {project.title}
                           </p>
-                          <p className="text-xs text-gray-400 mt-0.5 max-w-[200px] truncate">
+                          <p className="text-xs text-ink-muted mt-0.5 max-w-[200px] truncate">
                             {project.description}
                           </p>
                         </div>
@@ -195,13 +195,13 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
                         <img
                           src={project.ownerAvatar}
                           alt={project.owner}
-                          className="w-7 h-7 rounded-full border border-gray-200 object-cover"
+                          className="w-7 h-7 rounded-full border border-line object-cover"
                           onError={(e) => {
                             (e.target as HTMLImageElement).src =
                               "https://randomuser.me/api/portraits/lego/1.jpg";
                           }}
                         />
-                        <span className="text-sm text-gray-700">
+                        <span className="text-sm text-primary">
                           {project.owner &&
                           project.owner !== "undefined undefined"
                             ? project.owner
@@ -215,8 +215,8 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
                       <span
                         className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border ${
                           project.ownerRole === "Admin"
-                            ? "bg-purple-50 text-purple-700 border-purple-200"
-                            : "bg-blue-50 text-blue-700 border-blue-200"
+                            ? "bg-surface-muted text-primary border-accent"
+                            : "bg-surface-muted text-primary border-accent"
                         }`}
                       >
                         {project.ownerRole}
@@ -228,7 +228,7 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
 
                     {/* Date */}
                     <td className="px-6 py-4">
-                      <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                      <div className="flex items-center gap-1.5 text-xs text-ink-muted">
                         <Calendar size={12} />
                         {new Date(project.createdAt).toLocaleDateString(
                           "en-US",
@@ -257,20 +257,20 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-10 h-10 rounded-lg object-cover shrink-0 border border-gray-100"
+                        className="w-10 h-10 rounded-lg object-cover shrink-0 border border-line"
                       />
                     ) : (
-                      <div className="w-10 h-10 rounded-lg bg-[#28335A]/10 flex items-center justify-center shrink-0">
-                        <span className="text-[#28335A] text-sm font-bold">
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                        <span className="text-primary text-sm font-bold">
                           {project.title.charAt(0).toUpperCase()}
                         </span>
                       </div>
                     )}
                     <div className="min-w-0">
-                      <p className="text-sm font-semibold text-gray-900 leading-tight truncate">
+                      <p className="text-sm font-semibold text-primary leading-tight truncate">
                         {project.title}
                       </p>
-                      <p className="text-xs text-gray-400 mt-0.5 truncate">
+                      <p className="text-xs text-ink-muted mt-0.5 truncate">
                         {project.description}
                       </p>
                     </div>
@@ -281,7 +281,7 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
                         <img
                           src={project.ownerAvatar}
                           alt={project.owner}
-                          className="w-5 h-5 rounded-full border border-gray-200 object-cover"
+                          className="w-5 h-5 rounded-full border border-line object-cover"
                           onError={(e) => {
                             (e.target as HTMLImageElement).src =
                               "https://randomuser.me/api/portraits/lego/1.jpg";
@@ -297,15 +297,15 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
                       <span
                         className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border ${
                           project.ownerRole === "Admin"
-                            ? "bg-purple-50 text-purple-700 border-purple-200"
-                            : "bg-blue-50 text-blue-700 border-blue-200"
+                            ? "bg-surface-muted text-primary border-accent"
+                            : "bg-surface-muted text-primary border-accent"
                         }`}
                       >
                         {project.ownerRole}
                       </span>
                     </MobileCardRow>
                     <MobileCardRow label="Created">
-                      <span className="inline-flex items-center gap-1.5 text-xs text-gray-500">
+                      <span className="inline-flex items-center gap-1.5 text-xs text-ink-muted">
                         <Calendar size={12} />
                         {new Date(project.createdAt).toLocaleDateString(
                           "en-US",
@@ -314,7 +314,7 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
                       </span>
                     </MobileCardRow>
                   </dl>
-                  <div className="flex items-center justify-between pt-1 border-t border-gray-100">
+                  <div className="flex items-center justify-between pt-1 border-t border-line">
                     {renderLinks(project)}
                     {renderActions(project)}
                   </div>
@@ -325,8 +325,8 @@ const ProjectTable: React.FC<Props> = ({ projects, onDelete, onUpdate }) => {
         />
 
         {/* Footer */}
-        <div className="px-6 py-3.5 border-t border-gray-100 bg-gray-50">
-          <div className="flex items-center gap-1.5 text-xs text-gray-400">
+        <div className="px-6 py-3.5 border-t border-line bg-surface-muted">
+          <div className="flex items-center gap-1.5 text-xs text-ink-muted">
             <User size={12} />
             Showing {projects.length} project{projects.length !== 1 ? "s" : ""}
           </div>
