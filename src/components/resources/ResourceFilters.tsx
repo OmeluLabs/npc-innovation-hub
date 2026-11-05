@@ -36,14 +36,14 @@ const ResourceFilters: React.FC<ResourceFiltersProps> = ({
       <div className="relative flex-1">
         <Search
           size={16}
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
         />
         <input
           type="text"
           placeholder="Search resources..."
           defaultValue={filters.search}
           onChange={handleSearch}
-          className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent transition bg-white"
+          className="w-full pl-9 pr-4 py-2.5 border border-line rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition bg-white"
         />
       </div>
 
@@ -51,7 +51,7 @@ const ResourceFilters: React.FC<ResourceFiltersProps> = ({
       <select
         value={filters.category}
         onChange={(e) => onCategoryChange(e.target.value)}
-        className="px-3 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent transition bg-white"
+        className="px-3 py-2.5 border border-line rounded-xl text-sm text-ink-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition bg-white"
       >
         <option value="">All Categories</option>
         {Object.values(ResourceCategory).map((cat) => (
@@ -65,7 +65,7 @@ const ResourceFilters: React.FC<ResourceFiltersProps> = ({
       <select
         value={filters.type}
         onChange={(e) => onTypeChange(e.target.value)}
-        className="px-3 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent transition bg-white"
+        className="px-3 py-2.5 border border-line rounded-xl text-sm text-ink-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition bg-white"
       >
         <option value="">All Types</option>
         {Object.values(ResourceType).map((t) => (
