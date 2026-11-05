@@ -31,7 +31,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     <div
       className={`bg-white rounded-xl shadow-sm border transition-all duration-200
                   hover:shadow-md hover:-translate-y-0.5 flex flex-col
-                  ${overdue ? "border-red-300 ring-1 ring-red-200" : "border-gray-200"}`}
+                  ${overdue ? "border-red-300 ring-1 ring-red-200" : "border-line"}`}
     >
       {/* Overdue banner */}
       {overdue && (
@@ -59,31 +59,33 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         </div>
 
         {/* Title */}
-        <h3 className="font-bold text-gray-900 text-sm leading-snug line-clamp-2">
+        <h3 className="font-bold text-primary text-sm leading-snug line-clamp-2">
           {task.title}
         </h3>
 
         {/* Description */}
-        <p className="text-xs text-gray-500 line-clamp-2 flex-1">
+        <p className="text-xs text-ink-muted line-clamp-2 flex-1">
           {task.description}
         </p>
 
         {/* Due date */}
         <div
           className={`flex items-center gap-1.5 text-xs font-medium
-                      ${overdue ? "text-red-500" : "text-gray-400"}`}
+                      ${overdue ? "text-red-500" : "text-ink-muted"}`}
         >
           <Calendar size={13} />
           <span>Due {formatDate(task.dueDate)}</span>
-          {!overdue && <span className="ml-1 text-gray-400">· {dueLabel}</span>}
+          {!overdue && (
+            <span className="ml-1 text-ink-muted">· {dueLabel}</span>
+          )}
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2 mt-1 pt-3 border-t border-gray-100">
+        <div className="flex items-center gap-2 mt-1 pt-3 border-t border-line">
           <button
             onClick={() => navigate(`/dashboard/tasks/${task.id}`)}
             className="flex-1 py-2 rounded-lg text-xs font-semibold text-white
-                       bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
+                       bg-secondary hover:bg-primary transition-colors duration-200"
           >
             View Details
           </button>
@@ -93,8 +95,8 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
               href={task.githubIssueLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg border border-gray-200 text-gray-500
-                         hover:border-gray-400 hover:text-gray-700 transition-colors"
+              className="p-2 rounded-lg border border-line text-ink-muted
+                         hover:border-line hover:text-primary transition-colors"
               title="Open GitHub Issue"
             >
               <ExternalLink size={14} />
