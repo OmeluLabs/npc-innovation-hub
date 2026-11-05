@@ -115,7 +115,7 @@ export const Resources: React.FC = () => {
         <h2 className="text-2xl font-bold">Resources</h2>
         <button
           onClick={() => navigate("/resources-room")}
-          className="text-base sm:text-2xl text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200 cursor-pointer text-left"
+          className="text-base sm:text-2xl text-secondary hover:text-primary font-medium transition-colors duration-200 cursor-pointer text-left"
         >
           Resources Room →
         </button>
