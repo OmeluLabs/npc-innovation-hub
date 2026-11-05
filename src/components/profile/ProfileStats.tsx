@@ -31,23 +31,23 @@ const ProfileStats: React.FC<ProfileStatsProps> = ({
     expLevel === "Expert"
       ? "text-green-600 bg-green-50"
       : expLevel === "Intermediate"
-        ? "text-blue-600 bg-blue-50"
+        ? "text-secondary bg-surface-muted"
         : expLevel === "Beginner"
           ? "text-yellow-600 bg-yellow-50"
-          : "text-gray-500 bg-gray-100";
+          : "text-ink-muted bg-surface-muted";
 
   const stats = [
     {
       icon: <Code size={16} />,
       label: "Skills",
       value: totalSkills,
-      color: "text-indigo-600 bg-indigo-50",
+      color: "text-secondary bg-surface-muted",
     },
     {
       icon: <GraduationCap size={16} />,
       label: "Education",
       value: hasEdu ? "Added" : "—",
-      color: "text-purple-600 bg-purple-50",
+      color: "text-secondary bg-surface-muted",
     },
     {
       icon: <Phone size={16} />,
@@ -64,18 +64,18 @@ const ProfileStats: React.FC<ProfileStatsProps> = ({
   ];
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
-      <h3 className="text-sm font-bold text-gray-800 mb-4">Profile Stats</h3>
+    <div className="bg-white rounded-xl shadow-sm border border-line p-5">
+      <h3 className="text-sm font-bold text-primary mb-4">Profile Stats</h3>
 
       {/* Profile completion */}
       <div className="mb-5">
-        <div className="flex justify-between text-xs font-medium text-gray-500 mb-1.5">
+        <div className="flex justify-between text-xs font-medium text-ink-muted mb-1.5">
           <span>Profile Completion</span>
-          <span className="font-bold text-gray-800">{completionPct}%</span>
+          <span className="font-bold text-primary">{completionPct}%</span>
         </div>
-        <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+        <div className="w-full bg-surface-muted rounded-full h-2.5 overflow-hidden">
           <div
-            className="h-2.5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500
+            className="h-2.5 rounded-full bg-gradient-to-r from-secondary to-secondary
                         transition-all duration-700"
             style={{ width: `${completionPct}%` }}
           />
@@ -95,12 +95,12 @@ const ProfileStats: React.FC<ProfileStatsProps> = ({
         {stats.map((s) => (
           <div
             key={s.label}
-            className="flex items-center gap-2.5 bg-gray-50 rounded-xl p-3 border border-gray-100"
+            className="flex items-center gap-2.5 bg-surface-muted rounded-xl p-3 border border-line"
           >
             <div className={`p-2 rounded-lg ${s.color}`}>{s.icon}</div>
             <div>
-              <div className="text-sm font-bold text-gray-900">{s.value}</div>
-              <div className="text-[10px] text-gray-400 font-medium">
+              <div className="text-sm font-bold text-primary">{s.value}</div>
+              <div className="text-[10px] text-ink-muted font-medium">
                 {s.label}
               </div>
             </div>
