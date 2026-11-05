@@ -100,11 +100,11 @@ const ProjectEditModal: React.FC<Props> = ({ project, onClose, onSave }) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 className="text-lg font-bold text-gray-900">Edit Project</h2>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-line">
+          <h2 className="text-lg font-bold text-primary">Edit Project</h2>
           <button
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 transition"
+            className="w-8 h-8 flex items-center justify-center rounded-full bg-surface-muted text-ink-muted hover:bg-line transition"
           >
             <X size={16} />
           </button>
@@ -120,11 +120,11 @@ const ProjectEditModal: React.FC<Props> = ({ project, onClose, onSave }) => {
 
           {/* Image */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            <label className="block text-sm font-medium text-primary mb-1.5">
               Project Image
             </label>
             <div
-              className="relative border-2 border-dashed border-gray-200 rounded-xl overflow-hidden cursor-pointer hover:border-[#28335A] transition-colors group"
+              className="relative border-2 border-dashed border-line rounded-xl overflow-hidden cursor-pointer hover:border-primary transition-colors group"
               onClick={() => imageRef.current?.click()}
             >
               {imagePreview ? (
@@ -141,7 +141,7 @@ const ProjectEditModal: React.FC<Props> = ({ project, onClose, onSave }) => {
                   </div>
                 </div>
               ) : (
-                <div className="h-36 flex flex-col items-center justify-center gap-2 text-gray-400">
+                <div className="h-36 flex flex-col items-center justify-center gap-2 text-ink-muted">
                   <ImageIcon size={24} />
                   <p className="text-sm">Click to upload a new image</p>
                 </div>
@@ -158,13 +158,13 @@ const ProjectEditModal: React.FC<Props> = ({ project, onClose, onSave }) => {
 
           {/* Title */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            <label className="block text-sm font-medium text-primary mb-1.5">
               Title <span className="text-red-500">*</span>
             </label>
             <div className="relative">
               <FileText
                 size={14}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
               />
               <input
                 name="title"
@@ -172,14 +172,14 @@ const ProjectEditModal: React.FC<Props> = ({ project, onClose, onSave }) => {
                 value={form.title}
                 onChange={handleChange}
                 required
-                className="w-full pl-9 pr-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#28335A]/20 focus:border-[#28335A] transition"
+                className="w-full pl-9 pr-4 py-2.5 text-sm border border-line rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"
               />
             </div>
           </div>
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            <label className="block text-sm font-medium text-primary mb-1.5">
               Description <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -188,20 +188,20 @@ const ProjectEditModal: React.FC<Props> = ({ project, onClose, onSave }) => {
               onChange={handleChange}
               rows={3}
               required
-              className="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#28335A]/20 focus:border-[#28335A] transition resize-none"
+              className="w-full px-4 py-2.5 text-sm border border-line rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition resize-none"
             />
           </div>
 
           {/* Links */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-primary mb-1.5">
                 Repository URL
               </label>
               <div className="relative">
                 <Github
                   size={14}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
                 />
                 <input
                   name="link"
@@ -209,18 +209,18 @@ const ProjectEditModal: React.FC<Props> = ({ project, onClose, onSave }) => {
                   value={form.link}
                   onChange={handleChange}
                   placeholder="https://github.com/…"
-                  className="w-full pl-9 pr-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#28335A]/20 focus:border-[#28335A] transition"
+                  className="w-full pl-9 pr-4 py-2.5 text-sm border border-line rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-primary mb-1.5">
                 Live Demo URL
               </label>
               <div className="relative">
                 <Globe
                   size={14}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
                 />
                 <input
                   name="demo"
@@ -228,7 +228,7 @@ const ProjectEditModal: React.FC<Props> = ({ project, onClose, onSave }) => {
                   value={form.demo}
                   onChange={handleChange}
                   placeholder="https://your-app.vercel.app"
-                  className="w-full pl-9 pr-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#28335A]/20 focus:border-[#28335A] transition"
+                  className="w-full pl-9 pr-4 py-2.5 text-sm border border-line rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"
                 />
               </div>
             </div>
@@ -240,14 +240,14 @@ const ProjectEditModal: React.FC<Props> = ({ project, onClose, onSave }) => {
               type="button"
               onClick={onClose}
               disabled={submitting}
-              className="px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg transition disabled:opacity-50"
+              className="px-4 py-2.5 text-sm font-medium text-ink-muted bg-surface-muted hover:bg-line rounded-lg transition disabled:opacity-50"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-[#28335A] hover:bg-[#1e2745] rounded-lg transition disabled:opacity-60"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary hover:bg-primary rounded-lg transition disabled:opacity-60"
             >
               {submitting ? (
                 <>
