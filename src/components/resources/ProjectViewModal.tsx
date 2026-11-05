@@ -47,13 +47,13 @@ const ProjectViewModal: React.FC<Props> = ({ project, onClose }) => {
         <div className="p-6">
           {/* Header row */}
           <div className="flex items-start justify-between gap-4 mb-4">
-            <h2 className="text-2xl font-bold text-gray-900 leading-tight">
+            <h2 className="text-2xl font-bold text-primary leading-tight">
               {project.title}
             </h2>
             {!project.image && (
               <button
                 onClick={onClose}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 transition shrink-0"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-surface-muted text-ink-muted hover:bg-line transition shrink-0"
               >
                 <X size={16} />
               </button>
@@ -61,21 +61,21 @@ const ProjectViewModal: React.FC<Props> = ({ project, onClose }) => {
           </div>
 
           {/* Description */}
-          <p className="text-gray-600 text-sm leading-relaxed mb-6">
+          <p className="text-ink-muted text-sm leading-relaxed mb-6">
             {project.description}
           </p>
 
           {/* Meta info */}
           <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-500">
+            <div className="flex items-center gap-2 text-sm text-ink-muted">
               <User size={14} className="shrink-0" />
               <span>{project.owner || "Unknown Owner"}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-500">
+            <div className="flex items-center gap-2 text-sm text-ink-muted">
               <Shield size={14} className="shrink-0" />
               <span>{project.ownerRole}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-500">
+            <div className="flex items-center gap-2 text-sm text-ink-muted">
               <Calendar size={14} className="shrink-0" />
               <span>{formattedDate}</span>
             </div>
@@ -83,13 +83,13 @@ const ProjectViewModal: React.FC<Props> = ({ project, onClose }) => {
 
           {/* Links */}
           {(project.link || project.demo) && (
-            <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-100">
+            <div className="flex flex-wrap gap-3 pt-4 border-t border-line">
               {project.link && (
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary transition"
                 >
                   <Github size={15} />
                   Source Code
@@ -100,7 +100,7 @@ const ProjectViewModal: React.FC<Props> = ({ project, onClose }) => {
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#28335A] text-white text-sm font-medium hover:bg-[#1e2745] transition"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary transition"
                 >
                   <ExternalLink size={15} />
                   Live Demo
