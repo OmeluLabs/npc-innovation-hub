@@ -36,7 +36,7 @@ const SaveButton: React.FC<SaveButtonProps> = ({
           ${
             hasSaved
               ? "text-green-600 bg-green-50"
-              : "text-gray-500 hover:text-green-600 hover:bg-green-50"
+              : "text-ink-muted hover:text-green-600 hover:bg-green-50"
           }`}
       >
         <Bookmark size={16} fill={hasSaved ? "currentColor" : "none"} />
@@ -52,7 +52,7 @@ const SaveButton: React.FC<SaveButtonProps> = ({
         ${
           hasSaved
             ? "bg-green-100 text-green-700"
-            : "bg-gray-100 text-gray-700 hover:bg-green-100 hover:text-green-700"
+            : "bg-surface-muted text-primary hover:bg-green-100 hover:text-green-700"
         }`}
     >
       <Bookmark size={16} fill={hasSaved ? "currentColor" : "none"} />
