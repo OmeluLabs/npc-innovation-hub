@@ -74,7 +74,7 @@ export default function AuthPageMain({ children }: { children: ReactNode }) {
                   <h3 className="text-white text-xl font-semibold drop-shadow-md">
                     {title}
                   </h3>
-                  <p className="text-gray-100 drop-shadow-md">{text}</p>
+                  <p className="text-ink-muted drop-shadow-md">{text}</p>
                 </div>
               </div>
             ))}
