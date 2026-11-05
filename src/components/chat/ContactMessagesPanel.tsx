@@ -24,8 +24,8 @@ import { ReplyModal } from "../admin-components/ReplyModal";
 
 const STATUS_STYLES: Record<ContactMessageStatus, string> = {
   Pending: "bg-amber-50 text-amber-700 ring-1 ring-amber-200",
-  Reviewed: "bg-blue-50 text-blue-700 ring-1 ring-blue-200",
-  Closed: "bg-gray-100 text-gray-600 ring-1 ring-gray-200",
+  Reviewed: "bg-surface-muted text-primary ring-1 ring-accent",
+  Closed: "bg-surface-muted text-ink-muted ring-1 ring-line",
 };
 
 function formatDate(iso: string): string {
@@ -144,7 +144,7 @@ const ContactMessagesPanel: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg border border-gray-100 h-full flex flex-col overflow-hidden">
+    <div className="bg-white rounded-2xl shadow-lg border border-line h-full flex flex-col overflow-hidden">
       {replyTarget && (
         <ReplyModal
           isOpen={!!replyTarget}
@@ -156,13 +156,11 @@ const ContactMessagesPanel: React.FC = () => {
       )}
 
       {/* Header */}
-      <div className="px-5 pt-5 pb-4 border-b border-gray-100 flex-shrink-0">
+      <div className="px-5 pt-5 pb-4 border-b border-line flex-shrink-0">
         <div className="flex items-center gap-2 mb-3">
-          <Mail size={16} className="text-[#0C2340]" />
-          <h2 className="font-bold text-base text-gray-800">
-            Contact Messages
-          </h2>
-          <span className="text-xs text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full">
+          <Mail size={16} className="text-primary" />
+          <h2 className="font-bold text-base text-primary">Contact Messages</h2>
+          <span className="text-xs text-ink-muted bg-surface-muted px-1.5 py-0.5 rounded-full">
             {messages.length}
           </span>
         </div>
@@ -170,14 +168,14 @@ const ContactMessagesPanel: React.FC = () => {
           <div className="relative flex-1">
             <Search
               size={13}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
             />
             <input
               type="text"
               placeholder="Search by name, email, or message..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-8 pr-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-8 pr-3 py-2 bg-surface-muted border border-line rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
             />
           </div>
           <select
@@ -185,7 +183,7 @@ const ContactMessagesPanel: React.FC = () => {
             onChange={(e) =>
               setStatusFilter(e.target.value as ContactMessageStatus | "All")
             }
-            className="px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-2 bg-surface-muted border border-line rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
           >
             <option value="All">All statuses</option>
             <option value="Pending">Pending</option>
@@ -202,7 +200,7 @@ const ContactMessagesPanel: React.FC = () => {
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="h-24 bg-gray-100 rounded-xl animate-pulse"
+                className="h-24 bg-surface-muted rounded-xl animate-pulse"
               />
             ))}
           </div>
@@ -210,8 +208,8 @@ const ContactMessagesPanel: React.FC = () => {
           <p className="text-sm text-red-600 text-center py-10">{error}</p>
         ) : filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
-            <Mail size={40} className="text-gray-200 mb-3" />
-            <p className="text-sm text-gray-500">
+            <Mail size={40} className="text-ink-muted mb-3" />
+            <p className="text-sm text-ink-muted">
               {messages.length === 0
                 ? "No contact messages yet."
                 : "No messages match your search."}
@@ -224,14 +222,14 @@ const ContactMessagesPanel: React.FC = () => {
               return (
                 <li
                   key={m.id}
-                  className="border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-colors"
+                  className="border border-line rounded-xl p-4 hover:border-line transition-colors"
                 >
                   <div className="flex items-start justify-between gap-3 mb-1.5">
                     <div className="min-w-0">
-                      <p className="font-semibold text-sm text-gray-800 truncate">
+                      <p className="font-semibold text-sm text-primary truncate">
                         {m.name}
                       </p>
-                      <p className="text-xs text-gray-500 truncate">
+                      <p className="text-xs text-ink-muted truncate">
                         {m.email}
                       </p>
                     </div>
@@ -241,13 +239,13 @@ const ContactMessagesPanel: React.FC = () => {
                       >
                         {m.status}
                       </span>
-                      <span className="text-[11px] text-gray-400">
+                      <span className="text-[11px] text-ink-muted">
                         {formatDate(m.createdAt)}
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-sm text-gray-600 whitespace-pre-wrap mb-3">
+                  <p className="text-sm text-ink-muted whitespace-pre-wrap mb-3">
                     {m.message}
                   </p>
 
@@ -256,7 +254,7 @@ const ContactMessagesPanel: React.FC = () => {
                       type="button"
                       onClick={() => setReplyTarget(m)}
                       disabled={isBusy}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#002B56] text-white text-xs font-semibold hover:bg-[#003366] disabled:opacity-50 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-secondary disabled:opacity-50 transition-colors"
                     >
                       <Mail size={12} />
                       Reply
@@ -266,7 +264,7 @@ const ContactMessagesPanel: React.FC = () => {
                         type="button"
                         onClick={() => handleSetStatus(m.id, "Reviewed")}
                         disabled={isBusy}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200 text-gray-700 text-xs font-semibold hover:bg-gray-50 disabled:opacity-50 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-line text-primary text-xs font-semibold hover:bg-surface-muted disabled:opacity-50 transition-colors"
                       >
                         <CheckCircle2 size={12} />
                         Mark Reviewed
@@ -277,7 +275,7 @@ const ContactMessagesPanel: React.FC = () => {
                         type="button"
                         onClick={() => handleSetStatus(m.id, "Closed")}
                         disabled={isBusy}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200 text-gray-700 text-xs font-semibold hover:bg-gray-50 disabled:opacity-50 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-line text-primary text-xs font-semibold hover:bg-surface-muted disabled:opacity-50 transition-colors"
                       >
                         <XCircle size={12} />
                         Close
