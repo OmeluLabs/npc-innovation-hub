@@ -36,7 +36,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           disabled={disabled}
           aria-label={visible ? "Hide password" : "Show password"}
           aria-pressed={visible}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-muted hover:text-ink-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {visible ? <EyeOff size={18} /> : <Eye size={18} />}
         </button>
