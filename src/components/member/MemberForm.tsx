@@ -26,12 +26,12 @@ const Input: React.FC<
     accent?: string;
   }
 > = ({ label, accent = "blue", type, ...props }) => {
-  const fieldClassName = `w-full px-4 py-3 border border-gray-300 rounded-lg
+  const fieldClassName = `w-full px-4 py-3 border border-line rounded-lg
                   focus:ring-2 focus:ring-${accent}-500 focus:border-transparent
                   transition-colors text-sm ${props.className ?? ""}`;
   return (
     <div className="space-y-1.5">
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
+      <label className="block text-sm font-medium text-primary">{label}</label>
       {/* Password fields get the show/hide eye toggle automatically -
           every other type renders exactly as before. */}
       {type === "password" ? (
@@ -50,10 +50,10 @@ const Textarea: React.FC<
   }
 > = ({ label, accent = "blue", ...props }) => (
   <div className="space-y-1.5">
-    <label className="block text-sm font-medium text-gray-700">{label}</label>
+    <label className="block text-sm font-medium text-primary">{label}</label>
     <textarea
       {...props}
-      className={`w-full px-4 py-3 border border-gray-300 rounded-lg resize-none
+      className={`w-full px-4 py-3 border border-line rounded-lg resize-none
                   focus:ring-2 focus:ring-${accent}-500 focus:border-transparent
                   transition-colors text-sm ${props.className ?? ""}`}
     />
@@ -66,12 +66,12 @@ const SectionHeader: React.FC<{
   subtitle: string;
   color: string;
 }> = ({ icon, title, subtitle, color }) => (
-  <div className={`border-b border-gray-200 pb-4 mb-6`}>
-    <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+  <div className={`border-b border-line pb-4 mb-6`}>
+    <h2 className="text-lg font-semibold text-primary flex items-center gap-2">
       <span className={color}>{icon}</span>
       {title}
     </h2>
-    <p className="text-gray-500 text-sm mt-0.5">{subtitle}</p>
+    <p className="text-ink-muted text-sm mt-0.5">{subtitle}</p>
   </div>
 );
 
@@ -326,7 +326,7 @@ const MemberForm: React.FC = () => {
               <User className="h-7 w-7" />
               {memberExists ? "Edit Your Profile" : "Complete Your Profile"}
             </h1>
-            <p className="text-blue-200 mt-1 text-sm">
+            <p className="text-accent mt-1 text-sm">
               {memberExists
                 ? "Update your information below"
                 : "Fill out the form to set up your member profile"}
@@ -346,15 +346,15 @@ const MemberForm: React.FC = () => {
                 icon={<User className="h-5 w-5" />}
                 title="Basic Information"
                 subtitle="Your name, role, bio and avatar"
-                color="text-blue-600"
+                color="text-secondary"
               />
 
               {/* Avatar picker */}
               <div className="flex items-center gap-5">
                 <div className="relative">
                   <div
-                    className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100
-                                  border-2 border-gray-200 flex items-center justify-center"
+                    className="w-20 h-20 rounded-xl overflow-hidden bg-surface-muted
+                                  border-2 border-line flex items-center justify-center"
                   >
                     {preview ? (
                       <img
@@ -363,15 +363,15 @@ const MemberForm: React.FC = () => {
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <User size={28} className="text-gray-300" />
+                      <User size={28} className="text-ink-muted" />
                     )}
                   </div>
                   <button
                     type="button"
                     onClick={() => fileRef.current?.click()}
-                    className="absolute -bottom-1.5 -right-1.5 w-7 h-7 bg-indigo-600
+                    className="absolute -bottom-1.5 -right-1.5 w-7 h-7 bg-secondary
                                rounded-full flex items-center justify-center text-white
-                               hover:bg-indigo-700 transition-colors shadow"
+                               hover:bg-primary transition-colors shadow"
                   >
                     <Camera size={13} />
                   </button>
@@ -383,8 +383,8 @@ const MemberForm: React.FC = () => {
                     onChange={handleImagePick}
                   />
                 </div>
-                <div className="text-sm text-gray-500">
-                  <p className="font-medium text-gray-700">Profile photo</p>
+                <div className="text-sm text-ink-muted">
+                  <p className="font-medium text-primary">Profile photo</p>
                   <p className="text-xs mt-0.5">JPG, PNG up to 5MB</p>
                 </div>
               </div>
@@ -423,14 +423,14 @@ const MemberForm: React.FC = () => {
                   onChange={(e) => setPhone(e.target.value)}
                 />
                 <div className="space-y-1.5">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-primary">
                     Gender
                   </label>
                   <select
                     value={gender}
                     onChange={(e) => setGender(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg
-                               focus:ring-2 focus:ring-blue-500 focus:border-transparent
+                    className="w-full px-4 py-3 border border-line rounded-lg
+                               focus:ring-2 focus:ring-secondary focus:border-transparent
                                transition-colors text-sm bg-white"
                   >
                     <option value="">Select gender</option>
@@ -455,7 +455,7 @@ const MemberForm: React.FC = () => {
                 type="submit"
                 disabled={saving}
                 className="w-full bg-blue-950 text-white py-3.5 rounded-lg font-semibold
-                           hover:bg-blue-900 disabled:opacity-50 disabled:cursor-not-allowed
+                           hover:bg-primary disabled:opacity-50 disabled:cursor-not-allowed
                            transition-colors"
               >
                 {saving ? "Saving…" : "Save Basic Info"}
@@ -470,7 +470,7 @@ const MemberForm: React.FC = () => {
                 icon={<Award className="h-5 w-5" />}
                 title="Education"
                 subtitle="Degree, institution and description"
-                color="text-purple-600"
+                color="text-secondary"
               />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 min-w-0-all">
                 <Input
@@ -490,7 +490,7 @@ const MemberForm: React.FC = () => {
 
                 {/* Education image upload */}
                 <div className="space-y-1.5">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-primary">
                     Institution Logo (image file)
                   </label>
                   <input
@@ -498,18 +498,18 @@ const MemberForm: React.FC = () => {
                     type="file"
                     accept="image/*"
                     onChange={(e) => setEduImage(e.target.files?.[0] ?? null)}
-                    className="w-full text-sm text-gray-500 file:mr-3 file:py-2 file:px-4
+                    className="w-full text-sm text-ink-muted file:mr-3 file:py-2 file:px-4
                                file:rounded-lg file:border-0 file:text-sm file:font-semibold
-                               file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100"
+                               file:bg-surface-muted file:text-primary hover:file:bg-surface-muted"
                   />
                   {member?.education?.imageUrl && !eduImage && (
-                    <p className="text-xs text-gray-400 mt-1">
+                    <p className="text-xs text-ink-muted mt-1">
                       Current:{" "}
                       <a
                         href={member.education.imageUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-indigo-500 underline"
+                        className="text-secondary underline"
                       >
                         View logo
                       </a>
@@ -531,8 +531,8 @@ const MemberForm: React.FC = () => {
               <button
                 type="submit"
                 disabled={saving}
-                className="w-full bg-purple-700 text-white py-3.5 rounded-lg font-semibold
-                           hover:bg-purple-800 disabled:opacity-50 disabled:cursor-not-allowed
+                className="w-full bg-primary text-white py-3.5 rounded-lg font-semibold
+                           hover:bg-primary disabled:opacity-50 disabled:cursor-not-allowed
                            transition-colors"
               >
                 {saving ? "Saving…" : "Save Education"}
@@ -615,7 +615,7 @@ const MemberForm: React.FC = () => {
 
               {/* New skill builder */}
               <div className="bg-orange-50 border border-orange-100 rounded-xl p-5 space-y-4">
-                <h3 className="font-semibold text-gray-800 text-sm">
+                <h3 className="font-semibold text-primary text-sm">
                   Add New Skill
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 min-w-0-all">
@@ -629,7 +629,7 @@ const MemberForm: React.FC = () => {
                     }
                   />
                   <div className="space-y-1.5">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-primary">
                       Proficiency (%)
                     </label>
                     <input
@@ -644,7 +644,7 @@ const MemberForm: React.FC = () => {
                           percent: +e.target.value || 0,
                         }))
                       }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg
+                      className="w-full px-4 py-3 border border-line rounded-lg
                                  focus:ring-2 focus:ring-orange-500 focus:border-transparent
                                  transition-colors text-sm"
                     />
@@ -653,7 +653,7 @@ const MemberForm: React.FC = () => {
 
                 {/* Technologies */}
                 <div className="space-y-1.5">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-primary">
                     Technologies
                   </label>
                   <div className="flex gap-2">
@@ -665,7 +665,7 @@ const MemberForm: React.FC = () => {
                       onKeyDown={(e) =>
                         e.key === "Enter" && (e.preventDefault(), addTech())
                       }
-                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg
+                      className="flex-1 px-4 py-3 border border-line rounded-lg
                                  focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
                     />
                     <button
@@ -714,7 +714,7 @@ const MemberForm: React.FC = () => {
                     !newSkill.percent
                   }
                   className="w-full bg-orange-600 text-white py-3 rounded-lg
-                             hover:bg-orange-700 disabled:bg-gray-200 disabled:cursor-not-allowed
+                             hover:bg-orange-700 disabled:bg-line disabled:cursor-not-allowed
                              transition-colors font-medium text-sm"
                 >
                   Add Skill
@@ -727,7 +727,7 @@ const MemberForm: React.FC = () => {
                   {skills.map((skill, idx) => (
                     <div
                       key={idx}
-                      className="bg-white border border-gray-200 rounded-xl p-4 relative"
+                      className="bg-white border border-line rounded-xl p-4 relative"
                     >
                       <button
                         type="button"
@@ -739,14 +739,14 @@ const MemberForm: React.FC = () => {
                         <Trash2 size={14} />
                       </button>
                       <div className="flex justify-between items-start mb-1.5 pr-6">
-                        <h4 className="text-sm font-bold text-gray-800">
+                        <h4 className="text-sm font-bold text-primary">
                           {skill.name}
                         </h4>
                         <span className="text-xs font-bold text-orange-600">
                           {skill.percent}%
                         </span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3">
+                      <div className="w-full bg-line rounded-full h-1.5 mb-3">
                         <div
                           className="bg-orange-500 h-1.5 rounded-full transition-all duration-300"
                           style={{ width: `${skill.percent}%` }}
@@ -756,7 +756,7 @@ const MemberForm: React.FC = () => {
                         {skill.technologies.map((t) => (
                           <span
                             key={t}
-                            className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-xs"
+                            className="bg-surface-muted text-ink-muted px-2 py-0.5 rounded text-xs"
                           >
                             {t}
                           </span>
