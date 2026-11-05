@@ -26,6 +26,9 @@ export default {
         },
         line: "rgb(var(--color-line) / <alpha-value>)",
         "ink-muted": "rgb(var(--color-ink-muted) / <alpha-value>)",
+        success: "rgb(var(--color-success) / <alpha-value>)",
+        danger: "rgb(var(--color-danger) / <alpha-value>)",
+        warning: "rgb(var(--color-warning) / <alpha-value>)",
         // Legacy "npc" names kept so existing components pick up the new
         // palette without a rename: navy -> primary, navy-light -> secondary.
         npc: {
