@@ -128,7 +128,7 @@ function LetTalk() {
       className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-surface-muted p-4 md:p-8 scroll-mt-20"
     >
       {/* Contact Info Section */}
-      <div className="bg-blue-900 text-white rounded-xl shadow-lg p-8 w-full max-w-md mb-8 md:mb-0 md:mr-8">
+      <div className="bg-primary text-white rounded-xl shadow-lg p-8 w-full max-w-md mb-8 md:mb-0 md:mr-8">
         <div className="flex items-center mb-8">
           <svg
             className="w-12 h-12 mr-4 text-accent"
@@ -393,7 +393,7 @@ function LetTalk() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full py-3 px-6 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
+            className={`w-full py-3 px-6 bg-secondary text-white font-semibold rounded-lg hover:bg-primary transition-colors ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center">
