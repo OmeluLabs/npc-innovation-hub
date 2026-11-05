@@ -160,7 +160,7 @@ export default function BlogTables() {
       actions={
         <button
           onClick={() => setIsAddModalOpen(true)}
-          className="bg-[#343a5e] text-white rounded-xl px-6 sm:px-10 py-3 font-bold text-lg shadow hover:bg-[#20253a] transition-all flex items-center gap-2 justify-center"
+          className="bg-primary text-white rounded-xl px-6 sm:px-10 py-3 font-bold text-lg shadow hover:bg-primary transition-all flex items-center gap-2 justify-center"
         >
           <svg
             className="w-5 h-5"
