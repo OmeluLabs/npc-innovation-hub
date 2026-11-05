@@ -55,8 +55,8 @@ const ProfilePage: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+    <div className="min-h-screen bg-surface-muted">
+      <div className="bg-white rounded-2xl shadow-sm border border-line overflow-hidden">
         <ProfileHeader
           profile={profile}
           member={member}
