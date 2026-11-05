@@ -31,12 +31,12 @@ export const MessageSkeleton: React.FC<{ reverse?: boolean }> = ({
   <div
     className={`flex items-end gap-3 px-4 animate-pulse ${reverse ? "flex-row-reverse" : ""}`}
   >
-    <div className="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0" />
+    <div className="w-8 h-8 rounded-full bg-line flex-shrink-0" />
     <div
       className={`space-y-1 max-w-xs flex flex-col ${reverse ? "items-end" : ""}`}
     >
-      <div className="h-3 bg-gray-200 rounded w-20" />
-      <div className="h-9 bg-gray-200 rounded-2xl w-44" />
+      <div className="h-3 bg-line rounded w-20" />
+      <div className="h-9 bg-line rounded-2xl w-44" />
     </div>
   </div>
 );
@@ -44,14 +44,14 @@ export const MessageSkeleton: React.FC<{ reverse?: boolean }> = ({
 // ── Header Avatar ─────────────────────────────────────────────────────────────
 
 const PALETTE = [
-  "bg-blue-600",
-  "bg-purple-600",
+  "bg-secondary",
+  "bg-secondary",
   "bg-emerald-600",
   "bg-rose-600",
   "bg-orange-500",
-  "bg-teal-600",
-  "bg-indigo-600",
-  "bg-pink-600",
+  "bg-secondary",
+  "bg-secondary",
+  "bg-secondary",
 ];
 const colorFor = (s: string) => {
   let h = 0;
@@ -206,14 +206,14 @@ const ChatShell: React.FC<ChatShellProps> = ({
   return (
     <div className="flex flex-col h-full min-h-0 bg-white rounded-2xl shadow-lg overflow-hidden">
       {/* Header */}
-      <div className="flex-shrink-0 flex items-center justify-between px-5 py-3.5 border-b border-gray-100">
+      <div className="flex-shrink-0 flex items-center justify-between px-5 py-3.5 border-b border-line">
         <div className="flex items-center gap-3 min-w-0">
           {onBack && (
             <button
               type="button"
               onClick={onBack}
               aria-label="Back to conversations"
-              className="md:hidden -ml-1.5 p-2 -mr-1 hover:bg-gray-100 rounded-lg text-gray-500 flex-shrink-0"
+              className="md:hidden -ml-1.5 p-2 -mr-1 hover:bg-surface-muted rounded-lg text-ink-muted flex-shrink-0"
             >
               <ChevronLeft size={20} />
             </button>
@@ -222,12 +222,12 @@ const ChatShell: React.FC<ChatShellProps> = ({
             (isSelected && headerTitle ? (
               <HeaderAvatar name={headerTitle} />
             ) : (
-              <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
-                <MessageSquare size={16} className="text-gray-400" />
+              <div className="w-9 h-9 rounded-full bg-surface-muted flex items-center justify-center flex-shrink-0">
+                <MessageSquare size={16} className="text-ink-muted" />
               </div>
             ))}
           <div className="min-w-0">
-            <h2 className="text-base font-bold text-gray-800 leading-tight truncate">
+            <h2 className="text-base font-bold text-primary leading-tight truncate">
               {headerTitle || noSelectionTitle}
             </h2>
             {showOnlineStatus && isSelected && headerTitle ? (
@@ -236,7 +236,9 @@ const ChatShell: React.FC<ChatShellProps> = ({
                 Online
               </span>
             ) : headerSubtitle ? (
-              <p className="text-xs text-gray-400 truncate">{headerSubtitle}</p>
+              <p className="text-xs text-ink-muted truncate">
+                {headerSubtitle}
+              </p>
             ) : null}
           </div>
         </div>
@@ -249,7 +251,7 @@ const ChatShell: React.FC<ChatShellProps> = ({
                 setIsSearchOpen((p) => !p);
                 setSearchQuery("");
               }}
-              className={`p-2 rounded-lg transition-colors ${isSearchOpen ? "bg-blue-50 text-blue-500" : "hover:bg-gray-100 text-gray-500"}`}
+              className={`p-2 rounded-lg transition-colors ${isSearchOpen ? "bg-surface-muted text-secondary" : "hover:bg-surface-muted text-ink-muted"}`}
               title="Search messages"
             >
               <Search size={15} />
@@ -257,8 +259,8 @@ const ChatShell: React.FC<ChatShellProps> = ({
           )}
           {headerRight ??
             (isSelected && (
-              <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <MoreHorizontal size={15} className="text-gray-500" />
+              <button className="p-2 hover:bg-surface-muted rounded-lg transition-colors">
+                <MoreHorizontal size={15} className="text-ink-muted" />
               </button>
             ))}
         </div>
@@ -266,21 +268,21 @@ const ChatShell: React.FC<ChatShellProps> = ({
 
       {/* Search bar */}
       {isSearchOpen && (
-        <div className="flex-shrink-0 px-5 py-2 border-b border-gray-100 flex items-center gap-2 bg-gray-50">
-          <Search size={13} className="text-gray-400 flex-shrink-0" />
+        <div className="flex-shrink-0 px-5 py-2 border-b border-line flex items-center gap-2 bg-surface-muted">
+          <Search size={13} className="text-ink-muted flex-shrink-0" />
           <input
             autoFocus
             type="text"
             placeholder="Search messages..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1 text-sm outline-none bg-transparent text-gray-700 placeholder-gray-400"
+            className="flex-1 text-sm outline-none bg-transparent text-primary placeholder-ink-muted"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery("")}
-              className="text-gray-400 hover:text-gray-600"
+              className="text-ink-muted hover:text-ink-muted"
             >
               <X size={13} />
             </button>
@@ -302,8 +304,8 @@ const ChatShell: React.FC<ChatShellProps> = ({
         className="flex-1 min-h-0 overflow-y-auto py-2"
       >
         {!isSelected ? (
-          <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-3 px-8 text-center">
-            <MessageSquare size={44} className="text-gray-200" />
+          <div className="flex flex-col items-center justify-center h-full text-ink-muted gap-3 px-8 text-center">
+            <MessageSquare size={44} className="text-ink-muted" />
             <p className="font-medium text-sm">{noSelectionTitle}</p>
             {noSelectionSubtitle && (
               <p className="text-xs">{noSelectionSubtitle}</p>
@@ -317,8 +319,10 @@ const ChatShell: React.FC<ChatShellProps> = ({
             <MessageSkeleton reverse />
           </div>
         ) : displayed.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full text-gray-400 text-sm gap-2">
-            {emptyIcon ?? <MessageSquare size={36} className="text-gray-200" />}
+          <div className="flex flex-col items-center justify-center h-full text-ink-muted text-sm gap-2">
+            {emptyIcon ?? (
+              <MessageSquare size={36} className="text-ink-muted" />
+            )}
             <p className="font-medium">{emptyTitle}</p>
             {emptySubtitle && <p className="text-xs">{emptySubtitle}</p>}
           </div>
