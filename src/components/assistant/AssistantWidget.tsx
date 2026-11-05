@@ -272,7 +272,7 @@ export default function AssistantWidget() {
             aria-label="Conversation with the NPC Innovation Hub assistant"
           >
             {messages.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-gray-500 gap-3 px-2 text-center">
+              <div className="h-full flex flex-col items-center justify-center text-ink-muted gap-3 px-2 text-center">
                 <Bot className="w-9 h-9 text-primary/40" aria-hidden="true" />
                 <p className="text-sm">Send a message to start chatting!</p>
                 <div className="flex flex-wrap justify-center gap-1.5">
@@ -281,7 +281,7 @@ export default function AssistantWidget() {
                       key={question}
                       type="button"
                       onClick={() => void sendMessage(question)}
-                      className="text-xs bg-surface-muted border border-gray-200 text-primary rounded-full px-3 py-1.5 hover:bg-primary hover:text-white hover:border-primary transition-colors"
+                      className="text-xs bg-surface-muted border border-line text-primary rounded-full px-3 py-1.5 hover:bg-primary hover:text-white hover:border-primary transition-colors"
                     >
                       {question}
                     </button>
@@ -313,11 +313,11 @@ export default function AssistantWidget() {
                     </div>
                   ) : (
                     <div
-                      className={`${message.isError ? "bg-red-50 border-red-300" : "bg-surface-muted border-gray-200"} text-gray-700 rounded-2xl px-3.5 py-2 max-w-[78%] text-sm border`}
+                      className={`${message.isError ? "bg-red-50 border-red-300" : "bg-surface-muted border-line"} text-primary rounded-2xl px-3.5 py-2 max-w-[78%] text-sm border`}
                     >
                       {message.text}
                       {message.language && message.language !== "en" && (
-                        <div className="text-[10px] text-gray-500 mt-1.5">
+                        <div className="text-[10px] text-ink-muted mt-1.5">
                           Language detected: {message.language}
                         </div>
                       )}
@@ -343,18 +343,18 @@ export default function AssistantWidget() {
                 <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                   <Bot className="w-3.5 h-3.5 text-white" aria-hidden="true" />
                 </div>
-                <div className="bg-surface-muted text-gray-700 rounded-2xl px-3.5 py-2.5 border border-gray-200">
+                <div className="bg-surface-muted text-primary rounded-2xl px-3.5 py-2.5 border border-line">
                   <div className="flex gap-1.5">
                     <div
-                      className="h-1.5 w-1.5 bg-gray-400 rounded-full animate-bounce"
+                      className="h-1.5 w-1.5 bg-ink-muted rounded-full animate-bounce"
                       style={{ animationDelay: "0ms" }}
                     />
                     <div
-                      className="h-1.5 w-1.5 bg-gray-400 rounded-full animate-bounce"
+                      className="h-1.5 w-1.5 bg-ink-muted rounded-full animate-bounce"
                       style={{ animationDelay: "150ms" }}
                     />
                     <div
-                      className="h-1.5 w-1.5 bg-gray-400 rounded-full animate-bounce"
+                      className="h-1.5 w-1.5 bg-ink-muted rounded-full animate-bounce"
                       style={{ animationDelay: "300ms" }}
                     />
                   </div>
@@ -365,7 +365,7 @@ export default function AssistantWidget() {
           </div>
 
           {/* Input bar */}
-          <div className="px-3 py-3 border-t border-gray-100 flex items-center gap-2 flex-shrink-0">
+          <div className="px-3 py-3 border-t border-line flex items-center gap-2 flex-shrink-0">
             <input
               ref={inputRef}
               type="text"
@@ -376,7 +376,7 @@ export default function AssistantWidget() {
               placeholder={
                 isLoading ? "Waiting for response..." : "Type your question..."
               }
-              className="px-4 py-2.5 w-full border border-gray-300 rounded-full bg-white text-sm outline-none focus:border-primary text-gray-600"
+              className="px-4 py-2.5 w-full border border-line rounded-full bg-white text-sm outline-none focus:border-primary text-ink-muted"
               disabled={isLoading}
             />
             <button
@@ -384,7 +384,7 @@ export default function AssistantWidget() {
               onClick={() => void sendMessage()}
               disabled={isLoading || inputValue.trim() === ""}
               aria-label="Send message"
-              className={`w-10 h-10 flex-shrink-0 ${isLoading ? "bg-gray-400" : "bg-primary hover:bg-secondary"} rounded-full flex items-center justify-center transition-colors`}
+              className={`w-10 h-10 flex-shrink-0 ${isLoading ? "bg-ink-muted" : "bg-primary hover:bg-secondary"} rounded-full flex items-center justify-center transition-colors`}
             >
               {isLoading ? (
                 <Loader2
