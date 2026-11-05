@@ -67,7 +67,7 @@ const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
             className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition shadow"
           >
             <svg
-              className="w-5 h-5 text-gray-700"
+              className="w-5 h-5 text-primary"
               fill="none"
               stroke="currentColor"
               strokeWidth={2}
@@ -84,12 +84,12 @@ const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
 
         {/* Content */}
         <div className="p-5 sm:p-6 flex flex-col gap-5">
-          <h2 className="text-2xl font-bold text-gray-900">{event.title}</h2>
+          <h2 className="text-2xl font-bold text-primary">{event.title}</h2>
 
           {/* Location */}
-          <div className="flex items-start gap-2 text-gray-600">
+          <div className="flex items-start gap-2 text-ink-muted">
             <svg
-              className="w-5 h-5 mt-0.5 shrink-0 text-gray-400"
+              className="w-5 h-5 mt-0.5 shrink-0 text-ink-muted"
               fill="none"
               stroke="currentColor"
               strokeWidth={2}
@@ -111,19 +111,19 @@ const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
 
           {/* Date & Time */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bg-gray-50 rounded-xl p-4">
-              <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
+            <div className="bg-surface-muted rounded-xl p-4">
+              <div className="text-xs font-semibold text-ink-muted uppercase tracking-wide mb-1">
                 Start
               </div>
-              <div className="text-sm font-medium text-gray-800">
+              <div className="text-sm font-medium text-primary">
                 {formatFullDateTime(event.startTime)}
               </div>
             </div>
-            <div className="bg-gray-50 rounded-xl p-4">
-              <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
+            <div className="bg-surface-muted rounded-xl p-4">
+              <div className="text-xs font-semibold text-ink-muted uppercase tracking-wide mb-1">
                 End
               </div>
-              <div className="text-sm font-medium text-gray-800">
+              <div className="text-sm font-medium text-primary">
                 {formatFullDateTime(event.endTime)}
               </div>
             </div>
@@ -131,17 +131,17 @@ const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
 
           {/* Description */}
           <div>
-            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
+            <div className="text-xs font-semibold text-ink-muted uppercase tracking-wide mb-2">
               About this event
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-ink-muted text-sm leading-relaxed">
               {event.description}
             </p>
           </div>
 
           {/* Creator + RSVP */}
-          <div className="flex items-center gap-3 pt-2 border-t border-gray-100">
-            <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-sm font-semibold text-gray-600 shrink-0 overflow-hidden">
+          <div className="flex items-center gap-3 pt-2 border-t border-line">
+            <div className="w-9 h-9 rounded-full bg-line flex items-center justify-center text-sm font-semibold text-ink-muted shrink-0 overflow-hidden">
               {event.creator?.image ? (
                 <img
                   src={event.creator.image}
@@ -153,8 +153,8 @@ const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
               )}
             </div>
             <div>
-              <div className="text-xs text-gray-400">Organized by</div>
-              <div className="text-sm font-semibold text-gray-800">
+              <div className="text-xs text-ink-muted">Organized by</div>
+              <div className="text-sm font-semibold text-primary">
                 {creatorName}
               </div>
             </div>
