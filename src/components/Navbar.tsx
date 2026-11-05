@@ -273,8 +273,8 @@ export default function Navbar() {
       aria-current={isActive(leaf) ? "page" : undefined}
       className={`block px-4 py-3 font-semibold rounded-lg border-l-4 transition-colors duration-200 ${
         isActive(leaf)
-          ? "text-npc-navy border-npc-navy bg-gray-50"
-          : "text-npc-navy border-transparent hover:bg-gray-50"
+          ? "text-npc-navy border-npc-navy bg-surface-muted"
+          : "text-npc-navy border-transparent hover:bg-surface-muted"
       }`}
     >
       {leaf.label}
@@ -442,17 +442,17 @@ export default function Navbar() {
                 </button>
 
                 {showUserMenu && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden">
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-line overflow-hidden">
                     <Link
                       to={dashboardPath}
                       onClick={() => setShowUserMenu(false)}
-                      className="block px-4 py-3 text-sm font-bold text-npc-navy hover:bg-gray-50 transition-colors duration-200"
+                      className="block px-4 py-3 text-sm font-bold text-npc-navy hover:bg-surface-muted transition-colors duration-200"
                     >
                       Dashboard
                     </Link>
                     <button
                       onClick={() => void handleLogout()}
-                      className="w-full text-left px-4 py-3 text-sm font-bold text-red-600 hover:bg-red-50 border-t border-gray-100 transition-colors duration-200"
+                      className="w-full text-left px-4 py-3 text-sm font-bold text-red-600 hover:bg-red-50 border-t border-line transition-colors duration-200"
                     >
                       Sign Out
                     </button>
@@ -483,7 +483,7 @@ export default function Navbar() {
             className={`lg:hidden relative p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
               transparentAtTop && !isMenuOpen
                 ? "text-white hover:bg-white/10 focus:ring-white/40"
-                : "text-npc-navy hover:bg-gray-50 focus:ring-npc-navy/20"
+                : "text-npc-navy hover:bg-surface-muted focus:ring-npc-navy/20"
             }`}
             onClick={() => setIsMenuOpen((o) => !o)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -512,7 +512,7 @@ export default function Navbar() {
         {/* Mobile menu */}
         {isMenuOpen && (
           <nav
-            className="lg:hidden px-6 pb-4 bg-white border-t border-gray-100 max-h-[calc(100vh-4rem)] overflow-y-auto"
+            className="lg:hidden px-6 pb-4 bg-white border-t border-line max-h-[calc(100vh-4rem)] overflow-y-auto"
             aria-label="Mobile navigation"
           >
             <div className="space-y-1 pt-2">
@@ -533,13 +533,13 @@ export default function Navbar() {
                 <>
                   <Link
                     to={dashboardPath}
-                    className="block px-4 py-3 font-bold text-npc-navy rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                    className="block px-4 py-3 font-bold text-npc-navy rounded-lg hover:bg-surface-muted transition-colors duration-200"
                   >
                     Dashboard
                   </Link>
                   <button
                     onClick={() => void handleLogout()}
-                    className="w-full text-left mt-2 px-4 py-3 font-bold text-center bg-white text-red-600 shadow-sm border border-gray-200 hover:bg-red-50 transition-colors duration-200"
+                    className="w-full text-left mt-2 px-4 py-3 font-bold text-center bg-white text-red-600 shadow-sm border border-line hover:bg-red-50 transition-colors duration-200"
                   >
                     Sign Out
                   </button>
