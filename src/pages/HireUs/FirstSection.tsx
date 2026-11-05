@@ -9,7 +9,7 @@
 // form further down the page instead.
 const InnovationHub = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-surface-muted font-sans">
+    <div className="min-h-screen bg-gradient-to-br from-surface-muted to-surface-muted font-sans">
       {/* A <div>, not <main> - this only covers this section, not the rest
           of /hire-us's content (Services, LatestPro, LetTalk), which render
           as later siblings in AllRoutes.tsx. The single
