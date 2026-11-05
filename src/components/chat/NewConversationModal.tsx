@@ -49,7 +49,7 @@
 //           onError={() => setImgFailed(true)}
 //         />
 //       ) : (
-//         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0C2340] to-[#3b5998] flex items-center justify-center text-white font-semibold text-sm select-none">
+//         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-semibold text-sm select-none">
 //           {initials || "?"}
 //         </div>
 //       )}
@@ -169,22 +169,22 @@
 //     >
 //       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-3 sm:mx-4 max-h-[calc(100dvh-2rem)] flex flex-col overflow-hidden">
 //         {/* Header */}
-//         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
-//           <h3 className="text-base font-bold text-gray-800">New Message</h3>
+//         <div className="flex items-center justify-between px-5 py-4 border-b border-line">
+//           <h3 className="text-base font-bold text-primary">New Message</h3>
 //           <button
 //             onClick={onClose}
-//             className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
+//             className="p-1.5 hover:bg-surface-muted rounded-lg transition-colors"
 //           >
-//             <X size={16} className="text-gray-500" />
+//             <X size={16} className="text-ink-muted" />
 //           </button>
 //         </div>
 
 //         {/* Search */}
-//         <div className="px-5 py-3 border-b border-gray-100">
+//         <div className="px-5 py-3 border-b border-line">
 //           <div className="relative">
 //             <Search
 //               size={15}
-//               className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+//               className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
 //             />
 //             <input
 //               autoFocus
@@ -192,7 +192,7 @@
 //               placeholder="Search by name..."
 //               value={search}
 //               onChange={(e) => setSearch(e.target.value)}
-//               className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+//               className="w-full pl-9 pr-4 py-2 bg-surface-muted border border-line rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
 //             />
 //           </div>
 //         </div>
@@ -201,14 +201,14 @@
 //         <div className="flex-1 min-h-0 overflow-y-auto sm:max-h-80">
 //           {isLoading ? (
 //             <div className="flex items-center justify-center py-10">
-//               <Loader2 size={20} className="animate-spin text-gray-400" />
+//               <Loader2 size={20} className="animate-spin text-ink-muted" />
 //             </div>
 //           ) : error ? (
 //             <p className="text-center text-sm text-red-500 py-8 px-5">
 //               {error}
 //             </p>
 //           ) : filtered.length === 0 ? (
-//             <p className="text-center text-sm text-gray-400 py-8">
+//             <p className="text-center text-sm text-ink-muted py-8">
 //               {search ? "No members match your search." : "No members found."}
 //             </p>
 //           ) : (
@@ -220,16 +220,16 @@
 //                     <button
 //                       type="button"
 //                       onClick={() => onSelect(m)}
-//                       className="w-full flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-colors text-left"
+//                       className="w-full flex items-center gap-3 px-5 py-3 hover:bg-surface-muted transition-colors text-left"
 //                     >
 //                       <MemberAvatar name={m.name} imageUrl={m.imageUrl} />
 //                       <div className="flex-1 min-w-0">
 //                         <div className="flex items-center gap-2">
-//                           <span className="font-medium text-gray-800 text-sm truncate">
+//                           <span className="font-medium text-primary text-sm truncate">
 //                             {m.name}
 //                           </span>
 //                           {isAdmin && (
-//                             <span className="text-xs bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded font-medium flex-shrink-0">
+//                             <span className="text-xs bg-surface-muted text-primary px-1.5 py-0.5 rounded font-medium flex-shrink-0">
 //                               Admin
 //                             </span>
 //                           )}
@@ -281,15 +281,15 @@ const str = (v: unknown): string =>
   typeof v === "string" ? v : v == null ? "" : String(v);
 
 const PALETTE = [
-  "bg-blue-600",
-  "bg-purple-600",
+  "bg-secondary",
+  "bg-secondary",
   "bg-emerald-600",
   "bg-rose-600",
   "bg-orange-500",
-  "bg-teal-600",
-  "bg-indigo-600",
-  "bg-pink-600",
-  "bg-cyan-600",
+  "bg-secondary",
+  "bg-secondary",
+  "bg-secondary",
+  "bg-secondary",
   "bg-amber-600",
 ];
 
@@ -510,10 +510,10 @@ const NewConversationModal: React.FC<NewConversationModalProps> = ({
     >
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-3 sm:mx-4 max-h-[calc(100dvh-2rem)] flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-line">
           <div>
-            <h3 className="text-base font-bold text-gray-800">New Message</h3>
-            <p className="text-xs text-gray-400 mt-0.5">
+            <h3 className="text-base font-bold text-primary">New Message</h3>
+            <p className="text-xs text-ink-muted mt-0.5">
               {isLoading
                 ? "Loading…"
                 : `${members.length} member${members.length !== 1 ? "s" : ""} available`}
@@ -521,18 +521,18 @@ const NewConversationModal: React.FC<NewConversationModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-1.5 hover:bg-surface-muted rounded-lg transition-colors"
           >
-            <X size={16} className="text-gray-500" />
+            <X size={16} className="text-ink-muted" />
           </button>
         </div>
 
         {/* Search */}
-        <div className="px-5 py-3 border-b border-gray-100">
+        <div className="px-5 py-3 border-b border-line">
           <div className="relative">
             <Search
               size={15}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
             />
             <input
               autoFocus
@@ -540,7 +540,7 @@ const NewConversationModal: React.FC<NewConversationModalProps> = ({
               placeholder="Search by name…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-9 pr-4 py-2 bg-surface-muted border border-line rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
             />
           </div>
         </div>
@@ -549,15 +549,15 @@ const NewConversationModal: React.FC<NewConversationModalProps> = ({
         <div className="flex-1 min-h-0 overflow-y-auto sm:max-h-80">
           {isLoading ? (
             <div className="flex flex-col items-center justify-center py-10 gap-2">
-              <Loader2 size={20} className="animate-spin text-gray-400" />
-              <p className="text-xs text-gray-400">Loading members…</p>
+              <Loader2 size={20} className="animate-spin text-ink-muted" />
+              <p className="text-xs text-ink-muted">Loading members…</p>
             </div>
           ) : error ? (
             <p className="text-center text-sm text-red-500 py-8 px-5">
               {error}
             </p>
           ) : filtered.length === 0 ? (
-            <p className="text-center text-sm text-gray-400 py-8">
+            <p className="text-center text-sm text-ink-muted py-8">
               {search ? "No members match your search." : "No members found."}
             </p>
           ) : (
@@ -569,21 +569,21 @@ const NewConversationModal: React.FC<NewConversationModalProps> = ({
                     <button
                       type="button"
                       onClick={() => onSelect(m)}
-                      className="w-full flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-colors text-left"
+                      className="w-full flex items-center gap-3 px-5 py-3 hover:bg-surface-muted transition-colors text-left"
                     >
                       <InitialsAvatar initials={m.initials} color={m.color} />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="font-medium text-gray-800 text-sm truncate">
+                          <span className="font-medium text-primary text-sm truncate">
                             {m.name}
                           </span>
                           {isAdminMember && (
-                            <span className="text-xs bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-md font-semibold flex-shrink-0">
+                            <span className="text-xs bg-surface-muted text-primary px-1.5 py-0.5 rounded-md font-semibold flex-shrink-0">
                               Admin
                             </span>
                           )}
                         </div>
-                        <p className="text-xs text-gray-400 capitalize">
+                        <p className="text-xs text-ink-muted capitalize">
                           {m.role}
                         </p>
                       </div>
