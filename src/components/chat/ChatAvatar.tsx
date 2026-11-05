@@ -47,7 +47,7 @@ const ChatAvatar: React.FC<ChatAvatarProps> = ({
         />
       ) : (
         <div
-          className={`${sizeClass} rounded-full flex items-center justify-center text-white font-semibold bg-gradient-to-br from-[#0C2340] to-[#1a3a5c]`}
+          className={`${sizeClass} rounded-full flex items-center justify-center text-white font-semibold bg-gradient-to-br from-primary to-primary`}
         >
           {initials}
         </div>
@@ -55,7 +55,7 @@ const ChatAvatar: React.FC<ChatAvatarProps> = ({
       {isOnline !== undefined && (
         <span
           className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-white ${
-            isOnline ? "bg-green-500" : "bg-gray-400"
+            isOnline ? "bg-green-500" : "bg-ink-muted"
           }`}
         />
       )}
