@@ -86,16 +86,16 @@ export default function TaskManagement() {
     <AdminLayout
       title={
         <div>
-          <h1 className="font-bold text-3xl text-gray-900 mb-2 uppercase">
+          <h1 className="font-bold text-3xl text-primary mb-2 uppercase">
             Task Management
           </h1>
-          <p className="text-gray-600">Manage and track internal tasks</p>
+          <p className="text-ink-muted">Manage and track internal tasks</p>
         </div>
       }
       actions={
         <button
           onClick={() => setIsCreateModalOpen(true)}
-          className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
+          className="px-6 py-3 bg-gradient-to-r from-secondary to-secondary text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
         >
           <svg
             className="w-5 h-5"
