@@ -180,7 +180,7 @@ const ResetPassword: React.FC = () => {
           </div>
 
           {/* Password Requirements */}
-          <div className="bg-surface-muted border border-blue-200 rounded-lg p-4">
+          <div className="bg-surface-muted border border-accent rounded-lg p-4">
             <p className="text-sm text-secondary font-medium mb-2">
               Password Requirements:
             </p>
