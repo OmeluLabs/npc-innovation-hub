@@ -26,10 +26,10 @@ const TaskOverview: React.FC<TaskOverviewProps> = ({ tasks }) => {
 
   // Two-tone scale: darker navy = more urgent, light gray-blue = least urgent.
   const segments = [
-    { label: "Overdue", count: overdue, color: "#07182D" },
-    { label: "Completed", count: completed, color: "#1E4E8C" },
-    { label: "In Progress", count: inProg, color: "#5E7FA8" },
-    { label: "Pending", count: pending, color: "#CBD3E0" },
+    { label: "Overdue", count: overdue, color: "rgb(var(--navy-900))" },
+    { label: "Completed", count: completed, color: "rgb(var(--navy-600))" },
+    { label: "In Progress", count: inProg, color: "rgb(var(--navy-400))" },
+    { label: "Pending", count: pending, color: "rgb(var(--mist-400))" },
   ];
 
   return (
@@ -49,7 +49,7 @@ const TaskOverview: React.FC<TaskOverviewProps> = ({ tasks }) => {
                   cy="50"
                   r={radius}
                   fill="none"
-                  stroke="#E3E8F0"
+                  className="stroke-mist-300"
                   strokeWidth="12"
                 />
                 <circle
@@ -57,11 +57,10 @@ const TaskOverview: React.FC<TaskOverviewProps> = ({ tasks }) => {
                   cy="50"
                   r={radius}
                   fill="none"
-                  stroke="#0C2340"
                   strokeWidth="12"
                   strokeDasharray={`${filled} ${gap}`}
                   strokeLinecap="round"
-                  className="transition-all duration-700"
+                  className="stroke-navy-800 transition-all duration-700"
                 />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
