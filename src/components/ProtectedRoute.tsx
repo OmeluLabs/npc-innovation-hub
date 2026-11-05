@@ -52,10 +52,10 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   // Show loading state while checking authentication
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="flex items-center justify-center min-h-screen bg-surface-muted">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-secondary"></div>
+          <p className="mt-4 text-ink-muted">Loading...</p>
         </div>
       </div>
     );
@@ -70,26 +70,26 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   // Check role-based access if required
   if (requiredRole && user?.role !== requiredRole) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="flex items-center justify-center min-h-screen bg-surface-muted">
         <div className="bg-white p-8 rounded-lg shadow-lg max-w-md text-center">
           <TriangleAlert
             className="mx-auto mb-4 h-12 w-12 text-red-500"
             aria-hidden="true"
           />
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">
+          <h1 className="text-2xl font-bold text-primary mb-2">
             Access Denied
           </h1>
-          <p className="text-gray-600 mb-6">
+          <p className="text-ink-muted mb-6">
             You don't have permission to access this page.
           </p>
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-ink-muted mb-4">
             Required role: <span className="font-semibold">{requiredRole}</span>
             <br />
             Your role: <span className="font-semibold">{user?.role}</span>
           </p>
           <button
             onClick={() => window.history.back()}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="px-6 py-2 bg-secondary text-white rounded-lg hover:bg-primary transition-colors"
           >
             Go Back
           </button>
@@ -129,10 +129,10 @@ export const PublicRoute: React.FC<{
   // Show loading state
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="flex items-center justify-center min-h-screen bg-surface-muted">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-secondary"></div>
+          <p className="mt-4 text-ink-muted">Loading...</p>
         </div>
       </div>
     );
