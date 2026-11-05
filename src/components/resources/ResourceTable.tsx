@@ -26,24 +26,24 @@ const getTypeIcon = (type: string) => {
     case "Video":
       return <Video size={16} className="text-red-500" />;
     case "Book":
-      return <BookOpen size={16} className="text-blue-500" />;
+      return <BookOpen size={16} className="text-secondary" />;
     case "Documentation":
-      return <FileText size={16} className="text-purple-500" />;
+      return <FileText size={16} className="text-secondary" />;
     default:
-      return <FileText size={16} className="text-gray-500" />;
+      return <FileText size={16} className="text-ink-muted" />;
   }
 };
 
 const getCategoryColor = (category: string): string => {
   switch (category) {
     case "Frontend":
-      return "bg-pink-100 text-pink-700";
+      return "bg-surface-muted text-primary";
     case "Backend":
-      return "bg-blue-100 text-blue-700";
+      return "bg-surface-muted text-primary";
     case "Cybersecurity":
-      return "bg-purple-100 text-purple-700";
+      return "bg-surface-muted text-primary";
     default:
-      return "bg-gray-100 text-gray-600";
+      return "bg-surface-muted text-ink-muted";
   }
 };
 
@@ -69,7 +69,7 @@ const ResourceTable: React.FC<ResourceTableProps> = ({
       {/* View - always visible */}
       <button
         onClick={() => onView(resource)}
-        className="text-indigo-600 hover:text-indigo-900 transition-colors p-1 rounded-md hover:bg-indigo-50"
+        className="text-secondary hover:text-primary transition-colors p-1 rounded-md hover:bg-surface-muted"
         title="View Resource"
       >
         <Eye size={16} />
@@ -110,11 +110,11 @@ const ResourceTable: React.FC<ResourceTableProps> = ({
   );
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-line">
       {/* Header */}
-      <div className="bg-gradient-to-r from-slate-700 to-slate-800 px-6 py-4">
+      <div className="bg-gradient-to-r from-primary to-primary px-6 py-4">
         <h2 className="text-xl font-semibold text-white">Resource Library</h2>
-        <p className="text-slate-300 text-sm mt-1">
+        <p className="text-ink-muted text-sm mt-1">
           Browse resources and documents from the hub
         </p>
       </div>
@@ -122,34 +122,34 @@ const ResourceTable: React.FC<ResourceTableProps> = ({
       {/* Table */}
       <ResponsiveTable
         table={
-          <table className="min-w-full divide-y divide-gray-200 border-separate border-spacing-0">
-            <thead className="bg-gray-50">
+          <table className="min-w-full divide-y divide-line border-separate border-spacing-0">
+            <thead className="bg-surface-muted">
               <tr>
                 {/* Sticky first column - see admin EventsTable.tsx for why. */}
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sticky left-0 z-10 bg-gray-50">
+                <th className="px-6 py-4 text-left text-xs font-medium text-ink-muted uppercase tracking-wider sticky left-0 z-10 bg-surface-muted">
                   Resource
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-medium text-ink-muted uppercase tracking-wider">
                   Category
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-medium text-ink-muted uppercase tracking-wider">
                   Type
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-medium text-ink-muted uppercase tracking-wider">
                   Date Added
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-medium text-ink-muted uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white divide-y divide-line">
               {loading ? (
                 <ResourceSkeleton />
               ) : resources.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-16 text-center">
-                    <div className="flex flex-col items-center gap-2 text-gray-400">
+                    <div className="flex flex-col items-center gap-2 text-ink-muted">
                       <FileText size={36} className="opacity-40" />
                       <p className="text-sm font-medium">No resources found</p>
                       <p className="text-xs">
@@ -162,27 +162,27 @@ const ResourceTable: React.FC<ResourceTableProps> = ({
                 resources.map((resource) => (
                   <tr
                     key={resource.id}
-                    className="hover:bg-gray-50 transition-colors duration-200"
+                    className="hover:bg-surface-muted transition-colors duration-200"
                   >
                     {/* Title + thumbnail */}
-                    <td className="px-6 py-4 whitespace-nowrap sticky left-0 z-[1] bg-white border-r border-gray-100">
+                    <td className="px-6 py-4 whitespace-nowrap sticky left-0 z-[1] bg-white border-r border-line">
                       <div className="flex items-center gap-3">
                         {resource.imageUrl ? (
                           <img
                             src={resource.imageUrl}
                             alt={resource.title}
-                            className="w-10 h-10 rounded-lg object-cover shrink-0 border border-gray-100"
+                            className="w-10 h-10 rounded-lg object-cover shrink-0 border border-line"
                           />
                         ) : (
-                          <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
+                          <div className="w-10 h-10 rounded-lg bg-surface-muted flex items-center justify-center shrink-0">
                             {getTypeIcon(resource.type)}
                           </div>
                         )}
                         <div>
-                          <div className="text-sm font-medium text-gray-900 max-w-xs truncate">
+                          <div className="text-sm font-medium text-primary max-w-xs truncate">
                             {resource.title}
                           </div>
-                          <div className="text-xs text-gray-400">
+                          <div className="text-xs text-ink-muted">
                             {resource.author}
                           </div>
                         </div>
@@ -200,14 +200,14 @@ const ResourceTable: React.FC<ResourceTableProps> = ({
 
                     {/* Type */}
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-muted text-ink-muted">
                         {getTypeIcon(resource.type)}
                         {resource.type}
                       </span>
                     </td>
 
                     {/* Date */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-ink-muted">
                       {formatDate(resource.createdAt)}
                     </td>
 
@@ -226,13 +226,13 @@ const ResourceTable: React.FC<ResourceTableProps> = ({
             <>
               {[1, 2, 3].map((n) => (
                 <div key={n} className="p-4 animate-pulse">
-                  <div className="h-14 bg-gray-200 rounded-lg" />
+                  <div className="h-14 bg-line rounded-lg" />
                 </div>
               ))}
             </>
           ) : resources.length === 0 ? (
             <div className="px-6 py-16 text-center">
-              <div className="flex flex-col items-center gap-2 text-gray-400">
+              <div className="flex flex-col items-center gap-2 text-ink-muted">
                 <FileText size={36} className="opacity-40" />
                 <p className="text-sm font-medium">No resources found</p>
                 <p className="text-xs">
@@ -249,18 +249,18 @@ const ResourceTable: React.FC<ResourceTableProps> = ({
                       <img
                         src={resource.imageUrl}
                         alt={resource.title}
-                        className="w-10 h-10 rounded-lg object-cover shrink-0 border border-gray-100"
+                        className="w-10 h-10 rounded-lg object-cover shrink-0 border border-line"
                       />
                     ) : (
-                      <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-surface-muted flex items-center justify-center shrink-0">
                         {getTypeIcon(resource.type)}
                       </div>
                     )}
                     <div className="min-w-0">
-                      <div className="text-sm font-medium text-gray-900 truncate">
+                      <div className="text-sm font-medium text-primary truncate">
                         {resource.title}
                       </div>
-                      <div className="text-xs text-gray-400 truncate">
+                      <div className="text-xs text-ink-muted truncate">
                         {resource.author}
                       </div>
                     </div>
@@ -274,7 +274,7 @@ const ResourceTable: React.FC<ResourceTableProps> = ({
                       </span>
                     </MobileCardRow>
                     <MobileCardRow label="Type">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-muted text-ink-muted">
                         {getTypeIcon(resource.type)}
                         {resource.type}
                       </span>
@@ -283,7 +283,7 @@ const ResourceTable: React.FC<ResourceTableProps> = ({
                       {formatDate(resource.createdAt)}
                     </MobileCardRow>
                   </dl>
-                  <div className="pt-1 border-t border-gray-100">
+                  <div className="pt-1 border-t border-line">
                     {renderActions(resource)}
                   </div>
                 </div>
@@ -295,8 +295,8 @@ const ResourceTable: React.FC<ResourceTableProps> = ({
 
       {/* Footer */}
       {!loading && resources.length > 0 && (
-        <div className="bg-gray-50 px-6 py-3 border-t border-gray-200">
-          <div className="text-sm text-gray-500">
+        <div className="bg-surface-muted px-6 py-3 border-t border-line">
+          <div className="text-sm text-ink-muted">
             Showing {resources.length} resource
             {resources.length !== 1 ? "s" : ""}
           </div>
