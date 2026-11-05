@@ -36,7 +36,7 @@ const PublicEventCard: React.FC<PublicEventCardProps> = ({ event, isPast }) => {
   const time = `${start.toLocaleTimeString("en-US", timeFormat)} - ${end.toLocaleTimeString("en-US", timeFormat)}`;
 
   return (
-    <article className="flex flex-col h-full bg-white rounded-2xl border border-gray-100 shadow-soft overflow-hidden transition-shadow duration-200 hover:shadow-medium">
+    <article className="flex flex-col h-full bg-white rounded-2xl border border-line shadow-soft overflow-hidden transition-shadow duration-200 hover:shadow-medium">
       <div className="relative aspect-[16/9] bg-mist-200">
         {event.imageUrl ? (
           <img
