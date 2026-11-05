@@ -11,7 +11,7 @@ export default function ApplicationsPage() {
     <AdminLayout
       title="Membership Applications"
       actions={
-        <div className="text-sm text-gray-600">
+        <div className="text-sm text-ink-muted">
           Review and decide on Join Us applications
         </div>
       }
