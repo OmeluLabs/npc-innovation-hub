@@ -129,7 +129,7 @@ export default function NavDropdown({
         aria-controls={panelId}
         onClick={() => setOpen((o) => !o)}
         onKeyDown={onButtonKeyDown}
-        className={`flex items-center gap-1.5 font-semibold text-sm xl:text-base px-3 py-2 rounded-md border-b-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+        className={`flex items-center gap-1.5 font-semibold text-sm xl:text-base px-2 xl:px-3 py-2 rounded-md border-b-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
           onDark ? "focus-visible:ring-white" : "focus-visible:ring-npc-navy"
         } ${textClasses} ${
           groupActive
