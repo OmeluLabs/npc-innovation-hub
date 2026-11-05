@@ -51,14 +51,14 @@ export const Projects: React.FC = () => {
       {/* Page header */}
       <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Projects</h1>
-          <p className="text-sm text-gray-500 mt-0.5">
+          <h1 className="text-2xl font-bold text-primary">Projects</h1>
+          <p className="text-sm text-ink-muted mt-0.5">
             Browse, manage and showcase your work
           </p>
         </div>
         <button
           onClick={() => navigate("/dashboard/projects/new")}
-          className="inline-flex items-center gap-2 bg-[#28335A] text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#1e2745] transition shadow-sm shrink-0"
+          className="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-primary transition shadow-sm shrink-0"
         >
           <Plus size={16} />
           Add New Project
@@ -68,13 +68,13 @@ export const Projects: React.FC = () => {
       {/* Toolbar */}
       <div className="mb-5 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
         {/* View toggle */}
-        <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+        <div className="flex items-center gap-1 bg-surface-muted rounded-lg p-1">
           <button
             onClick={() => setViewMode("all")}
             className={`px-4 py-1.5 rounded-md text-sm font-medium transition ${
               viewMode === "all"
-                ? "bg-white text-gray-900 shadow-sm"
-                : "text-gray-500 hover:text-gray-700"
+                ? "bg-white text-primary shadow-sm"
+                : "text-ink-muted hover:text-primary"
             }`}
           >
             All Projects
@@ -83,8 +83,8 @@ export const Projects: React.FC = () => {
             onClick={() => setViewMode("mine")}
             className={`px-4 py-1.5 rounded-md text-sm font-medium transition ${
               viewMode === "mine"
-                ? "bg-white text-gray-900 shadow-sm"
-                : "text-gray-500 hover:text-gray-700"
+                ? "bg-white text-primary shadow-sm"
+                : "text-ink-muted hover:text-primary"
             }`}
           >
             My Projects
@@ -96,20 +96,20 @@ export const Projects: React.FC = () => {
           <div className="relative flex-1 sm:w-64">
             <Search
               size={15}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted"
             />
             <input
               type="text"
               placeholder="Search projects…"
               value={searchQuery}
               onChange={handleSearch}
-              className="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#28335A]/20 focus:border-[#28335A] transition"
+              className="w-full pl-9 pr-4 py-2 text-sm border border-line rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"
             />
           </div>
           <button
             onClick={refresh}
             title="Refresh"
-            className="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition"
+            className="w-9 h-9 flex items-center justify-center rounded-lg border border-line text-ink-muted hover:bg-surface-muted hover:text-primary transition"
           >
             <RefreshCw size={15} />
           </button>
@@ -118,7 +118,7 @@ export const Projects: React.FC = () => {
 
       {/* States */}
       {loading && (
-        <div className="flex flex-col items-center justify-center text-center px-4 py-14 sm:py-24 text-gray-400">
+        <div className="flex flex-col items-center justify-center text-center px-4 py-14 sm:py-24 text-ink-muted">
           <Loader2 size={32} className="animate-spin mb-3" />
           <p className="text-sm">Loading projects…</p>
         </div>
@@ -130,7 +130,7 @@ export const Projects: React.FC = () => {
           <p className="text-sm font-medium">{error}</p>
           <button
             onClick={refresh}
-            className="mt-4 text-sm text-[#28335A] hover:underline font-medium"
+            className="mt-4 text-sm text-primary hover:underline font-medium"
           >
             Try again
           </button>
@@ -138,10 +138,12 @@ export const Projects: React.FC = () => {
       )}
 
       {!loading && !error && projects.length === 0 && (
-        <div className="flex flex-col items-center justify-center text-center px-4 py-14 sm:py-24 text-gray-400">
-          <Layers size={40} className="mb-3 text-gray-300" />
-          <p className="text-sm font-medium text-gray-500">No projects found</p>
-          <p className="text-xs text-gray-400 mt-1">
+        <div className="flex flex-col items-center justify-center text-center px-4 py-14 sm:py-24 text-ink-muted">
+          <Layers size={40} className="mb-3 text-ink-muted" />
+          <p className="text-sm font-medium text-ink-muted">
+            No projects found
+          </p>
+          <p className="text-xs text-ink-muted mt-1">
             {viewMode === "mine"
               ? "You haven't added any projects yet."
               : "No projects are available right now."}
@@ -149,7 +151,7 @@ export const Projects: React.FC = () => {
           {viewMode === "mine" && (
             <button
               onClick={() => navigate("/dashboard/projects/new")}
-              className="mt-5 inline-flex items-center gap-2 bg-[#28335A] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#1e2745] transition"
+              className="mt-5 inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary transition"
             >
               <Plus size={15} />
               Add your first project
