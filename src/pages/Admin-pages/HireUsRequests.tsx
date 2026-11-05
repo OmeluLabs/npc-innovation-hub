@@ -11,7 +11,7 @@ export default function HireUsRequests() {
     <AdminLayout
       title="Hire Us Inquiries"
       actions={
-        <div className="text-sm text-gray-600">
+        <div className="text-sm text-ink-muted">
           Manage and respond to client inquiries
         </div>
       }
