@@ -37,8 +37,8 @@ const UpvoteButton: React.FC<UpvoteButtonProps> = ({
         className={`flex items-center gap-1 p-1 rounded-md transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed
           ${
             hasUpvoted
-              ? "text-indigo-600 bg-indigo-50"
-              : "text-gray-500 hover:text-indigo-600 hover:bg-indigo-50"
+              ? "text-secondary bg-surface-muted"
+              : "text-ink-muted hover:text-secondary hover:bg-surface-muted"
           }`}
       >
         <ThumbsUp size={16} />
@@ -54,8 +54,8 @@ const UpvoteButton: React.FC<UpvoteButtonProps> = ({
       className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed
         ${
           hasUpvoted
-            ? "bg-indigo-100 text-indigo-700"
-            : "bg-gray-100 text-gray-700 hover:bg-indigo-100 hover:text-indigo-700"
+            ? "bg-surface-muted text-primary"
+            : "bg-surface-muted text-primary hover:bg-surface-muted hover:text-primary"
         }`}
     >
       <ThumbsUp size={16} />
