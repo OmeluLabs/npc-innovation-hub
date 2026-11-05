@@ -162,7 +162,7 @@ export default function NavDropdown({
           onKeyDown={onPanelKeyDown}
           className="absolute left-0 top-full pt-2 z-50"
         >
-          <ul className="min-w-[16rem] bg-white rounded-lg shadow-xl border border-gray-100 py-2">
+          <ul className="min-w-[16rem] bg-white rounded-lg shadow-xl border border-line py-2">
             {group.children.map((leaf) => {
               const active = isLeafActive(leaf);
               return (
@@ -172,7 +172,7 @@ export default function NavDropdown({
                     data-nav-item
                     aria-current={active ? "page" : undefined}
                     onClick={() => setOpen(false)}
-                    className={`block px-4 py-2.5 transition-colors duration-150 focus:outline-none focus-visible:bg-gray-50 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-npc-navy hover:bg-gray-50 ${
+                    className={`block px-4 py-2.5 transition-colors duration-150 focus:outline-none focus-visible:bg-surface-muted focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-npc-navy hover:bg-surface-muted ${
                       active
                         ? "border-l-4 border-npc-navy"
                         : "border-l-4 border-transparent"
