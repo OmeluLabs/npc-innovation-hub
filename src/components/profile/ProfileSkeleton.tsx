@@ -3,16 +3,16 @@
 import React from "react";
 
 const S: React.FC<{ className?: string }> = ({ className = "" }) => (
-  <div className={`bg-gray-200 rounded-lg animate-pulse ${className}`} />
+  <div className={`bg-line rounded-lg animate-pulse ${className}`} />
 );
 
 const ProfileSkeleton: React.FC = () => (
-  <div className="min-h-screen bg-gray-50">
+  <div className="min-h-screen bg-surface-muted">
     {/* Header */}
-    <div className="h-48 bg-gradient-to-r from-gray-200 to-gray-300 animate-pulse" />
+    <div className="h-48 bg-gradient-to-r from-line to-line animate-pulse" />
     <div className="max-w-5xl mx-auto px-6 -mt-16 pb-10">
       <div className="flex items-end gap-5 mb-8">
-        <div className="w-28 h-28 rounded-2xl bg-gray-300 animate-pulse border-4 border-white shrink-0" />
+        <div className="w-28 h-28 rounded-2xl bg-line animate-pulse border-4 border-white shrink-0" />
         <div className="mb-3">
           <S className="h-6 w-48 mb-2" />
           <S className="h-4 w-32" />
