@@ -25,14 +25,12 @@ const ProjectDeleteModal: React.FC<Props> = ({
           <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center shrink-0">
             <AlertTriangle size={20} className="text-red-600" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-900">
-            Delete Project
-          </h3>
+          <h3 className="text-lg font-semibold text-primary">Delete Project</h3>
         </div>
 
-        <p className="text-sm text-gray-600 mb-6">
+        <p className="text-sm text-ink-muted mb-6">
           Are you sure you want to delete{" "}
-          <span className="font-semibold text-gray-800">"{projectTitle}"</span>?
+          <span className="font-semibold text-primary">"{projectTitle}"</span>?
           This action cannot be undone.
         </p>
 
@@ -40,7 +38,7 @@ const ProjectDeleteModal: React.FC<Props> = ({
           <button
             onClick={onCancel}
             disabled={loading}
-            className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition disabled:opacity-50"
+            className="px-4 py-2 text-sm font-medium text-primary bg-surface-muted hover:bg-line rounded-lg transition disabled:opacity-50"
           >
             Cancel
           </button>
