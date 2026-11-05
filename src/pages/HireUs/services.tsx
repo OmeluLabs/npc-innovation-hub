@@ -102,7 +102,7 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-xl p-6 md:p-10 border-2 border-blue-100 hover:shadow-2xl transition-all duration-300 text-left"
+              className="bg-white rounded-2xl shadow-xl p-6 md:p-10 border-2 border-accent hover:shadow-2xl transition-all duration-300 text-left"
             >
               {/* Icon positioned above content */}
               <div className="w-16 h-16 bg-surface-muted text-secondary rounded-full flex items-center justify-center mb-6">
