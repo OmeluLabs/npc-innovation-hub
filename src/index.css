@@ -26,6 +26,30 @@
   --color-line: 217 225 240; /* hairlines and card borders */
   --color-ink-muted: 71 85 105; /* secondary text, 7.6:1 on white */
 
+  /* Derived shades for the dashboards' navy-* and mist-* scales. These are
+     tints/shades mixed from the three brand colours above (accent and
+     secondary toward white, primary toward black), so the admin and member
+     dashboards use the same palette as the public site. navy-600/800 ARE
+     secondary/primary. All text-capable steps (navy-400 and darker, mist-500
+     and darker) are at least 4.5:1 on white. */
+  --navy-50: 243 246 251;
+  --navy-100: 229 236 247;
+  --navy-200: 203 216 238;
+  --navy-300: 151 178 222; /* = accent */
+  --navy-400: 82 120 178;
+  --navy-500: 51 93 158;
+  --navy-600: 26 72 142; /* = secondary */
+  --navy-700: 18 52 106;
+  --navy-800: 9 33 71; /* = primary */
+  --navy-900: 6 23 50;
+  --mist-50: 250 251 253;
+  --mist-100: 245 247 252;
+  --mist-200: 238 243 250;
+  --mist-300: 228 235 246;
+  --mist-400: 208 220 240;
+  --mist-500: 100 116 139;
+  --mist-600: 71 85 105;
+
   --font-heading: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
