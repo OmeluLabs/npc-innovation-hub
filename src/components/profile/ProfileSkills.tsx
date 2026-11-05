@@ -9,9 +9,9 @@ interface ProfileSkillsProps {
 }
 
 const BAR_COLORS = [
-  "from-blue-500 to-indigo-500",
-  "from-purple-500 to-pink-500",
-  "from-green-500 to-teal-500",
+  "from-secondary to-secondary",
+  "from-secondary to-secondary",
+  "from-green-500 to-secondary",
   "from-orange-400 to-amber-500",
 ];
 
@@ -19,13 +19,13 @@ const ProfileSkills: React.FC<ProfileSkillsProps> = ({ member }) => {
   const skills = member?.skillDetails ?? [];
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-      <h3 className="text-sm font-bold text-gray-800 mb-5">
+    <div className="bg-white rounded-xl shadow-sm border border-line p-6">
+      <h3 className="text-sm font-bold text-primary mb-5">
         Skills & Technologies
       </h3>
 
       {skills.length === 0 ? (
-        <div className="flex flex-col items-center py-8 text-gray-400 gap-2">
+        <div className="flex flex-col items-center py-8 text-ink-muted gap-2">
           <Code size={28} className="opacity-30" />
           <p className="text-sm">No skills added yet.</p>
         </div>
@@ -34,14 +34,14 @@ const ProfileSkills: React.FC<ProfileSkillsProps> = ({ member }) => {
           {skills.map((skill, idx) => (
             <div key={skill.name}>
               <div className="flex justify-between items-center mb-1.5">
-                <span className="text-sm font-semibold text-gray-800">
+                <span className="text-sm font-semibold text-primary">
                   {skill.name}
                 </span>
-                <span className="text-xs font-bold text-indigo-600">
+                <span className="text-xs font-bold text-secondary">
                   {skill.percent}%
                 </span>
               </div>
-              <div className="w-full bg-gray-100 rounded-full h-2.5 mb-2.5 overflow-hidden">
+              <div className="w-full bg-surface-muted rounded-full h-2.5 mb-2.5 overflow-hidden">
                 <div
                   className={`h-2.5 rounded-full bg-gradient-to-r ${BAR_COLORS[idx % BAR_COLORS.length]}
                                transition-all duration-700`}
@@ -52,8 +52,8 @@ const ProfileSkills: React.FC<ProfileSkillsProps> = ({ member }) => {
                 {skill.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="text-xs bg-gray-100 text-gray-600 px-2.5 py-0.5
-                               rounded-full font-medium border border-gray-200"
+                    className="text-xs bg-surface-muted text-ink-muted px-2.5 py-0.5
+                               rounded-full font-medium border border-line"
                   >
                     {tech}
                   </span>
