@@ -1710,7 +1710,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
 
   return (
     <div
-      className={`border-t border-gray-100 transition-colors ${isDragging ? "bg-blue-50" : "bg-white"}`}
+      className={`border-t border-line transition-colors ${isDragging ? "bg-surface-muted" : "bg-white"}`}
       onDragOver={(e) => {
         e.preventDefault();
         setIsDragging(true);
@@ -1742,16 +1742,16 @@ const MessageInput: React.FC<MessageInputProps> = ({
                 <img
                   src={att.previewUrl}
                   alt="attachment"
-                  className="w-14 h-14 object-cover rounded-lg border border-gray-200"
+                  className="w-14 h-14 object-cover rounded-lg border border-line"
                 />
               ) : (
-                <div className="w-14 h-14 bg-gray-100 rounded-lg border border-gray-200 flex flex-col items-center justify-center gap-1">
+                <div className="w-14 h-14 bg-surface-muted rounded-lg border border-line flex flex-col items-center justify-center gap-1">
                   {att.type === "pdf" ? (
                     <FileText size={16} className="text-red-500" />
                   ) : (
-                    <ImageIcon size={16} className="text-gray-400" />
+                    <ImageIcon size={16} className="text-ink-muted" />
                   )}
-                  <span className="text-[10px] text-gray-500 truncate w-12 text-center px-1">
+                  <span className="text-[10px] text-ink-muted truncate w-12 text-center px-1">
                     {att.file.name}
                   </span>
                 </div>
@@ -1770,7 +1770,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
       )}
 
       {isDragging && (
-        <p className="text-center py-3 text-sm text-blue-500 font-medium">
+        <p className="text-center py-3 text-sm text-secondary font-medium">
           Drop files to attach
         </p>
       )}
@@ -1789,14 +1789,14 @@ const MessageInput: React.FC<MessageInputProps> = ({
               className="w-8 h-8 rounded-full object-cover"
             />
           ) : (
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#0C2340] to-[#1a3a5c] flex items-center justify-center text-white text-xs font-semibold">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary flex items-center justify-center text-white text-xs font-semibold">
               {initials}
             </div>
           )}
         </div>
 
         {/* Text input + action icons */}
-        <div className="flex-1 flex items-center gap-2 bg-gray-50 rounded-xl px-3 py-2 border border-gray-200 focus-within:border-blue-400 focus-within:bg-white transition-colors min-w-0">
+        <div className="flex-1 flex items-center gap-2 bg-surface-muted rounded-xl px-3 py-2 border border-line focus-within:border-secondary focus-within:bg-white transition-colors min-w-0">
           <input
             ref={inputRef}
             type="text"
@@ -1804,12 +1804,12 @@ const MessageInput: React.FC<MessageInputProps> = ({
             value={text}
             onChange={(e) => setText(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 outline-none bg-transparent text-sm text-gray-800 placeholder-gray-400 min-w-0"
+            className="flex-1 outline-none bg-transparent text-sm text-primary placeholder-ink-muted min-w-0"
           />
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="text-gray-400 hover:text-blue-500 transition-colors p-0.5 flex-shrink-0"
+            className="text-ink-muted hover:text-secondary transition-colors p-0.5 flex-shrink-0"
             title="Attach file"
           >
             <Paperclip size={15} />
@@ -1826,7 +1826,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
             ref={emojiBtnRef}
             type="button"
             onClick={() => setShowEmoji((p) => !p)}
-            className={`p-0.5 flex-shrink-0 transition-colors ${showEmoji ? "text-yellow-500" : "text-gray-400 hover:text-yellow-500"}`}
+            className={`p-0.5 flex-shrink-0 transition-colors ${showEmoji ? "text-yellow-500" : "text-ink-muted hover:text-yellow-500"}`}
             title="Emoji"
           >
             <Smile size={15} />
@@ -1838,7 +1838,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
           type="button"
           onClick={handleSend}
           disabled={(!text.trim() && attachments.length === 0) || isSending}
-          className="p-2.5 bg-[#0C2340] text-white rounded-xl hover:bg-[#1a3a5c] disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex-shrink-0"
+          className="p-2.5 bg-primary text-white rounded-xl hover:bg-primary disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex-shrink-0"
           title="Send (Enter)"
         >
           <Send size={15} />
@@ -1855,13 +1855,13 @@ const MessageInput: React.FC<MessageInputProps> = ({
       {showEmoji && (
         <div
           ref={emojiPickerRef}
-          className="absolute bottom-16 right-4 z-40 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col"
+          className="absolute bottom-16 right-4 z-40 bg-white rounded-2xl shadow-2xl border border-line overflow-hidden flex flex-col"
           style={{ width: "min(308px, calc(100vw - 2rem))", maxHeight: 320 }}
         >
           {/* Category tab strip — horizontally scrollable */}
           <div
             ref={tabsRef}
-            className="flex overflow-x-auto border-b border-gray-100 bg-gray-50 flex-shrink-0"
+            className="flex overflow-x-auto border-b border-line bg-surface-muted flex-shrink-0"
             style={{ scrollbarWidth: "none" }}
           >
             {EMOJI_CATEGORIES.map((cat, i) => (
@@ -1872,8 +1872,8 @@ const MessageInput: React.FC<MessageInputProps> = ({
                 onClick={() => setActiveCategory(i)}
                 className={`flex-shrink-0 px-2 py-2 text-base transition-colors border-b-2 ${
                   activeCategory === i
-                    ? "border-blue-500 bg-white"
-                    : "border-transparent hover:bg-gray-100"
+                    ? "border-secondary bg-white"
+                    : "border-transparent hover:bg-surface-muted"
                 }`}
               >
                 {cat.icon}
@@ -1882,7 +1882,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
           </div>
 
           {/* Category label */}
-          <div className="px-3 py-1 text-[10px] font-semibold text-gray-400 uppercase tracking-widest flex-shrink-0 bg-white border-b border-gray-50">
+          <div className="px-3 py-1 text-[10px] font-semibold text-ink-muted uppercase tracking-widest flex-shrink-0 bg-white border-b border-line">
             {EMOJI_CATEGORIES[activeCategory].label} ·{" "}
             {EMOJI_CATEGORIES[activeCategory].emojis.length}
           </div>
@@ -1895,7 +1895,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
                   key={`${emoji}-${idx}`}
                   type="button"
                   onClick={() => appendEmoji(emoji)}
-                  className="flex items-center justify-center w-7 h-7 text-base rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors leading-none"
+                  className="flex items-center justify-center w-7 h-7 text-base rounded-lg hover:bg-surface-muted active:bg-line transition-colors leading-none"
                   title={emoji}
                 >
                   {emoji}
@@ -1905,14 +1905,14 @@ const MessageInput: React.FC<MessageInputProps> = ({
           </div>
 
           {/* Footer — preview + close */}
-          <div className="flex-shrink-0 border-t border-gray-100 px-3 py-1.5 flex items-center justify-between bg-white">
-            <span className="text-xs text-gray-400 truncate max-w-[180px]">
+          <div className="flex-shrink-0 border-t border-line px-3 py-1.5 flex items-center justify-between bg-white">
+            <span className="text-xs text-ink-muted truncate max-w-[180px]">
               {text ? `…${text.slice(-12)}` : "Select emoji to insert"}
             </span>
             <button
               type="button"
               onClick={() => setShowEmoji(false)}
-              className="text-xs text-gray-400 hover:text-gray-600 flex-shrink-0 ml-2"
+              className="text-xs text-ink-muted hover:text-ink-muted flex-shrink-0 ml-2"
             >
               Close ✕
             </button>
