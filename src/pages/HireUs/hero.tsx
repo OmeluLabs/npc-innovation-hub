@@ -113,13 +113,13 @@ function HireUsHero() {
         <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 leading-tight">
           Our Hire Us Process:
           <br />
-          <span className="text-indigo-600">From Planning to Deployment.</span>
+          <span className="text-secondary">From Planning to Deployment.</span>
         </h1>
         <p className="text-lg text-ink-muted mb-8 leading-relaxed">
           We handle your project from planning to deployment with professional,
           end-to-end solutions.
         </p>
-        <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2.5 rounded-full transition-colors">
+        <button className="bg-secondary hover:bg-primary text-white font-medium px-6 py-2.5 rounded-full transition-colors">
           <a href="https://ughe.org/innovation-center-ughe">More Info</a>
         </button>
       </div>
@@ -157,7 +157,7 @@ function HireUsHero() {
                 />
                 <span
                   ref={(el) => setShadowRef(el, index)}
-                  className="absolute inset-0 bg-indigo-100 opacity-30 blur-sm"
+                  className="absolute inset-0 bg-surface-muted opacity-30 blur-sm"
                   style={{
                     borderRadius: borderRadiusValues[index],
                     transform: "translate(3px, 3px)",
