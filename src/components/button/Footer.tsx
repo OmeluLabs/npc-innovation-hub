@@ -60,7 +60,11 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-14 pb-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div>
-            <p className="font-heading text-xl font-bold">NPC INNOVATION HUB</p>
+            <img
+              src="/assets/images/npc-hub-logo.png"
+              alt="NPC Innovation Hub"
+              className="h-16 w-auto rounded-md"
+            />
             <p className="mt-3 text-sm text-white/70 max-w-xs">
               A student-led space for building real-world technology, with
               mentorship at every step.
