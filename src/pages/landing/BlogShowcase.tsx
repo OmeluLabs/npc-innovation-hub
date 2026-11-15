@@ -9,6 +9,7 @@ import { useBlogs } from "../../hooks/useBlogs";
 import BlogCard from "../../components/blog/BlogCard";
 import Section from "../../components/layout/Section";
 import CardGridSkeleton from "../../components/layout/CardGridSkeleton";
+import EmptyState from "../../components/layout/EmptyState";
 import ViewAllButton from "../../components/layout/ViewAllButton";
 
 const PREVIEW_COUNT = 3;
@@ -21,9 +22,8 @@ const BlogShowcase: React.FC = () => {
     fetchPublishedBlogs();
   }, [fetchPublishedBlogs]);
 
-  // No published posts yet (or the fetch failed) is a normal state for an
-  // optional homepage section, so render nothing rather than an error card.
-  if (!loading && (error || blogs.length === 0)) return null;
+  // The navbar's Blogs link scrolls here, so the section always renders.
+  const empty = !loading && (Boolean(error) || blogs.length === 0);
 
   return (
     <Section
@@ -42,6 +42,11 @@ const BlogShowcase: React.FC = () => {
     >
       {loading ? (
         <CardGridSkeleton label="Loading blog posts" count={PREVIEW_COUNT} />
+      ) : empty ? (
+        <EmptyState
+          title="No articles yet"
+          message="New articles will appear here once they are published."
+        />
       ) : (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {blogs.slice(0, PREVIEW_COUNT).map((blog) => (
