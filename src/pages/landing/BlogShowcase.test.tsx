@@ -75,19 +75,19 @@ describe("<BlogShowcase />", () => {
     ).not.toBeInTheDocument();
   });
 
-  test("renders nothing when there are no published posts yet", () => {
+  test("shows an empty state when there are no published posts yet", () => {
     mockedUseBlogs.mockReturnValue(baseHookReturn());
 
-    const { container } = render(<BlogShowcase />);
+    render(<BlogShowcase />);
 
-    expect(container).toBeEmptyDOMElement();
+    expect(screen.getByText("No articles yet")).toBeInTheDocument();
   });
 
-  test("renders nothing when the fetch fails, rather than showing an error banner", () => {
+  test("shows an empty state when the fetch fails", () => {
     mockedUseBlogs.mockReturnValue(baseHookReturn({ error: "Network error" }));
 
-    const { container } = render(<BlogShowcase />);
+    render(<BlogShowcase />);
 
-    expect(container).toBeEmptyDOMElement();
+    expect(screen.getByText("No articles yet")).toBeInTheDocument();
   });
 });
