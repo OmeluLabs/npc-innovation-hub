@@ -17,25 +17,25 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
   {
     title: "The Hub",
     links: [
-      { label: "About the Hub", to: "/Hub-information" },
-      { label: "Members", to: "/members" },
-      { label: "Projects", to: "/projects" },
-      { label: "Contact Us", to: "/contact-us" },
+      { label: "About the Hub", to: "/#about" },
+      { label: "Members", to: "/#members" },
+      { label: "Projects", to: "/#projects" },
+      { label: "Contact Us", to: "/#contact" },
     ],
   },
   {
     title: "Explore",
     links: [
-      { label: "Events", to: "/events" },
-      { label: "Blogs", to: "/blog" },
+      { label: "Events", to: "/#events" },
+      { label: "Blogs", to: "/#blog" },
       { label: "Resources", to: "/resources-room" },
     ],
   },
   {
     title: "Get Involved",
     links: [
-      { label: "Apply to join", to: "/apply" },
-      { label: "Hire Us", to: "/hire-us" },
+      { label: "Apply to join", to: "/#apply" },
+      { label: "Hire Us", to: "/#hire-us" },
       { label: "FAQs", to: "/faqs" },
       {
         label: "Chat with Us",
