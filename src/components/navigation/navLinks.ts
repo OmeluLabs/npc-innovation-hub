@@ -70,24 +70,23 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     label: "Events",
-    children: [
-      {
-        label: "Upcoming Events",
-        to: "/events",
-        deepPath: "/events",
-        description: "Workshops, meetups and hackathons",
-      },
-      {
-        label: "Past Events",
-        to: "/events?tab=past",
-        deepPath: "/events?tab=past",
-        description: "Highlights from previous events",
-      },
-    ],
+    to: "/#events",
+    sectionId: "events",
+    deepPath: "/events",
   },
-  { label: "Blogs", to: "/blog", deepPath: "/blog" },
-  { label: "Hire Us", to: "/hire-us", deepPath: "/hire-us" },
-  { label: "Applications", to: "/apply", deepPath: "/apply" },
+  { label: "Blogs", to: "/#blog", sectionId: "blog", deepPath: "/blog" },
+  {
+    label: "Hire Us",
+    to: "/#hire-us",
+    sectionId: "hire-us",
+    deepPath: "/hire-us",
+  },
+  {
+    label: "Applications",
+    to: "/#apply",
+    sectionId: "apply",
+    deepPath: "/apply",
+  },
 ];
 
 export const SECTION_IDS: string[] = NAV_ITEMS.flatMap((item) =>
@@ -116,14 +115,7 @@ export function isLeafActive(
       leaf.sectionId !== undefined && ctx.activeSectionId === leaf.sectionId
     );
   }
-  const [path, query] = leaf.deepPath.split("?");
-  if (query) {
-    return ctx.pathname === path && ctx.search.includes(query);
-  }
-  if (path === "/events") {
-    // "Upcoming Events" is active on /events unless the past tab is chosen.
-    return ctx.pathname === path && !ctx.search.includes("tab=past");
-  }
+  const path = leaf.deepPath;
   if (path === "/blog") {
     return /^\/blogs?(\/|$)/.test(ctx.pathname);
   }
