@@ -32,7 +32,6 @@ const ApplySection: React.FC = () => {
       label="Applications"
       title="Apply to join the Hub"
       description="Membership is by application. Join a community of student developers building real software."
-      tone="muted"
       action={
         <button
           type="button"
