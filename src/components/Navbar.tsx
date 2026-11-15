@@ -237,7 +237,7 @@ export default function Navbar() {
       cancelled = true;
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [onHome, location.hash]);
+  }, [onHome, location.hash, location.key]);
 
   const dashboardPath =
     user?.role === UserRole.ADMIN ? "/Admindashboard" : "/dashboard";
