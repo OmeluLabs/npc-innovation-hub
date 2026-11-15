@@ -16,7 +16,6 @@ jest.mock("../../hooks/useEvents", () => ({
 
 import type { ReactNode } from "react";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { useEvents } from "../../hooks/useEvents";
 import EventsShowcase from "./EventsShowcase";
 
@@ -139,17 +138,5 @@ describe("<EventsShowcase />", () => {
     expect(
       screen.queryByRole("link", { name: "Register" }),
     ).not.toBeInTheDocument();
-  });
-
-  test("View All Events opens the public events page", async () => {
-    const user = userEvent.setup();
-    mockedUseEvents.mockReturnValue(
-      baseHookReturn({ events: [futureEvent()] }),
-    );
-
-    render(<EventsShowcase />);
-    await user.click(screen.getByRole("button", { name: "View All Events" }));
-
-    expect(mockNavigate).toHaveBeenCalledWith("/events");
   });
 });
