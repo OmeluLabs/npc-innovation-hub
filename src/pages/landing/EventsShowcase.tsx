@@ -12,6 +12,7 @@ import { getEventStatus } from "../../types/event.types";
 import PublicEventCard from "../../components/events/PublicEventCard";
 import Section from "../../components/layout/Section";
 import CardGridSkeleton from "../../components/layout/CardGridSkeleton";
+import EmptyState from "../../components/layout/EmptyState";
 import ViewAllButton from "../../components/layout/ViewAllButton";
 
 const PREVIEW_COUNT = 3;
@@ -40,8 +41,8 @@ const EventsShowcase: React.FC = () => {
   const hasUpcoming = upcoming.length > 0;
   const displaySource = hasUpcoming ? upcoming : recentPast;
 
-  // Zero events at all (or a failed fetch) hides the section.
-  if (!loading && (error || displaySource.length === 0)) return null;
+  // The navbar's Events link scrolls here, so the section always renders.
+  const empty = !loading && (Boolean(error) || displaySource.length === 0);
 
   const showUpcoming = hasUpcoming || loading;
 
@@ -56,7 +57,7 @@ const EventsShowcase: React.FC = () => {
           : "A look back at recent workshops, talks and meetups at the Hub."
       }
       action={
-        !loading ? (
+        !loading && !empty ? (
           <ViewAllButton onClick={() => navigate("/events")}>
             View All Events
           </ViewAllButton>
@@ -67,6 +68,11 @@ const EventsShowcase: React.FC = () => {
         <CardGridSkeleton
           label="Loading upcoming events"
           count={PREVIEW_COUNT}
+        />
+      ) : empty ? (
+        <EmptyState
+          title="No events scheduled"
+          message="New events are announced regularly. Check back soon."
         />
       ) : (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
