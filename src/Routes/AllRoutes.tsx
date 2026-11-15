@@ -225,8 +225,8 @@ const AllRoutes: React.FC = () => {
                 <HubMembersSection />
                 <ProjectsShowcase />
                 <HubIntroVideo />
-                <BlogShowcase />
                 <EventsShowcase />
+                <BlogShowcase />
                 <HireUsSection />
                 <ApplySection />
                 <section
