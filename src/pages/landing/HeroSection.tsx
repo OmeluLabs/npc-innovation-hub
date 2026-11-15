@@ -69,14 +69,14 @@ const HeroSection = () => {
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
-              to="/apply"
+              to="/#apply"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-7 py-3 text-base font-semibold text-primary transition-colors duration-200 hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
             >
               Apply to join
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link
-              to="/projects"
+              to="/#projects"
               className="inline-flex items-center rounded-lg border-2 border-white/80 px-7 py-3 text-base font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
             >
               See our projects
