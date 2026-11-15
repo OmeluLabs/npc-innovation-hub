@@ -32,22 +32,9 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Home", to: "/#home", sectionId: "home", deepPath: "/" },
   {
     label: "About",
-    children: [
-      {
-        label: "About the Hub",
-        to: "/#about",
-        sectionId: "about",
-        deepPath: "/Hub-information",
-        description: "Our mission, vision and what we do",
-      },
-      {
-        label: "Contact Us",
-        to: "/#contact",
-        sectionId: "contact",
-        deepPath: "/contact-us",
-        description: "Questions, partnerships and press",
-      },
-    ],
+    to: "/#about",
+    sectionId: "about",
+    deepPath: "/Hub-information",
   },
   {
     label: "Community",
@@ -86,6 +73,12 @@ export const NAV_ITEMS: NavItem[] = [
     to: "/#apply",
     sectionId: "apply",
     deepPath: "/apply",
+  },
+  {
+    label: "Contact Us",
+    to: "/#contact",
+    sectionId: "contact",
+    deepPath: "/contact-us",
   },
 ];
 
