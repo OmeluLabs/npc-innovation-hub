@@ -30,7 +30,6 @@ const HireUsSection: React.FC = () => {
       id="hire-us"
       label="Hire Us"
       title="Hire the Hub"
-      tone="muted"
       description="Organizations can request the Hub's services. Tell us what you need and we will get back to you."
       action={
         <button
@@ -46,7 +45,7 @@ const HireUsSection: React.FC = () => {
         {SERVICES.map((service) => (
           <li
             key={service.title}
-            className="rounded-2xl border border-line bg-white p-6 shadow-soft"
+            className="rounded-2xl border border-line bg-surface-muted p-6"
           >
             <h3>{service.title}</h3>
             <p className="mt-2 text-sm text-ink-muted">{service.text}</p>
