@@ -6,19 +6,16 @@
 // Uses the same data hook and card as the public /events page.
 
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useEvents } from "../../hooks/useEvents";
 import { getEventStatus } from "../../types/event.types";
 import PublicEventCard from "../../components/events/PublicEventCard";
 import Section from "../../components/layout/Section";
 import CardGridSkeleton from "../../components/layout/CardGridSkeleton";
 import EmptyState from "../../components/layout/EmptyState";
-import ViewAllButton from "../../components/layout/ViewAllButton";
 
-const PREVIEW_COUNT = 3;
+const PREVIEW_COUNT = 6;
 
 const EventsShowcase: React.FC = () => {
-  const navigate = useNavigate();
   const { events, loading, error, fetchEvents } = useEvents();
 
   useEffect(() => {
@@ -56,13 +53,6 @@ const EventsShowcase: React.FC = () => {
           ? "Workshops, talks and meetups happening around the Hub."
           : "A look back at recent workshops, talks and meetups at the Hub."
       }
-      action={
-        !loading && !empty ? (
-          <ViewAllButton onClick={() => navigate("/events")}>
-            View All Events
-          </ViewAllButton>
-        ) : undefined
-      }
     >
       {loading ? (
         <CardGridSkeleton
@@ -75,7 +65,7 @@ const EventsShowcase: React.FC = () => {
           message="New events are announced regularly. Check back soon."
         />
       ) : (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {displaySource.slice(0, PREVIEW_COUNT).map((event) => (
             <PublicEventCard
               key={event.id}
