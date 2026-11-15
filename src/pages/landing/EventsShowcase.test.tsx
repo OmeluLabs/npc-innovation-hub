@@ -100,20 +100,20 @@ describe("<EventsShowcase />", () => {
     expect(screen.queryByText("Upcoming Events")).not.toBeInTheDocument();
   });
 
-  test("renders nothing when there are no events at all", () => {
+  test("shows an empty state when there are no events at all", () => {
     mockedUseEvents.mockReturnValue(baseHookReturn());
 
-    const { container } = render(<EventsShowcase />);
+    render(<EventsShowcase />);
 
-    expect(container).toBeEmptyDOMElement();
+    expect(screen.getByText("No events scheduled")).toBeInTheDocument();
   });
 
-  test("renders nothing when the fetch fails, rather than showing an error banner", () => {
+  test("shows an empty state when the fetch fails", () => {
     mockedUseEvents.mockReturnValue(baseHookReturn({ error: "Network error" }));
 
-    const { container } = render(<EventsShowcase />);
+    render(<EventsShowcase />);
 
-    expect(container).toBeEmptyDOMElement();
+    expect(screen.getByText("No events scheduled")).toBeInTheDocument();
   });
 
   test("offers a Register link for an upcoming event", () => {
