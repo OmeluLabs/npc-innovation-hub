@@ -336,28 +336,10 @@ export default function Navbar() {
             }`}
           >
             <img
-              src="/assets/images/npc-emblem.png"
-              alt="National Police College"
-              className="w-10 h-10 lg:w-12 lg:h-12 flex-shrink-0 transition-transform duration-200 group-hover:scale-105"
+              src="/assets/images/npc-hub-logo.png"
+              alt="NPC Innovation Hub"
+              className="h-10 lg:h-12 w-auto flex-shrink-0 rounded-md transition-transform duration-200 group-hover:scale-105"
             />
-            <span className="leading-tight">
-              <span
-                className={`block font-bold tracking-tight text-sm lg:text-lg whitespace-nowrap transition-colors duration-200 ${
-                  transparentAtTop
-                    ? "text-white drop-shadow-md group-hover:text-white/80"
-                    : "text-npc-navy group-hover:text-npc-navy-light"
-                }`}
-              >
-                NPC INNOVATION HUB
-              </span>
-              <span
-                className={`block font-medium tracking-wide uppercase text-[10px] lg:text-xs whitespace-nowrap transition-colors duration-200 ${
-                  transparentAtTop ? "text-white/70" : "text-npc-navy/60"
-                }`}
-              >
-                Innovate &middot; Create &middot; Build
-              </span>
-            </span>
           </Link>
 
           {/* Desktop nav links + Sign In, grouped as one right-aligned
