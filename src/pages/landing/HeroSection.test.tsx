@@ -48,10 +48,10 @@ describe("<HeroSection />", () => {
 
     expect(
       screen.getByRole("link", { name: /apply to join/i }),
-    ).toHaveAttribute("href", "/apply");
+    ).toHaveAttribute("href", "/#apply");
     expect(
       screen.getByRole("link", { name: /see our projects/i }),
-    ).toHaveAttribute("href", "/projects");
+    ).toHaveAttribute("href", "/#projects");
   });
 
   test("does not render a member roster in the hero", () => {
