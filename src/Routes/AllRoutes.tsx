@@ -22,9 +22,6 @@ const HubMembersSection = lazy(
 const HeroSection = lazy(() => import("../pages/landing/HeroSection"));
 const Offerings = lazy(() => import("../pages/landing/Offerings"));
 const HubIntroVideo = lazy(() => import("../pages/landing/HubIntroVideo"));
-const PublicEventsPage = lazy(
-  () => import("../pages/events-page/PublicEventsPage"),
-);
 const ApplySection = lazy(() => import("../pages/landing/ApplySection"));
 const HireUsSection = lazy(() => import("../pages/landing/HireUsSection"));
 const ContactUs = lazy(() => import("../pages/landing/ContactUs"));
@@ -45,13 +42,6 @@ const MemberDetailPage = lazy(() =>
     default: m.MemberDetailPage,
   })),
 );
-const ApplyPage = lazy(() =>
-  import("../pages/apply/ApplyPage").then((m) => ({ default: m.ApplyPage })),
-);
-const LetTalk = lazy(() => import("../pages/HireUs/form"));
-const Services = lazy(() => import("../pages/HireUs/services"));
-const LatestPro = lazy(() => import("../pages/HireUs/latespro"));
-const InnovationHub = lazy(() => import("../pages/HireUs/FirstSection"));
 const BlogDesign = lazy(() => import("../pages/AboutHub/Topics"));
 const BlogDetails = lazy(() => import("../pages/blog/BlogDetails"));
 const AboutIntro = lazy(() => import("../pages/Hub-info/AboutIntro"));
@@ -260,21 +250,7 @@ const AllRoutes: React.FC = () => {
             </>
           }
         />
-        <Route
-          path="/hire-us"
-          element={
-            <>
-              <Navbar />
-              <main id="main-content">
-                <InnovationHub />
-                <Services />
-                <LatestPro />
-                <LetTalk />
-              </main>
-              <Footer />
-            </>
-          }
-        />
+        <Route path="/hire-us" element={<Navigate to="/#hire-us" replace />} />
         <Route
           path="/login"
           element={
@@ -339,18 +315,7 @@ const AllRoutes: React.FC = () => {
             </>
           }
         />
-        <Route
-          path="/events"
-          element={
-            <>
-              <Navbar />
-              <main id="main-content">
-                <PublicEventsPage />
-              </main>
-              <Footer />
-            </>
-          }
-        />
+        <Route path="/events" element={<Navigate to="/#events" replace />} />
         <Route
           path="/contact-us"
           element={
@@ -375,44 +340,11 @@ const AllRoutes: React.FC = () => {
             </>
           }
         />
-        <Route
-          path="/apply"
-          element={
-            <>
-              <Navbar />
-              <main id="main-content">
-                <ApplyPage />
-              </main>
-              <Footer />
-            </>
-          }
-        />
+        <Route path="/apply" element={<Navigate to="/#apply" replace />} />
 
         {/* ── Blog routes ── */}
-        <Route
-          path="/blog"
-          element={
-            <>
-              <Navbar />
-              <main id="main-content">
-                <BlogDesign />
-              </main>
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/blogs"
-          element={
-            <>
-              <Navbar />
-              <main id="main-content">
-                <BlogDesign />
-              </main>
-              <Footer />
-            </>
-          }
-        />
+        <Route path="/blog" element={<Navigate to="/#blog" replace />} />
+        <Route path="/blogs" element={<Navigate to="/#blog" replace />} />
         <Route
           path="/blogs/:id"
           element={
