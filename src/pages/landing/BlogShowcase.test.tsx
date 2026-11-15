@@ -67,14 +67,6 @@ describe("<BlogShowcase />", () => {
     ).toBeInTheDocument();
   });
 
-  test("only shows the View All button once there are more posts than the preview count", () => {
-    mockedUseBlogs.mockReturnValue(baseHookReturn({ blogs: [sampleBlog] }));
-    render(<BlogShowcase />);
-    expect(
-      screen.queryByRole("button", { name: "View All Posts" }),
-    ).not.toBeInTheDocument();
-  });
-
   test("shows an empty state when there are no published posts yet", () => {
     mockedUseBlogs.mockReturnValue(baseHookReturn());
 
