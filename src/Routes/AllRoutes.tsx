@@ -227,8 +227,8 @@ const AllRoutes: React.FC = () => {
                 <HubIntroVideo />
                 <BlogShowcase />
                 <EventsShowcase />
-                <ApplySection />
                 <HireUsSection />
+                <ApplySection />
                 <section
                   id="contact"
                   aria-label="Contact Us"
