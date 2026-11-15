@@ -211,8 +211,38 @@ export default function Navbar() {
     const id = location.hash.slice(1);
 
     let rafId: number;
+    let settleTimer: number | undefined;
     let cancelled = false;
     const deadline = Date.now() + 3000;
+
+    // Lazy sections above the target finish loading after the first scroll
+    // and change the page height, which would leave the target off-screen.
+    // For a short window afterwards, re-align it if it drifted, and stop at
+    // once if the visitor scrolls themselves.
+    let userScrolled = false;
+    const markUserScroll = () => {
+      userScrolled = true;
+    };
+    const userEvents = ["wheel", "touchstart", "keydown"] as const;
+    userEvents.forEach((e) =>
+      window.addEventListener(e, markUserScroll, { passive: true }),
+    );
+
+    const settle = (el: HTMLElement) => {
+      const settleDeadline = Date.now() + 2500;
+      const tick = () => {
+        if (cancelled || userScrolled || Date.now() > settleDeadline) return;
+        const top = el.getBoundingClientRect().top;
+        // The section's scroll-margin keeps it just below the fixed header.
+        if (Math.abs(top - (isDesktop() ? 80 : 72)) > 24) {
+          el.scrollIntoView({ behavior: "auto", block: "start" });
+        }
+        settleTimer = window.setTimeout(tick, 250);
+      };
+      // Start after the smooth scroll has had time to finish.
+      settleTimer = window.setTimeout(tick, 900);
+    };
+    const isDesktop = () => window.matchMedia("(min-width: 1024px)").matches;
 
     const tryScroll = () => {
       if (cancelled) return;
@@ -225,6 +255,7 @@ export default function Navbar() {
           behavior: prefersReducedMotion ? "auto" : "smooth",
           block: "start",
         });
+        settle(el);
         return;
       }
       if (Date.now() < deadline) {
@@ -236,6 +267,8 @@ export default function Navbar() {
     return () => {
       cancelled = true;
       if (rafId) cancelAnimationFrame(rafId);
+      if (settleTimer) window.clearTimeout(settleTimer);
+      userEvents.forEach((e) => window.removeEventListener(e, markUserScroll));
     };
   }, [onHome, location.hash, location.key]);
 
