@@ -26,17 +26,11 @@ const ApplySection = lazy(() => import("../pages/landing/ApplySection"));
 const HireUsSection = lazy(() => import("../pages/landing/HireUsSection"));
 const ContactUs = lazy(() => import("../pages/landing/ContactUs"));
 const ContactSection = lazy(() => import("../pages/landing/ContactSection"));
-const ProjectsPage = lazy(() => import("../pages/project-page/ProjectsPage"));
 const ProjectsShowcase = lazy(
   () => import("../pages/landing/ProjectsShowcase"),
 );
 const BlogShowcase = lazy(() => import("../pages/landing/BlogShowcase"));
 const EventsShowcase = lazy(() => import("../pages/landing/EventsShowcase"));
-const InnovationHubMembersPage = lazy(() =>
-  import("../pages/all-member-page/InnovationHubMembersPage").then((m) => ({
-    default: m.InnovationHubMembersPage,
-  })),
-);
 const MemberDetailPage = lazy(() =>
   import("../pages/all-member-page/MemberDetailPage").then((m) => ({
     default: m.MemberDetailPage,
@@ -293,28 +287,9 @@ const AllRoutes: React.FC = () => {
         />
         <Route
           path="/projects"
-          element={
-            <>
-              <Navbar />
-              <main id="main-content">
-                <ProjectsPage />
-              </main>
-              <Footer />
-            </>
-          }
+          element={<Navigate to="/#projects" replace />}
         />
-        <Route
-          path="/members"
-          element={
-            <>
-              <Navbar />
-              <main id="main-content">
-                <InnovationHubMembersPage />
-              </main>
-              <Footer />
-            </>
-          }
-        />
+        <Route path="/members" element={<Navigate to="/#members" replace />} />
         <Route path="/events" element={<Navigate to="/#events" replace />} />
         <Route
           path="/contact-us"
