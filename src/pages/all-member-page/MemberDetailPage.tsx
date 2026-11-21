@@ -101,7 +101,7 @@ export const MemberDetailPage: React.FC = () => {
             }
             action={
               <button
-                onClick={() => navigate("/members")}
+                onClick={() => navigate("/#members")}
                 className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 Back to members
@@ -122,7 +122,7 @@ export const MemberDetailPage: React.FC = () => {
     <div className="bg-surface-muted min-h-screen">
       <div className="max-w-5xl mx-auto px-6 lg:px-12 py-10 space-y-8">
         <button
-          onClick={() => navigate("/members")}
+          onClick={() => navigate("/#members")}
           className="inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary focus:outline-none focus-visible:underline"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -253,7 +253,7 @@ export const MemberDetailPage: React.FC = () => {
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h2 id="skills-heading">Skills and technologies</h2>
               <button
-                onClick={() => navigate("/projects")}
+                onClick={() => navigate("/#projects")}
                 className="text-sm font-semibold text-secondary hover:text-primary focus:outline-none focus-visible:underline"
               >
                 View projects
